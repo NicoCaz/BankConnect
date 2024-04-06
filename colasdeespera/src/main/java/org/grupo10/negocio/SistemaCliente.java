@@ -1,8 +1,7 @@
 package org.grupo10.negocio;
 
-import org.grupo10.modelo.ICliente;
+import org.grupo10.modelo.IClienteServer;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -16,7 +15,7 @@ public class SistemaCliente {
     private Socket socket;
     private ObjectOutputStream flujoSalida;
     private ObjectInputStream flujoEntrada;
-    private ArrayList<ICliente> pendientes = new ArrayList<ICliente>();
+    private ArrayList<IClienteServer> pendientes = new ArrayList<IClienteServer>();
 
     public static SistemaCliente getInstancia() {
         if (instancia == null)
@@ -25,7 +24,7 @@ public class SistemaCliente {
     }
 
 
-    public void addCliente(ICliente cliente) {
+    public void addCliente(IClienteServer cliente) {
         this.pendientes.add(cliente);
     }
 
@@ -36,7 +35,7 @@ public class SistemaCliente {
         return matcher.matches(); //true si cadena son 8 números
     }
 
-
+/*
     public void conectar(String host, int puerto) throws Exception{
         try {
             this.socket = new Socket(host, puerto);
@@ -48,10 +47,10 @@ public class SistemaCliente {
         }
     }
 
-    public void enviarDatos(String DNI) throws Exception{
+    public void enviarDatos(Turno t) throws Exception{
         try {
             System.out.println("Enviando datos al servidor");
-            this.flujoSalida.writeObject(DNI);
+            this.flujoSalida.writeObject(t);
             System.out.println("Datos enviados al servidor");
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -59,5 +58,5 @@ public class SistemaCliente {
         }
 
     }
-
+*/
 }

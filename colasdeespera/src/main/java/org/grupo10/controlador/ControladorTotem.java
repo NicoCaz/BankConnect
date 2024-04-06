@@ -1,21 +1,30 @@
 package org.grupo10.controlador;
 
+import org.grupo10.modelo.IClienteServer;
 import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.NegocioTurno;
 import org.grupo10.vista.IVista;
-import org.grupo10.vista.VistaBox;
 import org.grupo10.vista.VistaTotem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
-public class ControladorTotem implements ActionListener, IControlador{
+public class ControladorTotem implements ActionListener, IClienteServer {
     private IVista vista;
     private NegocioTurno negocioTurno;
+
+    //Para la conexion con el server
+    private Socket socket;
+    private ObjectOutputStream flujoSalida;
+    private ObjectInputStream flujoEntrada;
+
     public ControladorTotem(){
         this.vista = new VistaTotem(this);
         this.vista.mostrar();
-        this.conectarServer();
 
         negocioTurno = new NegocioTurno();
     }
@@ -29,6 +38,12 @@ public class ControladorTotem implements ActionListener, IControlador{
 
             try{
                 Turno t = negocioTurno.crearTurno(dni);
+
+                //Conexion al server para mandar el turno a la cola
+                this.conectar("localhost", 1);
+                this.enviarDatos(t);
+
+
                 this.vista.ventanaConfirmacion("Su turno es: " + t.getNumeroTurno());
             } catch (Exception ex) {
                 this.vista.ventanaError(ex.getMessage());
@@ -38,8 +53,32 @@ public class ControladorTotem implements ActionListener, IControlador{
     }
 
 
-    @Override
+/*    @Override
     public void conectarServer() {
 
+    }*/
+
+    @Override
+    public void conectar(String host, int puerto) {
+        try {
+            this.socket = new Socket(host, puerto);
+            System.out.println("Cliente conectado con el servidor, puerto del socket: "+ this.socket.getLocalPort());
+            this.flujoSalida = new ObjectOutputStream(socket.getOutputStream());
+            this.flujoEntrada = new ObjectInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void enviarDatos(Object o) {
+        try {
+            System.out.println("Enviando datos al servidor");
+            this.flujoSalida.writeObject(o);
+            System.out.println("Datos enviados al servidor");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

@@ -1,14 +1,11 @@
 package org.grupo10.negocio;
 
 import org.grupo10.modelo.Cliente;
-import org.grupo10.modelo.ICliente;
+import org.grupo10.modelo.IClienteServer;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
@@ -18,7 +15,7 @@ public class Servidor implements Runnable{
     public static Servidor instancia;
     private Socket socket;
     private ServerSocket socketServer;
-    private ArrayList<ICliente> clientes = new ArrayList<>();
+    private ArrayList<IClienteServer> clientes = new ArrayList<>();
     private ArrayList<Socket> sockets = new ArrayList<Socket>();
     public static Servidor getInstancia() {
         if (instancia == null) {
@@ -96,7 +93,7 @@ public class Servidor implements Runnable{
 
                         } else { //es un DNI (x descarte)
                             System.out.println("El servidor recibió el DNI "+ cadena);
-                            Servidor.getInstancia().getClientes().add(new Cliente(cadena)); //agrego al cliente a una coleccion de clientes
+                           // Servidor.getInstancia().getClientes().add(new Cliente(cadena)); //agrego al cliente a una coleccion de clientes
                             Servidor.getInstancia().enviarQueue(); //enviar la queue actualziada a todos los empleados
 
                         }
@@ -110,7 +107,7 @@ public class Servidor implements Runnable{
         }
     }
 
-    private ICliente getClientes() {
-        return (ICliente) this.clientes;
+    private IClienteServer getClientes() {
+        return (IClienteServer) this.clientes;
     }
 }

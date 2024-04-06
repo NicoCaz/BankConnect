@@ -117,6 +117,7 @@ public class VistaTotem extends JFrame implements IVista{
     private class CancelButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            //Resetea el campo de texto
             inputBuffer.setLength(0);
             displayLabel.setText("");
         }
@@ -145,6 +146,8 @@ public class VistaTotem extends JFrame implements IVista{
 
     @Override
     public void ventanaError(String msg) {
+        inputBuffer.setLength(0);
+        displayLabel.setText("");
         JDialog errorDialog = new JDialog(VistaTotem.this, "DNI incorrecto", true);
         JPanel errorPanel = new JPanel(new BorderLayout());
         JLabel errorLabel = new JLabel(msg, SwingConstants.CENTER);
