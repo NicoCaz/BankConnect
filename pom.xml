@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.grupo10</groupId>
-    <artifactId>SistemaColasBancarias</artifactId>
+    <artifactId>colasdeespera</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

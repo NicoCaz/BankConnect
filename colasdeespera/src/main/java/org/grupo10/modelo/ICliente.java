@@ -3,6 +3,6 @@ public interface ICliente {
      String dni = null;
      int identificador = 0;
      boolean registrar();
-
+     void add(Cliente cliente);
 
 }

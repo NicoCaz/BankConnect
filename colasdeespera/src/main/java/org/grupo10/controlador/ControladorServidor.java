@@ -1,5 +1,5 @@
 package org.grupo10.controlador;
-
+/*
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,3 +30,4 @@ public class ControladorServidor implements ActionListener {
         }
     }
 }
+*/

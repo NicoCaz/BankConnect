@@ -57,7 +57,28 @@ public class TurnosLlamados extends JFrame implements  IVista{
     }
 
     @Override
+    public void ventanaConfirmacion(String msg) {
+
+    }
+
+    @Override
+    public void ventanaError(String msg) {
+
+    }
+
+
+    @Override
     public void setActionListener(ActionListener actionListener) {
 
+    }
+
+    @Override
+    public JLabel getDisplayLabel() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getInputBuffer() {
+        return null;
     }
 }

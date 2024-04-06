@@ -1,41 +1,37 @@
 package org.grupo10.controlador;
 
+import org.grupo10.negocio.SistemaCliente;
+import org.grupo10.vista.IVista;
+import org.grupo10.vista.VistaTotem;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
-
-import negocio.SistemaEmpleados;
-import negocio.SistemaClientes;
-import org.grupo10.vista.IVista;
-import vista.Ivista;
-import vista.VentanaRegistro;
 
 public class ControladorCliente implements ActionListener {
 
     private IVista vista;
 
     public ControladorCliente() {
-        this.vista = new VentanaRegistro();
-        this.vista.setActionListener(this);
+        this.vista = new VistaTotem(this);
         this.vista.mostrar();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        /*
         String comando = e.getActionCommand();
         System.out.println(comando);
         if (comando.equalsIgnoreCase("Registrarse")) { //bien
-            VentanaRegistro ventanaR = (VentanaRegistro) this.vista;
+            VistaTotem ventanaR = (VistaTotem) this.vista;
             String DNI =ventanaR.getTextField().getText();
-            if (SistemaClientes.getInstancia().validarCadenaNumerica(DNI)) { //devuelve true si el DNI es una cadena de 8 numeros
+            if (SistemaCliente.getInstancia().validarCadenaNumerica(DNI)) { //devuelve true si el DNI es una cadena de 8 numeros
 
 
 
                 try {
-                    SistemaClientes.getInstancia().conectar("localhost", 1);
-                    SistemaClientes.getInstancia().enviarDatos(DNI);
+                    SistemaCliente.getInstancia().conectar("localhost", 1);
+                    SistemaCliente.getInstancia().enviarDatos(DNI);
                     ventanaR.getTextField().setText("");
                     JOptionPane.showMessageDialog(null, "Registro exitoso");
                     //puerto del servidor hardcodeado en 1 ver si poner esta linea afuera
@@ -51,5 +47,7 @@ public class ControladorCliente implements ActionListener {
                 JOptionPane.showMessageDialog(null, "DNI inválido, vuelva a ingresar");
             }
         }
+
+         */
     }
 }

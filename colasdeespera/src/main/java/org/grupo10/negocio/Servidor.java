@@ -1,5 +1,6 @@
 package org.grupo10.negocio;
 
+import org.grupo10.modelo.Cliente;
 import org.grupo10.modelo.ICliente;
 
 import java.io.BufferedReader;

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Arrancamo de 0">
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/IControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/SistemaEmpleados.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainEstadisticas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainTotem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/NegocioTurno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaEstadisticas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/ICliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/ICliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/Totem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/TurnosLlamados.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/TurnosLlamados.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/TurnosLlamados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;facundodelga&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7c132545-7249-4efe-83b1-f0a6600a1a19" />
+        <option name="url" value="https://github.com/NicoCaz/proyectoAyD2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2eenZMr0oiwVtGzAzHKkQJl9UNk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainBox.executor": "Run",
+    "Application.MainEstadisticas.executor": "Run",
+    "Application.MainTotem.executor": "Run",
+    "Application.QueueManager.executor": "Run",
+    "Application.VistaTotem.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.grupo10.controlador" />
+      <recent name="org.grupo10.vista" />
+      <recent name="org.grupo10.modelo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainTotem">
+    <configuration name="MainBox" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainBox" />
+      <module name="colasdeespera" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.grupo10.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTotem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainTotem" />
+      <module name="colasdeespera" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.grupo10.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainTotem" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="" />
+      <created>1712273965215</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712273965215</updated>
+      <workItem from="1712273966314" duration="38000" />
+      <workItem from="1712274486192" duration="182000" />
+      <workItem from="1712274678318" duration="48000" />
+      <workItem from="1712278858976" duration="438000" />
+      <workItem from="1712430401434" duration="32000" />
+      <workItem from="1712430490273" duration="76000" />
+      <workItem from="1712430574526" duration="786000" />
+      <workItem from="1712431362123" duration="12731000" />
+    </task>
+    <task id="LOCAL-00001" summary="Arrancamo de 0">
+      <option name="closed" value="true" />
+      <created>1712274506610</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712274506610</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Arrancamo de 0">
+      <option name="closed" value="true" />
+      <created>1712274690129</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712274690129</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Arrancamo de 0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arrancamo de 0" />
+  </component>
+</project>
