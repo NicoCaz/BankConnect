@@ -1,10 +1,11 @@
 package org.grupo10.modelo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class GestionAtencion {
-    private List<ITurno> turnosPendientes;
-    private List<ITurno> turnosAtendidos;
+    private Queue<ITurno> turnosPendientes;
+    private Queue<ITurno> turnosAtendidos;
     private List<IBox> boxes= new ArrayList<IBox>();;
 
     public GestionAtencion(int cantidadBoxes){
@@ -26,10 +27,5 @@ public class GestionAtencion {
         this.turnosPendientes.remove(turno);
         //logica de atender turno
         //llamar a los box para que lo atiendan
-    }
-
-    public void comenzarAtencion() {
-        // aca invoca a todos los metodos de las otras clases para que se inicialice la atencion
-
     }
 }

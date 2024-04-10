@@ -10,18 +10,39 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
-public class Servidor implements Runnable{
+public class Servidor extends Observable implements Runnable{
 
     public static Servidor instancia;
     private Socket socket;
     private ServerSocket socketServer;
-    private ArrayList<IClienteServer> clientes = new ArrayList<>();
+    private static int boxes=0;
+    private String pre="[SERVER]";
+    private Queue<Cliente> clientes = new LinkedList<>();
     private ArrayList<Socket> sockets = new ArrayList<Socket>();
+
+    private ArrayList<Socket> monitores = new ArrayList<Socket>();
+
+
+
     public static Servidor getInstancia() {
         if (instancia == null) {
             instancia = new Servidor();
         }
         return instancia;
+    }
+
+
+    public ArrayList<Socket> getMonitores() {
+        return this.monitores;
+    }
+
+
+    public ArrayList<Socket> getSockets() {
+        return this.sockets;
+    }
+
+    public Queue<Cliente> getClientes() {
+        return this.clientes;
     }
 
 
@@ -40,14 +61,17 @@ public class Servidor implements Runnable{
         }
     }
 
+    @Override
     public void run() {
         try {
             int puerto = 1; //hardcodeado por ahora
             this.socketServer = new ServerSocket(puerto);
-            System.out.println("Servidor iniciado. Puerto: " + puerto);
+            System.out.println(pre+"Servidor iniciado. Puerto: " + puerto);
             while (true) {
                 socket = socketServer.accept();
-                System.out.println("Ha entrado una conexion al servidor");
+                System.out.println(pre+"Ha entrado una conexion al servidor");
+                this.setChanged();
+                this.notifyObservers("Alta");
                 this.sockets.add(socket);
 
                 Thread escucha = new Thread(new Escuchar(socket));   //porque cada socket debe tener un hilo propio escuchando e/s de datos
@@ -60,54 +84,97 @@ public class Servidor implements Runnable{
             }
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
     }
 
+    private void enviarBox(Socket socket) {
+        try {
+            ObjectOutputStream flujo = new ObjectOutputStream(socket.getOutputStream());
+            flujo.writeObject(++this.boxes);
+        } catch (IOException e) {
+            System.out.println(pre+"Exception enviando el box actual "+ e.toString());
+        }
+    }
+
+
+    public void enviarBoxMonitores(int box, String DNISig) { //envío a todos los monitores el box que hizo el request de siguiente
+        Iterator<Socket> iterador = this.monitores.iterator();
+        while (iterador.hasNext()) {
+            Socket aux = iterador.next();
+            try {
+                ObjectOutputStream flujo = new ObjectOutputStream(aux.getOutputStream());
+                System.out.println(pre+"Enviando queue al socket de MONITOR de puerto "+ aux.getPort());
+                System.out.println(pre+"DNI que vamos a enviar al monitor: "+ DNISig);
+              //  Datos datos = new Datos(box,DNISig); datos es la info de los turnos
+///flujo.writeObject(datos);
+                flujo.flush();
+             //   System.out.println(pre+" Enviamos " + datos.toString() + " a los monitores!!!");
+            } catch (IOException e) {
+                System.out.println(pre+"Excepcion enviando queues: "+ e.getMessage());
+            }
+        }
+    }
     private class Escuchar implements Runnable { //seria el hilo de cada socket. puse la clase aca para q esté mas a mano
         private Socket socket;
 
         public Escuchar(Socket socket) {
-            System.out.println("Creando clase escuchadora");
+            System.out.println(pre+"Creando clase escuchadora");
             this.socket = socket;
         }
+
+
 
         @Override
         public void run() {
             try {
-                System.out.println("Clase escuchadora creada xd");
+                // Datos es gestion atencion 
+                System.out.println(pre+"Clase escuchadora creada xd");
                 ObjectInputStream flujoEntrada = new ObjectInputStream(socket.getInputStream());
                 ObjectOutputStream flujoSalida = new ObjectOutputStream(socket.getOutputStream());
+                Servidor.getInstancia().enviarQueue();        //cuando uno nuevo se conecta, envio las queues nuevamente para que si ya habia empleados, se le carguen los datos también.
+                //  Servidor.getInstancia().enviarBox(socket);    //envio el numero de box que le corresponde al empleado que acaba de conectarse
                 while (true) {
-                    System.out.println("Escuchando...........");
+                    System.out.println(pre+"Escuchando...........");
                     Object object = flujoEntrada.readObject();
-                    if (object instanceof String) {
-                        String cadena = (String) object;
-                        if (cadena.equalsIgnoreCase("Finalizar")) { //Finalizó un turno un empleado
+                    if (object instanceof Datos) {
+                        Datos datos = (Datos) object;
+                        if (datos.isSiguiente()) { // implica que un empleado pidió para siguiente. enviar a los monitores quién fue
+                            System.out.println(pre+"El server recibió DNI "+ datos.getDNISig() +" en una request para siguiente ");
+                            Servidor.getInstancia().getClientes().poll();
+                            Servidor.getInstancia().enviarQueue();
+                            Servidor.getInstancia().enviarBoxMonitores(datos.getBox(),datos.getDNISig());
 
+                        } else {
 
-                        } else if (cadena.equalsIgnoreCase("Siguiente")) { //Un empleado llama al siguiente en la queue
-
-
-                        } else { //es un DNI (x descarte)
-                            System.out.println("El servidor recibió el DNI "+ cadena);
-                           // Servidor.getInstancia().getClientes().add(new Cliente(cadena)); //agrego al cliente a una coleccion de clientes
-                            Servidor.getInstancia().enviarQueue(); //enviar la queue actualziada a todos los empleados
 
                         }
-                        //ver donde guardar la colección con DNIS para la cola, no sé si es correcto hacerlo en el mismo servidor o habría que hacer una clase aparte
-                        //provisoriamente voy a dejar la coleccion en esta clase
+
+                    } else if (object instanceof Cliente) {        //es un registro
+                        Cliente cliente = (Cliente) object;
+                        System.out.println(pre+"El servidor recibió el DNI "+ cliente.getDNI());
+                        Servidor.getInstancia().getClientes().add(cliente); //agrego al cliente a una coleccion de clientes
+                        Servidor.getInstancia().enviarQueue(); //enviar la queue actualziada a todos los empleados
+                    } else if (object instanceof Integer) {     //identificador de monitores
+                        int x = (int) object;
+                        if (x==2176) { //codigo que dan los monitores para identificarse
+                            System.out.println(pre+"Se agrego un nuevo monitor al sistema");
+                            Servidor.getInstancia().getMonitores().add(socket);
+                        } else if (x==21) {
+                            System.out.println(pre+"Se agregó un nuevo empleado al sistema");
+                            Servidor.getInstancia().enviarBox(socket);    //envio el numero de box que le corresponde al empleado que acaba de conectarse
+                        }
+
+
                     }
+
                 }
+
             } catch (Exception e) {
-                System.out.println("Excepcion "+ e.getMessage());
+                System.out.println(pre+"Excepcion "+ e.getMessage());
+
             }
         }
-    }
-
-    private IClienteServer getClientes() {
-        return (IClienteServer) this.clientes;
     }
 }
