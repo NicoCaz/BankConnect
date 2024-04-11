@@ -1,11 +1,6 @@
 package org.grupo10.negocio;
-
 import java.io.*;
 import java.net.Socket;
-import java.util.List;
-
-
-
 
 public class SistemaBox implements Runnable {
     private static final String SERVIDOR_CENTRAL_HOST = "127.0.0.1";
@@ -31,28 +26,26 @@ public class SistemaBox implements Runnable {
                 registrarseEnServidorCentral();
                 System.out.println("Conexión establecida con el Servidor Central");
 
-
                 while (ejecutando) {
                     enviarMensajeAlServidorCentral("Hola, Servidor Central");
                     recibirRespuestaDelServidorCentral();
                     Thread.sleep(5000); // Esperar 5 segundos antes de enviar otro mensaje
                 }
 
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException | ClassNotFoundException e) {
                 System.err.println("Error en la comunicación con el Servidor Central: " + e.getMessage());
-            } catch (InterruptedException e) {
-                System.err.println("Error de interrupción: " + e.getMessage());
+            } finally {
+                try {
+                    socketServidor.close();
+                } catch (IOException e) {
+                    System.err.println("Error al cerrar la conexión: " + e.getMessage());
+                }
             }
         }
     }
 
     public void detenerServidor() {
         ejecutando = false;
-        try {
-            socketServidor.close();
-        } catch (IOException e) {
-            System.err.println("Error al cerrar la conexión: " + e.getMessage());
-        }
     }
 
     private void conectarAlServidorCentral() throws IOException {
@@ -63,7 +56,7 @@ public class SistemaBox implements Runnable {
     }
 
     private void registrarseEnServidorCentral() throws IOException {
-        salida.writeObject(TIPO_SERVIDOR);
+        salida.writeUTF(TIPO_SERVIDOR); // Enviar tipo de servidor como String
         salida.flush();
         String confirmacion = entrada.readUTF();
         System.out.println("Respuesta del Servidor Central: " + confirmacion);
@@ -75,18 +68,8 @@ public class SistemaBox implements Runnable {
         System.out.println("Mensaje enviado al Servidor Central: " + mensaje);
     }
 
-    private void recibirRespuestaDelServidorCentral() throws IOException {
-
-        Object respuesta = null;
-        try {
-            respuesta = entrada.readObject();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+    private void recibirRespuestaDelServidorCentral() throws IOException, ClassNotFoundException {
+        Object respuesta = entrada.readObject();
         System.out.println("Respuesta del Servidor Central: " + respuesta);
-
-
-
     }
-
 }

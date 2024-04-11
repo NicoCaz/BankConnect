@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Arrancamo de 0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
     </list>
