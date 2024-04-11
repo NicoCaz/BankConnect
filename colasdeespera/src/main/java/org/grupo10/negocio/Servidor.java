@@ -8,11 +8,15 @@ public class Servidor implements Runnable {
     private static final int PUERTO = 8080;
     private static Servidor instancia;
     private ServerSocket serverSocket;
-    private Map<Socket, String> tiposServidores;
+
+    private ArrayList<Socket> clientesTotem = new ArrayList<>();
+    private ArrayList<Socket> clientesBox = new ArrayList<>();
+    private ArrayList<Socket> clientesMonitor = new ArrayList<>();
+    private ArrayList<Socket> clientesEstadisticas = new ArrayList<>();
     private boolean ejecutando;
 
     private Servidor() {
-        tiposServidores = new HashMap<>();
+
         ejecutando = false;
     }
 
@@ -78,7 +82,20 @@ public class Servidor implements Runnable {
 
                 // Identificar el tipo de servidor
                 String tipoServidor = entrada.readUTF();
-                tiposServidores.put(socket, tipoServidor);
+
+                switch (tipoServidor) {
+                    case "box":
+                        clientesBox.add(socket);
+                    case "totem":
+                        clientesTotem.add(socket);
+                    case "monitor":
+                        clientesMonitor.add(socket);
+                    case "estadisticas":
+                        clientesEstadisticas.add(socket);
+                    default:
+                        System.out.println("Tipo de cliente invalido");
+                }
+
                 System.out.println("Nuevo servidor conectado: " + tipoServidor);
 
                 // Enviar confirmación de registro

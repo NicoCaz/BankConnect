@@ -26,11 +26,12 @@ public class PruebaServer implements Runnable {
                 registrarseEnServidorCentral();
                 System.out.println("Conexión establecida con el Servidor Central");
                 enviarMensajeAlServidorCentral("Hola, Servidor Central");
-                while (ejecutando) {
 
+                while (ejecutando) {
                     recibirRespuestaDelServidorCentral();
                     Thread.sleep(5000); // Esperar 5 segundos antes de enviar otro mensaje
                 }
+
             } catch (IOException e) {
                 System.err.println("Error en la comunicación con el Servidor Central: " + e.getMessage());
             } catch (InterruptedException e) {
