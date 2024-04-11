@@ -1,5 +1,4 @@
 package org.grupo10.negocio;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -8,7 +7,6 @@ public class Servidor implements Runnable {
     private static final int PUERTO = 8080;
     private static Servidor instancia;
     private ServerSocket serverSocket;
-
     private ArrayList<Socket> clientesTotem = new ArrayList<>();
     private ArrayList<Socket> clientesBox = new ArrayList<>();
     private ArrayList<Socket> clientesMonitor = new ArrayList<>();
@@ -16,7 +14,6 @@ public class Servidor implements Runnable {
     private boolean ejecutando;
 
     private Servidor() {
-
         ejecutando = false;
     }
 
@@ -48,7 +45,7 @@ public class Servidor implements Runnable {
                 Socket socket = serverSocket.accept();
                 System.out.println("Nueva conexión entrante: " + socket.getInetAddress().getHostAddress());
 
-                //Hilo de cada socket que se conecta al sevidor
+                // Hilo de cada socket que se conecta al servidor
                 Thread hiloServidor = new Thread(new HiloServidor(socket));
                 hiloServidor.start();
             }
@@ -77,21 +74,28 @@ public class Servidor implements Runnable {
         @Override
         public void run() {
             try {
+                System.out.println("Hilo aca");
+
                 ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
+                System.out.println("Hilo aca 2");
                 ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
+                System.out.println("Hilo aca 3");
 
+                String tipoServidor = (String) entrada.readObject(); // Leer tipo de servidor como String
 
-                String tipoServidor = entrada.readUTF();
-
-                switch (tipoServidor) {
+                switch (tipoServidor) { // Utilizar String directamente en el switch
                     case "box":
                         clientesBox.add(socket);
+                        break;
                     case "totem":
                         clientesTotem.add(socket);
+                        break;
                     case "monitor":
                         clientesMonitor.add(socket);
+                        break;
                     case "estadisticas":
                         clientesEstadisticas.add(socket);
+                        break;
                     default:
                         System.out.println("Tipo de cliente invalido");
                 }
@@ -103,18 +107,19 @@ public class Servidor implements Runnable {
                 salida.flush();
 
                 while (true) {
-                    String mensaje = entrada.readUTF();
+                    Object mensaje = entrada.readObject();
                     System.out.println("Mensaje recibido del servidor: " + mensaje);
 
                     // Procesar el mensaje y enviar la respuesta
-                    String respuesta = procesarMensaje(tipoServidor, mensaje);
-                    salida.writeUTF(respuesta);
+                    Object respuesta = procesarMensaje(tipoServidor, mensaje.toString());
+                    salida.writeObject(respuesta);
                     salida.flush();
                 }
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 System.err.println("Error en la comunicación con el servidor: " + e.getMessage());
             } finally {
                 try {
+                    System.out.println("Hilo cerrado");
                     socket.close();
                 } catch (IOException e) {
                     System.err.println("Error al cerrar el socket: " + e.getMessage());
@@ -122,18 +127,10 @@ public class Servidor implements Runnable {
             }
         }
 
-        private String procesarMensaje(String tipoServidor, String mensaje) {
+        private Object procesarMensaje(String tipoServidor, String mensaje) {
             // Implementar la lógica de procesamiento de mensajes según el tipo de servidor
-            switch (tipoServidor) {
-                case "box":
-                    return "Respuesta para servidor Box";
-                case "totem":
-                    return "Respuesta para servidor Totem";
-                case "pantalla":
-                    return "Respuesta para servidor Pantalla";
-                default:
-                    return "Respuesta genérica";
-            }
+           return new Object();
+
         }
     }
 }

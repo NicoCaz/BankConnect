@@ -32,24 +32,7 @@ public class ControladorTotem implements ActionListener, IClienteServer {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String comando = e.getActionCommand();
 
-        if(comando.equalsIgnoreCase("Aceptar")) {
-            String dni = this.vista.getDisplayLabel().getText();
-
-            try{
-                Turno t = negocioTurno.crearTurno(dni);
-
-                //Conexion al server para mandar el turno a la cola
-                this.conectar("localhost", 1);
-                this.enviarDatos(t);
-
-
-                this.vista.ventanaConfirmacion("Su turno es: " + t.getNumeroTurno());
-            } catch (Exception ex) {
-                this.vista.ventanaError(ex.getMessage());
-            }
-        }
 
     }
 
