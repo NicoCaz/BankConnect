@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Arrancamo de 0">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaPantalla.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaTotem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaServidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/NegocioTurno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/PruebaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaCliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/TurnosLlamados.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/TurnosLlamados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +58,12 @@
   &quot;keyToString&quot;: {
     &quot;Application.MainBox.executor&quot;: &quot;Run&quot;,
     &quot;Application.MainEstadisticas.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainServidor.executor&quot;: &quot;Run&quot;,
     &quot;Application.MainTotem.executor&quot;: &quot;Run&quot;,
     &quot;Application.PruebaServer.executor&quot;: &quot;Run&quot;,
     &quot;Application.QueueManager.executor&quot;: &quot;Run&quot;,
     &quot;Application.Servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaServidor.executor&quot;: &quot;Run&quot;,
     &quot;Application.VistaTotem.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -85,11 +84,24 @@
       <recent name="org.grupo10.modelo" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Servidor">
+  <component name="RunManager" selected="Application.MainServidor">
     <configuration name="MainBox" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainBox" />
+      <module name="colasdeespera" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.grupo10.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainServidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainServidor" />
       <module name="colasdeespera" />
       <extension name="coverage">
         <pattern>
@@ -127,28 +139,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Servidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.grupo10.negocio.Servidor" />
-      <module name="colasdeespera" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.grupo10.negocio.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.MainBox" />
+      <item itemvalue="Application.MainServidor" />
       <item itemvalue="Application.PruebaServer" />
-      <item itemvalue="Application.Servidor" />
       <item itemvalue="Application.MainTotem" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Servidor" />
+        <item itemvalue="Application.MainServidor" />
         <item itemvalue="Application.PruebaServer" />
         <item itemvalue="Application.MainTotem" />
       </list>
@@ -171,7 +170,7 @@
       <workItem from="1712430574526" duration="786000" />
       <workItem from="1712431362123" duration="15964000" />
       <workItem from="1712788759303" duration="981000" />
-      <workItem from="1712859469958" duration="4043000" />
+      <workItem from="1712859469958" duration="8264000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -196,6 +195,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="VistaServidor conectado a controlador" />
     <MESSAGE value="Arrancamo de 0" />
     <option name="LAST_COMMIT_MESSAGE" value="Arrancamo de 0" />
   </component>

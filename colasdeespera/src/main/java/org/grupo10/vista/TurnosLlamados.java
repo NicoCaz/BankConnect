@@ -57,6 +57,11 @@ public class TurnosLlamados extends JFrame implements  IVista{
     }
 
     @Override
+    public void actualizar() {
+
+    }
+
+    @Override
     public void ventanaConfirmacion(String msg) {
 
     }

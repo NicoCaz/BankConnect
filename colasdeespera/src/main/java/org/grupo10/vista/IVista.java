@@ -7,6 +7,7 @@ public interface IVista {
     void cerrar();
 
     void mostrar();
+    void actualizar();
     void ventanaConfirmacion(String msg);
     void ventanaError(String msg);
 

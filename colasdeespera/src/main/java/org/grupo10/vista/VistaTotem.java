@@ -91,6 +91,11 @@ public class VistaTotem extends JFrame implements IVista{
     }
 
     @Override
+    public void actualizar() {
+
+    }
+
+    @Override
     public void setActionListener(ActionListener actionListener) {
         this.controlador = actionListener;
     }
