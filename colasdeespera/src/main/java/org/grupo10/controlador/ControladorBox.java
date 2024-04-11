@@ -4,8 +4,6 @@ package org.grupo10.controlador;
 import org.grupo10.modelo.IClienteServer;
 import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaBox;
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +14,6 @@ public class ControladorBox implements ActionListener, IClienteServer {
         this.vista = new VistaBox();
         this.vista.setActionListener(this);
         this.vista.mostrar();
-
 
     }
 

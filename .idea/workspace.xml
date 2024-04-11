@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Arrancamo de 0">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/IClienteServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/IControlador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/ICliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/ITurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/ITurno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/Servidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +56,9 @@
     "Application.MainBox.executor": "Run",
     "Application.MainEstadisticas.executor": "Run",
     "Application.MainTotem.executor": "Run",
+    "Application.PruebaServer.executor": "Run",
     "Application.QueueManager.executor": "Run",
+    "Application.Servidor.executor": "Run",
     "Application.VistaTotem.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -85,7 +79,7 @@
       <recent name="org.grupo10.modelo" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainTotem">
+  <component name="RunManager" selected="Application.PruebaServer">
     <configuration name="MainBox" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -114,8 +108,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PruebaServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.negocio.PruebaServer" />
+      <module name="colasdeespera" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.grupo10.negocio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PruebaServer" />
         <item itemvalue="Application.MainTotem" />
       </list>
     </recent_temporary>
@@ -135,7 +143,9 @@
       <workItem from="1712430401434" duration="32000" />
       <workItem from="1712430490273" duration="76000" />
       <workItem from="1712430574526" duration="786000" />
-      <workItem from="1712431362123" duration="15406000" />
+      <workItem from="1712431362123" duration="15964000" />
+      <workItem from="1712788759303" duration="981000" />
+      <workItem from="1712859469958" duration="4043000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

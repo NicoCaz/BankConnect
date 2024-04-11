@@ -135,9 +135,9 @@ public class VistaTotem extends JFrame implements IVista{
         ticketDialog.pack();
         ticketDialog.setLocationRelativeTo(VistaTotem.this);
 
-        // Cerrar el diálogo después de 3 segundos
+        // Cerrar el diálogo después de 5 segundos
         ActionListener closeListener = e -> ticketDialog.dispose();
-        Timer timer = new Timer(3000, closeListener);
+        Timer timer = new Timer(5000, closeListener);
         timer.setRepeats(false);
         timer.start();
 

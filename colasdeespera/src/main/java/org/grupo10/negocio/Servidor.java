@@ -1,28 +1,20 @@
 package org.grupo10.negocio;
 
-import org.grupo10.modelo.Cliente;
-import org.grupo10.modelo.IClienteServer;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 import java.util.*;
 
-public class Servidor extends Observable implements Runnable{
+public class Servidor implements Runnable {
+    private static final int PUERTO = 8080;
+    private static Servidor instancia;
+    private ServerSocket serverSocket;
+    private Map<Socket, String> tiposServidores;
+    private boolean ejecutando;
 
-    public static Servidor instancia;
-    private Socket socket;
-    private ServerSocket socketServer;
-    private static int boxes=0;
-    private String pre="[SERVER]";
-    private Queue<Cliente> clientes = new LinkedList<>();
-    private ArrayList<Socket> sockets = new ArrayList<Socket>();
-
-    private ArrayList<Socket> monitores = new ArrayList<Socket>();
-
-
+    private Servidor() {
+        tiposServidores = new HashMap<>();
+        ejecutando = false;
+    }
 
     public static Servidor getInstancia() {
         if (instancia == null) {
@@ -31,149 +23,99 @@ public class Servidor extends Observable implements Runnable{
         return instancia;
     }
 
-
-    public ArrayList<Socket> getMonitores() {
-        return this.monitores;
+    public static void main(String[] args) {
+        Servidor servidor = Servidor.getInstancia();
+        servidor.iniciarServidor();
     }
 
-
-    public ArrayList<Socket> getSockets() {
-        return this.sockets;
-    }
-
-    public Queue<Cliente> getClientes() {
-        return this.clientes;
-    }
-
-
-    public void enviarQueue() {        //este metodo envia a todos los sockets conectados la queue de clientes
-        Iterator<Socket> iterador = this.sockets.iterator();
-        while (iterador.hasNext()) {
-            Socket aux = iterador.next();
-            try {
-                ObjectOutputStream flujo = new ObjectOutputStream(aux.getOutputStream());
-                System.out.println("Enviando queue al socket de puerto "+ aux.getPort());
-                flujo.writeObject(this.clientes);
-                flujo.flush();
-            } catch (IOException e) {
-                System.out.println("Excepcion enviando queues: "+ e.getMessage());
-            }
-        }
+    public void iniciarServidor() {
+        Thread hilo = new Thread(this);
+        hilo.start();
     }
 
     @Override
     public void run() {
         try {
-            int puerto = 1; //hardcodeado por ahora
-            this.socketServer = new ServerSocket(puerto);
-            System.out.println(pre+"Servidor iniciado. Puerto: " + puerto);
-            while (true) {
-                socket = socketServer.accept();
-                System.out.println(pre+"Ha entrado una conexion al servidor");
-                this.setChanged();
-                this.notifyObservers("Alta");
-                this.sockets.add(socket);
+            serverSocket = new ServerSocket(PUERTO);
+            System.out.println("Servidor Central iniciado en el puerto " + PUERTO);
+            ejecutando = true;
 
-                Thread escucha = new Thread(new Escuchar(socket));   //porque cada socket debe tener un hilo propio escuchando e/s de datos
-                //, ademas del hilo original del server que escucha conexiones entrantes
+            while (ejecutando) {
+                Socket socket = serverSocket.accept();
+                System.out.println("Nueva conexión entrante: " + socket.getInetAddress().getHostAddress());
 
-                //solo puede haber un solo flujo de entrada y salida para cada socket así que puse los ObjectInput/OutputStream
-                //en el hilo de la clase Escuchar que envía y recibe datos
-
-                escucha.start();
+                //Hilo de cada socket que se conecta al sevidor
+                Thread hiloServidor = new Thread(new HiloServidor(socket));
+                hiloServidor.start();
             }
-
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void enviarBox(Socket socket) {
-        try {
-            ObjectOutputStream flujo = new ObjectOutputStream(socket.getOutputStream());
-            flujo.writeObject(++this.boxes);
-        } catch (IOException e) {
-            System.out.println(pre+"Exception enviando el box actual "+ e.toString());
-        }
-    }
-
-
-    public void enviarBoxMonitores(int box, String DNISig) { //envío a todos los monitores el box que hizo el request de siguiente
-        Iterator<Socket> iterador = this.monitores.iterator();
-        while (iterador.hasNext()) {
-            Socket aux = iterador.next();
+            System.err.println("Error al iniciar el Servidor Central: " + e.getMessage());
+        } finally {
             try {
-                ObjectOutputStream flujo = new ObjectOutputStream(aux.getOutputStream());
-                System.out.println(pre+"Enviando queue al socket de MONITOR de puerto "+ aux.getPort());
-                System.out.println(pre+"DNI que vamos a enviar al monitor: "+ DNISig);
-              //  Datos datos = new Datos(box,DNISig); datos es la info de los turnos
-///flujo.writeObject(datos);
-                flujo.flush();
-             //   System.out.println(pre+" Enviamos " + datos.toString() + " a los monitores!!!");
+                serverSocket.close();
             } catch (IOException e) {
-                System.out.println(pre+"Excepcion enviando queues: "+ e.getMessage());
+                System.err.println("Error al cerrar el servidor: " + e.getMessage());
             }
         }
     }
-    private class Escuchar implements Runnable { //seria el hilo de cada socket. puse la clase aca para q esté mas a mano
+
+    public void detenerServidor() {
+        ejecutando = false;
+    }
+
+    private class HiloServidor implements Runnable {
         private Socket socket;
 
-        public Escuchar(Socket socket) {
-            System.out.println(pre+"Creando clase escuchadora");
+        public HiloServidor(Socket socket) {
             this.socket = socket;
         }
-
-
 
         @Override
         public void run() {
             try {
-                // Datos es gestion atencion 
-                System.out.println(pre+"Clase escuchadora creada xd");
-                ObjectInputStream flujoEntrada = new ObjectInputStream(socket.getInputStream());
-                ObjectOutputStream flujoSalida = new ObjectOutputStream(socket.getOutputStream());
-                Servidor.getInstancia().enviarQueue();        //cuando uno nuevo se conecta, envio las queues nuevamente para que si ya habia empleados, se le carguen los datos también.
-                //  Servidor.getInstancia().enviarBox(socket);    //envio el numero de box que le corresponde al empleado que acaba de conectarse
+                DataInputStream entrada = new DataInputStream(socket.getInputStream());
+                DataOutputStream salida = new DataOutputStream(socket.getOutputStream());
+
+                // Identificar el tipo de servidor
+                String tipoServidor = entrada.readUTF();
+                tiposServidores.put(socket, tipoServidor);
+                System.out.println("Nuevo servidor conectado: " + tipoServidor);
+
+                // Enviar confirmación de registro
+                salida.writeUTF("Registro exitoso");
+                salida.flush();
+
                 while (true) {
-                    System.out.println(pre+"Escuchando...........");
-                    Object object = flujoEntrada.readObject();
-                    if (object instanceof Datos) {
-                        Datos datos = (Datos) object;
-                        if (datos.isSiguiente()) { // implica que un empleado pidió para siguiente. enviar a los monitores quién fue
-                            System.out.println(pre+"El server recibió DNI "+ datos.getDNISig() +" en una request para siguiente ");
-                            Servidor.getInstancia().getClientes().poll();
-                            Servidor.getInstancia().enviarQueue();
-                            Servidor.getInstancia().enviarBoxMonitores(datos.getBox(),datos.getDNISig());
+                    String mensaje = entrada.readUTF();
+                    System.out.println("Mensaje recibido del servidor: " + mensaje);
 
-                        } else {
-
-
-                        }
-
-                    } else if (object instanceof Cliente) {        //es un registro
-                        Cliente cliente = (Cliente) object;
-                        System.out.println(pre+"El servidor recibió el DNI "+ cliente.getDNI());
-                        Servidor.getInstancia().getClientes().add(cliente); //agrego al cliente a una coleccion de clientes
-                        Servidor.getInstancia().enviarQueue(); //enviar la queue actualziada a todos los empleados
-                    } else if (object instanceof Integer) {     //identificador de monitores
-                        int x = (int) object;
-                        if (x==2176) { //codigo que dan los monitores para identificarse
-                            System.out.println(pre+"Se agrego un nuevo monitor al sistema");
-                            Servidor.getInstancia().getMonitores().add(socket);
-                        } else if (x==21) {
-                            System.out.println(pre+"Se agregó un nuevo empleado al sistema");
-                            Servidor.getInstancia().enviarBox(socket);    //envio el numero de box que le corresponde al empleado que acaba de conectarse
-                        }
-
-
-                    }
-
+                    // Procesar el mensaje y enviar la respuesta
+                    String respuesta = procesarMensaje(tipoServidor, mensaje);
+                    salida.writeUTF(respuesta);
+                    salida.flush();
                 }
+            } catch (IOException e) {
+                System.err.println("Error en la comunicación con el servidor: " + e.getMessage());
+            } finally {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    System.err.println("Error al cerrar el socket: " + e.getMessage());
+                }
+            }
+        }
 
-            } catch (Exception e) {
-                System.out.println(pre+"Excepcion "+ e.getMessage());
-
+        private String procesarMensaje(String tipoServidor, String mensaje) {
+            // Implementar la lógica de procesamiento de mensajes según el tipo de servidor
+            switch (tipoServidor) {
+                case "box":
+                    return "Respuesta para servidor Box";
+                case "totem":
+                    return "Respuesta para servidor Totem";
+                case "pantalla":
+                    return "Respuesta para servidor Pantalla";
+                default:
+                    return "Respuesta genérica";
             }
         }
     }
