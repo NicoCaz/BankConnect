@@ -7,10 +7,6 @@ import javax.swing.*;
 
 public class MainBox {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new VistaBox().setVisible(true);
-            }
-        });
+        ControladorBox controladorBox = new ControladorBox();
     }
 }

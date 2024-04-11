@@ -1,18 +1,16 @@
 package org.grupo10.controlador;
 
 
-import org.grupo10.modelo.IClienteServer;
 import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaBox;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControladorBox implements ActionListener, IClienteServer {
+public class ControladorBox implements ActionListener {
     private IVista vista;
 
     public ControladorBox() {
-        this.vista = new VistaBox();
-        this.vista.setActionListener(this);
+        this.vista = new VistaBox(this);
         this.vista.mostrar();
 
     }
@@ -21,7 +19,7 @@ public class ControladorBox implements ActionListener, IClienteServer {
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
         System.out.println(comando);
-        if (comando.equalsIgnoreCase("Siguiente")) { //bien
+        if (comando.equalsIgnoreCase("Llamar siguiente")) { //bien
 
         } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien
 
@@ -35,13 +33,4 @@ public class ControladorBox implements ActionListener, IClienteServer {
 //    }
 
 
-    @Override
-    public void conectar(String host, int puerto) {
-
-    }
-
-    @Override
-    public void enviarDatos(Object t) {
-
-    }
 }

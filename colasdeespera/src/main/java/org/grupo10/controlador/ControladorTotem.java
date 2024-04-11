@@ -1,5 +1,5 @@
 package org.grupo10.controlador;
-
+/*
 import org.grupo10.modelo.IClienteServer;
 import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SistemaPantalla;
@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ControladorTotem implements ActionListener, IClienteServer {
+
     private IVista vista;
     private SistemaPantalla negocioTurno;
 
@@ -53,10 +54,10 @@ public class ControladorTotem implements ActionListener, IClienteServer {
     }
 
 
-/*    @Override
+   @Override
     public void conectarServer() {
 
-    }*/
+    }
 
     @Override
     public void conectar(String host, int puerto) {
@@ -81,4 +82,6 @@ public class ControladorTotem implements ActionListener, IClienteServer {
             e.printStackTrace();
         }
     }
+
 }
+*/

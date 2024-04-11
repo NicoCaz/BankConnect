@@ -1,5 +1,5 @@
 package org.grupo10.main;
-
+/*
 import org.grupo10.controlador.ControladorTotem;
 import org.grupo10.vista.VistaTotem;
 
@@ -10,3 +10,4 @@ public class MainTotem {
         ControladorTotem controladorTotem = new ControladorTotem();
     }
 }
+*/
