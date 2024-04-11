@@ -2,7 +2,7 @@ package org.grupo10.controlador;
 
 import org.grupo10.modelo.IClienteServer;
 import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.NegocioTurno;
+import org.grupo10.negocio.SistemaPantalla;
 import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaTotem;
 
@@ -15,7 +15,7 @@ import java.net.Socket;
 
 public class ControladorTotem implements ActionListener, IClienteServer {
     private IVista vista;
-    private NegocioTurno negocioTurno;
+    private SistemaPantalla negocioTurno;
 
     //Para la conexion con el server
     private Socket socket;
@@ -26,7 +26,7 @@ public class ControladorTotem implements ActionListener, IClienteServer {
         this.vista = new VistaTotem(this);
         this.vista.mostrar();
 
-        negocioTurno = new NegocioTurno();
+        negocioTurno = new SistemaPantalla();
     }
 
     @Override

@@ -2,17 +2,17 @@ package org.grupo10.negocio;
 import java.io.*;
 import java.net.*;
 
-public class PruebaServer implements Runnable {
+public class SistemaEstadistica implements Runnable {
     private static final String SERVIDOR_CENTRAL_HOST = "127.0.0.1";
     private static final int SERVIDOR_CENTRAL_PUERTO = 8080;
     private Socket socketServidor;
     private DataInputStream entrada;
     private DataOutputStream salida;
-    private static final String TIPO_SERVIDOR = "box"; // O "totem", "pantalla", etc.
+    private static final String TIPO_SERVIDOR = "Estadistica"; // O "totem", "pantalla", etc.
     private boolean ejecutando;
 
     public static void main(String[] args) {
-        PruebaServer servidor = new PruebaServer();
+        SistemaEstadistica servidor = new SistemaEstadistica();
         Thread hilo = new Thread(servidor);
         hilo.start();
     }

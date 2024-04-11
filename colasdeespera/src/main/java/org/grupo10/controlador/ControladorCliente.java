@@ -1,10 +1,8 @@
 package org.grupo10.controlador;
 
-import org.grupo10.negocio.SistemaCliente;
 import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaTotem;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

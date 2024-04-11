@@ -77,10 +77,10 @@ public class Servidor implements Runnable {
         @Override
         public void run() {
             try {
-                DataInputStream entrada = new DataInputStream(socket.getInputStream());
-                DataOutputStream salida = new DataOutputStream(socket.getOutputStream());
+                ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
+                ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
 
-                // Identificar el tipo de servidor
+
                 String tipoServidor = entrada.readUTF();
 
                 switch (tipoServidor) {
