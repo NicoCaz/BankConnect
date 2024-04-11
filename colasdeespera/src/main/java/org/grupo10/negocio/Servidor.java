@@ -81,9 +81,9 @@ public class Servidor implements Runnable {
                 ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
 
 
-                String tipoServidor = entrada.readUTF();
+                Object tipoServidor = entrada.readObject();
 
-                switch (tipoServidor) {
+                switch (tipoServidor.toString()) {
                     case "box":
                         clientesBox.add(socket);
                     case "totem":
@@ -99,7 +99,7 @@ public class Servidor implements Runnable {
                 System.out.println("Nuevo servidor conectado: " + tipoServidor);
 
                 // Enviar confirmación de registro
-                salida.writeUTF("Registro exitoso");
+                salida.writeObject("Registro exitoso");
                 salida.flush();
 
                 while (true) {
@@ -107,12 +107,14 @@ public class Servidor implements Runnable {
                     System.out.println("Mensaje recibido del servidor: " + mensaje);
 
                     // Procesar el mensaje y enviar la respuesta
-                    String respuesta = procesarMensaje(tipoServidor, mensaje);
+                    String respuesta = procesarMensaje(tipoServidor.toString(), mensaje);
                     salida.writeUTF(respuesta);
                     salida.flush();
                 }
             } catch (IOException e) {
                 System.err.println("Error en la comunicación con el servidor: " + e.getMessage());
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             } finally {
                 try {
                     socket.close();
