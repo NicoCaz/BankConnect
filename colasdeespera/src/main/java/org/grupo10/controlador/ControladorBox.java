@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorBox implements ActionListener {
-    private IVista vista;
+    private final IVista vista;
 
     public ControladorBox() {
         this.vista = new VistaBox(this);
