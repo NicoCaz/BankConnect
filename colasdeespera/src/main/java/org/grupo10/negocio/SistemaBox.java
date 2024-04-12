@@ -1,8 +1,10 @@
 package org.grupo10.negocio;
+import org.grupo10.modelo.Turno;
+
 import java.io.*;
 import java.net.Socket;
 
-public class SistemaBox implements Runnable {
+public class SistemaBox implements Runnable{
     private static final String SERVIDOR_CENTRAL_HOST = "127.0.0.1";
     private static final int SERVIDOR_CENTRAL_PUERTO = 8080;
     private Socket socketServidor;
@@ -23,6 +25,7 @@ public class SistemaBox implements Runnable {
         while (ejecutando) {
             try {
                 conectarAlServidorCentral();
+                System.out.println("enviado");
                 registrarseEnServidorCentral();
                 System.out.println("Conexión establecida con el Servidor Central");
 
@@ -51,13 +54,15 @@ public class SistemaBox implements Runnable {
     private void conectarAlServidorCentral() throws IOException {
         socketServidor = new Socket(SERVIDOR_CENTRAL_HOST, SERVIDOR_CENTRAL_PUERTO);
         System.out.println("Conectado al Servidor Central");
-        entrada = new ObjectInputStream(socketServidor.getInputStream());
-        salida = new ObjectOutputStream(socketServidor.getOutputStream());
+        this.entrada = new ObjectInputStream(socketServidor.getInputStream());
+        this.salida = new ObjectOutputStream(socketServidor.getOutputStream());
     }
 
     private void registrarseEnServidorCentral() throws IOException {
-        salida.writeUTF(TIPO_SERVIDOR); // Enviar tipo de servidor como String
-        salida.flush();
+        this.salida.writeObject( "box" ); // Enviar tipo de servidor como String
+        System.out.println("enviado");
+        this.salida.flush();
+
         String confirmacion = entrada.readUTF();
         System.out.println("Respuesta del Servidor Central: " + confirmacion);
     }

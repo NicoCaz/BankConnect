@@ -1,4 +1,6 @@
 package org.grupo10.negocio;
+import org.grupo10.modelo.Turno;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -73,16 +75,16 @@ public class Servidor implements Runnable {
 
         @Override
         public void run() {
+            ObjectInputStream entrada = null;
+            ObjectOutputStream salida = null;
+            System.out.println("entre a run");
             try {
-                System.out.println("Hilo aca");
+                entrada = new ObjectInputStream(socket.getInputStream());
 
-                ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
+                salida = new ObjectOutputStream(socket.getOutputStream());
                 System.out.println("Hilo aca 2");
-                ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
-                System.out.println("Hilo aca 3");
-
-                String tipoServidor = (String) entrada.readObject(); // Leer tipo de servidor como String
-
+                String tipoServidor = (String)entrada.readObject(); // Leer tipo de servidor como String
+/*
                 switch (tipoServidor) { // Utilizar String directamente en el switch
                     case "box":
                         clientesBox.add(socket);
@@ -99,7 +101,7 @@ public class Servidor implements Runnable {
                     default:
                         System.out.println("Tipo de cliente invalido");
                 }
-
+*/
                 System.out.println("Nuevo servidor conectado: " + tipoServidor);
 
                 // Enviar confirmación de registro
@@ -111,7 +113,7 @@ public class Servidor implements Runnable {
                     System.out.println("Mensaje recibido del servidor: " + mensaje);
 
                     // Procesar el mensaje y enviar la respuesta
-                    Object respuesta = procesarMensaje(tipoServidor, mensaje.toString());
+                    Object respuesta = procesarMensaje("exitossss", mensaje.toString());
                     salida.writeObject(respuesta);
                     salida.flush();
                 }
@@ -120,11 +122,20 @@ public class Servidor implements Runnable {
             } finally {
                 try {
                     System.out.println("Hilo cerrado");
+                    if (entrada != null) {
+                        entrada.close();
+                    }
+                    if (salida != null) {
+                        salida.close();
+                    }
                     socket.close();
                 } catch (IOException e) {
                     System.err.println("Error al cerrar el socket: " + e.getMessage());
                 }
             }
+
+            System.out.println("run?");
+
         }
 
         private Object procesarMensaje(String tipoServidor, String mensaje) {
