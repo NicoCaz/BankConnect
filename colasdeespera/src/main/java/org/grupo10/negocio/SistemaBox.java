@@ -21,7 +21,7 @@ public class SistemaBox {
            socket = new Socket(HOST, PORT);
            outputStream = new ObjectOutputStream(socket.getOutputStream());
            inputStream = new ObjectInputStream(socket.getInputStream());
-           this.numeroBox = num++;
+           this.numeroBox = ++num;
        } catch (IOException e) {
            throw new RuntimeException(e);
        }
@@ -50,7 +50,7 @@ public class SistemaBox {
     }
     public void esperandoRespuestaServer(){
         try {
-            outputStream.writeObject("Box numero "+ this.numeroBox +"a la espera");
+            outputStream.writeObject("Box numero "+ this.numeroBox +" a la espera");
             outputStream.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);

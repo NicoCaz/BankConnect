@@ -25,7 +25,7 @@ public class SistemaPantalla {
         }
     }
 
-    public void ejecuccion(){
+    public void ejecucion(){
         try {
             System.out.println(tipo);
             outputStream.writeObject(tipo);

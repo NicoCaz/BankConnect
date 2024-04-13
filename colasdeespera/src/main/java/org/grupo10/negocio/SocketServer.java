@@ -1,5 +1,7 @@
 package org.grupo10.negocio;
 
+import org.grupo10.modelo.ITurno;
+import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.manejoClientes.*;
 
 import java.io.IOException;
@@ -16,11 +18,11 @@ public class SocketServer {
     private List<BoxClientHandler> boxClients = new ArrayList<>();
     private List<EstadisticaClientHandler> EstadisticaClients = new ArrayList<>();
     private List<PantallaClientHandler> PantallasClients = new ArrayList<>();
+//////////////////////////////////////////////////////////////////////////////////////////
+    private List<Turno> turnosEnEspera = new ArrayList<>();
+    private List<Turno> turnosDisponibles = new ArrayList<>();
 
-    public static void main(String[] args) {
-        SocketServer server = new SocketServer();
-        server.start();
-    }
+
 
     public void start() {
         try {
@@ -57,5 +59,22 @@ public class SocketServer {
     }
     public void respuesta(Object res,BasicClientHandler clientHandler) {
         clientHandler.sendObject(res);
+    }
+
+
+    public Turno getTurnosEnEspera() {
+        return turnosEnEspera.get(1);
+    }
+
+    public void addTurnosEnEspera(Turno turnosEnEspera) {
+        this.turnosEnEspera.add(turnosEnEspera) ;
+    }
+
+    public Turno getTurnosDisponibles() {
+        return turnosDisponibles.get(1);
+    }
+
+    public void addTurnosDisponibles(Turno turnosDisponibles) {
+        this.turnosDisponibles.add(turnosDisponibles);
     }
 }

@@ -1,6 +1,7 @@
 package org.grupo10.negocio.manejoClientes;
 
 import org.grupo10.modelo.ITurno;
+import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SocketServer;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class TotemClientHandler extends BasicClientHandler {
                 Object received = inputStream.readObject();
                 if (validoDNI(received)){
                     sendObject("DNI Valido (a Totem)");
+                    Turno nuevoTurno = new Turno((String) received);
+                    server.addTurnosEnEspera(nuevoTurno);
                 }else{
                     sendObject("DNI InValido (a Totem)");
                 }

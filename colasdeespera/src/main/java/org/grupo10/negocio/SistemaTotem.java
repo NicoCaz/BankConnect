@@ -30,6 +30,7 @@ public class SistemaTotem {
             outputStream.writeObject(tipo);
             outputStream.flush();
             while (true) {
+                // Manda el dni y espera a que el servidor logro captar el dni
                 mandaDNI("44180045");
                 Object response = inputStream.readObject();
                 System.out.println("Respuesta del servidor: " + response);
