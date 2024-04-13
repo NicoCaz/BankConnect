@@ -1,7 +1,10 @@
 package org.grupo10.negocio.manejoClientes;
+
 import org.grupo10.negocio.SocketServer;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class BoxClientHandler extends BasicClientHandler {
@@ -58,6 +61,5 @@ public class BoxClientHandler extends BasicClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        server.removeClient(this);
     }
 }

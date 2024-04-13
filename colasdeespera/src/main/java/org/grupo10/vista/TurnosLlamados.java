@@ -1,6 +1,6 @@
 package org.grupo10.vista;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionListener;
 

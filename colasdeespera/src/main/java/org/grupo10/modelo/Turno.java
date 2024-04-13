@@ -11,6 +11,7 @@ public class Turno implements ITurno, Serializable {
     private String numeroTurno;
     private String dni;
     private Date horarioEntrada;
+    private int box;
 
     public Turno(String dni){
         Turno.cantidadDeTurnos++;
@@ -34,5 +35,14 @@ public class Turno implements ITurno, Serializable {
 
     public static int getCantidadDeTurnos() {
         return cantidadDeTurnos;
+    }
+
+
+    public int getBox() {
+        return box;
+    }
+
+    public void setBox(int box) {
+        this.box = box;
     }
 }

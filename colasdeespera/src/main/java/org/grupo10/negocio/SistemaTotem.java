@@ -4,31 +4,49 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class SistemaTotem {
     private static final String HOST = "localhost";
     private static final int PORT = 8080;
     private static final String tipo = "Totem";
+    private static  ObjectOutputStream outputStream;
+    private static  ObjectInputStream inputStream;
+    private Socket socket;
 
-    public static void main(String[] args) {
+    public SistemaTotem(){
+        Socket socket = null;
         try {
-            Socket socket = new Socket(HOST, PORT);
-            ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
+            socket = new Socket(HOST, PORT);
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public void ejecucion(){
+        try {
             System.out.println(tipo);
             outputStream.writeObject(tipo);
             outputStream.flush();
             while (true) {
+                mandaDNI("44180045");
                 Object response = inputStream.readObject();
                 System.out.println("Respuesta del servidor: " + response);
-                outputStream.writeObject("Hola");
-                outputStream.flush();
                 Thread.sleep(5000);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void mandaDNI(Object turno){
+        try {
+            outputStream.writeObject(turno);
+            outputStream.flush();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

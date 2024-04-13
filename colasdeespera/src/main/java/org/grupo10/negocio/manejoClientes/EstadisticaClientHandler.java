@@ -1,6 +1,5 @@
 package org.grupo10.negocio.manejoClientes;
 
-import org.grupo10.modelo.ITurno;
 import org.grupo10.negocio.SocketServer;
 
 import java.io.IOException;
@@ -8,16 +7,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class TotemClientHandler extends BasicClientHandler {
+public class EstadisticaClientHandler extends BasicClientHandler {
     private Socket socket;
     private SocketServer server;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private boolean running = true;
 
-
-
-    public TotemClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream) {
+    public EstadisticaClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
@@ -28,13 +25,9 @@ public class TotemClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
+                sendObject("Hola desde el server (a Estadistica)");
                 Object received = inputStream.readObject();
-                if (validoDNI(received)){
-                    sendObject("DNI Valido (a Totem)");
-                }else{
-                    sendObject("DNI InValido (a Totem)");
-                }
-                System.out.println("Mensaje recibido de cliente Totem: " + received);
+                System.out.println("Mensaje recibido de cliente Box: " + received);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -45,8 +38,9 @@ public class TotemClientHandler extends BasicClientHandler {
 
     @Override
     public void handleMessage(Object message) {
-        System.out.println("Mensaje recibido de cliente Totem: " + message);
+        System.out.println("Mensaje recibido de cliente Box: " + message);
         server.respuesta(message,this);
+
     }
 
     @Override
@@ -67,9 +61,5 @@ public class TotemClientHandler extends BasicClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private boolean validoDNI(Object turno){
-        return true;
     }
 }
