@@ -15,14 +15,16 @@ public class TotemClientHandler extends BasicClientHandler {
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private boolean running = true;
+    private int id;
 
 
 
-    public TotemClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream) {
+    public TotemClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
+        this.id = id;
     }
 
     @Override
@@ -74,5 +76,9 @@ public class TotemClientHandler extends BasicClientHandler {
 
     private boolean validoDNI(Object turno){
         return true;
+    }
+
+    public int getID() {
+        return this.id;
     }
 }
