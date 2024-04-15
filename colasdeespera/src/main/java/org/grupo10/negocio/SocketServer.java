@@ -1,6 +1,5 @@
 package org.grupo10.negocio;
 
-import org.grupo10.modelo.ITurno;
 import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.manejoClientes.*;
 
@@ -12,7 +11,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SocketServer {
+public class SocketServer extends Thread{
     private static final int PORT = 8080;
     private List<TotemClientHandler> Totems = new ArrayList<>();
     private List<BoxClientHandler> boxClients = new ArrayList<>();
@@ -26,9 +25,8 @@ public class SocketServer {
     private List<Turno> turnosEnEspera = new ArrayList<>();
     private List<Turno> turnosDisponibles = new ArrayList<>();
 
-
-
-    public void start() {
+    @Override
+    public void run() {
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Servidor iniciado en el puerto " + PORT);
@@ -61,10 +59,26 @@ public class SocketServer {
             e.printStackTrace();
         }
     }
+
+    public void iniciarServer(){
+        Thread hilo = new Thread(this);
+        hilo.start();
+    }
+
     public void respuesta(Object res,BasicClientHandler clientHandler) {
         clientHandler.sendObject(res);
     }
 
+    public String getUltimoTurno(){
+        Turno ultimoturno = this.turnosDisponibles.get(this.turnosDisponibles.size()-1);
+        if(ultimoturno != null){
+            this.turnosDisponibles.remove(ultimoturno);
+            return ultimoturno.getDni();
+        }else{
+            return null;
+        }
+
+    }
 
     public Turno getTurnosEnEspera() {
         return turnosEnEspera.get(1);

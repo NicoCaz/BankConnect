@@ -41,7 +41,13 @@ public class BoxClientHandler extends BasicClientHandler {
     @Override
     public void handleMessage(Object message) {
         System.out.println("Mensaje recibido de cliente Box: " + message);
-        server.respuesta(message,this);
+
+        if(message.equals("Pido siguiente")){
+            server.respuesta(server.getUltimoTurno(),this);
+        }else{
+            server.respuesta(message,this);
+        }
+
 
     }
 

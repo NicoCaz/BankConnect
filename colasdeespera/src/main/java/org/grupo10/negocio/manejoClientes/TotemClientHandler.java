@@ -32,13 +32,7 @@ public class TotemClientHandler extends BasicClientHandler {
         try {
             while (running) {
                 Object received = inputStream.readObject();
-                if (validoDNI(received)){
-                    sendObject("DNI Valido (a Totem)");
-                    Turno nuevoTurno = new Turno((String) received);
-                    server.addTurnosEnEspera(nuevoTurno);
-                }else{
-                    sendObject("DNI InValido (a Totem)");
-                }
+
                 System.out.println("Mensaje recibido de cliente Totem: " + received);
             }
         } catch (IOException | ClassNotFoundException e) {

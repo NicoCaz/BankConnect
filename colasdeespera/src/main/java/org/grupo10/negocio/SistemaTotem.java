@@ -1,5 +1,7 @@
 package org.grupo10.negocio;
 
+import org.grupo10.modelo.Turno;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -31,7 +33,7 @@ public class SistemaTotem {
             outputStream.flush();
             while (true) {
                 // Manda el dni y espera a que el servidor logro captar el dni
-                mandaDNI("44180045");
+                esperandoRespuestaServer();
                 Object response = inputStream.readObject();
                 System.out.println("Respuesta del servidor: " + response);
                 Thread.sleep(5000);
@@ -42,8 +44,31 @@ public class SistemaTotem {
             throw new RuntimeException(e);
         }
     }
+    public void esperandoRespuestaServer(){
+        try {
+            outputStream.writeObject("Totem a la espera");
+            outputStream.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    public static void mandaDNI(Object turno){
+    public Turno crearTurno(String dni) throws Exception {
+        Turno t;
+        if (dni.length() < 6) {
+            throw new Exception("ERROR: Ingrese un DNI Valido");
+        } else {
+            t = new Turno(dni);
+        }
+        mandaDNI(t);
+        return t;
+    }
+
+    public void cerrarTurno(Turno t){
+
+    }
+
+    public void mandaDNI(Object turno){
         try {
             outputStream.writeObject(turno);
             outputStream.flush();

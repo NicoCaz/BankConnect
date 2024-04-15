@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class SistemaBox {
+
     private static final String HOST = "localhost";
     private static final int PORT = 8080;
     private static final String tipo = "Box";
@@ -55,5 +56,18 @@ public class SistemaBox {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String pedirSiguiente() throws IOException, ClassNotFoundException {
+        outputStream.writeObject("Pido siguiente");
+        outputStream.flush();
+
+        String siguiente = (String) inputStream.readObject();
+        if(siguiente == null){
+            throw new IOException("No hay clientes esperando");
+        }else{
+            return siguiente;
+        }
+
     }
 }

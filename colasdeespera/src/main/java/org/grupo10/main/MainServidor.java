@@ -5,9 +5,7 @@ import org.grupo10.negocio.SocketServer;
 
 public class MainServidor {
     public static void main(String[] args) {
-        SocketServer server = new SocketServer();
-        server.start();
-
+        ControladorServidor controladorServidor = new ControladorServidor();
     }
 }
 
