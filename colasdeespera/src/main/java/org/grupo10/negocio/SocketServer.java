@@ -70,9 +70,12 @@ public class SocketServer extends Thread{
     }
 
     public String getUltimoTurno(){
-        Turno ultimoturno = this.turnosDisponibles.get(this.turnosDisponibles.size()-1);
+        Turno ultimoturno = this.turnosEnEspera.get(this.turnosEnEspera.size()-1);
         if(ultimoturno != null){
-            this.turnosDisponibles.remove(ultimoturno);
+            this.turnosEnEspera.remove(ultimoturno);
+            for (Turno e : this.turnosEnEspera) {
+                System.out.println(e.getDni());
+            }
             return ultimoturno.getDni();
         }else{
             return null;
@@ -85,7 +88,11 @@ public class SocketServer extends Thread{
     }
 
     public void addTurnosEnEspera(Turno turnosEnEspera) {
+
         this.turnosEnEspera.add(turnosEnEspera) ;
+        for (Turno e : this.turnosEnEspera) {
+            System.out.println(e.getDni());
+        }
     }
 
     public Turno getTurnosDisponibles() {

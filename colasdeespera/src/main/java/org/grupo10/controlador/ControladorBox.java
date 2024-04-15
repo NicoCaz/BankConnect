@@ -25,10 +25,12 @@ public class ControladorBox implements ActionListener {
         System.out.println(comando);
         if (comando.equalsIgnoreCase("Llamar siguiente")) { //bien
             try {
-                String dni = sistemaBox.pedirSiguiente();
 
+                String dni = sistemaBox.pedirSiguiente();
+                vista.getDisplayLabel().setText("Numero Atendido: " + dni);
             } catch (IOException | ClassNotFoundException ex) {
-                throw new RuntimeException(ex);
+                vista.ventanaError("No hay clientes esperando");
+                sistemaBox.ejecuccion();
             }
 
         } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien

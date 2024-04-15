@@ -27,9 +27,10 @@ public class BoxClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
-                sendObject("Hola desde el server (a Box)");
+                //sendObject("Hola desde el server (a Box)");
                 Object received = inputStream.readObject();
-                System.out.println("Mensaje recibido de cliente Box: " + received);
+                //System.out.println("Mensaje recibido de cliente Box: " + received);
+                handleMessage(received);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -47,7 +48,6 @@ public class BoxClientHandler extends BasicClientHandler {
         }else{
             server.respuesta(message,this);
         }
-
 
     }
 

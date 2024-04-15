@@ -65,6 +65,7 @@ public class SistemaBox {
         String siguiente = (String) inputStream.readObject();
         if(siguiente == null){
             throw new IOException("No hay clientes esperando");
+
         }else{
             return siguiente;
         }

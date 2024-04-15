@@ -65,6 +65,21 @@ public class VistaBox extends JFrame implements IVista {
 
     @Override
     public void ventanaError(String msg) {
+
+        JDialog errorDialog = new JDialog(VistaBox.this, msg, true);
+        JPanel errorPanel = new JPanel(new BorderLayout());
+        JLabel errorLabel = new JLabel(msg, SwingConstants.CENTER);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        errorPanel.add(errorLabel, BorderLayout.CENTER);
+
+        JButton okButton = new JButton("Aceptar");
+        okButton.addActionListener(event -> errorDialog.dispose());
+        errorPanel.add(okButton, BorderLayout.SOUTH);
+
+        errorDialog.setContentPane(errorPanel);
+        errorDialog.pack();
+        errorDialog.setLocationRelativeTo(VistaBox.this);
+        errorDialog.setVisible(true);
     }
 
     @Override
@@ -74,11 +89,12 @@ public class VistaBox extends JFrame implements IVista {
 
     @Override
     public JLabel getDisplayLabel() {
-        return null;
+        return numeroAtendidoLabel;
     }
 
     @Override
     public StringBuilder getInputBuffer() {
         return null;
     }
+
 }

@@ -32,8 +32,9 @@ public class TotemClientHandler extends BasicClientHandler {
         try {
             while (running) {
                 Object received = inputStream.readObject();
+                handleMessage(received);
 
-                System.out.println("Mensaje recibido de cliente Totem: " + received);
+
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -45,7 +46,10 @@ public class TotemClientHandler extends BasicClientHandler {
     @Override
     public void handleMessage(Object message) {
         System.out.println("Mensaje recibido de cliente Totem: " + message);
-        server.respuesta(message,this);
+        if(message instanceof Turno){
+            server.addTurnosEnEspera((Turno) message);
+        }
+
     }
 
     @Override
