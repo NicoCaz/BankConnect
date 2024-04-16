@@ -1,5 +1,6 @@
 package org.grupo10.controlador;
 
+import org.grupo10.negocio.SocketServer;
 import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaServidor;
 
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 
 public class ControladorServidor implements ActionListener{
     private IVista vista;
+    private SocketServer servidor = new SocketServer();
 
     public ControladorServidor(){
         this.vista = new VistaServidor(this);
@@ -22,9 +24,7 @@ public class ControladorServidor implements ActionListener{
         if(accion.equalsIgnoreCase("Apagado")){
             //Servidor.getInstancia().iniciarServidor();
             this.vista.actualizar();
-        }else if(accion.equalsIgnoreCase("Encendido")){
-          //  Servidor.getInstancia().detenerServidor();
-            this.vista.actualizar();
+            servidor.iniciarServer();
         }
 
     }
