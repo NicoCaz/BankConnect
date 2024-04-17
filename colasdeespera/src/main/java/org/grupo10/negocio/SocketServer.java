@@ -42,6 +42,7 @@ public class SocketServer extends Thread{
                 System.out.println(var);
                 if ("Box".equals(var)) {
                     clientHandler = new BoxClientHandler(clientSocket, this, inputStream, outputStream,++this.idBoxs);
+                    System.out.println("cantidad de box "+this.idBoxs);
                     boxClients.add((BoxClientHandler) clientHandler);
                 } else if("Totem".equals(var)) {
                     clientHandler = new TotemClientHandler(clientSocket, this, inputStream, outputStream,++this.idTotems);
@@ -70,8 +71,9 @@ public class SocketServer extends Thread{
     }
 
     public String getUltimoTurno(){
-        Turno ultimoturno = this.turnosEnEspera.get(this.turnosEnEspera.size()-1);
-        if(ultimoturno != null){
+
+        if(!turnosEnEspera.isEmpty()){
+            Turno ultimoturno = this.turnosEnEspera.get(this.turnosEnEspera.size()-1);
             this.turnosEnEspera.remove(ultimoturno);
             for (Turno e : this.turnosEnEspera) {
                 System.out.println(e.getDni());

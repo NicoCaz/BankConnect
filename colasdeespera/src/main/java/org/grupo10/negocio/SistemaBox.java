@@ -10,7 +10,7 @@ public class SistemaBox {
     private static final String HOST = "localhost";
     private static final int PORT = 8080;
     private static final String tipo = "Box";
-    private static int num=0;
+    private static int num = 0;
     private int numeroBox;
     private static  ObjectOutputStream outputStream;
     private static  ObjectInputStream inputStream;
@@ -22,7 +22,7 @@ public class SistemaBox {
            socket = new Socket(HOST, PORT);
            outputStream = new ObjectOutputStream(socket.getOutputStream());
            inputStream = new ObjectInputStream(socket.getInputStream());
-           this.numeroBox = ++num;
+           this.numeroBox = ++SistemaBox.num;
        } catch (IOException e) {
            throw new RuntimeException(e);
        }
@@ -63,12 +63,12 @@ public class SistemaBox {
         outputStream.flush();
 
         String siguiente = (String) inputStream.readObject();
-        if(siguiente == null){
+        if(siguiente == null) {
             throw new IOException("No hay clientes esperando");
-
-        }else{
-            return siguiente;
         }
+
+        return siguiente;
+
 
     }
 }

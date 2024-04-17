@@ -30,7 +30,6 @@ public class ControladorBox implements ActionListener {
                 vista.getDisplayLabel().setText("Numero Atendido: " + dni);
             } catch (IOException | ClassNotFoundException ex) {
                 vista.ventanaError("No hay clientes esperando");
-                sistemaBox.ejecuccion();
             }
 
         } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien
