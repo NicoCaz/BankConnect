@@ -39,16 +39,9 @@ public class SistemaBox {
             outputStream.flush();
             esperandoRespuestaServer();
             while (true) {
-
-                Object response = inputStream.readObject();
-                System.out.println("Respuesta del servidor: " + response);
-
-                //Aca lo que deberia hacer el box es pedir el siguiente turno para atender (si es que hay)
-                //hay que ver si hay que hacer un hilo extra que chequee la cantidad de personas en espera
-
                 Thread.sleep(1000);
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

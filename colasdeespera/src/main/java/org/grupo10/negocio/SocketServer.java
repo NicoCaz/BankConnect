@@ -76,29 +76,17 @@ public class SocketServer extends Thread{
 
     public void siguienteTurno(Turno res,BoxClientHandler client){
         if(res instanceof Turno){
-            System.out.println("Es turno");
-
+            client.sendObject(res);
             Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
             while (iterador.hasNext()) {
                 PantallaClientHandler pantalla = iterador.next();
-
                 pantalla.sendObject(res);
             }
-            client.sendObject(res);
-
         }else{
             client.sendObject(res);
         }
     }
 
-//    public void mandarTurnoPantallas(Turno t){
-//        Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
-//        while (iterador.hasNext()) {
-//            PantallaClientHandler pantalla = iterador.next();
-//
-//            pantalla.sendObject(t);
-//        }
-//    }
 
     public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
         int espera = this.turnosEnEspera.size();
