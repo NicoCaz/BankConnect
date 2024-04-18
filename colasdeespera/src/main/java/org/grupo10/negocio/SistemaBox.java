@@ -37,8 +37,8 @@ public class SistemaBox {
             System.out.println(tipo);
             outputStream.writeObject(tipo);
             outputStream.flush();
+            esperandoRespuestaServer();
             while (true) {
-                esperandoRespuestaServer();
                 Object response = inputStream.readObject();
                 System.out.println("Respuesta del servidor: " + response);
                 //Aca lo que deberia hacer el box es pedir el siguiente turno para atender (si es que hay)
@@ -52,15 +52,14 @@ public class SistemaBox {
             throw new RuntimeException(e);
         }
     }
-    public void esperandoRespuestaServer(){
+    public void esperandoRespuestaServer() {
         try {
-            outputStream.writeObject("Box numero "+ this.numeroBox +" a la espera");
+            outputStream.writeObject("Box numero " + this.numeroBox + " a la espera");
             outputStream.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
     public Turno pedirSiguiente() throws IOException, ClassNotFoundException {
         outputStream.writeObject("Pido siguiente");
         outputStream.flush();

@@ -70,16 +70,17 @@ public class SocketServer extends Thread{
     }
 
     public void respuesta(Object res,BasicClientHandler clientHandler) {
-        if(res instanceof Turno){
-            Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
-            while (iterador.hasNext()) {
-                PantallaClientHandler aux = iterador.next();
-                aux.sendObject(res);
-            }
-        }else{
-            clientHandler.sendObject(res);
-        }
 
+
+    }
+    public void siguienteTurno(Turno res,BoxClientHandler client){
+        if(res instanceof Turno){
+            System.out.println("Es turno");
+            this.PantallasClients.get(0).sendObject(res);
+
+        }else{
+            client.sendObject(res);
+        }
     }
 
     public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
@@ -113,24 +114,6 @@ public class SocketServer extends Thread{
         }
 
     }
-//
-//    public void enviarBoxMonitores(int box, String DNISig) { //envío a todos los monitores el box que hizo el request de siguiente
-//        Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
-//        while (iterador.hasNext()) {
-//            PantallaClientHandler aux = iterador.next();
-//            try {
-//                ObjectOutputStream flujo = new ObjectOutputStream(aux.);
-//                System.out.println(pre+"Enviando queue al socket de MONITOR de puerto "+ aux.getPort());
-//                System.out.println(pre+"DNI que vamos a enviar al monitor: "+ DNISig);
-//                Datos datos = new Datos(box,DNISig);
-//                flujo.writeObject(datos);
-//                flujo.flush();
-//                System.out.println(pre+" Enviamos " + datos.toString() + " a los monitores!!!");
-//            } catch (IOException e) {
-//                System.out.println(pre+"Excepcion enviando queues: "+ e.getMessage());
-//            }
-//        }
-//    }
 
     public Turno getTurnosEnEspera() {
         return turnosEnEspera.get(1);

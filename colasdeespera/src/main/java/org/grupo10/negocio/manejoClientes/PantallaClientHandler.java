@@ -56,9 +56,12 @@ public class PantallaClientHandler extends BasicClientHandler {
 
     @Override
     public void sendObject(Object message) {
+
         try {
+            System.out.println("Envio a pantalla: "+message );
             outputStream.writeObject(message);
             outputStream.flush();
+            System.out.println("Mensaje enviado: "+message);
         } catch (IOException e) {
             e.printStackTrace();
         }
