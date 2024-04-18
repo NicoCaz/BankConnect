@@ -7,6 +7,7 @@
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="sistema basico de conexion entre cliente servidor para poder aplicar las vistas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" afterDir="false" />
@@ -223,7 +224,7 @@
       <workItem from="1713022452184" duration="2204000" />
       <workItem from="1713203142413" duration="13535000" />
       <workItem from="1713381921378" duration="14220000" />
-      <workItem from="1713468228122" duration="8631000" />
+      <workItem from="1713468228122" duration="14146000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

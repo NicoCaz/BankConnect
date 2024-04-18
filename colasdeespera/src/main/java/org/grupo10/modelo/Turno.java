@@ -21,6 +21,10 @@ public class Turno implements ITurno, Serializable {
         this.horarioEntrada = new Date();
     }
 
+    public Turno(){
+
+    }
+
     public String getNumeroTurno() {
         return numeroTurno;
     }

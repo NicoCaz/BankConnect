@@ -29,9 +29,9 @@ public class ControladorBox implements ActionListener {
             try {
 
                 this.turnoActual = sistemaBox.pedirSiguiente();
-
+                System.out.println("CONTROLADOR este es el turno actual " + turnoActual);
                 vista.getDisplayLabel().setText("Numero Atendido: " + this.turnoActual.getDni());
-                vista.apagarLlamar();
+                //vista.apagarLlamar();
             } catch (IOException | ClassNotFoundException ex) {
                 vista.ventanaError("No hay clientes esperando");
             }
@@ -41,7 +41,7 @@ public class ControladorBox implements ActionListener {
                 try {
                     sistemaBox.finalizarTurno(this.turnoActual);
 
-                    vista.prenderLlamar();
+                    //vista.prenderLlamar();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

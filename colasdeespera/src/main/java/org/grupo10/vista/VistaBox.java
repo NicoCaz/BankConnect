@@ -44,6 +44,8 @@ public class VistaBox extends JFrame implements IVista {
         panel.add(finalizarTurnoButton);
 
         add(panel, BorderLayout.CENTER);
+
+        prenderLlamar();
     }
 
     @Override
@@ -81,7 +83,6 @@ public class VistaBox extends JFrame implements IVista {
         errorDialog.setLocationRelativeTo(VistaBox.this);
         errorDialog.setVisible(true);
 
-        prenderLlamar();
     }
 
     @Override
@@ -108,7 +109,6 @@ public class VistaBox extends JFrame implements IVista {
 
     @Override
     public void prenderLlamar() {
-        System.out.println("prender llamar");
         llamarSiguienteButton.setEnabled(true);
         finalizarTurnoButton.setEnabled(false);
     }

@@ -48,13 +48,13 @@ public class BoxClientHandler extends BasicClientHandler {
 
         if(message instanceof String){
             if(message.equals("Pido siguiente")) {
-                server.enviaTurnoBox(server.getUltimoTurno(), this);
-                System.out.println("dsjghftasdjklhngdsjkhabjklgsa");
-                server.siguienteTurno(server.getUltimoTurno(),this);
+
+                server.siguienteTurno(server.getUltimoTurno(this),this);
+
+
             }else{
                 server.respuesta(message, this);
             }
-
 
         }else {
             if (message instanceof TurnoFinalizadoDTO)

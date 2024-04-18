@@ -73,15 +73,32 @@ public class SocketServer extends Thread{
 
 
     }
+
     public void siguienteTurno(Turno res,BoxClientHandler client){
         if(res instanceof Turno){
             System.out.println("Es turno");
-            this.PantallasClients.get(0).sendObject(res);
+
+            Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
+            while (iterador.hasNext()) {
+                PantallaClientHandler pantalla = iterador.next();
+
+                pantalla.sendObject(res);
+            }
+            client.sendObject(res);
 
         }else{
             client.sendObject(res);
         }
     }
+
+//    public void mandarTurnoPantallas(Turno t){
+//        Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
+//        while (iterador.hasNext()) {
+//            PantallaClientHandler pantalla = iterador.next();
+//
+//            pantalla.sendObject(t);
+//        }
+//    }
 
     public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
         int espera = this.turnosEnEspera.size();
@@ -99,7 +116,7 @@ public class SocketServer extends Thread{
         this.turnosFinalizados.add(finalizadoDTO);
     }
 
-    public Turno getUltimoTurno(){
+    public Turno getUltimoTurno(BoxClientHandler box){
 
         if(!turnosEnEspera.isEmpty()){
             Turno ultimoturno = this.turnosEnEspera.get(0);
@@ -107,7 +124,9 @@ public class SocketServer extends Thread{
             for (Turno e : this.turnosEnEspera) {
                 System.out.println(e.getDni());
             }
-
+            ultimoturno.setBox(box.getID());
+            //mandarTurnoPantallas(ultimoturno);
+            System.out.println("vuelvo de llamar a las pantalias " + ultimoturno);
             return ultimoturno;
         }else{
             return null;
