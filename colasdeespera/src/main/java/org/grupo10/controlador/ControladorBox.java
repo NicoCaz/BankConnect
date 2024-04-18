@@ -37,14 +37,15 @@ public class ControladorBox implements ActionListener {
             }
 
         } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien
-            if(this.turnoActual != null){
+
                 try {
                     sistemaBox.finalizarTurno(this.turnoActual);
+
                     vista.prenderLlamar();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-            }
+
         }
     }
 

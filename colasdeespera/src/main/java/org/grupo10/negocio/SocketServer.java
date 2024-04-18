@@ -145,4 +145,7 @@ public class SocketServer extends Thread{
     }
 
 
+    public void enviaTurnoBox(Turno ultimoTurno, BoxClientHandler boxClientHandler) {
+        boxClientHandler.sendObject(ultimoTurno);
+    }
 }

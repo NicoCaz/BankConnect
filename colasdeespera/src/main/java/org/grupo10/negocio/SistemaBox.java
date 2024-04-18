@@ -64,20 +64,25 @@ public class SistemaBox {
     public Turno pedirSiguiente() throws IOException, ClassNotFoundException {
         outputStream.writeObject("Pido siguiente");
         outputStream.flush();
+
         Object res = inputStream.readObject();
-        System.out.println(res);
-        Turno siguiente = (Turno) res;
-        if(siguiente == null) {
-            throw new IOException("No hay clientes esperando");
+
+        if(res instanceof Turno){
+
+            Turno siguiente = (Turno) res;
+
+            if(siguiente == null) {
+                throw new IOException("No hay clientes esperando");
+            }
+            siguiente.setBox(this.numeroBox);
+
+            outputStream.writeObject(siguiente);
+            outputStream.flush();
+
+            return siguiente;
         }
 
-        siguiente.setBox(this.numeroBox);
-
-        outputStream.writeObject(siguiente);
-        outputStream.flush();
-
-        return siguiente;
-
+        return null;
     }
 
     public void finalizarTurno(Turno t) throws IOException {
