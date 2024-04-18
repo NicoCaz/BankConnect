@@ -33,8 +33,6 @@ public class TotemClientHandler extends BasicClientHandler {
             while (running) {
                 Object received = inputStream.readObject();
                 handleMessage(received);
-
-
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

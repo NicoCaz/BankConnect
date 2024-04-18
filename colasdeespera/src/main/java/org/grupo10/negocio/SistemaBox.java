@@ -41,7 +41,7 @@ public class SistemaBox {
                 //Aca lo que deberia hacer el box es pedir el siguiente turno para atender (si es que hay)
                 //hay que ver si hay que hacer un hilo extra que chequee la cantidad de personas en espera
 
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -66,6 +66,9 @@ public class SistemaBox {
         if(siguiente == null) {
             throw new IOException("No hay clientes esperando");
         }
+
+        outputStream.writeObject( new String[] { siguiente, String.valueOf(this.numeroBox) } );
+        outputStream.flush();
 
         return siguiente;
 

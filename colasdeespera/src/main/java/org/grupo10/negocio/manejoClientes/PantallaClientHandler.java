@@ -3,6 +3,7 @@ package org.grupo10.negocio.manejoClientes;
 import org.grupo10.negocio.SocketServer;
 import org.grupo10.negocio.manejoClientes.BasicClientHandler;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -21,5 +22,57 @@ public class PantallaClientHandler extends BasicClientHandler {
         this.inputStream = inputStream;
         this.outputStream = outputStream;
         this.id = id;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (running) {
+                //sendObject("Hola desde el server (a Box)");
+                Object received = inputStream.readObject();
+                //System.out.println("Mensaje recibido de cliente Box: " + received);
+                handleMessage(received);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            disconnectClient();
+        }
+    }
+
+    @Override
+    public void handleMessage(Object message) {
+
+
+        if(message instanceof String[]){
+            System.out.println("Mensaje recibido de cliente Pantalla: " + message);
+            //sendObject(message);
+        }else{
+            server.respuesta(message,this);
+        }
+
+    }
+
+    @Override
+    public void sendObject(Object message) {
+        try {
+            outputStream.writeObject(message);
+            outputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void disconnectClient() {
+        running = false;
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public int getID() {
+        return this.id;
     }
 }
