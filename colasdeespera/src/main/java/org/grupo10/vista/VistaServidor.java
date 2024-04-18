@@ -93,4 +93,14 @@ public class VistaServidor extends JFrame implements IVista{
     public StringBuilder getInputBuffer() {
         return null;
     }
+
+    @Override
+    public void apagarLlamar() {
+
+    }
+
+    @Override
+    public void prenderLlamar() {
+
+    }
 }

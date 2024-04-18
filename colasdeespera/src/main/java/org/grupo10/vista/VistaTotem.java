@@ -178,6 +178,16 @@ public class VistaTotem extends JFrame implements IVista{
         return inputBuffer;
     }
 
+    @Override
+    public void apagarLlamar() {
+
+    }
+
+    @Override
+    public void prenderLlamar() {
+
+    }
+
 /*
     private class AcceptButtonListener implements ActionListener {
         @Override

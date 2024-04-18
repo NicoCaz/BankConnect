@@ -1,5 +1,7 @@
 package org.grupo10.negocio.manejoClientes;
 
+import org.grupo10.modelo.Turno;
+import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
 import org.grupo10.negocio.SocketServer;
 
 import java.io.IOException;
@@ -45,8 +47,9 @@ public class BoxClientHandler extends BasicClientHandler {
 
         if(message.equals("Pido siguiente")){
             server.respuesta(server.getUltimoTurno(),this);
-        }else{
-            server.respuesta(message,this);
+        }else {
+            if (message instanceof TurnoFinalizadoDTO)
+                server.finalizarTurno((TurnoFinalizadoDTO) message);
         }
 
     }

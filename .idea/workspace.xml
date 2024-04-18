@@ -7,11 +7,19 @@
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="sistema basico de conexion entre cliente servidor para poder aplicar las vistas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaEstadistica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/TotemClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/TotemClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/EstadisticaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/EstadisticaClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/PantallaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/PantallaClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,37 +63,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainBox.executor": "Run",
-    "Application.MainEstadisticas.executor": "Run",
-    "Application.MainPantalla.executor": "Run",
-    "Application.MainServidor.executor": "Run",
-    "Application.MainTotem.executor": "Run",
-    "Application.PruebaServer.executor": "Run",
-    "Application.QueueManager.executor": "Run",
-    "Application.Servidor.executor": "Run",
-    "Application.SistemaBox.executor": "Run",
-    "Application.SistemaEstadistica.executor": "Run",
-    "Application.SistemaTotem.executor": "Run",
-    "Application.SocketClient.executor": "Run",
-    "Application.SocketServer.executor": "Run",
-    "Application.VistaServidor.executor": "Run",
-    "Application.VistaTotem.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainEstadisticas.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainPantalla.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PruebaServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QueueManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaEstadistica.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SocketClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SocketServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TurnosLlamados.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaTotem.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.grupo10.negocio" />
@@ -190,9 +200,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainPantalla" />
+        <item itemvalue="Application.MainTotem" />
         <item itemvalue="Application.MainServidor" />
         <item itemvalue="Application.SistemaBox" />
-        <item itemvalue="Application.MainTotem" />
         <item itemvalue="Application.SocketServer" />
       </list>
     </recent_temporary>
@@ -220,7 +230,9 @@
       <workItem from="1712943207179" duration="10285000" />
       <workItem from="1712989773433" duration="5400000" />
       <workItem from="1713022452184" duration="2204000" />
-      <workItem from="1713203142413" duration="12238000" />
+      <workItem from="1713203142413" duration="13535000" />
+      <workItem from="1713381921378" duration="14220000" />
+      <workItem from="1713468228122" duration="6412000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -296,5 +308,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

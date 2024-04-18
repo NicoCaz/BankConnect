@@ -37,6 +37,9 @@ public class SistemaEstadistica {
                 System.out.println("Respuesta del servidor: " + response);
                 //Aca se supone que el servidor me envio un turno y un box
                 //Hay que agregar la logica para que maneje todo
+
+
+
                 Thread.sleep(5000);
             }
         } catch (IOException | ClassNotFoundException e) {

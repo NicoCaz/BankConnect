@@ -36,7 +36,7 @@ public class SistemaTotem {
                 esperandoRespuestaServer();
                 Object response = inputStream.readObject();
                 System.out.println("Respuesta del servidor: " + response);
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
