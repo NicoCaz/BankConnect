@@ -1,6 +1,7 @@
 package org.grupo10.negocio;
 
 import org.grupo10.controlador.ControladorPantalla;
+import org.grupo10.modelo.Turno;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,7 +41,7 @@ public class SistemaPantalla extends Observable {
                 Object response = inputStream.readObject();
                 //System.out.println("Respuesta del servidor: " + response);
 
-                if(response instanceof String[]){
+                if(response instanceof Turno){
                     reciveTurno(response);
                 }
 
