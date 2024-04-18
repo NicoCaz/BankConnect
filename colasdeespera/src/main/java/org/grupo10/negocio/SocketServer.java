@@ -1,6 +1,7 @@
 package org.grupo10.negocio;
 
 import org.grupo10.modelo.Turno;
+import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
 import org.grupo10.negocio.manejoClientes.*;
 
 import java.io.IOException;
@@ -24,7 +25,8 @@ public class SocketServer extends Thread{
     private int idTotems=0;
     //////////////////////////////////////////////////////////////////////////////////////////
     private List<Turno> turnosEnEspera = new ArrayList<>();
-    private List<Turno> turnosDisponibles = new ArrayList<>();
+    private List<TurnoFinalizadoDTO> turnosFinalizados = new ArrayList<>();
+
 
     @Override
     public void run() {
@@ -68,7 +70,7 @@ public class SocketServer extends Thread{
     }
 
     public void respuesta(Object res,BasicClientHandler clientHandler) {
-        if(res instanceof String[]){
+        if(res instanceof Turno){
             Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
             while (iterador.hasNext()) {
                 PantallaClientHandler aux = iterador.next();
@@ -80,16 +82,32 @@ public class SocketServer extends Thread{
 
     }
 
-    public String getUltimoTurno(){
+    public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
+        int espera = this.turnosEnEspera.size();
+        int finalizados = this.turnosFinalizados.size();
+
+
+        Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
+        while (iterador.hasNext()) {
+            PantallaClientHandler aux = iterador.next();
+            aux.sendObject(res);
+        }
+    }
+
+    public void finalizarTurno(TurnoFinalizadoDTO finalizadoDTO){
+        this.turnosFinalizados.add(finalizadoDTO);
+    }
+
+    public Turno getUltimoTurno(){
 
         if(!turnosEnEspera.isEmpty()){
-            Turno ultimoturno = this.turnosEnEspera.get(this.turnosEnEspera.size()-1);
+            Turno ultimoturno = this.turnosEnEspera.get(0);
             this.turnosEnEspera.remove(ultimoturno);
             for (Turno e : this.turnosEnEspera) {
                 System.out.println(e.getDni());
             }
 
-            return ultimoturno.getDni();
+            return ultimoturno;
         }else{
             return null;
         }
@@ -120,19 +138,11 @@ public class SocketServer extends Thread{
 
     public void addTurnosEnEspera(Turno turnosEnEspera) {
 
-        this.turnosEnEspera.add(turnosEnEspera) ;
+        this.turnosEnEspera.add(turnosEnEspera);
         for (Turno e : this.turnosEnEspera) {
             System.out.println(e.getDni());
         }
     }
 
 
-
-    public Turno getTurnosDisponibles() {
-        return turnosDisponibles.get(1);
-    }
-
-    public void addTurnosDisponibles(Turno turnosDisponibles) {
-        this.turnosDisponibles.add(turnosDisponibles);
-    }
 }

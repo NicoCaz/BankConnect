@@ -42,7 +42,6 @@ public class EstadisticaClientHandler extends BasicClientHandler {
     public void handleMessage(Object message) {
         System.out.println("Mensaje recibido de cliente Box: " + message);
         server.respuesta(message,this);
-
     }
 
     @Override

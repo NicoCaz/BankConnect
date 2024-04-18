@@ -1,5 +1,6 @@
 package org.grupo10.controlador;
 
+import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SistemaBox;
 import org.grupo10.negocio.SistemaPantalla;
 import org.grupo10.vista.IVista;
@@ -32,9 +33,9 @@ public class ControladorPantalla implements ActionListener, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        String[] turno = (String[]) arg;
-        System.out.println("LLEGO AL UPDATE: " + turno[0]);
-        vista.agregarDatos(turno[0],turno[1]);
+        Turno t = (Turno) arg;
+        System.out.println("LLEGO AL UPDATE: " + t.getDni());
+        vista.agregarDatos(t.getDni(), String.valueOf(t.getBox()));
     }
 
 

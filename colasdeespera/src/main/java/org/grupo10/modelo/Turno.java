@@ -11,13 +11,14 @@ public class Turno implements ITurno, Serializable {
     private String numeroTurno;
     private String dni;
     private Date horarioEntrada;
+    private Date horarioSalida;
     private int box;
 
     public Turno(String dni){
         Turno.cantidadDeTurnos++;
         this.numeroTurno =Turno.cantidadDeTurnos +"-"+ dni.subSequence(dni.length()-3,dni.length()).toString();
         this.dni=dni;
-        this.horarioEntrada = Date.from(Instant.now());
+        this.horarioEntrada = new Date();
     }
 
     public String getNumeroTurno() {
@@ -44,5 +45,13 @@ public class Turno implements ITurno, Serializable {
 
     public void setBox(int box) {
         this.box = box;
+    }
+
+    public Date getHorarioSalida() {
+        return horarioSalida;
+    }
+
+    public void setHorarioSalida(Date horarioSalida) {
+        this.horarioSalida = horarioSalida;
     }
 }

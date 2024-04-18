@@ -1,5 +1,8 @@
 package org.grupo10.negocio;
 
+import org.grupo10.modelo.Turno;
+import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -58,20 +61,29 @@ public class SistemaBox {
         }
     }
 
-    public String pedirSiguiente() throws IOException, ClassNotFoundException {
+    public Turno pedirSiguiente() throws IOException, ClassNotFoundException {
         outputStream.writeObject("Pido siguiente");
         outputStream.flush();
-
-        String siguiente = (String) inputStream.readObject();
+        Object res = inputStream.readObject();
+        System.out.println(res);
+        Turno siguiente = (Turno) res;
         if(siguiente == null) {
             throw new IOException("No hay clientes esperando");
         }
 
-        outputStream.writeObject( new String[] { siguiente, String.valueOf(this.numeroBox) } );
+        siguiente.setBox(this.numeroBox);
+
+        outputStream.writeObject(siguiente);
         outputStream.flush();
 
         return siguiente;
 
+    }
 
+    public void finalizarTurno(Turno t) throws IOException {
+        TurnoFinalizadoDTO turnoFinalizadoDTO = new TurnoFinalizadoDTO(t);
+
+        outputStream.writeObject(turnoFinalizadoDTO);
+        outputStream.flush();
     }
 }

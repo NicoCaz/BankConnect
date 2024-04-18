@@ -16,4 +16,7 @@ public interface IVista {
     JLabel getDisplayLabel();
     StringBuilder getInputBuffer();
 
+    void apagarLlamar();
+
+    void prenderLlamar();
 }

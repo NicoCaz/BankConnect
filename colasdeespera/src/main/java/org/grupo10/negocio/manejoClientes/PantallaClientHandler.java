@@ -1,5 +1,6 @@
 package org.grupo10.negocio.manejoClientes;
 
+import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SocketServer;
 import org.grupo10.negocio.manejoClientes.BasicClientHandler;
 
@@ -44,7 +45,7 @@ public class PantallaClientHandler extends BasicClientHandler {
     public void handleMessage(Object message) {
 
 
-        if(message instanceof String[]){
+        if(message instanceof Turno){
             System.out.println("Mensaje recibido de cliente Pantalla: " + message);
             //sendObject(message);
         }else{

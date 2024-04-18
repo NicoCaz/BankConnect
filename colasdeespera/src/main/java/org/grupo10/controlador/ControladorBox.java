@@ -1,6 +1,7 @@
 package org.grupo10.controlador;
 
 
+import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SistemaBox;
 import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaBox;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class ControladorBox implements ActionListener {
     private final IVista vista;
     private SistemaBox sistemaBox = new SistemaBox();
+    private Turno turnoActual = null;
 
     public ControladorBox() {
         this.vista = new VistaBox(this);
@@ -26,16 +28,27 @@ public class ControladorBox implements ActionListener {
         if (comando.equalsIgnoreCase("Llamar siguiente")) { //bien
             try {
 
-                String dni = sistemaBox.pedirSiguiente();
-                vista.getDisplayLabel().setText("Numero Atendido: " + dni);
+                this.turnoActual = sistemaBox.pedirSiguiente();
+
+                vista.getDisplayLabel().setText("Numero Atendido: " + this.turnoActual.getDni());
+                vista.apagarLlamar();
             } catch (IOException | ClassNotFoundException ex) {
                 vista.ventanaError("No hay clientes esperando");
             }
 
         } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien
-
+            if(this.turnoActual != null){
+                try {
+                    sistemaBox.finalizarTurno(this.turnoActual);
+                    vista.prenderLlamar();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
         }
     }
+
+
 //    @Override
 //    public void conectarServer() {
 //        SistemaEmpleados.getInstancia().conectar("localhost", 1); //puerto del server hardcodeado en 1

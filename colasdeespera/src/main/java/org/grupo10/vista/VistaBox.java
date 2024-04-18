@@ -97,4 +97,19 @@ public class VistaBox extends JFrame implements IVista {
         return null;
     }
 
+    @Override
+    public void apagarLlamar() {
+
+        llamarSiguienteButton.setEnabled(false);
+        finalizarTurnoButton.setEnabled(true);
+    }
+
+    @Override
+    public void prenderLlamar() {
+
+        llamarSiguienteButton.setEnabled(true);
+        finalizarTurnoButton.setEnabled(false);
+    }
+
+
 }
