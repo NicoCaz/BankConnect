@@ -2,19 +2,22 @@ package org.grupo10.vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class VistaEstadisticas extends JFrame {
+public class VistaEstadisticas extends JFrame implements IVista  {
     private JLabel personasEnEsperaLabel, personasAtendidaLabel, tiempoPromedioLabel;
     private JButton refreshButton;
-    private int personasEnEspera = 20;
-    private int personasAtendidas = 70;
-    private int tiempoPromedio = 15 * 60 + 32; // 15 minutos y 32 segundos
+    private ActionListener controlador;
+    private int personasEnEspera = 0;
+    private int personasAtendidas = 0;
+    private int tiempoPromedio = 0; // 15 minutos y 32 segundos
 
-    public VistaEstadisticas() {
+    public VistaEstadisticas(ActionListener controlador) {
         setTitle("Estadisticas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 300);
         setLocationRelativeTo(null);
+        this.controlador = controlador;
 
         // Crear los componentes de la interfaz
         personasEnEsperaLabel = new JLabel("Personas en espera: " + personasEnEspera);
@@ -46,4 +49,53 @@ public class VistaEstadisticas extends JFrame {
     }
 
 
+    @Override
+    public void cerrar() {
+
+    }
+
+    @Override
+    public void mostrar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
+
+    @Override
+    public void ventanaConfirmacion(String msg) {
+
+    }
+
+    @Override
+    public void ventanaError(String msg) {
+
+    }
+
+    @Override
+    public void setActionListener(ActionListener actionListener) {
+
+    }
+
+    @Override
+    public JLabel getDisplayLabel() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getInputBuffer() {
+        return null;
+    }
+
+    @Override
+    public void apagarLlamar() {
+
+    }
+
+    @Override
+    public void prenderLlamar() {
+
+    }
 }
