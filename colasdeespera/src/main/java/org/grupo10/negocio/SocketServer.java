@@ -87,6 +87,13 @@ public class SocketServer extends Thread{
         }
     }
 
+    public void cantidadEnEspera(){
+        Iterator<BoxClientHandler> iterador = this.boxClients.iterator();
+        while (iterador.hasNext()) {
+            BoxClientHandler box = iterador.next();
+            box.mandoPersonasEnEspera(this.getTurnosEnEspera());
+        }
+    }
 
     public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
         int espera = this.turnosEnEspera.size();
@@ -122,8 +129,8 @@ public class SocketServer extends Thread{
 
     }
 
-    public Turno getTurnosEnEspera() {
-        return turnosEnEspera.get(1);
+    public Integer getTurnosEnEspera() {
+        return turnosEnEspera.size();
     }
 
     public void addTurnosEnEspera(Turno turnosEnEspera) {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="sistema basico de conexion entre cliente servidor para poder aplicar las vistas">
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="aaaaaaaaaaaaaaaaaaaaa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
@@ -98,7 +98,7 @@
       <recent name="org.grupo10.negocio" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainPantalla">
+  <component name="RunManager" selected="Application.MainBox">
     <configuration name="MainBox" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -272,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712995847667</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="aaaaaaaaaaaaaaaaaaaaa">
+      <option name="closed" value="true" />
+      <created>1713484592586</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713484592586</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +303,8 @@
     <MESSAGE value="hay que utilizar estas 3 nuevas clases de base" />
     <MESSAGE value="Creo las clases Handler para controlar los distintos sockets que admite el server" />
     <MESSAGE value="sistema basico de conexion entre cliente servidor para poder aplicar las vistas" />
-    <option name="LAST_COMMIT_MESSAGE" value="sistema basico de conexion entre cliente servidor para poder aplicar las vistas" />
+    <MESSAGE value="aaaaaaaaaaaaaaaaaaaaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="aaaaaaaaaaaaaaaaaaaaa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

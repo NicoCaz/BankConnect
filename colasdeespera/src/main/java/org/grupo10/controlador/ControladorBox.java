@@ -14,6 +14,7 @@ public class ControladorBox implements ActionListener {
     private final IVista vista;
     private SistemaBox sistemaBox = new SistemaBox();
     private Turno turnoActual = null;
+    private int cantidadTurnos = 0;
 
     public ControladorBox() {
         this.vista = new VistaBox(this);

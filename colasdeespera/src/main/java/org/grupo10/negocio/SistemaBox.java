@@ -67,10 +67,18 @@ public class SistemaBox {
             throw new IOException("No hay clientes esperando");
         }
 
-
         return siguiente;
-
     }
+
+    public void pedirPersonasEnEspera(){
+        try {
+            outputStream.writeObject("Pido personas en espera");
+            outputStream.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+   }
 
     public void finalizarTurno(Turno t) throws IOException {
         TurnoFinalizadoDTO turnoFinalizadoDTO = new TurnoFinalizadoDTO(t);

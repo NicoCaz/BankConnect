@@ -41,6 +41,17 @@ public class BoxClientHandler extends BasicClientHandler {
         }
     }
 
+    public void mandoPersonasEnEspera(int cant){
+        try {
+            outputStream.writeObject(cant);
+            outputStream.flush();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     @Override
     public void handleMessage(Object message) {
         System.out.println("Mensaje recibido de cliente Box: " + message);
@@ -52,8 +63,8 @@ public class BoxClientHandler extends BasicClientHandler {
                 server.siguienteTurno(server.getUltimoTurno(this),this);
 
 
-            }else{
-                server.respuesta(message, this);
+            } if(message.equals("Pido personas en espera")) {
+                server.cantidadEnEspera();
             }
 
         }else {
@@ -85,4 +96,6 @@ public class BoxClientHandler extends BasicClientHandler {
     public int getID() {
         return this.id;
     }
+
+
 }
