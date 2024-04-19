@@ -1,6 +1,7 @@
 package org.grupo10.negocio;
 
 import org.grupo10.modelo.Turno;
+import org.grupo10.modelo.dto.EstadisticaDTO;
 import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
 import org.grupo10.negocio.manejoClientes.*;
 
@@ -9,9 +10,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SocketServer extends Thread{
     private static final int PORT = 8080;
@@ -86,6 +90,20 @@ public class SocketServer extends Thread{
             client.sendObject(res);
         }
     }
+    public void calculoEstadistica(EstadisticaClientHandler client){
+        int cantEspera=getTurnosEnEspera();
+        int cantAtendidos=getTurnosAtendidos();
+        long  tiempoPromedio = 0;
+        Iterator<TurnoFinalizadoDTO> iterator= (Iterator<TurnoFinalizadoDTO>) this.turnosFinalizados;
+        while(iterator.hasNext()) {
+            TurnoFinalizadoDTO turno= iterator.next();
+            tiempoPromedio+=Math.abs(turno.getHorarioSalida().getTime()-turno.getT().getHorarioEntrada().getTime());
+        }
+        tiempoPromedio=(tiempoPromedio/cantAtendidos);
+        tiempoPromedio= TimeUnit.MINUTES.convert(tiempoPromedio, TimeUnit.MILLISECONDS) % 60;
+        EstadisticaDTO res = new EstadisticaDTO(cantEspera,cantAtendidos,tiempoPromedio);
+        client.sendObject(res);
+    }
 
     public void cantidadEnEspera(){
         Iterator<BoxClientHandler> iterador = this.boxClients.iterator();
@@ -98,6 +116,8 @@ public class SocketServer extends Thread{
     public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
         int espera = this.turnosEnEspera.size();
         int finalizados = this.turnosFinalizados.size();
+        Date promedio;
+
 
 
         Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
@@ -131,6 +151,9 @@ public class SocketServer extends Thread{
 
     public Integer getTurnosEnEspera() {
         return turnosEnEspera.size();
+    }
+    public Integer getTurnosAtendidos() {
+        return turnosFinalizados.size();
     }
 
     public void addTurnosEnEspera(Turno turnosEnEspera) {

@@ -1,5 +1,7 @@
 package org.grupo10.negocio;
 
+import org.grupo10.modelo.dto.EstadisticaDTO;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -39,13 +41,29 @@ public class SistemaEstadistica {
                 //Hay que agregar la logica para que maneje todo
 
 
-
-                Thread.sleep(5000);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
+        }
+    }
+
+    public EstadisticaDTO pidoEstadisticas(){
+        try {
+            outputStream.writeObject("Pido estadistica");
+            outputStream.flush();
+            Object res = inputStream.readObject();
+            System.out.println(res);
+            EstadisticaDTO estadistica = (EstadisticaDTO) res;
+            if(estadistica == null) {
+                throw new IOException("No hay clientes esperando");
+            }
+            return estadistica;
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
 }

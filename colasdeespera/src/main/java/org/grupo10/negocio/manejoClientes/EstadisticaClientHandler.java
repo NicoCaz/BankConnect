@@ -27,9 +27,9 @@ public class EstadisticaClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
-                sendObject("Hola desde el server (a Estadistica)");
                 Object received = inputStream.readObject();
-                System.out.println("Mensaje recibido de cliente Box: " + received);
+
+                handleMessage(received);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -40,8 +40,7 @@ public class EstadisticaClientHandler extends BasicClientHandler {
 
     @Override
     public void handleMessage(Object message) {
-        System.out.println("Mensaje recibido de cliente Box: " + message);
-        server.respuesta(message,this);
+       server.calculoEstadistica(this);
     }
 
     @Override
