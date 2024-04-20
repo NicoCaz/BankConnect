@@ -1,10 +1,8 @@
 package org.grupo10.modelo.dto;
 
-import org.grupo10.modelo.ITurno;
 import org.grupo10.modelo.Turno;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 
 public class TurnoFinalizadoDTO implements Serializable {

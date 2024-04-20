@@ -8,7 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Observable;
-import java.util.Scanner;
 
 public class SistemaPantalla extends Observable {
     private static final String HOST = "localhost";

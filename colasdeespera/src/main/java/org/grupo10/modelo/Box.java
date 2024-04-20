@@ -1,18 +1,17 @@
 package org.grupo10.modelo;
 
-public class Box implements IBox{
+public class Box{
 
     private int numero;
     public Box(int numero){
         this.numero= numero;
     }
-    @Override
-    public void atenderTurno() {
 
+    public int getNumero() {
+        return numero;
     }
 
-    @Override
-    public void liberarTurno() {
-
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

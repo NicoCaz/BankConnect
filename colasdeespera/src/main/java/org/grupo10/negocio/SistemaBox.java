@@ -1,7 +1,7 @@
 package org.grupo10.negocio;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
+
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

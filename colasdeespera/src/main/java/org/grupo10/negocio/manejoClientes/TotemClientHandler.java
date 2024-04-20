@@ -1,6 +1,5 @@
 package org.grupo10.negocio.manejoClientes;
 
-import org.grupo10.modelo.ITurno;
 import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SocketServer;
 

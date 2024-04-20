@@ -2,7 +2,6 @@ package org.grupo10.modelo;
 
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 
 public class Turno implements ITurno, Serializable {

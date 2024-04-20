@@ -2,7 +2,6 @@ package org.grupo10.negocio.manejoClientes;
 
 import org.grupo10.modelo.Turno;
 import org.grupo10.negocio.SocketServer;
-import org.grupo10.negocio.manejoClientes.BasicClientHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
