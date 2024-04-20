@@ -27,12 +27,16 @@ public class EstadisticaClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
+
                 Object received = inputStream.readObject();
 
                 handleMessage(received);
+
             }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             disconnectClient();
         }
@@ -40,7 +44,11 @@ public class EstadisticaClientHandler extends BasicClientHandler {
 
     @Override
     public void handleMessage(Object message) {
-       server.calculoEstadistica(this);
+        if(message instanceof String) {
+            if (message.equals("Pido estadistica")) {
+                server.calculoEstadistica(this);
+            }
+        }
     }
 
     @Override

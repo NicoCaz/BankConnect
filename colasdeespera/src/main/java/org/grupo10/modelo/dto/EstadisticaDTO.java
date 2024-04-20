@@ -1,16 +1,13 @@
 package org.grupo10.modelo.dto;
 
-import org.grupo10.modelo.Turno;
-
 import java.io.Serializable;
-import java.util.Date;
 
 public class EstadisticaDTO implements Serializable {
     private int personasEspera;
     private int personasAtendidas;
-    private Long tiempoPromedio;
+    private double tiempoPromedio;
 
-    public EstadisticaDTO(int personasEspera, int personasAtendidas,Long tiempoPromedio) {
+    public EstadisticaDTO(int personasEspera, int personasAtendidas,double tiempoPromedio) {
         this.personasEspera = personasEspera;
         this.personasAtendidas= personasAtendidas;
         this.tiempoPromedio= tiempoPromedio;
@@ -32,7 +29,7 @@ public class EstadisticaDTO implements Serializable {
         this.personasEspera = personasEspera;
     }
 
-    public Long getTiempoPromedio() {
+    public double getTiempoPromedio() {
         return tiempoPromedio;
     }
 

@@ -31,7 +31,6 @@ public class SistemaBox {
        }
    }
 
-
     public void ejecuccion(){
         try {
             System.out.println(tipo);
@@ -70,20 +69,13 @@ public class SistemaBox {
         return siguiente;
     }
 
-    public void pedirPersonasEnEspera(){
-        try {
-            outputStream.writeObject("Pido personas en espera");
-            outputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-   }
 
-    public void finalizarTurno(Turno t) throws IOException {
-        TurnoFinalizadoDTO turnoFinalizadoDTO = new TurnoFinalizadoDTO(t);
-
-        outputStream.writeObject(turnoFinalizadoDTO);
-        outputStream.flush();
-    }
+//
+//    public void finalizarTurno(Turno t) throws IOException {
+//        TurnoFinalizadoDTO turnoFinalizadoDTO = new TurnoFinalizadoDTO(t);
+//
+//        outputStream.writeObject(turnoFinalizadoDTO);
+//        outputStream.flush();
+//    }
 }

@@ -86,23 +86,42 @@ public class SocketServer extends Thread{
                 PantallaClientHandler pantalla = iterador.next();
                 pantalla.sendObject(res);
             }
+            TurnoFinalizadoDTO turnofinalizado = new TurnoFinalizadoDTO(res);
+            turnofinalizado.setHorarioSalida(new Date());
+            this.turnosFinalizados.add(turnofinalizado);
         }else{
             client.sendObject(res);
         }
+
+
+
+
     }
     public void calculoEstadistica(EstadisticaClientHandler client){
         int cantEspera=getTurnosEnEspera();
         int cantAtendidos=getTurnosAtendidos();
-        long  tiempoPromedio = 0;
-        Iterator<TurnoFinalizadoDTO> iterator= (Iterator<TurnoFinalizadoDTO>) this.turnosFinalizados;
+        double  tiempoPromedio = 0;
+        Iterator<TurnoFinalizadoDTO> iterator= this.turnosFinalizados.iterator();
+
         while(iterator.hasNext()) {
             TurnoFinalizadoDTO turno= iterator.next();
             tiempoPromedio+=Math.abs(turno.getHorarioSalida().getTime()-turno.getT().getHorarioEntrada().getTime());
         }
+
         tiempoPromedio=(tiempoPromedio/cantAtendidos);
-        tiempoPromedio= TimeUnit.MINUTES.convert(tiempoPromedio, TimeUnit.MILLISECONDS) % 60;
+        //tiempoPromedio= TimeUnit.SECONDS.convert(tiempoPromedio, TimeUnit.MILLISECONDS) % 60;
+
         EstadisticaDTO res = new EstadisticaDTO(cantEspera,cantAtendidos,tiempoPromedio);
-        client.sendObject(res);
+
+
+        //mando a todos los hilos de estadisticas el objeto con todos los calculos obtenidos
+        Iterator<EstadisticaClientHandler> estadisticasClients = this.EstadisticaClients.iterator();
+        while (estadisticasClients.hasNext()) {
+            EstadisticaClientHandler aux = estadisticasClients.next();
+            aux.sendObject(res);
+        }
+
+//        client.sendObject(res);
     }
 
     public void cantidadEnEspera(){
@@ -110,20 +129,6 @@ public class SocketServer extends Thread{
         while (iterador.hasNext()) {
             BoxClientHandler box = iterador.next();
             box.mandoPersonasEnEspera(this.getTurnosEnEspera());
-        }
-    }
-
-    public void envioEstadisticas(Object res,BasicClientHandler clientHandler){
-        int espera = this.turnosEnEspera.size();
-        int finalizados = this.turnosFinalizados.size();
-        Date promedio;
-
-
-
-        Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
-        while (iterador.hasNext()) {
-            PantallaClientHandler aux = iterador.next();
-            aux.sendObject(res);
         }
     }
 

@@ -36,8 +36,6 @@ public class BoxClientHandler extends BasicClientHandler {
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            disconnectClient();
         }
     }
 
@@ -63,7 +61,7 @@ public class BoxClientHandler extends BasicClientHandler {
                 server.siguienteTurno(server.getUltimoTurno(this),this);
 
 
-            } if(message.equals("Pido personas en espera")) {
+            } if(message.equals("Finalizar Turno")) {
                 server.cantidadEnEspera();
             }
 

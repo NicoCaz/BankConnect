@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorEstadistica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainEstadisticas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/dto/EstadisticaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/dto/EstadisticaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/EstadisticaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/EstadisticaClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaEstadisticas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +108,7 @@
       <recent name="org.grupo10.negocio" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainEstadisticas">
+  <component name="RunManager">
     <configuration name="MainBox" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -198,14 +207,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -235,6 +236,7 @@
       <workItem from="1713528450048" duration="3957000" />
       <workItem from="1713544596349" duration="192000" />
       <workItem from="1713544968336" duration="669000" />
+      <workItem from="1713633598160" duration="9081000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

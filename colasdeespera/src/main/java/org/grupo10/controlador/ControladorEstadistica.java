@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class ControladorEstadistica implements ActionListener {
-    private final IVista vista;
+    private final VistaEstadisticas vista;
     private SistemaEstadistica sistemaEstadistica = new SistemaEstadistica();
     private EstadisticaDTO estadisticaDTO=null;
 
@@ -28,15 +28,20 @@ public class ControladorEstadistica implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
         System.out.println(comando);
-        if (comando.equalsIgnoreCase("Pedir Estadistica")) { //bien
+        if (comando.equalsIgnoreCase("Refrescar")) { //bien
 
-            this.estadisticaDTO = sistemaEstadistica.pidoEstadisticas();
+            try {
+                this.estadisticaDTO = sistemaEstadistica.pidoEstadisticas();
 
-            vista.getDisplayLabel().setText("Personas en espera: "+this.estadisticaDTO.getPersonasEspera());
+                vista.getPersonasEnEsperaLabel().setText("Personas en espera: "+this.estadisticaDTO.getPersonasEspera());
 
-            vista.getDisplayLabel().setText("Personas atendidas: "+this.estadisticaDTO.getPersonasAtendidas());
+                vista.getPersonasAtendidaLabel().setText("Personas atendidas: "+this.estadisticaDTO.getPersonasAtendidas());
 
-            vista.getDisplayLabel().setText("Tiempo promedio: "+this.estadisticaDTO.getTiempoPromedio());
+                vista.getTiempoPromedioLabel().setText("Tiempo promedio: "+ vista.formatTime(this.estadisticaDTO.getTiempoPromedio()));
+
+            } catch (IOException | ClassNotFoundException ex) {
+                vista.ventanaError(ex.getMessage());
+            }
 
         }
     }

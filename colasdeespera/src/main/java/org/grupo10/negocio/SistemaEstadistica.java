@@ -35,35 +35,40 @@ public class SistemaEstadistica {
             outputStream.flush();
             while (true) {
 
-                Object response = inputStream.readObject();
-                System.out.println("Respuesta del servidor: " + response);
+                //Object response = inputStream.readObject();
+                //System.out.println("Respuesta del servidor: " + response);
                 //Aca se supone que el servidor me envio un turno y un box
                 //Hay que agregar la logica para que maneje todo
 
-
+                Thread.sleep(1000);
             }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public EstadisticaDTO pidoEstadisticas(){
-        try {
-            outputStream.writeObject("Pido estadistica");
-            outputStream.flush();
-            Object res = inputStream.readObject();
-            System.out.println(res);
-            EstadisticaDTO estadistica = (EstadisticaDTO) res;
-            if(estadistica == null) {
-                throw new IOException("No hay clientes esperando");
-            }
-            return estadistica;
+    public EstadisticaDTO pidoEstadisticas() throws IOException, ClassNotFoundException {
+        outputStream.writeObject("Pido estadistica");
+        outputStream.flush();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+//        if (inputStream.available() == 0) {
+//            throw new IOException("No hay respuesta del servidor");
+//        }
+
+        Object res = inputStream.readObject();
+
+        if (res == null) {
+            throw new IOException("La respuesta del servidor es nula");
         }
+
+        if (!(res instanceof EstadisticaDTO)) {
+            throw new ClassNotFoundException("La respuesta del servidor no es una instancia de EstadisticaDTO");
+        }
+
+        EstadisticaDTO estadistica = (EstadisticaDTO) res;
+        return estadistica;
     }
 
 }

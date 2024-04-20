@@ -32,30 +32,25 @@ public class ControladorBox implements ActionListener {
                 this.turnoActual = sistemaBox.pedirSiguiente();
 
                 vista.getDisplayLabel().setText("Numero Atendido: " + this.turnoActual.getDni());
-                vista.apagarLlamar();
+                //vista.apagarLlamar();
             } catch (IOException | ClassNotFoundException ex) {
                 vista.ventanaError("No hay clientes esperando");
             }
-
-        } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien
-            if(this.turnoActual != null){
-                try {
-                    sistemaBox.finalizarTurno(this.turnoActual);
-                    vista.prenderLlamar();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
         }
+//        } else if (comando.equalsIgnoreCase(("FinalizarTurno"))){ //bien
+//            if(this.turnoActual != null){
+//                try {
+//                    sistemaBox.finalizarTurno(this.turnoActual);
+//                    //vista.prenderLlamar();
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
+//        }
     }
 
 
-//    @Override
-//    public void conectarServer() {
-//        SistemaEmpleados.getInstancia().conectar("localhost", 1); //puerto del server hardcodeado en 1
-//        SistemaEmpleados.getInstancia().crearHilo();
-//
-//    }
+
 
 
 }

@@ -24,6 +24,7 @@ public class VistaEstadisticas extends JFrame implements IVista  {
         personasAtendidaLabel = new JLabel("Personas atendidas: " + personasAtendidas);
         tiempoPromedioLabel = new JLabel("Tiempo promedio: " + formatTime(tiempoPromedio));
         refreshButton = new JButton("Refrescar");
+        refreshButton.addActionListener(controlador);
 
         // Establecer el tamaño de fuente responsivo
         int fontSize = (int) (getHeight() * 0.08);
@@ -42,12 +43,26 @@ public class VistaEstadisticas extends JFrame implements IVista  {
         add(panel, BorderLayout.CENTER);
     }
 
-    private String formatTime(int seconds) {
-        int minutes = seconds / 60;
-        int remainingSeconds = seconds % 60;
-        return String.format("%02d:%02d", minutes, remainingSeconds);
+    public String formatTime(double milisegundos) {
+
+        int segundos = (int) (milisegundos / 1000);
+        int minutos = segundos / 60;
+        int segundosRestantes = segundos - minutos*60;
+        return String.format("%02d:%02d", minutos , segundosRestantes);
+        //return String.valueOf(segundos);
     }
 
+    public JLabel getPersonasEnEsperaLabel() {
+        return personasEnEsperaLabel;
+    }
+
+    public JLabel getPersonasAtendidaLabel() {
+        return personasAtendidaLabel;
+    }
+
+    public JLabel getTiempoPromedioLabel() {
+        return tiempoPromedioLabel;
+    }
 
     @Override
     public void cerrar() {
@@ -56,7 +71,7 @@ public class VistaEstadisticas extends JFrame implements IVista  {
 
     @Override
     public void mostrar() {
-
+        setVisible(true);
     }
 
     @Override
@@ -72,6 +87,20 @@ public class VistaEstadisticas extends JFrame implements IVista  {
     @Override
     public void ventanaError(String msg) {
 
+        JDialog errorDialog = new JDialog(VistaEstadisticas.this, msg, true);
+        JPanel errorPanel = new JPanel(new BorderLayout());
+        JLabel errorLabel = new JLabel(msg, SwingConstants.CENTER);
+        errorLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        errorPanel.add(errorLabel, BorderLayout.CENTER);
+
+        JButton okButton = new JButton("Aceptar");
+        okButton.addActionListener(event -> errorDialog.dispose());
+        errorPanel.add(okButton, BorderLayout.SOUTH);
+
+        errorDialog.setContentPane(errorPanel);
+        errorDialog.pack();
+        errorDialog.setLocationRelativeTo(VistaEstadisticas.this);
+        errorDialog.setVisible(true);
     }
 
     @Override

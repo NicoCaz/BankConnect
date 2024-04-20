@@ -21,31 +21,28 @@ public class VistaBox extends JFrame implements IVista {
 
         // Crear los componentes de la interfaz
         numeroAtendidoLabel = new JLabel("Numero atendido: " + numeroAtendido);
-        personasEnEsperaLabel = new JLabel("Personas en espera: " + personasEnEspera);
         llamarSiguienteButton = new JButton("Llamar siguiente");
-        finalizarTurnoButton = new JButton("Finalizar turno");
+        //finalizarTurnoButton = new JButton("Finalizar turno");
 
         // Establecer el tamaño de fuente responsivo
         int fontSize = (int) (getHeight() * 0.08);
         Font font = new Font("Arial", Font.PLAIN, fontSize);
         numeroAtendidoLabel.setFont(font);
-        personasEnEsperaLabel.setFont(font);
         llamarSiguienteButton.setFont(font);
-        finalizarTurnoButton.setFont(font);
+        //finalizarTurnoButton.setFont(font);
 
         llamarSiguienteButton.addActionListener(controlador);
-        finalizarTurnoButton.addActionListener(controlador);
+        //finalizarTurnoButton.addActionListener(controlador);
 
         // Agregar los componentes al panel principal
         JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
         panel.add(numeroAtendidoLabel);
-        panel.add(personasEnEsperaLabel);
         panel.add(llamarSiguienteButton);
-        panel.add(finalizarTurnoButton);
+        //panel.add(finalizarTurnoButton);
 
         add(panel, BorderLayout.CENTER);
 
-        prenderLlamar();
+        //prenderLlamar();
     }
 
     @Override
