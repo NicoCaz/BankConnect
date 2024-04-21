@@ -1,14 +1,11 @@
 package org.grupo10.controlador;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.SistemaBox;
 import org.grupo10.negocio.SistemaPantalla;
-import org.grupo10.vista.IVista;
 import org.grupo10.vista.VistaPantalla;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 

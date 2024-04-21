@@ -1,12 +1,8 @@
 package org.grupo10.controlador;
 
 
-import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.dto.EstadisticaDTO;
-import org.grupo10.negocio.SistemaBox;
 import org.grupo10.negocio.SistemaEstadistica;
-import org.grupo10.vista.IVista;
-import org.grupo10.vista.VistaBox;
 import org.grupo10.vista.VistaEstadisticas;
 
 import java.awt.event.ActionEvent;

@@ -1,0 +1,51 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class BasicClientHandler
+class Box
+class BoxClientHandler
+class ControladorBox
+class ControladorEstadistica
+class ControladorPantalla
+class ControladorServidor
+class ControladorTotem
+class EstadisticaClientHandler
+class EstadisticaDTO
+interface IBox << interface >>
+interface ITurno << interface >>
+interface IVista << interface >>
+class Main
+class MainBox
+class MainEstadisticas
+class MainPantalla
+class MainServidor
+class MainTotem
+class PantallaClientHandler
+class SistemaBox
+class SistemaEstadistica
+class SistemaPantalla
+class SistemaTotem
+class SocketServer
+class TotemClientHandler
+class Turno
+class TurnoFinalizadoDTO
+class VistaBox
+class VistaEstadisticas
+class VistaPantalla
+class VistaServidor
+class VistaTotem
+
+BoxClientHandler          -[#000082,plain]-^  BasicClientHandler       
+EstadisticaClientHandler  -[#000082,plain]-^  BasicClientHandler       
+PantallaClientHandler     -[#000082,plain]-^  BasicClientHandler       
+TotemClientHandler        -[#000082,plain]-^  BasicClientHandler       
+Turno                     -[#008200,dashed]-^  ITurno                   
+VistaBox                  -[#008200,dashed]-^  IVista                   
+VistaEstadisticas         -[#008200,dashed]-^  IVista                   
+VistaPantalla             -[#008200,dashed]-^  IVista                   
+VistaServidor             -[#008200,dashed]-^  IVista                   
+VistaTotem                -[#008200,dashed]-^  IVista                   
+@enduml
