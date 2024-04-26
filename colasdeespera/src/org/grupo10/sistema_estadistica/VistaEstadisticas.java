@@ -1,10 +1,12 @@
-package org.grupo10.vista;
+package org.grupo10.sistema_estadistica;
+
+import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class VistaEstadisticas extends JFrame implements IVista  {
+public class VistaEstadisticas extends JFrame implements IVista {
     private JLabel personasEnEsperaLabel, personasAtendidaLabel, tiempoPromedioLabel;
     private JButton refreshButton;
     private ActionListener controlador;

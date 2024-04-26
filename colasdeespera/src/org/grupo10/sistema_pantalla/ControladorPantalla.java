@@ -1,8 +1,6 @@
-package org.grupo10.controlador;
+package org.grupo10.sistema_pantalla;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.SistemaPantalla;
-import org.grupo10.vista.VistaPantalla;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

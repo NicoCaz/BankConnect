@@ -1,11 +1,13 @@
-package org.grupo10.vista;
+package org.grupo10.sistema_servidor;
 
+
+import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class VistaServidor extends JFrame implements IVista{
+public class VistaServidor extends JFrame implements IVista {
     private JButton botonServidor;
     private boolean servidorEncendido;
     private ActionListener controlador;

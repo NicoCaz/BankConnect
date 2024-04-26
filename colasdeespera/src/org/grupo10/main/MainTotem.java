@@ -1,7 +1,7 @@
 package org.grupo10.main;
 
 
-import org.grupo10.controlador.ControladorTotem;
+import org.grupo10.sistema_totem.ControladorTotem;
 
 
 public class MainTotem {

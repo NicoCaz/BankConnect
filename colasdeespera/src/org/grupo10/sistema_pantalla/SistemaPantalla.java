@@ -1,6 +1,5 @@
-package org.grupo10.negocio;
+package org.grupo10.sistema_pantalla;
 
-import org.grupo10.controlador.ControladorPantalla;
 import org.grupo10.modelo.Turno;
 
 import java.io.IOException;

@@ -1,9 +1,9 @@
-package org.grupo10.negocio;
+package org.grupo10.sistema_servidor;
 
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.dto.EstadisticaDTO;
 import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
-import org.grupo10.negocio.manejoClientes.*;
+import org.grupo10.sistema_servidor.manejoClientes.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

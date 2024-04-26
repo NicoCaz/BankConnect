@@ -1,14 +1,14 @@
-package org.grupo10.negocio.manejoClientes;
+package org.grupo10.sistema_servidor.manejoClientes;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.SocketServer;
+import org.grupo10.sistema_servidor.SocketServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class PantallaClientHandler extends BasicClientHandler {
+public class TotemClientHandler extends BasicClientHandler {
     private Socket socket;
     private SocketServer server;
     private ObjectInputStream inputStream;
@@ -16,7 +16,9 @@ public class PantallaClientHandler extends BasicClientHandler {
     private boolean running = true;
     private int id;
 
-    public PantallaClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream, int id) {
+
+
+    public TotemClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
@@ -28,9 +30,7 @@ public class PantallaClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
-                //sendObject("Hola desde el server (a Box)");
                 Object received = inputStream.readObject();
-                //System.out.println("Mensaje recibido de cliente Box: " + received);
                 handleMessage(received);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -42,25 +42,18 @@ public class PantallaClientHandler extends BasicClientHandler {
 
     @Override
     public void handleMessage(Object message) {
-
-
+        System.out.println("Mensaje recibido de cliente Totem: " + message);
         if(message instanceof Turno){
-            System.out.println("Mensaje recibido de cliente Pantalla: " + message);
-            //sendObject(message);
-        }else{
-            server.respuesta(message,this);
+            server.addTurnosEnEspera((Turno) message);
         }
 
     }
 
     @Override
     public void sendObject(Object message) {
-
         try {
-            System.out.println("Envio a pantalla: "+message );
             outputStream.writeObject(message);
             outputStream.flush();
-            System.out.println("Mensaje enviado: "+message);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,6 +68,11 @@ public class PantallaClientHandler extends BasicClientHandler {
             e.printStackTrace();
         }
     }
+
+    private boolean validoDNI(Object turno){
+        return true;
+    }
+
     public int getID() {
         return this.id;
     }

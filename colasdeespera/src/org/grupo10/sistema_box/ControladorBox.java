@@ -1,10 +1,8 @@
-package org.grupo10.controlador;
+package org.grupo10.sistema_box;
 
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.SistemaBox;
 import org.grupo10.vista.IVista;
-import org.grupo10.vista.VistaBox;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

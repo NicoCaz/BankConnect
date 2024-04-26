@@ -1,9 +1,7 @@
-package org.grupo10.controlador;
+package org.grupo10.sistema_estadistica;
 
 
 import org.grupo10.modelo.dto.EstadisticaDTO;
-import org.grupo10.negocio.SistemaEstadistica;
-import org.grupo10.vista.VistaEstadisticas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

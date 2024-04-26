@@ -1,13 +1,14 @@
-package org.grupo10.negocio.manejoClientes;
+package org.grupo10.sistema_servidor.manejoClientes;
 
-import org.grupo10.negocio.SocketServer;
+import org.grupo10.modelo.Turno;
+import org.grupo10.sistema_servidor.SocketServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class EstadisticaClientHandler extends BasicClientHandler {
+public class PantallaClientHandler extends BasicClientHandler {
     private Socket socket;
     private SocketServer server;
     private ObjectInputStream inputStream;
@@ -15,7 +16,7 @@ public class EstadisticaClientHandler extends BasicClientHandler {
     private boolean running = true;
     private int id;
 
-    public EstadisticaClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int id) {
+    public PantallaClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream, int id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
@@ -27,16 +28,13 @@ public class EstadisticaClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
-
+                //sendObject("Hola desde el server (a Box)");
                 Object received = inputStream.readObject();
-
+                //System.out.println("Mensaje recibido de cliente Box: " + received);
                 handleMessage(received);
-
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             disconnectClient();
         }
@@ -44,18 +42,25 @@ public class EstadisticaClientHandler extends BasicClientHandler {
 
     @Override
     public void handleMessage(Object message) {
-        if(message instanceof String) {
-            if (message.equals("Pido estadistica")) {
-                server.calculoEstadistica(this);
-            }
+
+
+        if(message instanceof Turno){
+            System.out.println("Mensaje recibido de cliente Pantalla: " + message);
+            //sendObject(message);
+        }else{
+            server.respuesta(message,this);
         }
+
     }
 
     @Override
     public void sendObject(Object message) {
+
         try {
+            System.out.println("Envio a pantalla: "+message );
             outputStream.writeObject(message);
             outputStream.flush();
+            System.out.println("Mensaje enviado: "+message);
         } catch (IOException e) {
             e.printStackTrace();
         }

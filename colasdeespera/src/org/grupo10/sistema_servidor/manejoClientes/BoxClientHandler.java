@@ -1,14 +1,14 @@
-package org.grupo10.negocio.manejoClientes;
+package org.grupo10.sistema_servidor.manejoClientes;
 
-import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.SocketServer;
+import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
+import org.grupo10.sistema_servidor.SocketServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class TotemClientHandler extends BasicClientHandler {
+public class BoxClientHandler extends BasicClientHandler {
     private Socket socket;
     private SocketServer server;
     private ObjectInputStream inputStream;
@@ -16,9 +16,7 @@ public class TotemClientHandler extends BasicClientHandler {
     private boolean running = true;
     private int id;
 
-
-
-    public TotemClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int id) {
+    public BoxClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int  id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
@@ -30,21 +28,45 @@ public class TotemClientHandler extends BasicClientHandler {
     public void run() {
         try {
             while (running) {
+
                 Object received = inputStream.readObject();
+
                 handleMessage(received);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            disconnectClient();
         }
+    }
+
+    public void mandoPersonasEnEspera(int cant){
+        try {
+            outputStream.writeObject(cant);
+            outputStream.flush();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
     public void handleMessage(Object message) {
-        System.out.println("Mensaje recibido de cliente Totem: " + message);
-        if(message instanceof Turno){
-            server.addTurnosEnEspera((Turno) message);
+        System.out.println("Mensaje recibido de cliente Box: " + message);
+
+
+        if(message instanceof String){
+            if(message.equals("Pido siguiente")) {
+
+                server.siguienteTurno(server.getUltimoTurno(this),this);
+
+
+            } if(message.equals("Finalizar Turno")) {
+                server.cantidadEnEspera();
+            }
+
+        }else {
+            if (message instanceof TurnoFinalizadoDTO)
+                server.finalizarTurno((TurnoFinalizadoDTO) message);
         }
 
     }
@@ -68,12 +90,9 @@ public class TotemClientHandler extends BasicClientHandler {
             e.printStackTrace();
         }
     }
-
-    private boolean validoDNI(Object turno){
-        return true;
-    }
-
     public int getID() {
         return this.id;
     }
+
+
 }

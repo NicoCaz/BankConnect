@@ -1,4 +1,6 @@
-package org.grupo10.vista;
+package org.grupo10.sistema_box;
+
+import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;

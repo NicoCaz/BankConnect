@@ -1,8 +1,6 @@
-package org.grupo10.controlador;
+package org.grupo10.sistema_servidor;
 
-import org.grupo10.negocio.SocketServer;
 import org.grupo10.vista.IVista;
-import org.grupo10.vista.VistaServidor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

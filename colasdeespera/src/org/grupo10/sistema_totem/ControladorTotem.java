@@ -1,10 +1,8 @@
-package org.grupo10.controlador;
+package org.grupo10.sistema_totem;
 
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.negocio.SistemaTotem;
 import org.grupo10.vista.IVista;
-import org.grupo10.vista.VistaTotem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

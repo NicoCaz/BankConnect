@@ -1,6 +1,8 @@
 package org.grupo10.modelo;
 
 
+import org.grupo10.exception.ClienteRepetidoException;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -56,5 +58,15 @@ public class Turno implements ITurno, Serializable {
 
     public void setHorarioSalida(Date horarioSalida) {
         this.horarioSalida = horarioSalida;
+    }
+
+    @Override
+    public void agregarTurno(Cliente cliente) throws ClienteRepetidoException {
+
+    }
+
+    @Override
+    public Cliente sacarTurno() {
+        return null;
     }
 }

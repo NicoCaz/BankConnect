@@ -1,4 +1,4 @@
-package org.grupo10.negocio.manejoClientes;
+package org.grupo10.sistema_servidor.manejoClientes;
 
 public class BasicClientHandler extends Thread{
     void handleMessage(Object message) {

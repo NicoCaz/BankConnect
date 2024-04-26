@@ -1,14 +1,13 @@
-package org.grupo10.negocio.manejoClientes;
+package org.grupo10.sistema_servidor.manejoClientes;
 
-import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
-import org.grupo10.negocio.SocketServer;
+import org.grupo10.sistema_servidor.SocketServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class BoxClientHandler extends BasicClientHandler {
+public class EstadisticaClientHandler extends BasicClientHandler {
     private Socket socket;
     private SocketServer server;
     private ObjectInputStream inputStream;
@@ -16,7 +15,7 @@ public class BoxClientHandler extends BasicClientHandler {
     private boolean running = true;
     private int id;
 
-    public BoxClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int  id) {
+    public EstadisticaClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
@@ -32,43 +31,24 @@ public class BoxClientHandler extends BasicClientHandler {
                 Object received = inputStream.readObject();
 
                 handleMessage(received);
+
             }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void mandoPersonasEnEspera(int cant){
-        try {
-            outputStream.writeObject(cant);
-            outputStream.flush();
-
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            disconnectClient();
         }
-
     }
 
     @Override
     public void handleMessage(Object message) {
-        System.out.println("Mensaje recibido de cliente Box: " + message);
-
-
-        if(message instanceof String){
-            if(message.equals("Pido siguiente")) {
-
-                server.siguienteTurno(server.getUltimoTurno(this),this);
-
-
-            } if(message.equals("Finalizar Turno")) {
-                server.cantidadEnEspera();
+        if(message instanceof String) {
+            if (message.equals("Pido estadistica")) {
+                server.calculoEstadistica(this);
             }
-
-        }else {
-            if (message instanceof TurnoFinalizadoDTO)
-                server.finalizarTurno((TurnoFinalizadoDTO) message);
         }
-
     }
 
     @Override
@@ -93,6 +73,4 @@ public class BoxClientHandler extends BasicClientHandler {
     public int getID() {
         return this.id;
     }
-
-
 }

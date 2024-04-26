@@ -1,4 +1,4 @@
-package org.grupo10.negocio;
+package org.grupo10.sistema_totem;
 
 import org.grupo10.modelo.Turno;
 
