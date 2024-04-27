@@ -14,52 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/box_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/estadisticas_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/pantalla_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/totem_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/box_jar/colasdeespera.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/estadisticas_jar/colasdeespera.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/pantalla_jar/colasdeespera.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_jar/colasdeespera.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/totem_jar/colasdeespera.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proyectoAyD2.plantuml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/controlador/ControladorBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/controlador/ControladorEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/controlador/ControladorPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/controlador/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/controlador/ControladorTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/main/MainTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/IBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/IBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/ITurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/ITurno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Turno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/dto/EstadisticaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/EstadisticaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/modelo/dto/TurnoFinalizadoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/TurnoFinalizadoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/SistemaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/SistemaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/SistemaPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/SistemaTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/SocketServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BasicClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/manejoClientes/BasicClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/manejoClientes/BoxClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/EstadisticaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/manejoClientes/EstadisticaClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/PantallaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/manejoClientes/PantallaClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/negocio/manejoClientes/TotemClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/negocio/manejoClientes/TotemClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/IVista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/VistaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/VistaEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/VistaPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/VistaServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/main/java/org/grupo10/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/VistaTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/SocketServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,48 +65,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.MainBox.executor": "Run",
-    "Application.MainEstadisticas.executor": "Run",
-    "Application.MainPantalla.executor": "Run",
-    "Application.MainServidor.executor": "Run",
-    "Application.MainTotem.executor": "Run",
-    "Application.PruebaServer.executor": "Run",
-    "Application.QueueManager.executor": "Run",
-    "Application.Servidor.executor": "Run",
-    "Application.SistemaBox.executor": "Run",
-    "Application.SistemaEstadistica.executor": "Run",
-    "Application.SistemaTotem.executor": "Run",
-    "Application.SocketClient.executor": "Run",
-    "Application.SocketServer.executor": "Run",
-    "Application.TurnosLlamados.executor": "Run",
-    "Application.VistaServidor.executor": "Run",
-    "Application.VistaTotem.executor": "Run",
-    "JAR Application.colasdeespera.jar (1).executor": "Run",
-    "JAR Application.colasdeespera.jar (2).executor": "Run",
-    "JAR Application.colasdeespera.jar.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nico/Desktop/proyectoAyD2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.MainBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainEstadisticas.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainPantalla.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PruebaServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QueueManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaEstadistica.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SocketClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SocketServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TurnosLlamados.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaTotem.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.colasdeespera.jar (1).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.colasdeespera.jar (2).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.colasdeespera.jar.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nico/Desktop/proyectoAyD2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.grupo10.negocio" />
@@ -255,14 +211,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -297,6 +245,7 @@
       <workItem from="1713723108041" duration="5888000" />
       <workItem from="1713741549935" duration="103000" />
       <workItem from="1713741667063" duration="703000" />
+      <workItem from="1714248719596" duration="585000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

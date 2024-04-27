@@ -91,10 +91,8 @@ public class SocketServer extends Thread{
             client.sendObject(res);
         }
 
-
-
-
     }
+
     public void calculoEstadistica(EstadisticaClientHandler client){
         int cantEspera=getTurnosEnEspera();
         int cantAtendidos=getTurnosAtendidos();
@@ -134,20 +132,30 @@ public class SocketServer extends Thread{
         this.turnosFinalizados.add(finalizadoDTO);
     }
 
+
+    /**
+     * Obtiene el último turno de la cola de turnos en espera y lo asigna al box
+     * correspondiente. Este método está sincronizado para evitar problemas de
+     * concurrencia al acceder a la lista de turnos en espera.
+     *
+     * @param box El manejador del box a la que se asignará el último turno.
+     * @return El último turno de la cola de turnos en espera, o null si la cola está vacía.
+     */
     public Turno getUltimoTurno(BoxClientHandler box){
 
-        if(!turnosEnEspera.isEmpty()){
-            Turno ultimoturno = this.turnosEnEspera.get(0);
-            this.turnosEnEspera.remove(ultimoturno);
-            for (Turno e : this.turnosEnEspera) {
-                System.out.println(e.getDni());
+        synchronized (turnosEnEspera) {
+            if (!turnosEnEspera.isEmpty()) {
+                Turno ultimoturno = this.turnosEnEspera.get(0);
+                this.turnosEnEspera.remove(ultimoturno);
+                for (Turno e : this.turnosEnEspera) {
+                    System.out.println(e.getDni());
+                }
+                ultimoturno.setBox(box.getID());
+                System.out.println("vuelvo de llamar a las pantalias " + ultimoturno);
+                return ultimoturno;
+            } else {
+                return null;
             }
-            ultimoturno.setBox(box.getID());
-            //mandarTurnoPantallas(ultimoturno);
-            System.out.println("vuelvo de llamar a las pantalias " + ultimoturno);
-            return ultimoturno;
-        }else{
-            return null;
         }
 
     }
