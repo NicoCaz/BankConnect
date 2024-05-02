@@ -13,30 +13,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Momento de inspiracion nocturno">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/logs/LogLlamadosTXT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/logs/LogRegistrosTXT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/FilaFinalizada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/FilasDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/StateSocketServerRespaldo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/RedundanciaHandler.java" afterDir="false" />
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/logs/ILogsLlamados.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/logs/ILogsLlamados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/logs/ILogsRegistros.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/logs/ILogsRegistros.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Fila.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Fila.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/ITurno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Turno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/EstadisticaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/EstadisticaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/TurnoFinalizadoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/TurnoFinalizado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/ControladorEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/SistemaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/StateSocketServerPrimario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BasicClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BasicClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/EstadisticaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/EstadisticaClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/PantallaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/PantallaClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/TotemClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/TotemClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/SocketServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,11 +34,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="nico" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -70,8 +44,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/NicoCaz/proyectoAyD2.git&quot;,
-    &quot;accountId&quot;: &quot;c7e8b5c5-94a1-43e5-9882-c5fd396001c1&quot;
+    &quot;url&quot;: &quot;https://github.com/NicoCaz/proyectoAyD2&quot;,
+    &quot;accountId&quot;: &quot;75c29052-1803-4e7a-bbc4-93e7d9d8d9de&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -119,7 +93,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nico/Desktop/proyectoAyD2/colasdeespera/src/org/grupo10/repository&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nico/Desktop/proyectoAyD2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -140,15 +114,11 @@
       <recent name="org.grupo10.vista" />
       <recent name="org.grupo10.modelo" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Nico\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\repository" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.grupo10.modelo" />
-      <recent name="org.grupo10.logs" />
-      <recent name="org.grupo10.sistema_servidor" />
-      <recent name="org.grupo10.exception" />
       <recent name="org.grupo10.controlador" />
+      <recent name="org.grupo10.modelo.dto" />
+      <recent name="org.grupo10.negocio.manejoClientes" />
+      <recent name="org.grupo10.negocio" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainServidor">
@@ -233,21 +203,13 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.colasdeespera.jar (1)" />
-        <item itemvalue="Application.MainTotem" />
         <item itemvalue="Application.MainServidor" />
-        <item itemvalue="Application.MainPantalla" />
         <item itemvalue="Application.MainEstadisticas" />
+        <item itemvalue="Application.MainPantalla" />
+        <item itemvalue="Application.MainTotem" />
+        <item itemvalue="JAR Application.colasdeespera.jar (1)" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -282,11 +244,8 @@
       <workItem from="1713645259126" duration="2074000" />
       <workItem from="1713723108041" duration="5888000" />
       <workItem from="1713741549935" duration="103000" />
-      <workItem from="1713741667063" duration="1334000" />
-      <workItem from="1713910534029" duration="7153000" />
-      <workItem from="1714088075299" duration="4735000" />
-      <workItem from="1714670074245" duration="13133000" />
-      <workItem from="1714684020183" duration="1032000" />
+      <workItem from="1713741667063" duration="703000" />
+      <workItem from="1714248719596" duration="585000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -352,23 +311,7 @@
       <option name="project" value="LOCAL" />
       <updated>1713533250233</updated>
     </task>
-    <task id="LOCAL-00009" summary="Diagrama UML">
-      <option name="closed" value="true" />
-      <created>1713742959058</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1713742959058</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Momento de inspiracion nocturno">
-      <option name="closed" value="true" />
-      <created>1714107627005</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1714107627005</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,9 +337,7 @@
     <MESSAGE value="sistema basico de conexion entre cliente servidor para poder aplicar las vistas" />
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica" />
-    <MESSAGE value="Diagrama UML" />
-    <MESSAGE value="Momento de inspiracion nocturno" />
-    <option name="LAST_COMMIT_MESSAGE" value="Momento de inspiracion nocturno" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
