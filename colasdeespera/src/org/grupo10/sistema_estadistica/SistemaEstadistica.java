@@ -67,8 +67,8 @@ public class SistemaEstadistica {
             throw new ClassNotFoundException("La respuesta del servidor no es una instancia de EstadisticaDTO");
         }
 
-        EstadisticaDTO estadistica = (EstadisticaDTO) res;
-        return estadistica;
+        EstadisticaDTO estadisticaDTO = (EstadisticaDTO) res;
+        return estadisticaDTO;
     }
 
 }

@@ -7,7 +7,7 @@ public class EstadisticaDTO implements Serializable {
     private int personasAtendidas;
     private double tiempoPromedio;
 
-    public EstadisticaDTO(int personasEspera, int personasAtendidas,double tiempoPromedio) {
+    public EstadisticaDTO(int personasEspera, int personasAtendidas, double tiempoPromedio) {
         this.personasEspera = personasEspera;
         this.personasAtendidas= personasAtendidas;
         this.tiempoPromedio= tiempoPromedio;

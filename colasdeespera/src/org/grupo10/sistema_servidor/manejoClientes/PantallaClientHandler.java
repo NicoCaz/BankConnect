@@ -1,7 +1,7 @@
 package org.grupo10.sistema_servidor.manejoClientes;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.SocketServer;
+import org.grupo10.sistema_servidor.StateSocketServerPrimario;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,13 +10,13 @@ import java.net.Socket;
 
 public class PantallaClientHandler extends BasicClientHandler {
     private Socket socket;
-    private SocketServer server;
+    private StateSocketServerPrimario server;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private boolean running = true;
     private int id;
 
-    public PantallaClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream, int id) {
+    public PantallaClientHandler(Socket socket, StateSocketServerPrimario server, ObjectInputStream inputStream, ObjectOutputStream outputStream, int id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;

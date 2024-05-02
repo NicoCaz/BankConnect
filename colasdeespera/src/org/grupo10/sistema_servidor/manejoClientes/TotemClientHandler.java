@@ -1,7 +1,8 @@
 package org.grupo10.sistema_servidor.manejoClientes;
 
+import org.grupo10.exception.ClienteRepetidoException;
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.SocketServer;
+import org.grupo10.sistema_servidor.StateSocketServerPrimario;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,7 +11,7 @@ import java.net.Socket;
 
 public class TotemClientHandler extends BasicClientHandler {
     private Socket socket;
-    private SocketServer server;
+    private StateSocketServerPrimario server;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private boolean running = true;
@@ -18,7 +19,7 @@ public class TotemClientHandler extends BasicClientHandler {
 
 
 
-    public TotemClientHandler(Socket socket, SocketServer server, ObjectInputStream inputStream, ObjectOutputStream outputStream,int id) {
+    public TotemClientHandler(Socket socket, StateSocketServerPrimario server, ObjectInputStream inputStream, ObjectOutputStream outputStream, int id) {
         this.socket = socket;
         this.server = server;
         this.inputStream = inputStream;
@@ -33,7 +34,7 @@ public class TotemClientHandler extends BasicClientHandler {
                 Object received = inputStream.readObject();
                 handleMessage(received);
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException | ClienteRepetidoException e) {
             e.printStackTrace();
         } finally {
             disconnectClient();
@@ -41,7 +42,7 @@ public class TotemClientHandler extends BasicClientHandler {
     }
 
     @Override
-    public void handleMessage(Object message) {
+    public void handleMessage(Object message) throws ClienteRepetidoException {
         System.out.println("Mensaje recibido de cliente Totem: " + message);
         if(message instanceof Turno){
             server.addTurnosEnEspera((Turno) message);

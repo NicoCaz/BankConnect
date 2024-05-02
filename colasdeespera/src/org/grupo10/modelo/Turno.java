@@ -1,12 +1,10 @@
 package org.grupo10.modelo;
 
 
-import org.grupo10.exception.ClienteRepetidoException;
-
 import java.io.Serializable;
 import java.util.Date;
 
-public class Turno implements ITurno, Serializable {
+public class Turno implements Serializable, Cloneable{
 
     private static int cantidadDeTurnos=0;
     private String numeroTurno;
@@ -22,8 +20,15 @@ public class Turno implements ITurno, Serializable {
         this.horarioEntrada = new Date();
     }
 
-    public Turno(){
-
+    @Override
+    protected Object clone()  {
+        Object clone = null;
+        try{
+            clone = super.clone();
+        }catch(CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+        return clone;
     }
 
     public String getNumeroTurno() {
@@ -60,13 +65,5 @@ public class Turno implements ITurno, Serializable {
         this.horarioSalida = horarioSalida;
     }
 
-    @Override
-    public void agregarTurno(Cliente cliente) throws ClienteRepetidoException {
 
-    }
-
-    @Override
-    public Cliente sacarTurno() {
-        return null;
-    }
 }

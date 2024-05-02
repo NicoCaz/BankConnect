@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ControladorEstadistica implements ActionListener {
     private final VistaEstadisticas vista;
     private SistemaEstadistica sistemaEstadistica = new SistemaEstadistica();
-    private EstadisticaDTO estadisticaDTO=null;
+    private EstadisticaDTO estadisticaDTO =null;
 
     public ControladorEstadistica() {
         this.vista = new VistaEstadisticas(this);

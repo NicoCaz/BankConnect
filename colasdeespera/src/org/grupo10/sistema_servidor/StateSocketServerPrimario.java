@@ -1,10 +1,17 @@
 package org.grupo10.sistema_servidor;
 
+import org.grupo10.exception.ClienteRepetidoException;
+import org.grupo10.logs.LogLlamadosTXT;
+import org.grupo10.logs.LogRegistrosTXT;
+import org.grupo10.modelo.Fila;
+import org.grupo10.modelo.FilaFinalizada;
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.dto.EstadisticaDTO;
-import org.grupo10.modelo.dto.TurnoFinalizadoDTO;
+import org.grupo10.modelo.TurnoFinalizado;
+import org.grupo10.repository.RepoClientesTXT;
 import org.grupo10.sistema_servidor.manejoClientes.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,8 +22,15 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class SocketServer extends Thread{
+public class StateSocketServerPrimario implements IStateServidor{
     private static final int PORT = 8080;
+    private ControladorServidor servidor;
+    private ServerSocket serverSocket;
+    private LogLlamadosTXT logLlamados;
+    private LogRegistrosTXT logRegistros;
+    private RepoClientesTXT repoClientes;
+    private boolean cambios;
+
     private List<TotemClientHandler> Totems = new ArrayList<>();
     private List<BoxClientHandler> boxClients = new ArrayList<>();
     private List<EstadisticaClientHandler> EstadisticaClients = new ArrayList<>();
@@ -26,12 +40,32 @@ public class SocketServer extends Thread{
     private int idEstadisticas=0;
     private int idTotems=0;
     //////////////////////////////////////////////////////////////////////////////////////////
-    private List<Turno> turnosEnEspera = new ArrayList<>();
-    private List<TurnoFinalizadoDTO> turnosFinalizados = new ArrayList<>();
+    private Fila turnosEnEspera ;
+    private FilaFinalizada turnosFinalizados ;
 
 
+
+
+    public StateSocketServerPrimario(ControladorServidor servidor) throws IOException {
+        this.servidor = servidor;
+        int port = this.servidor.getPort();
+        this.serverSocket = new ServerSocket(port);
+        this.leerRepo();
+        this.abrirLogs();
+        this.cambios = true;
+        this.turnosEnEspera = new Fila();
+        this.turnosFinalizados =  new FilaFinalizada();
+        System.out.println("Se inició el servidor primario en el puerto " + port + ".");
+    }
+
+
+    public StateSocketServerPrimario(ControladorServidor servidor, Fila turnosEnEspera,FilaFinalizada turnosFinalizados) throws IOException{
+        this(servidor);
+        this.turnosEnEspera = turnosEnEspera;
+        this.turnosFinalizados=turnosFinalizados;
+    }
     @Override
-    public void run() {
+    public void esperar() {
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Servidor iniciado en el puerto " + PORT);
@@ -66,17 +100,44 @@ public class SocketServer extends Thread{
         }
     }
 
-    public void iniciarServer(){
-        Thread hilo = new Thread(this);
-        hilo.start();
+    public void leerRepo() {
+        try {
+            this.repoClientes = new RepoClientesTXT("repo.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Hubo un error al leer el repositorio de clientes. Verificar que el archivo no esté dañado.");
+            // No tiene sentido utilizar el servidor sin clientes.
+            System.exit(0);
+        }
     }
+
+    public void abrirLogs() {
+        // Asignación de archivos de log
+        try {
+            this.logLlamados = new LogLlamadosTXT("logLlamados.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Hubo un error al crear/leer el historial de llamados.");
+        }
+        try {
+            this.logRegistros = new LogRegistrosTXT("logRegistros.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Hubo un error al crear/leer el historial de registros.");
+        }
+    }
+    public boolean getCambios() {
+        return this.cambios;
+    }
+
+    public synchronized void setCambios(boolean b) {
+        this.cambios = b;
+    }
+
 
     public void respuesta(Object res,BasicClientHandler clientHandler) {
 
 
     }
 
-    public void siguienteTurno(Turno res,BoxClientHandler client){
+    public synchronized void siguienteTurno(Turno res,BoxClientHandler client){
         if(res instanceof Turno){
             client.sendObject(res);
             Iterator<PantallaClientHandler> iterador = this.PantallasClients.iterator();
@@ -84,25 +145,23 @@ public class SocketServer extends Thread{
                 PantallaClientHandler pantalla = iterador.next();
                 pantalla.sendObject(res);
             }
-            TurnoFinalizadoDTO turnofinalizado = new TurnoFinalizadoDTO(res);
+            TurnoFinalizado turnofinalizado = new TurnoFinalizado(res);
             turnofinalizado.setHorarioSalida(new Date());
-            this.turnosFinalizados.add(turnofinalizado);
+            this.turnosFinalizados.agregarTurno(turnofinalizado);
         }else{
             client.sendObject(res);
         }
 
 
-
-
     }
-    public void calculoEstadistica(EstadisticaClientHandler client){
-        int cantEspera=getTurnosEnEspera();
-        int cantAtendidos=getTurnosAtendidos();
+    public  synchronized void calculoEstadistica(EstadisticaClientHandler client){
+        int cantEspera=cantidadEnEspera();
+        int cantAtendidos=cantidadFinalizado();
         double  tiempoPromedio = 0;
-        Iterator<TurnoFinalizadoDTO> iterator= this.turnosFinalizados.iterator();
+        Iterator<TurnoFinalizado> iterator= this.turnosFinalizados.getTurnos().iterator();
 
         while(iterator.hasNext()) {
-            TurnoFinalizadoDTO turno= iterator.next();
+            TurnoFinalizado turno= iterator.next();
             tiempoPromedio+=Math.abs(turno.getHorarioSalida().getTime()-turno.getT().getHorarioEntrada().getTime());
         }
 
@@ -119,29 +178,18 @@ public class SocketServer extends Thread{
             aux.sendObject(res);
         }
 
-//        client.sendObject(res);
     }
 
-    public void cantidadEnEspera(){
-        Iterator<BoxClientHandler> iterador = this.boxClients.iterator();
-        while (iterador.hasNext()) {
-            BoxClientHandler box = iterador.next();
-            box.mandoPersonasEnEspera(this.getTurnosEnEspera());
-        }
-    }
 
-    public void finalizarTurno(TurnoFinalizadoDTO finalizadoDTO){
-        this.turnosFinalizados.add(finalizadoDTO);
+
+    public void finalizarTurno(TurnoFinalizado finalizadoDTO){
+        this.turnosFinalizados.agregarTurno(finalizadoDTO);
     }
 
     public Turno getUltimoTurno(BoxClientHandler box){
 
-        if(!turnosEnEspera.isEmpty()){
-            Turno ultimoturno = this.turnosEnEspera.get(0);
-            this.turnosEnEspera.remove(ultimoturno);
-            for (Turno e : this.turnosEnEspera) {
-                System.out.println(e.getDni());
-            }
+        if(turnosEnEspera.cantidadEspera()>0){
+            Turno ultimoturno = this.turnosEnEspera.sacarTurno();
             ultimoturno.setBox(box.getID());
             //mandarTurnoPantallas(ultimoturno);
             System.out.println("vuelvo de llamar a las pantalias " + ultimoturno);
@@ -152,23 +200,22 @@ public class SocketServer extends Thread{
 
     }
 
-    public Integer getTurnosEnEspera() {
-        return turnosEnEspera.size();
+    public Fila getTurnosEnEspera() {
+        return this.turnosEnEspera;
     }
-    public Integer getTurnosAtendidos() {
-        return turnosFinalizados.size();
-    }
-
-    public void addTurnosEnEspera(Turno turnosEnEspera) {
-
-        this.turnosEnEspera.add(turnosEnEspera);
-        for (Turno e : this.turnosEnEspera) {
-            System.out.println(e.getDni());
-        }
+    public FilaFinalizada getTurnosAtendidos() {
+        return this.turnosFinalizados;
     }
 
-
-    public void enviaTurnoBox(Turno ultimoTurno, BoxClientHandler boxClientHandler) {
-        boxClientHandler.sendObject(ultimoTurno);
+    public void addTurnosEnEspera(Turno turnosEnEspera) throws ClienteRepetidoException {
+        this.turnosEnEspera.agregarTurno(turnosEnEspera);
     }
+
+    public int cantidadEnEspera(){
+        return this.turnosEnEspera.cantidadEspera();
+    }
+    public int cantidadFinalizado(){
+        return this.turnosFinalizados.cantidadFinalizada();
+    }
+
 }

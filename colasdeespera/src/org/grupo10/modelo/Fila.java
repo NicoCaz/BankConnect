@@ -5,19 +5,19 @@ import org.grupo10.exception.ClienteRepetidoException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Fila implements ITurno, Serializable, Cloneable {
-    private ArrayList<Cliente> fila = new ArrayList();
+public class Fila implements  Serializable, Cloneable {
+    private ArrayList<Turno> fila = new ArrayList();
 
 
-    public void agregarTurno(Cliente cliente) throws ClienteRepetidoException {
-        if (!this.fila.contains(cliente)) {
-            this.fila.add(cliente);
+    public void agregarTurno(Turno turno) throws ClienteRepetidoException {
+        if (!this.fila.contains(turno)) {
+            this.fila.add(turno);
         } else
             throw new ClienteRepetidoException();
     }
 
-    public Cliente sacarTurno() {
-        Cliente retorno = null;
+    public Turno sacarTurno() {
+        Turno retorno = null;
         if (this.fila.size() > 0) {
             retorno = this.fila.get(0);
             this.fila.remove(0);
@@ -25,6 +25,10 @@ public class Fila implements ITurno, Serializable, Cloneable {
         return retorno;
     }
 
+
+    public int cantidadEspera(){
+        return this.fila.size();
+    }
     // ARREGLAR
     @Override
     public Object clone() {
@@ -32,8 +36,8 @@ public class Fila implements ITurno, Serializable, Cloneable {
         try {
             f = (Fila) super.clone();
             f.fila = new ArrayList<>();
-            for (Cliente c: this.fila)
-                f.fila.add((Cliente) c.clone());
+            for (Turno c: this.fila)
+                f.fila.add((Turno) c.clone());
         } catch (CloneNotSupportedException e) {
             //Nunca entra
             e.printStackTrace();

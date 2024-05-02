@@ -1,17 +1,25 @@
-package org.grupo10.modelo.dto;
-
-import org.grupo10.modelo.Turno;
+package org.grupo10.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class TurnoFinalizadoDTO implements Serializable {
+public class TurnoFinalizado implements Serializable, Cloneable {
     private Turno t;
     private Date horarioSalida;
 
-    public TurnoFinalizadoDTO(Turno t) {
+    public TurnoFinalizado(Turno t) {
         this.t = t;
         this.horarioSalida = new Date();
+    }
+    @Override
+    protected Object clone()  {
+        Object clone = null;
+        try{
+            clone = super.clone();
+        }catch(CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+        return clone;
     }
 
     public Turno getT() {
