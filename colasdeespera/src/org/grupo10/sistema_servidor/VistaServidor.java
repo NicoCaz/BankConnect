@@ -13,7 +13,7 @@ public class VistaServidor extends JFrame implements IVista {
     private ActionListener controlador;
 
     public VistaServidor(ActionListener controlador) {
-        setTitle("Vista del Servidor");
+        setTitle("Servidor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 200);
         setLocationRelativeTo(null);

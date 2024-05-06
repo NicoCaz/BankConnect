@@ -20,7 +20,7 @@ public class ControladorServidor{
 
     public ControladorServidor(){
         this.leerArchivo();
-
+        //this.vista = new VistaServidor((ActionListener) this);
         // Trata de conectarse al otro servidor para ver si es primario o secundario
         try {
             System.out.println("Intentando conectar al servidor " + ipOtro + ":" + portOtro + ".");

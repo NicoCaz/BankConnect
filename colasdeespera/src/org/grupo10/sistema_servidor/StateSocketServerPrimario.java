@@ -44,8 +44,6 @@ public class StateSocketServerPrimario implements IStateServidor{
     private FilaFinalizada turnosFinalizados ;
 
 
-
-
     public StateSocketServerPrimario(ControladorServidor servidor) throws IOException {
         this.servidor = servidor;
         int port = this.servidor.getPort();
@@ -67,8 +65,8 @@ public class StateSocketServerPrimario implements IStateServidor{
     @Override
     public void esperar() {
         try {
-            ServerSocket serverSocket = new ServerSocket(PORT);
-            System.out.println("Servidor iniciado en el puerto " + PORT);
+            //ServerSocket serverSocket = new ServerSocket(PORT);
+            System.out.println("Servidor iniciado en el puerto " + this.serverSocket.getLocalPort());
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
@@ -81,7 +79,6 @@ public class StateSocketServerPrimario implements IStateServidor{
                 System.out.println(var);
                 if ("Box".equals(var)) {
                     clientHandler = new BoxClientHandler(clientSocket, this, inputStream, outputStream,++this.idBoxs);
-                    System.out.println("cantidad de box "+this.idBoxs);
                     boxClients.add((BoxClientHandler) clientHandler);
                 } else if("Totem".equals(var)) {
                     clientHandler = new TotemClientHandler(clientSocket, this, inputStream, outputStream,++this.idTotems);
@@ -154,7 +151,7 @@ public class StateSocketServerPrimario implements IStateServidor{
 
 
     }
-    public  synchronized void calculoEstadistica(EstadisticaClientHandler client){
+    public synchronized void calculoEstadistica(EstadisticaClientHandler client){
         int cantEspera=cantidadEnEspera();
         int cantAtendidos=cantidadFinalizado();
         double  tiempoPromedio = 0;
