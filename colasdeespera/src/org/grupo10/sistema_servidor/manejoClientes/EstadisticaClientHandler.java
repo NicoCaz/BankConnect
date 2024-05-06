@@ -1,76 +1,76 @@
 package org.grupo10.sistema_servidor.manejoClientes;
 
-import org.grupo10.sistema_servidor.StateSocketServerPrimario;
+import org.grupo10.modelo.Fila;
+import org.grupo10.modelo.FilaFinalizada;
+import org.grupo10.modelo.TurnoFinalizado;
+import org.grupo10.modelo.dto.EstadisticaDTO;
+import org.grupo10.sistema_servidor.ControladorServidor;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Iterator;
 
-public class EstadisticaClientHandler extends BasicClientHandler {
-    private Socket socket;
-    private StateSocketServerPrimario server;
-    private ObjectInputStream inputStream;
-    private ObjectOutputStream outputStream;
-    private boolean running = true;
-    private int id;
+public class EstadisticaClientHandler extends Thread {
+    private int nroEstadistica;
+    private boolean running;
+    private PrintWriter out;
+    private BufferedReader in;
+    private String ip;
 
-    public EstadisticaClientHandler(Socket socket, StateSocketServerPrimario server, ObjectInputStream inputStream, ObjectOutputStream outputStream, int id) {
-        this.socket = socket;
-        this.server = server;
-        this.inputStream = inputStream;
-        this.outputStream = outputStream;
-        this.id = id;
+    public EstadisticaClientHandler(Socket socket) {
+        try {
+            this.ip = socket.getInetAddress().getHostAddress();
+            this.out = new PrintWriter(socket.getOutputStream(), true);
+            this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            this.nroEstadistica = Integer.parseInt(this.in.readLine());
+            // Chequea si el número de box ya está en uso
+            this.running = true;
+        } catch (IOException e) {
+            System.out.println("ERROR HILO ESTADISTICA: " + e.getMessage());
+        }
     }
 
-    @Override
+    public PrintWriter getOut(){
+      return this.out;
+    }
     public void run() {
-        try {
-            while (running) {
+        Fila turnosEnEspera;
+        FilaFinalizada turnosFinalizado;
+        while (running) {
+            try {
+                in.readLine();
+                synchronized (ControladorServidor.getInstance().getTurnosEnEspera().getTurnos()  ) {
+                    turnosEnEspera = ControladorServidor.getInstance().getTurnosEnEspera();
+                }
+                synchronized (ControladorServidor.getInstance().getTurnosFinalizados().getTurnos()){
+                    turnosFinalizado=ControladorServidor.getInstance().getTurnosFinalizados();
+                }
+                int cantEspera=turnosEnEspera.cantidadEspera();
+                int cantAtendidos=turnosFinalizado.cantidadFinalizada();
+                double  tiempoPromedio = 0;
 
-                Object received = inputStream.readObject();
+                Iterator<TurnoFinalizado> iterator= turnosFinalizado.getTurnos().iterator();
+                while(iterator.hasNext()) {
+                    TurnoFinalizado turno= iterator.next();
+                    tiempoPromedio+=Math.abs(turno.getHorarioSalida().getTime()-turno.getT().getHorarioEntrada().getTime());
+                }
 
-                handleMessage(received);
+                tiempoPromedio=(tiempoPromedio/cantAtendidos);
+                //tiempoPromedio= TimeUnit.SECONDS.convert(tiempoPromedio, TimeUnit.MILLISECONDS) % 60;
 
+                EstadisticaDTO res = new EstadisticaDTO(cantEspera,cantAtendidos,tiempoPromedio);
+
+                    ControladorServidor.getInstance().setCambios(true);
+                    ControladorServidor.getInstance().enviarEstadisticas((EstadisticaDTO)res);
+
+                out.println(res);
+            } catch (IOException e1) {
+                running = false;
+                System.out.println("Se desconectó el panel de estadistica " + this.nroEstadistica + " con IP " + this.ip);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
-            disconnectClient();
         }
-    }
-
-    @Override
-    public void handleMessage(Object message) {
-        if(message instanceof String) {
-            if (message.equals("Pido estadistica")) {
-                server.calculoEstadistica(this);
-            }
-        }
-    }
-
-    @Override
-    public void sendObject(Object message) {
-        try {
-            outputStream.writeObject(message);
-            outputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void disconnectClient() {
-        running = false;
-        try {
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public int getID() {
-        return this.id;
     }
 }

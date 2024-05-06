@@ -24,7 +24,9 @@ public class Fila implements  Serializable, Cloneable {
         }
         return retorno;
     }
-
+    public ArrayList<Turno> getTurnos(){
+        return this.fila;
+    }
 
     public int cantidadEspera(){
         return this.fila.size();
