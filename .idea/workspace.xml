@@ -14,10 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica">
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/ServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/I_DNI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/totemconfig.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/StateSocketServerPrimario.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/StateSocketServerPrimario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/VistaServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/VistaServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/ControladorTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/SistemaTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -251,7 +253,7 @@
       <workItem from="1714685317449" duration="2248000" />
       <workItem from="1714766149341" duration="3943000" />
       <workItem from="1714775886525" duration="2056000" />
-      <workItem from="1715000736838" duration="1168000" />
+      <workItem from="1715000736838" duration="8364000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
