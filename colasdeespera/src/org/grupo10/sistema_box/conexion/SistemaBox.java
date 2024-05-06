@@ -1,11 +1,8 @@
-package org.grupo10.sistema_box;
+package org.grupo10.sistema_box.conexion;
 
+import org.grupo10.exception.BoxException;
+import org.grupo10.sistema_box.controlador.ControladorBox;
 
-import org.grupo10.modelo.Turno;
-import org.grupo10.vista.IVista;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,14 +12,14 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ControladorBox  {
+public class SistemaBox {
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
     private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
     private int serverActivo, nroBox;
 
-    public ControladorBox(int nroBox, String ip1, int port1, String ip2, int port2) throws IOException{
+    public SistemaBox(int nroBox, String ip1, int port1, String ip2, int port2) throws IOException , BoxException {
         this.nroBox = nroBox;
         servers.add(new AbstractMap.SimpleEntry<>(ip1, port1));
         servers.add(new AbstractMap.SimpleEntry<>(ip2, port2));
@@ -30,16 +27,15 @@ public class ControladorBox  {
         // Conexión a servidor
         this.serverActivo = 0;
         try {
-            ControladorLlamados.getInstance().abrirMensajeConectando();
+            ControladorBox.getInstance().abrirMensajeConectando();
             this.conectar(servers.get(this.serverActivo));
-            ControladorLlamados.getInstance().cerrarMensajeConectando();
+            ControladorBox.getInstance().cerrarMensajeConectando();
         } catch (IOException e) {
             this.reconectar();
         }
     }
 
-    @Override
-    public String recibirDNILlamado() throws IOException, BoxException {
+    public String recibirDNILlamado() throws IOException, BoxException  {
         this.out.println("SIGUIENTE");
         try {
             return this.in.readLine(); // Recibe DNI del servidor
@@ -68,8 +64,8 @@ public class ControladorBox  {
     }
 
     // Maneja el reintento y el cambio de servidor
-    public void reconectar() throws IOException, BoxException {
-        ControladorLlamados.getInstance().abrirMensajeConectando();
+    public void reconectar() throws IOException , BoxException {
+        ControladorBox.getInstance().abrirMensajeConectando();
         try {
             // RETRY: Intenta conectar al actual
             this.conectar(servers.get(this.serverActivo));
@@ -84,8 +80,6 @@ public class ControladorBox  {
                 this.conectar(servers.get(this.serverActivo));
             }
         }
-        ControladorLlamados.getInstance().cerrarMensajeConectando();
+        ControladorBox.getInstance().cerrarMensajeConectando();
     }
-
-
 }

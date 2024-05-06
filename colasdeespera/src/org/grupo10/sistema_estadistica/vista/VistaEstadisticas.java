@@ -1,4 +1,4 @@
-package org.grupo10.sistema_estadistica;
+package org.grupo10.sistema_estadistica.vista;
 
 import org.grupo10.vista.IVista;
 

@@ -1,4 +1,4 @@
-package org.grupo10.sistema_box;
+package org.grupo10.sistema_box.vista;
 
 import org.grupo10.vista.IVista;
 
@@ -12,7 +12,6 @@ public class VistaBox extends JFrame implements IVista {
     private ActionListener controlador;
     private JButton llamarSiguienteButton, finalizarTurnoButton;
     private int numeroAtendido = 0;
-    private int personasEnEspera = 25;
 
     public VistaBox(ActionListener controlador) {
         setTitle("Box N°01");

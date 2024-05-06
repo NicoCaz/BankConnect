@@ -1,5 +1,6 @@
-package org.grupo10.sistema_pantalla;
+package org.grupo10.sistema_pantalla.vista;
 
+import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 import org.grupo10.vista.IVista;
 
 import javax.swing.*;

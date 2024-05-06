@@ -1,4 +1,4 @@
-package org.grupo10.sistema_totem;
+package org.grupo10.sistema_totem.vista;
 import org.grupo10.vista.IVista;
 
 import javax.swing.*;
