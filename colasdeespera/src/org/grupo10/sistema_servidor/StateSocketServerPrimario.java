@@ -48,8 +48,8 @@ public class StateSocketServerPrimario implements IStateServidor{
         this.servidor = servidor;
         int port = this.servidor.getPort();
         this.serverSocket = new ServerSocket(port);
-        this.leerRepo();
-        this.abrirLogs();
+        //this.leerRepo();
+        //this.abrirLogs();
         this.cambios = true;
         this.turnosEnEspera = new Fila();
         this.turnosFinalizados =  new FilaFinalizada();

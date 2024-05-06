@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 
 public class RedundanciaHandler extends Thread implements IRedundancia {
     private StateSocketServerPrimario servidor;
-
     private boolean running;
     private ObjectOutputStream out;
     private String ipOtro;

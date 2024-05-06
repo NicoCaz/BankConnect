@@ -5,17 +5,14 @@ import org.grupo10.vista.IVista;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 
 public class ControladorServidor{
     private IVista vista;
-
     private IStateServidor estado;
 
-
     // Parámetros del archivo de configuración
-    private String ipOtro;
+    private String ip,ipOtro;
     private int port, portOtro;
 
     public ControladorServidor(){
@@ -40,18 +37,26 @@ public class ControladorServidor{
     }
 
     public void leerArchivo() {
-        try {
-            StringTokenizer tokens;
-            FileReader fr = new FileReader("configServidor.cfg");
-            BufferedReader br = new BufferedReader(fr);
-            this.port = Integer.parseInt(br.readLine());
-            tokens = new StringTokenizer(br.readLine(), ":");
-            this.ipOtro = tokens.nextToken();
-            this.portOtro = Integer.parseInt(tokens.nextToken());
-            fr.close();
+        String currentDir = System.getProperty("user.dir");
+        String archivoTxt = currentDir + "\\colasdeespera\\src\\org\\grupo10\\sistema_servidor\\serverconfig.txt";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
+            String linea;
+
+            //Leo el Servidor Principal
+            linea = br.readLine();
+            String[] partes = linea.split(":");
+            ip = partes[0];
+            port = Integer.parseInt(partes[1]);
+
+            //Leo el Servidor de Respaldo
+            linea = br.readLine();
+            partes = linea.split(":");
+            ipOtro = partes[0];
+            portOtro = Integer.parseInt(partes[1]);
+
         } catch (IOException e) {
-            System.out.println("Hubo un error al leer el archivo de configuración.");
-            System.exit(0);
+            System.err.println("Error al leer el archivo: " + e.getMessage());
         }
     }
     public void empezar() {

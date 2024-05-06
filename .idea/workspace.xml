@@ -14,11 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/ServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/I_DNI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/totemconfig.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/MainServidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/ControladorTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/StateSocketServerPrimario.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/StateSocketServerPrimario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/RedundanciaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/RedundanciaHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/SistemaTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,48 +70,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.MainBox.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainEstadisticas.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainPantalla.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainServidor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainTotem.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PruebaServer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.QueueManager.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Servidor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SistemaBox.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SistemaEstadistica.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SistemaTotem.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SocketClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SocketServer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TurnosLlamados.executor&quot;: &quot;Run&quot;,
-    &quot;Application.VistaServidor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.VistaTotem.executor&quot;: &quot;Run&quot;,
-    &quot;JAR Application.colasdeespera.jar (1).executor&quot;: &quot;Run&quot;,
-    &quot;JAR Application.colasdeespera.jar (2).executor&quot;: &quot;Run&quot;,
-    &quot;JAR Application.colasdeespera.jar.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nico/Desktop/proyectoAyD2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.MainBox.executor": "Run",
+    "Application.MainEstadisticas.executor": "Run",
+    "Application.MainPantalla.executor": "Run",
+    "Application.MainServidor.executor": "Run",
+    "Application.MainTotem.executor": "Run",
+    "Application.PruebaServer.executor": "Run",
+    "Application.QueueManager.executor": "Run",
+    "Application.Servidor.executor": "Run",
+    "Application.SistemaBox.executor": "Run",
+    "Application.SistemaEstadistica.executor": "Run",
+    "Application.SistemaTotem.executor": "Run",
+    "Application.SocketClient.executor": "Run",
+    "Application.SocketServer.executor": "Run",
+    "Application.TurnosLlamados.executor": "Run",
+    "Application.VistaServidor.executor": "Run",
+    "Application.VistaTotem.executor": "Run",
+    "Application.org.grupo10.sistema_servidor.MainServidor.executor": "Run",
+    "JAR Application.colasdeespera.jar (1).executor": "Run",
+    "JAR Application.colasdeespera.jar (2).executor": "Run",
+    "JAR Application.colasdeespera.jar.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Nico/Desktop/proyectoAyD2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.grupo10.negocio" />
@@ -119,13 +121,14 @@
       <recent name="org.grupo10.modelo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.grupo10.sistema_servidor" />
       <recent name="org.grupo10.controlador" />
       <recent name="org.grupo10.modelo.dto" />
       <recent name="org.grupo10.negocio.manejoClientes" />
       <recent name="org.grupo10.negocio" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainServidor">
+  <component name="RunManager">
     <configuration name="MainBox" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -253,7 +256,7 @@
       <workItem from="1714685317449" duration="2248000" />
       <workItem from="1714766149341" duration="3943000" />
       <workItem from="1714775886525" duration="2056000" />
-      <workItem from="1715000736838" duration="8364000" />
+      <workItem from="1715000736838" duration="12255000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

@@ -32,7 +32,8 @@ public class SistemaTotem implements I_DNI{
     //configura los servidores leidos en totemconfig.txt
     //El server primario esta configurado en el 0
     private void configuradorTXT(){
-        String archivoTxt = "totemconfig.txt";
+        String currentDir = System.getProperty("user.dir");
+        String archivoTxt = currentDir + "\\colasdeespera\\src\\org\\grupo10\\sistema_totem\\totemconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
