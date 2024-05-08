@@ -2,6 +2,7 @@ package org.grupo10.sistema_box.controlador;
 
 
 
+import org.grupo10.exception.BoxException;
 import org.grupo10.sistema_box.conexion.SistemaBox;
 import org.grupo10.sistema_box.vista.VistaBox;
 
@@ -14,6 +15,7 @@ public class ControladorBox implements ActionListener {
     private VistaBox ventana;
     private static ControladorBox instance = null;
     private SistemaBox dni_llamado;
+    private int nroBox=0;
 
     public static void main(String[] args) {
         ControladorBox.getInstance().comenzar();
@@ -38,7 +40,7 @@ public class ControladorBox implements ActionListener {
             BufferedReader br = new BufferedReader(new FileReader(archivoTxt));
             String linea;
             linea = br.readLine();
-            int nroBox = Integer.parseInt(linea);
+            this.nroBox = Integer.parseInt(linea);
             //Leo el Servidor Principal
             linea = br.readLine();
             String[] partes = linea.split(":");
@@ -52,21 +54,22 @@ public class ControladorBox implements ActionListener {
             int portOtro = Integer.parseInt(partes[1]);
 
 
-            this.ventana = new VistaBox(nroBox);
+            this.ventana = new VistaBox(this.nroBox);
 
             new Thread(() -> { // En otro thread para no interferir con GUILlamados
                 try {
                     this.dni_llamado = new SistemaBox(nroBox, ip, port, ipOtro, portOtro);
                     // Activa el botón Siguiente (si no hubo IOException)
-                    this.ventana.addActionListenerBoton(this);
+                    this.ventana.prenderLlamar();
                 } catch (IOException e) {
-                    this.ventana.mensajeErrorConexion();
+                    this.ventana.ventanaError("Hubo un error");
+
                 } catch (BoxException e) {
-                    this.ventana.mensajeBoxOcupado();
+                    throw new RuntimeException(e);
                 }
             }).start();
         } catch (IOException e) {
-            this.ventana.mensajeErrorArchivo();
+            this.ventana.ventanaError("Hubo un error en la lectura del archivo");
         }
     }
 
@@ -77,13 +80,13 @@ public class ControladorBox implements ActionListener {
             try {
                 msg = this.dni_llamado.recibirDNILlamado();
                 if (msg.equals("NULL"))
-                    this.ventana.mensajeFilaVacia();
+                    this.ventana.ventanaError("Fila Vacia");
                 else
                     this.ventana.setDNI(msg);
             } catch (IOException e1) {
-                this.ventana.mensajeErrorConexion();
+                this.ventana.ventanaError("Error en la conexion");
             } catch (BoxException e2) {
-                this.ventana.mensajeBoxOcupado();
+                this.ventana.ventanaError("El box esta ocupado");
             }
         }).start();
     }
@@ -95,5 +98,7 @@ public class ControladorBox implements ActionListener {
     public void cerrarMensajeConectando() {
         this.ventana.cerrarMensajeConectando();
     }
+
+
 
 }

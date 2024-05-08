@@ -13,33 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Simplifico el codigo">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/exception/EstadisticaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/IEstadisticas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/IPantalla.java" afterDir="false" />
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/exception/LogException.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/exception/BoxException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/conexion/SistemaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/SistemaBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/SistemaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/VistaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/I_DNI.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/I_DNI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/totemconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/totemconfig.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,7 +354,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715031044540</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)">
+      <option name="closed" value="true" />
+      <created>1715033385866</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715033385866</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +401,8 @@
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="Creo el DTO de estadisticas y agrego logica para poder enviarla a la pantalla de estadistica" />
     <MESSAGE value="Simplifico el codigo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplifico el codigo" />
+    <MESSAGE value="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,24 +1,26 @@
 package org.grupo10.sistema_box.vista;
 
+import org.grupo10.sistema_box.controlador.ControladorBox;
 import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class VistaBox extends JFrame implements IVista {
+public class VistaBox extends JFrame {
 
     private JLabel numeroAtendidoLabel, personasEnEsperaLabel;
-    private ActionListener controlador;
     private JButton llamarSiguienteButton, finalizarTurnoButton;
     private int numeroAtendido = 0;
+    private ControladorBox controlador=null;
 
-    public VistaBox(ActionListener controlador) {
-        setTitle("Box N°01");
+    public VistaBox(int numBox) {
+        this.controlador = ControladorBox.getInstance();
+        setTitle("Box: " + numBox);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 300);
         setLocationRelativeTo(null);
-        this.controlador = controlador;
+
 
         // Crear los componentes de la interfaz
         numeroAtendidoLabel = new JLabel("Numero atendido: " + numeroAtendido);
@@ -46,22 +48,7 @@ public class VistaBox extends JFrame implements IVista {
         //prenderLlamar();
     }
 
-    @Override
-    public void cerrar() {
-    }
 
-    @Override
-    public void mostrar() {
-        setVisible(true);
-    }
-
-    @Override
-    public void actualizar() {
-    }
-
-    @Override
-    public void ventanaConfirmacion(String msg) {
-    }
 
     @Override
     public void ventanaError(String msg) {
@@ -83,29 +70,17 @@ public class VistaBox extends JFrame implements IVista {
 
     }
 
-    @Override
-    public void setActionListener(ActionListener actionListener) {
-        this.controlador = actionListener;
+    public void dniLLamado(String dni){
+        this.numeroAtendidoLabel.setText("Numero atendido: " + dni);
     }
 
-    @Override
-    public JLabel getDisplayLabel() {
-        return numeroAtendidoLabel;
-    }
-
-    @Override
-    public StringBuilder getInputBuffer() {
-        return null;
-    }
-
-    @Override
     public void apagarLlamar() {
 
         llamarSiguienteButton.setEnabled(false);
         finalizarTurnoButton.setEnabled(true);
     }
 
-    @Override
+
     public void prenderLlamar() {
         llamarSiguienteButton.setEnabled(true);
         finalizarTurnoButton.setEnabled(false);
