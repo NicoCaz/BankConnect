@@ -82,7 +82,7 @@ public class ControladorBox implements ActionListener {
                 if (msg.equals("NULL"))
                     this.ventana.ventanaError("Fila Vacia");
                 else
-                    this.ventana.setDNI(msg);
+                    this.ventana.dniLLamado(msg);
             } catch (IOException e1) {
                 this.ventana.ventanaError("Error en la conexion");
             } catch (BoxException e2) {
@@ -98,7 +98,4 @@ public class ControladorBox implements ActionListener {
     public void cerrarMensajeConectando() {
         this.ventana.cerrarMensajeConectando();
     }
-
-
-
 }

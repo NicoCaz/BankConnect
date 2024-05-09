@@ -19,4 +19,5 @@ public interface IVista {
     void apagarLlamar();
 
     void prenderLlamar();
+
 }

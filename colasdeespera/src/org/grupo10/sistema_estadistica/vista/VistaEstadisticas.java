@@ -1,5 +1,6 @@
 package org.grupo10.sistema_estadistica.vista;
 
+import org.grupo10.sistema_estadistica.controlador.ControladorEstadistica;
 import org.grupo10.vista.IVista;
 
 import javax.swing.*;
@@ -7,19 +8,22 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class VistaEstadisticas extends JFrame implements IVista {
+    private final JOptionPane optionPaneConectando;
+    private final JDialog dialogoConectando;
     private JLabel personasEnEsperaLabel, personasAtendidaLabel, tiempoPromedioLabel;
     private JButton refreshButton;
-    private ActionListener controlador;
+    private ControladorEstadistica controlador;
     private int personasEnEspera = 0;
     private int personasAtendidas = 0;
     private int tiempoPromedio = 0; // 15 minutos y 32 segundos
 
-    public VistaEstadisticas(ActionListener controlador) {
+    public VistaEstadisticas() {
+        this.controlador = ControladorEstadistica.getInstance();
         setTitle("Estadisticas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 300);
         setLocationRelativeTo(null);
-        this.controlador = controlador;
+
 
         // Crear los componentes de la interfaz
         personasEnEsperaLabel = new JLabel("Personas en espera: " + personasEnEspera);
@@ -43,6 +47,46 @@ public class VistaEstadisticas extends JFrame implements IVista {
         panel.add(tiempoPromedioLabel);
         panel.add(refreshButton);
         add(panel, BorderLayout.CENTER);
+
+        this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
+                JOptionPane.INFORMATION_MESSAGE, JOptionPane.CANCEL_OPTION);
+        this.dialogoConectando = new JDialog(this, "Mensaje", true);
+        Object[] options = {"Cancelar"};
+        this.optionPaneConectando.setOptions(options);
+        this.dialogoConectando.setContentPane(this.optionPaneConectando);
+        this.dialogoConectando.setResizable(false);
+        this.dialogoConectando.setModal(false);
+        this.dialogoConectando.pack();
+        this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    }
+
+    public void abrirMensajeConectando() {
+        this.setEnabled(false);
+        new Thread(() -> { // En otro thread para no bloquear la ejecución
+            this.dialogoConectando.setLocationRelativeTo(this);
+            this.dialogoConectando.setVisible(true);
+            while (!this.optionPaneConectando.getValue().toString().equals("Cancelar") && this.dialogoConectando.isVisible()) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (this.dialogoConectando.isVisible()) {
+                System.exit(0);
+            }
+        }).start();
+    }
+
+    public void cerrarMensajeConectando() {
+        try {
+            Thread.sleep(50); // Para asegurar que el mensaje se cierra aún si la conexión es demasiado rápida
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.dialogoConectando.setVisible(false);
+        this.toFront();
+        this.setEnabled(true);
     }
 
     public String formatTime(double milisegundos) {

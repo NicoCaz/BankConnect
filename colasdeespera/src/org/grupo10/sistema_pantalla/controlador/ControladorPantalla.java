@@ -1,14 +1,13 @@
 package org.grupo10.sistema_pantalla.controlador;
 
-import org.grupo10.modelo.Turno;
 import org.grupo10.sistema_pantalla.conexion.SistemaPantalla;
 import org.grupo10.sistema_pantalla.vista.VistaPantalla;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ControladorPantalla implements IPantalla {
     private static ControladorPantalla instance;
@@ -36,11 +35,11 @@ public class ControladorPantalla implements IPantalla {
         this.pantalla = this.ventana;
         new Thread(() -> {
             try {
-                new ConexionEspera(this);
+                new SistemaPantalla(this);
             } catch (FileNotFoundException e) {
-                this.ventana.mensajeErrorArchivo();
+                this.ventana.ventanaError("No se ha encontrado el archivo de configuracion");
             } catch (IOException e) {
-                this.ventana.mensajeErrorConexion();
+                this.ventana.ventanaError("Error de conexion");
             }
         }).start();
     }
@@ -62,8 +61,7 @@ public class ControladorPantalla implements IPantalla {
         Iterator<Map.Entry<Integer, String>> it = this.ultimosLlamados.entrySet().iterator();
         while (it.hasNext()) {
             entrada = it.next();
-            this.pantalla.setLlamado(this.ultimosLlamados.size() - i, entrada.getKey().toString(),
-                    entrada.getValue());
+            this.pantalla.agregarDatos(entrada.getKey().toString(), entrada.getValue());
             i++;
         }
     }

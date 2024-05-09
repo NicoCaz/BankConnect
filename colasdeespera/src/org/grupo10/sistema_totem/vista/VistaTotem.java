@@ -1,4 +1,6 @@
 package org.grupo10.sistema_totem.vista;
+
+import org.grupo10.sistema_totem.controlador.ControladorTotem;
 import org.grupo10.vista.IVista;
 
 import javax.swing.*;
@@ -7,13 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VistaTotem extends JFrame implements IVista {
+    private final JOptionPane optionPaneConectando;
+    private final JDialog dialogoConectando;
     private JLabel displayLabel;
     private StringBuilder inputBuffer;
 
-    private ActionListener controlador;//ControladorTotem
+    private ControladorTotem controlador;//ControladorTotem
 
-    public VistaTotem(ActionListener contr) {
-        this.setActionListener(contr);
+
+    public VistaTotem() {
+        this.controlador = ControladorTotem.getInstance();
         setTitle("Totem");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(350, 400);
@@ -27,34 +32,28 @@ public class VistaTotem extends JFrame implements IVista {
         displayPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
         displayPanel.setPreferredSize(new Dimension(200, 60));
 
-        displayLabel = new JLabel("", SwingConstants.RIGHT);
+        displayLabel = new JLabel("Ingrese su DNI", SwingConstants.RIGHT);
         displayLabel.setFont(new Font("Arial", Font.PLAIN, 24));
         displayLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        displayLabel.setForeground(Color.GRAY);
         displayPanel.add(displayLabel, BorderLayout.CENTER);
 
-        /*ESTE ES EL BOTON DE ACEPTAR TRANSACCION
-          Es el unico boton que se comunica con el ControladorTotem
-          Esta hecho asi para que la vista se comunique con el controlador solo en caso de completar una transaccion
-         */
         JButton acceptButton = new JButton("Aceptar");
         acceptButton.setBackground(Color.GREEN);
         acceptButton.setForeground(Color.WHITE);
         acceptButton.addActionListener(this.controlador);
-
-        //Acá estan todos los otros componentes de la vista
-        /*
-        Cada componente tiene definido su propia clase controlador que no tiene que ver con Controlador Totem
-         */
 
         JButton[] numButtons = new JButton[10];
         for (int i = 0; i < 9; i++) {
             numButtons[i] = new JButton(String.valueOf(i + 1));
             numButtons[i].addActionListener(new NumericButtonListener());
             keypadPanel.add(numButtons[i]);
+            setButtonFontSize(numButtons[i]);
         }
         numButtons[9] = new JButton("0");
         numButtons[9].addActionListener(new NumericButtonListener());
         keypadPanel.add(numButtons[9]);
+        setButtonFontSize(numButtons[9]);
 
         inputBuffer = new StringBuilder();
 
@@ -62,6 +61,7 @@ public class VistaTotem extends JFrame implements IVista {
         cancelButton.setBackground(Color.RED);
         cancelButton.setForeground(Color.WHITE);
         cancelButton.addActionListener(new CancelButtonListener());
+        setButtonFontSize(cancelButton);
 
         JPanel sideButtonPanel = new JPanel(new GridLayout(1, 2, 5, 5));
         sideButtonPanel.add(acceptButton);
@@ -70,7 +70,8 @@ public class VistaTotem extends JFrame implements IVista {
         JButton backButton = new JButton("<--");
         backButton.setBackground(Color.RED);
         backButton.setForeground(Color.WHITE);
-        backButton.addActionListener(new BackButtonListener() );
+        backButton.addActionListener(new BackButtonListener());
+        setButtonFontSize(backButton);
 
         bottomPanel.add(keypadPanel, BorderLayout.CENTER);
         bottomPanel.add(backButton, BorderLayout.EAST);
@@ -80,11 +81,18 @@ public class VistaTotem extends JFrame implements IVista {
         mainPanel.add(sideButtonPanel, BorderLayout.SOUTH);
 
         setContentPane(mainPanel);
-    }
 
-    @Override
-    public void cerrar() {
-
+        // Inicializa el mensaje "Conectando..."
+        this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
+                JOptionPane.INFORMATION_MESSAGE, JOptionPane.CANCEL_OPTION);
+        this.dialogoConectando = new JDialog(this, "Mensaje", true);
+        Object[] options = {"Cancelar"};
+        this.optionPaneConectando.setOptions(options);
+        this.dialogoConectando.setContentPane(this.optionPaneConectando);
+        this.dialogoConectando.setResizable(false);
+        this.dialogoConectando.setModal(false);
+        this.dialogoConectando.pack();
+        this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     @Override
@@ -93,13 +101,13 @@ public class VistaTotem extends JFrame implements IVista {
     }
 
     @Override
-    public void actualizar() {
-
+    public void setActionListener(ActionListener actionListener) {
+        this.controlador = (ControladorTotem) actionListener;
     }
 
-    @Override
-    public void setActionListener(ActionListener actionListener) {
-        this.controlador = actionListener;
+    private void setButtonFontSize(JButton button) {
+        Font font = new Font(Font.SANS_SERIF, Font.PLAIN, Math.min(button.getWidth(), button.getHeight()) / 2);
+        button.setFont(font);
     }
 
     private class NumericButtonListener implements ActionListener {
@@ -108,6 +116,7 @@ public class VistaTotem extends JFrame implements IVista {
             JButton button = (JButton) e.getSource();
             inputBuffer.append(button.getText());
             displayLabel.setText(inputBuffer.toString());
+            displayLabel.setForeground(Color.BLACK);
         }
     }
 
@@ -117,6 +126,10 @@ public class VistaTotem extends JFrame implements IVista {
             if (!inputBuffer.isEmpty()) {
                 inputBuffer.deleteCharAt(inputBuffer.length() - 1);
                 displayLabel.setText(inputBuffer.toString());
+                if (inputBuffer.length() == 0) {
+                    displayLabel.setText("Ingrese su DNI");
+                    displayLabel.setForeground(Color.GRAY);
+                }
             }
         }
     }
@@ -124,9 +137,9 @@ public class VistaTotem extends JFrame implements IVista {
     private class CancelButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //Resetea el campo de texto
             inputBuffer.setLength(0);
-            displayLabel.setText("");
+            displayLabel.setText("Ingrese su DNI");
+            displayLabel.setForeground(Color.GRAY);
         }
     }
     public void ventanaConfirmacion(String msg){
@@ -153,9 +166,9 @@ public class VistaTotem extends JFrame implements IVista {
 
     @Override
     public void ventanaError(String msg) {
-        inputBuffer.setLength(0);
-        displayLabel.setText("");
-        JDialog errorDialog = new JDialog(VistaTotem.this, "DNI incorrecto", true);
+
+        JDialog errorDialog = new JDialog(VistaTotem.this, msg, true);
+        errorDialog.setTitle("ERROR");
         JPanel errorPanel = new JPanel(new BorderLayout());
         JLabel errorLabel = new JLabel(msg, SwingConstants.CENTER);
         errorLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -169,6 +182,36 @@ public class VistaTotem extends JFrame implements IVista {
         errorDialog.pack();
         errorDialog.setLocationRelativeTo(VistaTotem.this);
         errorDialog.setVisible(true);
+
+    }
+
+    public void abrirMensajeConectando() {
+        this.setEnabled(false);
+        new Thread(() -> { // En otro thread para no bloquear la ejecución
+            this.dialogoConectando.setLocationRelativeTo(this);
+            this.dialogoConectando.setVisible(true);
+            while (!this.optionPaneConectando.getValue().toString().equals("Cancelar") && this.dialogoConectando.isVisible()) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (this.dialogoConectando.isVisible()) {
+                System.exit(0);
+            }
+        }).start();
+    }
+
+    public void cerrarMensajeConectando() {
+        try {
+            Thread.sleep(50); // Para asegurar que el mensaje se cierra aún si la conexión es demasiado rápida
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.dialogoConectando.setVisible(false);
+        this.toFront();
+        this.setEnabled(true);
     }
 
     public JLabel getDisplayLabel() {
@@ -180,6 +223,8 @@ public class VistaTotem extends JFrame implements IVista {
         return inputBuffer;
     }
 
+
+
     @Override
     public void apagarLlamar() {
 
@@ -189,51 +234,12 @@ public class VistaTotem extends JFrame implements IVista {
     public void prenderLlamar() {
 
     }
+    @Override
+    public void actualizar() {
 
-/*
-    private class AcceptButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            inputBuffer.setLength(0);
-            displayLabel.setText("");
-
-            String inputValue = displayLabel.getText();
-            boolean isValid = true; // Cambia esta condición según tus criterios de validación
-
-            if (isValid) {
-                JDialog ticketDialog = new JDialog(VistaTotem.this, "Ticket", true);
-                JPanel ticketPanel = new JPanel(new BorderLayout());
-                JLabel ticketLabel = new JLabel("Su número de ticket es:".concat(inputValue), SwingConstants.CENTER);
-                ticketLabel.setFont(new Font("Arial", Font.BOLD, 16));
-                ticketPanel.add(ticketLabel, BorderLayout.CENTER);
-
-                ticketDialog.setContentPane(ticketPanel);
-                ticketDialog.pack();
-                ticketDialog.setLocationRelativeTo(VistaTotem.this);
-                ticketDialog.setVisible(true);
-
-                // Cerrar el diálogo después de 5 segundos
-                Timer timer = new Timer(5000, event -> ticketDialog.dispose());
-                timer.setRepeats(false);
-                timer.start();
-            } else {
-                JDialog errorDialog = new JDialog(VistaTotem.this, "DNI incorrecto", true);
-                JPanel errorPanel = new JPanel(new BorderLayout());
-                JLabel errorLabel = new JLabel("DNI incorrecto", SwingConstants.CENTER);
-                errorLabel.setFont(new Font("Arial", Font.BOLD, 16));
-                errorPanel.add(errorLabel, BorderLayout.CENTER);
-
-                JButton okButton = new JButton("Aceptar");
-                okButton.addActionListener(event -> errorDialog.dispose());
-                errorPanel.add(okButton, BorderLayout.SOUTH);
-
-                errorDialog.setContentPane(errorPanel);
-                errorDialog.pack();
-                errorDialog.setLocationRelativeTo(VistaTotem.this);
-                errorDialog.setVisible(true);
-            }
-        }
     }
-*/
+    @Override
+    public void cerrar() {
 
+    }
 }

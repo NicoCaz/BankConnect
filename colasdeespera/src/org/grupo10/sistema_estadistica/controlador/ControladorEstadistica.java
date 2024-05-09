@@ -1,6 +1,7 @@
 package org.grupo10.sistema_estadistica.controlador;
 
 
+import org.grupo10.exception.EstadisticaException;
 import org.grupo10.modelo.dto.EstadisticaDTO;
 import org.grupo10.sistema_estadistica.conexion.SistemaEstadistica;
 import org.grupo10.sistema_estadistica.vista.VistaEstadisticas;
@@ -8,6 +9,7 @@ import org.grupo10.sistema_estadistica.vista.VistaEstadisticas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -53,21 +55,20 @@ public class ControladorEstadistica implements ActionListener {
             int portOtro = Integer.parseInt(partes[1]);
 
 
-            this.ventana = new VistaEstadisticas(nroBox);
+            this.ventana = new VistaEstadisticas();
 
             new Thread(() -> { // En otro thread para no interferir con GUILlamados
                 try {
-                    this.estadistica_llamado = new ConexionLlamados(nroBox, ip, port, ipOtro, portOtro);
+                    this.estadistica_llamado = new SistemaEstadistica(ip, port, ipOtro, portOtro);
                     // Activa el botón Siguiente (si no hubo IOException)
-                    this.ventana.addActionListenerBoton(this);
                 } catch (IOException e) {
-                    this.ventana.mensajeErrorConexion();
-                } catch (BoxException e) {
-                    this.ventana.mensajeBoxOcupado();
+                    this.ventana.ventanaError("Error de conexion");
+                } catch (EstadisticaException e) {
+                    throw new RuntimeException(e);
                 }
             }).start();
         } catch (IOException e) {
-            this.ventana.mensajeErrorArchivo();
+            this.ventana.ventanaError("No se ha encontrado el archivo de configuracion");
         }
     }
 

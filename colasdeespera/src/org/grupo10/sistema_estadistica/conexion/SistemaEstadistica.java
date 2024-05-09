@@ -19,7 +19,7 @@ public class SistemaEstadistica implements IEstadisticas {
     private int serverActivo, nroEstadisticas;
 
 
-    public SistemaEstadistica(int nroEstadisticas, String ip1, int port1, String ip2, int port2) throws IOException, EstadisticaException {
+    public SistemaEstadistica(String ip1, int port1, String ip2, int port2) throws IOException, EstadisticaException {
         this.nroEstadisticas = nroEstadisticas;
         servers.add(new AbstractMap.SimpleEntry<>(ip1, port1));
         servers.add(new AbstractMap.SimpleEntry<>(ip2, port2));

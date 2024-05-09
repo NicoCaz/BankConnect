@@ -1,14 +1,14 @@
 package org.grupo10.sistema_box.vista;
 
 import org.grupo10.sistema_box.controlador.ControladorBox;
-import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class VistaBox extends JFrame {
 
+    private final JOptionPane optionPaneConectando;
+    private final JDialog dialogoConectando;
     private JLabel numeroAtendidoLabel, personasEnEsperaLabel;
     private JButton llamarSiguienteButton, finalizarTurnoButton;
     private int numeroAtendido = 0;
@@ -45,15 +45,53 @@ public class VistaBox extends JFrame {
 
         add(panel, BorderLayout.CENTER);
 
+        this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
+                JOptionPane.INFORMATION_MESSAGE, JOptionPane.CANCEL_OPTION);
+        this.dialogoConectando = new JDialog(this, "Mensaje", true);
+        Object[] options = {"Cancelar"};
+        this.optionPaneConectando.setOptions(options);
+        this.dialogoConectando.setContentPane(this.optionPaneConectando);
+        this.dialogoConectando.setResizable(false);
+        this.dialogoConectando.setModal(false);
+        this.dialogoConectando.pack();
+        this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
         //prenderLlamar();
     }
 
+    public void abrirMensajeConectando() {
+        this.setEnabled(false);
+        new Thread(() -> { // En otro thread para no bloquear la ejecución
+            this.dialogoConectando.setLocationRelativeTo(this);
+            this.dialogoConectando.setVisible(true);
+            while (!this.optionPaneConectando.getValue().toString().equals("Cancelar") && this.dialogoConectando.isVisible()) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (this.dialogoConectando.isVisible()) {
+                System.exit(0);
+            }
+        }).start();
+    }
 
+    public void cerrarMensajeConectando() {
+        try {
+            Thread.sleep(50); // Para asegurar que el mensaje se cierra aún si la conexión es demasiado rápida
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.dialogoConectando.setVisible(false);
+        this.toFront();
+        this.setEnabled(true);
+    }
 
-    @Override
     public void ventanaError(String msg) {
 
         JDialog errorDialog = new JDialog(VistaBox.this, msg, true);
+        errorDialog.setTitle("ERROR");
         JPanel errorPanel = new JPanel(new BorderLayout());
         JLabel errorLabel = new JLabel(msg, SwingConstants.CENTER);
         errorLabel.setFont(new Font("Arial", Font.BOLD, 16));

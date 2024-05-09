@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 public class VistaPantalla extends JFrame implements IVista {
 
+    private final JOptionPane optionPaneConectando;
+    private final JDialog dialogoConectando;
     private Object[][] data;
     private JTable tabla;
     private DefaultTableModel modeloTabla;
@@ -19,16 +21,23 @@ public class VistaPantalla extends JFrame implements IVista {
 
     private ControladorPantalla controladorPantalla;
 
-    public VistaPantalla(ControladorPantalla controladorPantalla) {
+    public VistaPantalla() {
+        this.controladorPantalla = ControladorPantalla.getInstance();
         setTitle("Monitor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
         setLocationRelativeTo(null);
 
         // Crear el modelo de tabla
-        modeloTabla = new DefaultTableModel();
+        modeloTabla = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que las celdas no sean editables
+            }
+        };
         modeloTabla.addColumn("DNI");
         modeloTabla.addColumn("Box");
+        modeloTabla.setRowCount(5); // Establecer el número máximo de filas a 5
 
         // Crear la JTable y establecer el modelo
         tabla = new JTable(modeloTabla);
@@ -41,27 +50,74 @@ public class VistaPantalla extends JFrame implements IVista {
 
         labelTurno = new JLabel();
         labelTurno.setHorizontalAlignment(JLabel.CENTER);
-        labelTurno.setFont(new Font("Arial", Font.BOLD, 24));
+        labelTurno.setFont(labelTurno.getFont().deriveFont(Font.BOLD, 18f)); // Usar fuente escalable
 
         labelBox = new JLabel();
         labelBox.setHorizontalAlignment(JLabel.CENTER);
-        labelBox.setFont(new Font("Arial", Font.BOLD, 24));
+        labelBox.setFont(labelBox.getFont().deriveFont(Font.BOLD, 18f)); // Usar fuente escalable
 
         panelInferior.add(labelTurno);
         panelInferior.add(labelBox);
 
-        // Agregar los componentes al frame
-        add(scrollPane, "Center");
-        add(panelInferior, "South");
+        // Crear un layout que se adapte al tamaño de la ventana
+        setLayout(new BorderLayout());
 
-            // Agregar datos iniciales a la tabla
-//        agregarDatos("239291332","3");
-//        agregarDatos("893892389","2");
+        // Agregar los componentes al frame de manera responsiva
+        add(scrollPane, BorderLayout.CENTER);
+        add(panelInferior, BorderLayout.SOUTH);
+
+        // Hacer que el frame se redimensione automáticamente
+        pack();
+        setLocationRelativeTo(null);
+
+        this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
+                JOptionPane.INFORMATION_MESSAGE, JOptionPane.CANCEL_OPTION);
+        this.dialogoConectando = new JDialog(this, "Mensaje", true);
+        Object[] options = {"Cancelar"};
+        this.optionPaneConectando.setOptions(options);
+        this.dialogoConectando.setContentPane(this.optionPaneConectando);
+        this.dialogoConectando.setResizable(false);
+        this.dialogoConectando.setModal(false);
+        this.dialogoConectando.pack();
+        this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        // Agregar datos iniciales a la tabla
+        //agregarDatos("239291332","3");
+        //agregarDatos("893892389","2");
         this.controladorPantalla = controladorPantalla;
     }
 
     public static void main(String[] args) {
         //SwingUtilities.invokeLater(() -> new VistaPantalla(this).setVisible(true));
+    }
+
+    public void abrirMensajeConectando() {
+        this.setEnabled(false);
+        new Thread(() -> { // En otro thread para no bloquear la ejecución
+            this.dialogoConectando.setLocationRelativeTo(this);
+            this.dialogoConectando.setVisible(true);
+            while (!this.optionPaneConectando.getValue().toString().equals("Cancelar") && this.dialogoConectando.isVisible()) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (this.dialogoConectando.isVisible()) {
+                System.exit(0);
+            }
+        }).start();
+    }
+
+    public void cerrarMensajeConectando() {
+        try {
+            Thread.sleep(50); // Para asegurar que el mensaje se cierra aún si la conexión es demasiado rápida
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.dialogoConectando.setVisible(false);
+        this.toFront();
+        this.setEnabled(true);
     }
 
     public void agregarDatos(String valor1, String valor2) {
@@ -107,6 +163,7 @@ public class VistaPantalla extends JFrame implements IVista {
         labelTurno.setText("Turno: " + turno);
         labelBox.setText("Box: " + box);
     }
+
 
     @Override
     public void ventanaConfirmacion(String msg) {

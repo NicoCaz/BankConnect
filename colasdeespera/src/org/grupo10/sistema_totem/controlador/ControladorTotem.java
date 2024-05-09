@@ -4,7 +4,6 @@ package org.grupo10.sistema_totem.controlador;
 import org.grupo10.sistema_totem.I_DNI;
 import org.grupo10.sistema_totem.conexion.SistemaTotem;
 import org.grupo10.sistema_totem.vista.VistaTotem;
-import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +14,7 @@ import java.io.IOException;
 public class ControladorTotem implements ActionListener {
 
     private static ControladorTotem instance = null;
-    private IVista ventana;
+    private VistaTotem ventana;
     private I_DNI dni_registro;
 
     public static void main(String[] args) {
@@ -37,11 +36,11 @@ public class ControladorTotem implements ActionListener {
             try {
                 this.dni_registro = new SistemaTotem();
                 // Activa el botón Registrar (si no hubo IOException)
-                this.ventana.addActionListenerRegistrar(this);
+
             } catch (FileNotFoundException e) {
-                this.ventana.mensajeErrorArchivo();
+                this.ventana.ventanaError("No se ha encontrado el archivo de configuracion");
             } catch (IOException e) {
-                this.ventana.mensajeErrorConexion();
+                this.ventana.ventanaError("Error de conexion");
             }
         }).start();
     }
@@ -50,20 +49,22 @@ public class ControladorTotem implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         new Thread(() -> { // En otro thread para no interferir con GUIRegistros
             JButton boton = (JButton) e.getSource();
-            String msg, dni = this.ventana.getDNIFormateado();
-            if (boton.getActionCommand() == "REGISTRAR") {
-                if (dni.length() >= 9) {
+
+            String dni = String.valueOf(this.ventana.getDisplayLabel());
+
+            if (boton.getActionCommand().equalsIgnoreCase("Aceptar")) {
+                if (dni.length() >= 6) {
                     try {
-                        msg = this.dni_registro.enviarDNIRegistro(dni);
+                        String msg = this.dni_registro.enviarDNIRegistro(dni);
                         if (msg.equals("ACEPTADO"))
-                            this.ventana.mensajeDNIRegistrado();
+                            this.ventana.ventanaConfirmacion(dni);
                         else
-                            this.ventana.mensajeDNIRepetido();
+                            this.ventana.ventanaError("El DNI ingresado ya existe");
                     } catch (IOException e1) {
-                        this.ventana.mensajeErrorConexion();
+                        this.ventana.ventanaError("Error de conexion");
                     }
                 } else
-                    this.ventana.mensajeDNIInvalido();
+                    this.ventana.ventanaError("El DNI proporcionado es invalido");
             }
         }).start();
     }
