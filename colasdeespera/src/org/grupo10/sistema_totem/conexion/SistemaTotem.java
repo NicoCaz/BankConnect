@@ -22,7 +22,7 @@ public class SistemaTotem implements I_DNI {
 
         String currentDir = System.getProperty("user.dir");
 
-        String archivoTxt = currentDir + "/subsistema_registros/controlador/totemconfig.txt";
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_totem/controlador/totemconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
@@ -71,7 +71,7 @@ public class SistemaTotem implements I_DNI {
         Socket socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.out.println("REGISTRO");
+        this.out.println("Totem");
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {

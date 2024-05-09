@@ -7,6 +7,7 @@ import org.grupo10.modelo.dto.EstadisticaDTO;
 import org.grupo10.modelo.dto.FilasDTO;
 import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
 import org.grupo10.sistema_servidor.manejoClientes.EstadisticaClientHandler;
+import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
 import org.grupo10.sistema_servidor.manejoClientes.TotemClientHandler;
 
 import java.io.*;
@@ -36,7 +37,9 @@ public class ControladorServidor extends Thread {
     private List<Socket> PantallasClients = new ArrayList<>();
     private boolean cambios;
 
-
+    public static void main(String[] args) {
+        ControladorServidor.getInstance();
+    }
     public static ControladorServidor getInstance() {
         if (ControladorServidor.instance == null)
             ControladorServidor.instance = new ControladorServidor();
@@ -50,7 +53,7 @@ public class ControladorServidor extends Thread {
         // Lectura de archivo de configuración
         String currentDir = System.getProperty("user.dir");
 
-        String archivoTxt = currentDir + "/servidor/controlador/serverconfig.txt";
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
@@ -107,6 +110,16 @@ public class ControladorServidor extends Thread {
         System.out.println("Se encontró un servidor en " + this.ipOtro + ":" + this.portOtro + ". Iniciando como backup...");
     }
 
+    @Override
+    public void run() {
+        while (true) {
+            if (this.primario) { // Modo primario
+                this.esperarConexiones();
+            } else { // Modo secundario
+                this.esperarPulsos();
+            }
+        }
+    }
 
     private void esperarConexiones() {
         try {
@@ -130,6 +143,9 @@ public class ControladorServidor extends Thread {
                         e.start();
                     } else if("Pantalla".equals(msg)) {
                         PantallasClients.add(socket);
+
+                    } else if("SERVIDOR".equals(msg)) {
+                        new RedundanciaHandler(socket).start();
 
                     }
                 } catch (IOException e) {
@@ -244,14 +260,5 @@ public class ControladorServidor extends Thread {
 
 
 
-    @Override
-    public void run() {
-        while (true) {
-            if (this.primario) { // Modo primario
-                this.esperarConexiones();
-            } else { // Modo secundario
-                this.esperarPulsos();
-            }
-        }
-    }
+
 }

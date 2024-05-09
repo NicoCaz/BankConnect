@@ -56,6 +56,7 @@ public class VistaBox extends JFrame {
         this.dialogoConectando.pack();
         this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        setVisible(true);
         //prenderLlamar();
     }
 

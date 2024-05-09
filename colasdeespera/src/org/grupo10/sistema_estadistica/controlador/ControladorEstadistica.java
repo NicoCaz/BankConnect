@@ -76,17 +76,17 @@ public class ControladorEstadistica implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         new Thread(() -> { // En otro thread para no interferir con GUILlamados
             String msg;
-            try {
-                msg = this.estadistica_llamado.recibirDNILlamado();
-                if (msg.equals("NULL"))
-                    this.ventana.mensajeFilaVacia();
-                else
-                    this.ventana.setDNI(msg);
-            } catch (IOException e1) {
-                this.ventana.mensajeErrorConexion();
-            } catch (BoxException e2) {
-                this.ventana.mensajeBoxOcupado();
-            }
+//            try {
+//                msg = this.estadistica_llamado.recibirDNILlamado();
+//                if (msg.equals("NULL"))
+//                    this.ventana.mensajeFilaVacia();
+//                else
+//                    this.ventana.setDNI(msg);
+//            } catch (IOException e1) {
+//                this.ventana.mensajeErrorConexion();
+//            } catch (BoxException e2) {
+//                this.ventana.mensajeBoxOcupado();
+//            }
         }).start();
     }
 

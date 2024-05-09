@@ -14,24 +14,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_13_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_13_20__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_14_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_14_23__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/llamadosconfig.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/main/MainTotem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/totemconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/totemconfig.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/IVista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +82,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.ControladorBox.executor": "Run",
+    "Application.ControladorServidor.executor": "Run",
     "Application.ControladorTotem.executor": "Run",
     "Application.MainBox.executor": "Run",
     "Application.MainEstadisticas.executor": "Run",
@@ -140,6 +135,8 @@
       <recent name="org.grupo10.modelo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_box" />
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_box\controlador" />
       <recent name="C:\Users\Nico\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_totem\controlador" />
       <recent name="C:\Users\Nico\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_totem\conexion" />
     </key>
@@ -151,7 +148,33 @@
       <recent name="org.grupo10.negocio.manejoClientes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorTotem">
+  <component name="RunManager" selected="Application.ControladorServidor">
+    <configuration name="ControladorBox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
+      <module name="colasdeespera" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.grupo10.sistema_box.controlador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ControladorServidor" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_servidor.ControladorServidor" />
+      <module name="colasdeespera" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.grupo10.sistema_servidor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ControladorTotem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_totem.controlador.ControladorTotem" />
       <module name="colasdeespera" />
@@ -180,19 +203,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainEstadisticas" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainEstadisticas" />
-      <module name="colasdeespera" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.grupo10.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainPantalla" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainPantalla" />
       <module name="colasdeespera" />
@@ -206,7 +216,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainServidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MainServidor" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainServidor" />
       <module name="colasdeespera" />
       <extension name="coverage">
@@ -219,12 +229,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainServidor2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_servidor.MainServidor2" />
+    <configuration name="MainTotem" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.grupo10.main.MainTotem" />
       <module name="colasdeespera" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.grupo10.sistema_servidor.*" />
+          <option name="PATTERN" value="org.grupo10.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -233,20 +243,21 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.MainTotem" />
       <item itemvalue="Application.MainBox" />
+      <item itemvalue="Application.ControladorBox" />
+      <item itemvalue="Application.ControladorServidor" />
       <item itemvalue="Application.ControladorTotem" />
-      <item itemvalue="Application.MainServidor2" />
-      <item itemvalue="Application.MainEstadisticas" />
       <item itemvalue="Application.MainPantalla" />
       <item itemvalue="Application.MainServidor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ControladorServidor" />
         <item itemvalue="Application.ControladorTotem" />
         <item itemvalue="Application.MainServidor" />
+        <item itemvalue="Application.ControladorBox" />
         <item itemvalue="Application.MainPantalla" />
-        <item itemvalue="Application.MainEstadisticas" />
-        <item itemvalue="Application.MainServidor2" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +300,7 @@
       <workItem from="1714766149341" duration="3943000" />
       <workItem from="1714775886525" duration="2056000" />
       <workItem from="1715000736838" duration="12255000" />
-      <workItem from="1715282003569" duration="5512000" />
+      <workItem from="1715282003569" duration="11916000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -419,6 +430,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.io.EOFException" package="java.io" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

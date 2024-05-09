@@ -35,7 +35,7 @@ public class ControladorBox implements ActionListener {
 
             //Lectura de archivo de configuracion de box
             String currentDir = System.getProperty("user.dir");
-            String archivoTxt = currentDir + "/subsistema_llamados/controlador/llamadosconfig.txt";
+            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_box/llamadosconfig.txt";
 
             BufferedReader br = new BufferedReader(new FileReader(archivoTxt));
             String linea;

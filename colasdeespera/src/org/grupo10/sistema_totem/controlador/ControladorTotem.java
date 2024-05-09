@@ -5,7 +5,6 @@ import org.grupo10.sistema_totem.I_DNI;
 import org.grupo10.sistema_totem.conexion.SistemaTotem;
 import org.grupo10.sistema_totem.vista.VistaTotem;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -28,6 +27,7 @@ public class ControladorTotem implements ActionListener {
     }
 
     private ControladorTotem() {
+
     }
 
     private void comenzar() {
@@ -48,14 +48,14 @@ public class ControladorTotem implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         new Thread(() -> { // En otro thread para no interferir con GUIRegistros
-            JButton boton = (JButton) e.getSource();
 
-            String dni = String.valueOf(this.ventana.getDisplayLabel());
+            if (e.getActionCommand().equalsIgnoreCase("Aceptar")) {
+                String dni = this.ventana.getDisplayLabel().getText();
 
-            if (boton.getActionCommand().equalsIgnoreCase("Aceptar")) {
                 if (dni.length() >= 6) {
                     try {
                         String msg = this.dni_registro.enviarDNIRegistro(dni);
+
                         if (msg.equals("ACEPTADO"))
                             this.ventana.ventanaConfirmacion(dni);
                         else
@@ -64,6 +64,7 @@ public class ControladorTotem implements ActionListener {
                         this.ventana.ventanaError("Error de conexion");
                     }
                 } else
+
                     this.ventana.ventanaError("El DNI proporcionado es invalido");
             }
         }).start();

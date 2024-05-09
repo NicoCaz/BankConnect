@@ -18,7 +18,7 @@ public class VistaTotem extends JFrame implements IVista {
 
 
     public VistaTotem() {
-        this.controlador = ControladorTotem.getInstance();
+        this.setActionListener(ControladorTotem.getInstance());
         setTitle("Totem");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(350, 400);
@@ -48,12 +48,10 @@ public class VistaTotem extends JFrame implements IVista {
             numButtons[i] = new JButton(String.valueOf(i + 1));
             numButtons[i].addActionListener(new NumericButtonListener());
             keypadPanel.add(numButtons[i]);
-            setButtonFontSize(numButtons[i]);
         }
         numButtons[9] = new JButton("0");
         numButtons[9].addActionListener(new NumericButtonListener());
         keypadPanel.add(numButtons[9]);
-        setButtonFontSize(numButtons[9]);
 
         inputBuffer = new StringBuilder();
 
@@ -61,7 +59,6 @@ public class VistaTotem extends JFrame implements IVista {
         cancelButton.setBackground(Color.RED);
         cancelButton.setForeground(Color.WHITE);
         cancelButton.addActionListener(new CancelButtonListener());
-        setButtonFontSize(cancelButton);
 
         JPanel sideButtonPanel = new JPanel(new GridLayout(1, 2, 5, 5));
         sideButtonPanel.add(acceptButton);
@@ -71,7 +68,6 @@ public class VistaTotem extends JFrame implements IVista {
         backButton.setBackground(Color.RED);
         backButton.setForeground(Color.WHITE);
         backButton.addActionListener(new BackButtonListener());
-        setButtonFontSize(backButton);
 
         bottomPanel.add(keypadPanel, BorderLayout.CENTER);
         bottomPanel.add(backButton, BorderLayout.EAST);
@@ -81,6 +77,9 @@ public class VistaTotem extends JFrame implements IVista {
         mainPanel.add(sideButtonPanel, BorderLayout.SOUTH);
 
         setContentPane(mainPanel);
+
+        // Ajustar el tamaño de la fuente de los botones después de agregar todos los componentes
+        adjustButtonFontSizes(numButtons, cancelButton, backButton);
 
         // Inicializa el mensaje "Conectando..."
         this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
@@ -93,6 +92,21 @@ public class VistaTotem extends JFrame implements IVista {
         this.dialogoConectando.setModal(false);
         this.dialogoConectando.pack();
         this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        this.mostrar();
+    }
+
+    private void adjustButtonFontSizes(JButton[] numButtons, JButton cancelButton, JButton backButton) {
+        for (JButton button : numButtons) {
+            setButtonFontSize(button);
+        }
+        setButtonFontSize(cancelButton);
+        setButtonFontSize(backButton);
+    }
+
+    private void setButtonFontSize(JButton button) {
+        Font font = new Font(Font.SANS_SERIF, Font.PLAIN, Math.min(button.getWidth() / 2, button.getHeight() / 2));
+        button.setFont(font);
     }
 
     @Override
@@ -100,15 +114,13 @@ public class VistaTotem extends JFrame implements IVista {
         setVisible(true);
     }
 
+
     @Override
     public void setActionListener(ActionListener actionListener) {
         this.controlador = (ControladorTotem) actionListener;
     }
 
-    private void setButtonFontSize(JButton button) {
-        Font font = new Font(Font.SANS_SERIF, Font.PLAIN, Math.min(button.getWidth(), button.getHeight()) / 2);
-        button.setFont(font);
-    }
+
 
     private class NumericButtonListener implements ActionListener {
         @Override
@@ -143,10 +155,12 @@ public class VistaTotem extends JFrame implements IVista {
         }
     }
     public void ventanaConfirmacion(String msg){
+        System.out.println("VENTANA CONFIRMACION");
         inputBuffer.setLength(0);
-        displayLabel.setText("");
+        displayLabel.setText("Ingrese su DNI");
+        displayLabel.setForeground(Color.GRAY);
 
-        JDialog ticketDialog = new JDialog(VistaTotem.this, "Ticket", true);
+        JDialog ticketDialog = new JDialog(VistaTotem.this, "Numero de DNI:" + msg, true);
         JPanel ticketPanel = new JPanel(new BorderLayout());
         JLabel ticketLabel = new JLabel(msg, SwingConstants.CENTER);
         ticketLabel.setFont(new Font("Arial", Font.BOLD, 16));
