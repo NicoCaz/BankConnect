@@ -1,6 +1,5 @@
 package org.grupo10.sistema_pantalla.conexion;
 
-import org.grupo10.modelo.Turno;
 import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 import org.grupo10.sistema_pantalla.controlador.IPantalla;
 
@@ -14,8 +13,8 @@ public class SistemaPantalla {
     private IPantalla pantalla;
 
     private Socket socket;
-    private ObjectOutputStream out;
-    private ObjectInputStream in;
+    private PrintWriter out;
+    private BufferedReader in;
     private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
     private int serverActivo;
 
@@ -64,12 +63,12 @@ public class SistemaPantalla {
     // Espera novedades del servidor
     public void esperarActualizaciones() throws IOException {
         while (true) {
-            Turno turno;
+            String turno;
             try {
-                turno = (Turno) in.readObject(); // Recibe DNI del servidor
-                int nroBox = turno.getBox();
-                this.pantalla.agregarLlamado(nroBox, turno.getDni());
-            } catch (IOException | ClassNotFoundException e) { // Hubo una falla. Reintenta / cambia de servidor.
+                turno = in.readLine(); // Recibe DNI del servidor
+
+                this.pantalla.agregarLlamado(turno);
+            } catch (IOException  e) { // Hubo una falla. Reintenta / cambia de servidor.
                 this.reconectar();
             }
         }
@@ -77,9 +76,9 @@ public class SistemaPantalla {
 
     private void conectar(Map.Entry<String, Integer> entry) throws IOException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
-        this.out = new ObjectOutputStream(socket.getOutputStream());
-        this.in = new ObjectInputStream(socket.getInputStream());
-        this.out.writeObject("Pantalla");
+        this.out = new PrintWriter(socket.getOutputStream(), true);
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.out.println("Pantalla");
     }
 
     // Maneja el reintento y el pantalla de servidor

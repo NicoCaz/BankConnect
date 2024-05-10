@@ -12,15 +12,15 @@ import java.util.Iterator;
 
 public class EstadisticaClientHandler extends Thread {
     private boolean running;
-    private ObjectOutputStream out;
-    private ObjectInputStream in;
+    private PrintWriter out;
+    private BufferedReader in;
     private String ip;
 
     public EstadisticaClientHandler(Socket socket) {
         try {
             this.ip = socket.getInetAddress().getHostAddress();
-            this.out = new ObjectOutputStream(socket.getOutputStream());
-            this.in = new ObjectInputStream(socket.getInputStream());
+            this.out = new PrintWriter(socket.getOutputStream(), true);
+            this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             this.running = true;
         } catch (IOException e) {
@@ -28,7 +28,7 @@ public class EstadisticaClientHandler extends Thread {
         }
     }
 
-    public ObjectOutputStream getOut(){
+    public PrintWriter getOut(){
       return this.out;
     }
     public void run() {
@@ -61,7 +61,7 @@ public class EstadisticaClientHandler extends Thread {
                     ControladorServidor.getInstance().setCambios(true);
                     ControladorServidor.getInstance().enviarEstadisticas((EstadisticaDTO)res);
 
-                this.out.writeObject(res);
+                this.out.println(res);
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el panel de estadistica con IP " + this.ip);

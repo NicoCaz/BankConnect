@@ -31,12 +31,12 @@ public class ControladorTotem implements ActionListener {
     }
 
     private void comenzar() {
-        this.ventana = new VistaTotem();
+
         new Thread(() -> { // En otro thread para no interferir con GUIRegistros
+            this.ventana = new VistaTotem();
             try {
                 this.dni_registro = new SistemaTotem();
                 // Activa el botón Registrar (si no hubo IOException)
-
             } catch (FileNotFoundException e) {
                 this.ventana.ventanaError("No se ha encontrado el archivo de configuracion");
             } catch (IOException e) {
@@ -48,7 +48,6 @@ public class ControladorTotem implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         new Thread(() -> { // En otro thread para no interferir con GUIRegistros
-
             if (e.getActionCommand().equalsIgnoreCase("Aceptar")) {
                 String dni = this.ventana.getDisplayLabel().getText();
 

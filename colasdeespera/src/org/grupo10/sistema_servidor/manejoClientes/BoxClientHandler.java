@@ -9,25 +9,26 @@ import java.net.Socket;
 public class BoxClientHandler extends Thread  {
     private int nroBox;
     private boolean running;
-    private ObjectOutputStream out;
-    private ObjectInputStream  in;
+    private PrintWriter out;
+    private BufferedReader in;
     private String ip;
 
     public BoxClientHandler(Socket socket) {
         try {
+            System.out.println("Conectando a " + socket.getInetAddress().getHostAddress());
             this.ip = socket.getInetAddress().getHostAddress();
-            this.out = new ObjectOutputStream(socket.getOutputStream());
-            this.in = new ObjectInputStream(socket.getInputStream());
+            this.out = new PrintWriter(socket.getOutputStream(), true);
+            this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             this.nroBox = Integer.parseInt(this.in.readLine());
+            System.out.println("Conectado a box " + nroBox);
             if (ControladorServidor.getInstance().boxesOcupados.add(this.nroBox)) {
                 System.out.println("BOX ACEPTADO");
-                this.out.writeObject("ACEPTADO");
-
+                this.out.println("ACEPTADO");
                 System.out.println("Se conectó el box " + this.nroBox + " con IP " + this.ip);
                 this.running = true;
             } else {
-                this.out.writeObject("OCUPADO");
+                this.out.println("OCUPADO");
                 System.out.println("Se rechazó el box " + this.nroBox + " duplicado con IP " + this.ip);
                 this.running = false;
             }
@@ -45,9 +46,10 @@ public class BoxClientHandler extends Thread  {
                 }
                 if (msg instanceof Turno) {
                     ControladorServidor.getInstance().setCambios(true);
+                    ((Turno) msg).setBox(this.nroBox);
                     ControladorServidor.getInstance().enviarActualizacion((Turno)msg);
+                    this.out.println(((Turno) msg).getDni());
                 }
-                this.out.writeObject(msg);
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);

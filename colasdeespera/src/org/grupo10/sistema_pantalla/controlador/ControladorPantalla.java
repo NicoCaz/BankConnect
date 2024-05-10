@@ -45,10 +45,11 @@ public class ControladorPantalla implements IPantalla {
     }
 
     @Override
-    public void agregarLlamado(int nroBox, String dni) {
+    public void agregarLlamado( String turno) {
+        String[] datos = turno.split(",");
         // Actualiza el listado de últimos llamados, evitando que haya más de 3
-        this.ultimosLlamados.remove(nroBox);
-        this.ultimosLlamados.put(nroBox, dni);
+        this.ultimosLlamados.remove(datos[0]);
+        this.ultimosLlamados.put(Integer.valueOf(datos[0]), datos[1]);
         if (this.ultimosLlamados.size() > this.maxLlamados)
             this.ultimosLlamados.remove(this.ultimosLlamados.entrySet().iterator().next());
         this.actualizar();

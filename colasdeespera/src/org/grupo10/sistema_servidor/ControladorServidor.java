@@ -132,17 +132,22 @@ public class ControladorServidor extends Thread {
                     String msg = in.readLine(); // Recibe identificación
                     System.out.println("INTENTO DE CONEXION DE: " + msg);
                     if ("Box".equals(msg)) {
+                        System.out.println("BOX ENCONTRADO");
                         BoxClientHandler b=new BoxClientHandler(socket);
                         boxClients.add(b);
                         b.start();
+                        System.out.println("Box arranco");
                     } else if("Totem".equals(msg)) {
                         TotemClientHandler t = new TotemClientHandler(socket);
                         Totems.add(t);
                         t.start();
+                        System.out.println("Totem arranco");
+
                     } else if("ESTADISTICA".equals(msg)) {
                         EstadisticaClientHandler e = new EstadisticaClientHandler(socket);
                         EstadisticaClients.add(e);
                         e.start();
+                        System.out.println("Estadistica arranco");
                     } else if("Pantalla".equals(msg)) {
                         PantallasClients.add(socket);
 
@@ -197,9 +202,10 @@ public class ControladorServidor extends Thread {
         for (Socket socket : this.PantallasClients) {
             try {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                out.println(t);
+
+                out.println(t.getDni()+","+t.getBox());
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -214,9 +220,9 @@ public class ControladorServidor extends Thread {
 
     public synchronized void enviarEstadisticas(EstadisticaDTO es) throws IOException {
         for (EstadisticaClientHandler socket : this.EstadisticaClients) {
-            socket.getOut().writeObject(es);
+            socket.getOut().println(es);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

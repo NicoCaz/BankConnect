@@ -20,6 +20,7 @@ public class TotemClientHandler extends Thread{
 
     public TotemClientHandler(Socket socket) {
         try {
+            System.out.println("Conectando a " + socket.getInetAddress().getHostAddress());
             this.ip = socket.getInetAddress().getHostAddress();
             this.out = new PrintWriter(socket.getOutputStream(), true);
             this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -36,6 +37,7 @@ public class TotemClientHandler extends Thread{
         while (running) {
             try {
                 dni = in.readLine();
+                System.out.println("DNI recibido: "+dni);
                 synchronized (ControladorServidor.getInstance().getTurnosEnEspera()) {
                     try {
                         Turno t= new Turno(dni);
