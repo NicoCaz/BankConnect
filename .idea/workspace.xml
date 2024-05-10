@@ -13,15 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="arreglo el envio de datos">
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="arreglo vista estadisticas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/IEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/IEstadisticas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/EstadisticaClientHandler.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,12 +50,12 @@
     &quot;assignee&quot;: &quot;facundodelga&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/NicoCaz/proyectoAyD2.git&quot;,
-    &quot;accountId&quot;: &quot;0e99c4bb-d5e4-44b7-a121-ea6d5167515d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NicoCaz/proyectoAyD2",
+    "accountId": "75c29052-1803-4e7a-bbc4-93e7d9d8d9de"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/corretto-19.0.2/lib/src.zip!/java.base/java/io/ObjectInputStream.java" root0="SKIP_INSPECTION" />
   </component>
@@ -155,7 +151,7 @@
       <recent name="org.grupo10.negocio.manejoClientes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorServidor">
+  <component name="RunManager" selected="Application.ControladorTotem">
     <configuration name="ControladorBox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
       <module name="colasdeespera" />
@@ -260,13 +256,21 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControladorServidor" />
-        <item itemvalue="Application.ControladorEstadistica" />
         <item itemvalue="Application.ControladorTotem" />
         <item itemvalue="Application.ControladorBox" />
         <item itemvalue="Application.ControladorPantalla" />
+        <item itemvalue="Application.ControladorServidor" />
+        <item itemvalue="Application.ControladorEstadistica" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -308,6 +312,7 @@
       <workItem from="1714775886525" duration="2056000" />
       <workItem from="1715000736838" duration="12255000" />
       <workItem from="1715282003569" duration="17678000" />
+      <workItem from="1715376964371" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -397,7 +402,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715371988085</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="arreglo vista estadisticas">
+      <option name="closed" value="true" />
+      <created>1715374107306</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715374107306</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +451,8 @@
     <MESSAGE value="Simplifico el codigo" />
     <MESSAGE value="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)" />
     <MESSAGE value="arreglo el envio de datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglo el envio de datos" />
+    <MESSAGE value="arreglo vista estadisticas" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglo vista estadisticas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

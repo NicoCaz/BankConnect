@@ -30,7 +30,7 @@ public class VistaEstadisticas extends JFrame implements IVista {
         personasAtendidaLabel = new JLabel("Personas atendidas: " + personasAtendidas);
         tiempoPromedioLabel = new JLabel("Tiempo promedio: " + formatTime(tiempoPromedio));
         refreshButton = new JButton("Refrescar");
-        refreshButton.addActionListener(controlador);
+       // refreshButton.addActionListener(controlador);
 
         // Establecer el tamaño de fuente responsivo
         int fontSize = (int) (getHeight() * 0.08);

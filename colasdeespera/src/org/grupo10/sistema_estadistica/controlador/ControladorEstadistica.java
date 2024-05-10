@@ -2,20 +2,11 @@ package org.grupo10.sistema_estadistica.controlador;
 
 
 import org.grupo10.exception.EstadisticaException;
-import org.grupo10.modelo.dto.EstadisticaDTO;
 import org.grupo10.sistema_estadistica.conexion.SistemaEstadistica;
 import org.grupo10.sistema_estadistica.vista.VistaEstadisticas;
-import org.grupo10.sistema_pantalla.conexion.SistemaPantalla;
-import org.grupo10.sistema_pantalla.vista.VistaPantalla;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
 
 public class ControladorEstadistica implements IEstadisticas{
     private VistaEstadisticas ventana;
@@ -63,7 +54,7 @@ public class ControladorEstadistica implements IEstadisticas{
     public void actualizar() {
 
 
-        this.ventana.agregaDatos(entrada.getKey().toString(), entrada.getValue());
+      //  this.ventana.agregaDatos(entrada.getKey().toString(), entrada.getValue());
 
 
     }

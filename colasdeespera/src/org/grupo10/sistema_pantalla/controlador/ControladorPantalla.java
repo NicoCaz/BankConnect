@@ -48,7 +48,7 @@ public class ControladorPantalla implements IPantalla {
     public void agregarLlamado( String turno) {
         String[] datos = turno.split(",");
         // Actualiza el listado de últimos llamados, evitando que haya más de 3
-        Integer primeraClaveDelMapa = ultimosLlamados.keySet().iterator().next();
+        //Integer primeraClaveDelMapa = ultimosLlamados.keySet().iterator().next();
 
         this.ultimosLlamados.put(Integer.valueOf(datos[0]), datos[1]);
         if (this.ultimosLlamados.size() > this.maxLlamados)
