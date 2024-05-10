@@ -20,7 +20,7 @@ public class SistemaEstadistica implements IEstadisticas {
 
 
     public SistemaEstadistica(String ip1, int port1, String ip2, int port2) throws IOException, EstadisticaException {
-        this.nroEstadisticas = nroEstadisticas;
+
         servers.add(new AbstractMap.SimpleEntry<>(ip1, port1));
         servers.add(new AbstractMap.SimpleEntry<>(ip2, port2));
 
@@ -28,6 +28,7 @@ public class SistemaEstadistica implements IEstadisticas {
         this.serverActivo = 0;
         try {
             ControladorEstadistica.getInstance().abrirMensajeConectando();
+            System.out.println("CONECTAR " + servers.get(this.serverActivo));
             this.conectar(servers.get(this.serverActivo));
             ControladorEstadistica.getInstance().cerrarMensajeConectando();
         } catch (IOException e) {
@@ -39,29 +40,33 @@ public class SistemaEstadistica implements IEstadisticas {
     public EstadisticaDTO resiboEstadistica() throws IOException, ClassNotFoundException, EstadisticaException {
         this.out.println("Estadistica");
         try {
-            return (EstadisticaDTO) this.in.readObject(); // Recibe DNI del servidor
+            return (EstadisticaDTO) new ObjectInputStream(socket.getInputStream()).readObject(); // Recibe DNI del servidor
         } catch (IOException e) { // Hubo una falla. Reintenta / cambia de servidor.
             this.reconectar();
             this.out.println("SIGUIENTE");
-            return (EstadisticaDTO) this.in.readObject();
+            return (EstadisticaDTO) new ObjectInputStream(socket.getInputStream()).readObject();
         }
     }
 
     private void conectar(Map.Entry<String, Integer> entry) throws IOException, EstadisticaException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
-        this.in =  new ObjectInputStream(socket.getInputStream());
-        this.out.println("Estadistica");
+        System.out.println("TERMINO DE CONECTAR?");
+        //this.in =
+        System.out.println("TERMINO DE CONECTAR?");
+        this.out.println("ESTADISTICA");
+
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         // Chequea si el número de box ya está en uso
-        this.out.println(this.nroEstadisticas);
-        String msg = this.in.readLine();
-        if (msg.equals("OCUPADO"))
-            throw new EstadisticaException();
+//        this.out.println(this.nroEstadisticas);
+//        String msg = this.in.readLine();
+//        if (msg.equals("OCUPADO"))
+//            throw new EstadisticaException();
     }
 
     // Maneja el reintento y el cambio de servidor

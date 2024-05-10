@@ -56,6 +56,7 @@ public class ControladorEstadistica implements ActionListener {
 
             new Thread(() -> { // En otro thread para no interferir con GUILlamados
                 try {
+                    System.out.println(ip + ":" + port);
                     this.estadistica_llamado = new SistemaEstadistica(ip, port, ipOtro, portOtro);
                     // Activa el botón Siguiente (si no hubo IOException)
                 } catch (IOException e) {

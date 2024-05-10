@@ -139,7 +139,7 @@ public class ControladorServidor extends Thread {
                         TotemClientHandler t = new TotemClientHandler(socket);
                         Totems.add(t);
                         t.start();
-                    } else if("Estadistica".equals(msg)) {
+                    } else if("ESTADISTICA".equals(msg)) {
                         EstadisticaClientHandler e = new EstadisticaClientHandler(socket);
                         EstadisticaClients.add(e);
                         e.start();
