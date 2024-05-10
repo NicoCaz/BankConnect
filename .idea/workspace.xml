@@ -14,9 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="vista pantalla ahora muestra numeros">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +51,12 @@
     &quot;assignee&quot;: &quot;facundodelga&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/NicoCaz/proyectoAyD2",
-    "accountId": "75c29052-1803-4e7a-bbc4-93e7d9d8d9de"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NicoCaz/proyectoAyD2&quot;,
+    &quot;accountId&quot;: &quot;75c29052-1803-4e7a-bbc4-93e7d9d8d9de&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/corretto-19.0.2/lib/src.zip!/java.base/java/io/ObjectInputStream.java" root0="SKIP_INSPECTION" />
   </component>
@@ -150,7 +152,7 @@
       <recent name="org.grupo10.negocio.manejoClientes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorBox">
+  <component name="RunManager" selected="Application.ControladorEstadistica">
     <configuration name="ControladorBox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
       <module name="colasdeespera" />
@@ -255,10 +257,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControladorBox" />
-        <item itemvalue="Application.ControladorServidor" />
         <item itemvalue="Application.ControladorEstadistica" />
+        <item itemvalue="Application.ControladorBox" />
         <item itemvalue="Application.ControladorTotem" />
+        <item itemvalue="Application.ControladorServidor" />
         <item itemvalue="Application.ControladorPantalla" />
       </list>
     </recent_temporary>

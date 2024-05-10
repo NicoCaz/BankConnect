@@ -156,8 +156,8 @@ public class VistaEstadisticas extends JFrame implements IVista {
     public void setActionListener(ActionListener actionListener) {
 
     }
-    public void agregaDatos(){
-
+    public void agregaDatos(String[] datos){
+        this.personasAtendidaLabel.setText("PERSONAS ATENDIDAS : "+datos[0]);
     }
 
     @Override

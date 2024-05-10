@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class SistemaEstadistica {
-    private IEstadisticas estadistica;
+    private IEstadisticas pantalla;
     private Socket socket;
     private PrintWriter out;
     private BufferedReader  in;
@@ -23,7 +23,7 @@ public class SistemaEstadistica {
 
         String ip;
         int port;
-        this.estadistica = estadistica;
+        this.pantalla = estadistica;
 
         String currentDir = System.getProperty("user.dir");
 
@@ -68,7 +68,7 @@ public class SistemaEstadistica {
             try {
                 estadistica = in.readLine(); // Recibe DNI del servidor
 
-              //  this.pantalla.agregarEstadistica(estadistica);
+              this.pantalla.agregarEstadistica(estadistica);
             } catch (IOException  e) { // Hubo una falla. Reintenta / cambia de servidor.
                 this.reconectar();
             }

@@ -47,14 +47,14 @@ public class ControladorEstadistica implements IEstadisticas{
         //aca delga tenes que  hacer lo mismo que en el de vistapantalla
         // Actualiza el listado de últimos llamados, evitando que haya más de 3
         /// estoy hay que completarlo
-        this.actualizar();
+        this.actualizar(datos);
 
     }
 
-    public void actualizar() {
+    public void actualizar(String[] datos) {
 
 
-      //  this.ventana.agregaDatos(entrada.getKey().toString(), entrada.getValue());
+      this.ventana.agregaDatos(datos);
 
 
     }
