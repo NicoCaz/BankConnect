@@ -37,7 +37,7 @@ public class SistemaEstadistica implements IEstadisticas {
 
     @Override
     public EstadisticaDTO resiboEstadistica() throws IOException, ClassNotFoundException, EstadisticaException {
-        this.out.println("ESTADISTICA");
+        this.out.println("Estadistica");
         try {
             return (EstadisticaDTO) this.in.readObject(); // Recibe DNI del servidor
         } catch (IOException e) { // Hubo una falla. Reintenta / cambia de servidor.

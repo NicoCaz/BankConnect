@@ -9,7 +9,6 @@ import org.grupo10.sistema_estadistica.vista.VistaEstadisticas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -36,12 +35,10 @@ public class ControladorEstadistica implements ActionListener {
 
             //Lectura de archivo de configuracion de box
             String currentDir = System.getProperty("user.dir");
-            String archivoTxt = currentDir + "/subsistema_llamados/controlador/llamadosconfig.txt";
+            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_estadistica/estadisticasconfig.txt";
 
             BufferedReader br = new BufferedReader(new FileReader(archivoTxt));
             String linea;
-            linea = br.readLine();
-            int nroBox = Integer.parseInt(linea);
             //Leo el Servidor Principal
             linea = br.readLine();
             String[] partes = linea.split(":");
@@ -75,18 +72,19 @@ public class ControladorEstadistica implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         new Thread(() -> { // En otro thread para no interferir con GUILlamados
-            String msg;
-//            try {
-//                msg = this.estadistica_llamado.recibirDNILlamado();
-//                if (msg.equals("NULL"))
-//                    this.ventana.mensajeFilaVacia();
-//                else
-//                    this.ventana.setDNI(msg);
-//            } catch (IOException e1) {
-//                this.ventana.mensajeErrorConexion();
-//            } catch (BoxException e2) {
-//                this.ventana.mensajeBoxOcupado();
-//            }
+
+            try {
+                EstadisticaDTO estadisticas = this.estadistica_llamado.resiboEstadistica();
+                if(estadisticas != null){
+                    this.ventana.getPersonasAtendidaLabel().setText("Personas Atendidas: "+ estadisticas.getPersonasAtendidas());
+                    this.ventana.getPersonasEnEsperaLabel().setText("Personas en espera: " + estadisticas.getPersonasEspera());
+                    this.ventana.getTiempoPromedioLabel().setText("Tiempo promedio de atencion: "+this.ventana.formatTime(estadisticas.getTiempoPromedio()));
+                }
+            } catch (IOException e1) {
+                this.ventana.ventanaError("Error de conexion");
+            } catch (EstadisticaException | ClassNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
         }).start();
     }
 

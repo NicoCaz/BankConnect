@@ -58,6 +58,9 @@ public class VistaEstadisticas extends JFrame implements IVista {
         this.dialogoConectando.setModal(false);
         this.dialogoConectando.pack();
         this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
+
+        setVisible(true);
     }
 
     public void abrirMensajeConectando() {

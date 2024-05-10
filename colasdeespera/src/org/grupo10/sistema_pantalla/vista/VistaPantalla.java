@@ -85,6 +85,8 @@ public class VistaPantalla extends JFrame implements IVista {
         //agregarDatos("239291332","3");
         //agregarDatos("893892389","2");
         this.controladorPantalla = controladorPantalla;
+
+        setVisible(true);
     }
 
     public static void main(String[] args) {

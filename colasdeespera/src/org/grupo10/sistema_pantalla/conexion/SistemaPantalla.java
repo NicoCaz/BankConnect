@@ -1,6 +1,5 @@
 package org.grupo10.sistema_pantalla.conexion;
 
-import org.grupo10.modelo.Turno;
 import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 import org.grupo10.sistema_pantalla.controlador.IPantalla;
 
@@ -9,7 +8,6 @@ import java.net.Socket;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Observable;
 
 public class SistemaPantalla {
     private IPantalla pantalla;
@@ -27,7 +25,7 @@ public class SistemaPantalla {
 
         String currentDir = System.getProperty("user.dir");
 
-        String archivoTxt = currentDir + "/subsistema_espera/controlador/esperaconfig.txt";
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_pantalla/pantallaconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
@@ -80,7 +78,7 @@ public class SistemaPantalla {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.out.println("ESPERA");
+        this.out.println("Pantalla");
     }
 
     // Maneja el reintento y el pantalla de servidor

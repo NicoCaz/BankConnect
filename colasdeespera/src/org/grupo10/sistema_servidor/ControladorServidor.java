@@ -15,6 +15,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -31,6 +32,7 @@ public class ControladorServidor extends Thread {
     private int port, portOtro;
     private ObjectInputStream inOtro;
     //
+    public HashSet<Integer> boxesOcupados = new HashSet<>();
     private List<TotemClientHandler> Totems = new ArrayList<>();
     private List<BoxClientHandler> boxClients = new ArrayList<>();
     private List<EstadisticaClientHandler> EstadisticaClients = new ArrayList<>();
@@ -128,7 +130,7 @@ public class ControladorServidor extends Thread {
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     String msg = in.readLine(); // Recibe identificación
-
+                    System.out.println("INTENTO DE CONEXION DE: " + msg);
                     if ("Box".equals(msg)) {
                         BoxClientHandler b=new BoxClientHandler(socket);
                         boxClients.add(b);

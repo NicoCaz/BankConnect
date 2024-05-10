@@ -22,7 +22,7 @@ public class SistemaTotem implements I_DNI {
 
         String currentDir = System.getProperty("user.dir");
 
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_totem/controlador/totemconfig.txt";
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_totem/totemconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;

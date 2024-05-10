@@ -29,7 +29,9 @@ public class SistemaBox {
         try {
             ControladorBox.getInstance().abrirMensajeConectando();
             this.conectar(servers.get(this.serverActivo));
+            System.out.println("CERRAR MENSAJE CONECTADO");
             ControladorBox.getInstance().cerrarMensajeConectando();
+
         } catch (IOException e) {
             this.reconectar();
         }
@@ -50,7 +52,8 @@ public class SistemaBox {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.out.println("BOX");
+        this.out.println("Box");
+        System.out.println("VOLVIO DE LA CONEXION");
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
@@ -59,6 +62,7 @@ public class SistemaBox {
         // Chequea si el número de box ya está en uso
         this.out.println(this.nroBox);
         String msg = this.in.readLine();
+        System.out.println("VOLVIO DE CHEQUEO");
         if (msg.equals("OCUPADO"))
             throw new BoxException();
     }

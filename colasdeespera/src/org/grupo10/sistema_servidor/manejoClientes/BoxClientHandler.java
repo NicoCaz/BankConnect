@@ -21,9 +21,18 @@ public class BoxClientHandler extends Thread  {
             this.ip = socket.getInetAddress().getHostAddress();
             this.out = new PrintWriter(socket.getOutputStream(), true);
             this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
             this.nroBox = Integer.parseInt(this.in.readLine());
-            // Chequea si el número de box ya está en uso
-            this.running = true;
+            if (ControladorServidor.getInstance().boxesOcupados.add(this.nroBox)) {
+                System.out.println("BOX ACEPTADO");
+                this.out.println("ACEPTADO");
+                System.out.println("Se conectó el box " + this.nroBox + " con IP " + this.ip);
+                this.running = true;
+            } else {
+                this.out.println("OCUPADO");
+                System.out.println("Se rechazó el box " + this.nroBox + " duplicado con IP " + this.ip);
+                this.running = false;
+            }
         } catch (IOException e) {
             System.out.println("ERROR HILO BOX: " + e.getMessage());
         }
