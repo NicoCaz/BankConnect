@@ -1,8 +1,8 @@
 package org.grupo10.sistema_estadistica.conexion;
 
 import org.grupo10.exception.EstadisticaException;
+import org.grupo10.sistema_estadistica.controlador.ControladorEstadistica;
 import org.grupo10.sistema_estadistica.controlador.IEstadisticas;
-import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 
 import java.io.*;
 import java.net.Socket;
@@ -27,7 +27,7 @@ public class SistemaEstadistica {
 
         String currentDir = System.getProperty("user.dir");
 
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_pantalla/pantallaconfig.txt";
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_estadistica/estadisticasconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
@@ -52,9 +52,9 @@ public class SistemaEstadistica {
         // Conexión a servidor
         this.serverActivo = 0;
         try {
-            ControladorPantalla.getInstance().abrirMensajeConectando();
+            ControladorEstadistica.getInstance().abrirMensajeConectando();
             this.conectar(servers.get(this.serverActivo));
-            ControladorPantalla.getInstance().cerrarMensajeConectando();
+            ControladorEstadistica.getInstance().cerrarMensajeConectando();
         } catch (IOException e) {
             this.reconectar();
         }
@@ -84,7 +84,7 @@ public class SistemaEstadistica {
 
     // Maneja el reintento y el pantalla de servidor
     public void reconectar() throws IOException {
-        ControladorPantalla.getInstance().abrirMensajeConectando();
+        ControladorEstadistica.getInstance().abrirMensajeConectando();
         try {
             //RETRY: Intenta conectar al actual
             this.conectar(servers.get(this.serverActivo));
@@ -99,6 +99,6 @@ public class SistemaEstadistica {
                 this.conectar(servers.get(this.serverActivo));
             }
         }
-        ControladorPantalla.getInstance().cerrarMensajeConectando();
+        ControladorEstadistica.getInstance().cerrarMensajeConectando();
     }
 }

@@ -13,11 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="arreglo vista estadisticas">
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="vista pantalla ahora muestra numeros">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +150,7 @@
       <recent name="org.grupo10.negocio.manejoClientes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorTotem">
+  <component name="RunManager" selected="Application.ControladorBox">
     <configuration name="ControladorBox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
       <module name="colasdeespera" />
@@ -191,7 +190,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControladorServidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="ControladorServidor" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_servidor.ControladorServidor" />
       <module name="colasdeespera" />
       <extension name="coverage">
@@ -256,11 +255,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControladorTotem" />
         <item itemvalue="Application.ControladorBox" />
-        <item itemvalue="Application.ControladorPantalla" />
         <item itemvalue="Application.ControladorServidor" />
         <item itemvalue="Application.ControladorEstadistica" />
+        <item itemvalue="Application.ControladorTotem" />
+        <item itemvalue="Application.ControladorPantalla" />
       </list>
     </recent_temporary>
   </component>
@@ -312,7 +311,7 @@
       <workItem from="1714775886525" duration="2056000" />
       <workItem from="1715000736838" duration="12255000" />
       <workItem from="1715282003569" duration="17678000" />
-      <workItem from="1715376964371" duration="370000" />
+      <workItem from="1715376964371" duration="912000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -410,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715374107306</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="vista pantalla ahora muestra numeros">
+      <option name="closed" value="true" />
+      <created>1715377482233</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715377482233</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,7 +459,8 @@
     <MESSAGE value="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)" />
     <MESSAGE value="arreglo el envio de datos" />
     <MESSAGE value="arreglo vista estadisticas" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglo vista estadisticas" />
+    <MESSAGE value="vista pantalla ahora muestra numeros" />
+    <option name="LAST_COMMIT_MESSAGE" value="vista pantalla ahora muestra numeros" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
