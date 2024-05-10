@@ -1,9 +1,8 @@
 package org.grupo10.sistema_estadistica.conexion;
 
 import org.grupo10.exception.EstadisticaException;
-import org.grupo10.modelo.dto.EstadisticaDTO;
-import org.grupo10.sistema_estadistica.controlador.ControladorEstadistica;
 import org.grupo10.sistema_estadistica.controlador.IEstadisticas;
+import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 
 import java.io.*;
 import java.net.Socket;
@@ -11,71 +10,85 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaEstadistica implements IEstadisticas {
+public class SistemaEstadistica {
+    private IEstadisticas estadistica;
     private Socket socket;
     private PrintWriter out;
-    private ObjectInputStream  in;
+    private BufferedReader  in;
     private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
     private int serverActivo, nroEstadisticas;
 
 
-    public SistemaEstadistica(String ip1, int port1, String ip2, int port2) throws IOException, EstadisticaException {
+    public SistemaEstadistica(IEstadisticas estadistica) throws IOException, EstadisticaException {
 
-        servers.add(new AbstractMap.SimpleEntry<>(ip1, port1));
-        servers.add(new AbstractMap.SimpleEntry<>(ip2, port2));
+        String ip;
+        int port;
+        this.estadistica = estadistica;
+
+        String currentDir = System.getProperty("user.dir");
+
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_pantalla/pantallaconfig.txt";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
+            String linea;
+
+            //Leo el Servidor Principal
+            linea = br.readLine();
+            String[] partes = linea.split(":");
+            ip = partes[0];
+            port = Integer.parseInt(partes[1]);
+            servers.add(new AbstractMap.SimpleEntry<>(ip, port));
+            //Leo el Servidor de Respaldo
+            linea = br.readLine();
+            partes = linea.split(":");
+            String ipOtro = partes[0];
+            int portOtro = Integer.parseInt(partes[1]);
+            servers.add(new AbstractMap.SimpleEntry<>(ipOtro, portOtro));
+
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
 
         // Conexión a servidor
         this.serverActivo = 0;
         try {
-            ControladorEstadistica.getInstance().abrirMensajeConectando();
-            System.out.println("CONECTAR " + servers.get(this.serverActivo));
+            ControladorPantalla.getInstance().abrirMensajeConectando();
             this.conectar(servers.get(this.serverActivo));
-            ControladorEstadistica.getInstance().cerrarMensajeConectando();
+            ControladorPantalla.getInstance().cerrarMensajeConectando();
         } catch (IOException e) {
             this.reconectar();
         }
+
+        this.esperarActualizaciones();
     }
 
-    @Override
-    public EstadisticaDTO resiboEstadistica() throws IOException, ClassNotFoundException, EstadisticaException {
-        this.out.println("Estadistica");
-        try {
-            return (EstadisticaDTO) new ObjectInputStream(socket.getInputStream()).readObject(); // Recibe DNI del servidor
-        } catch (IOException e) { // Hubo una falla. Reintenta / cambia de servidor.
-            this.reconectar();
-            this.out.println("SIGUIENTE");
-            return (EstadisticaDTO) new ObjectInputStream(socket.getInputStream()).readObject();
+    public void esperarActualizaciones() throws IOException {
+        while (true) {
+            String estadistica;
+            try {
+                estadistica = in.readLine(); // Recibe DNI del servidor
+
+              //  this.pantalla.agregarEstadistica(estadistica);
+            } catch (IOException  e) { // Hubo una falla. Reintenta / cambia de servidor.
+                this.reconectar();
+            }
         }
     }
 
-    private void conectar(Map.Entry<String, Integer> entry) throws IOException, EstadisticaException {
+    private void conectar(Map.Entry<String, Integer> entry) throws IOException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
-        System.out.println("TERMINO DE CONECTAR?");
-        //this.in =
-        System.out.println("TERMINO DE CONECTAR?");
-        this.out.println("ESTADISTICA");
-
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // Chequea si el número de box ya está en uso
-//        this.out.println(this.nroEstadisticas);
-//        String msg = this.in.readLine();
-//        if (msg.equals("OCUPADO"))
-//            throw new EstadisticaException();
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.out.println("Pantalla");
     }
 
-    // Maneja el reintento y el cambio de servidor
-    public void reconectar() throws IOException, EstadisticaException{
-        ControladorEstadistica.getInstance().abrirMensajeConectando();
+    // Maneja el reintento y el pantalla de servidor
+    public void reconectar() throws IOException {
+        ControladorPantalla.getInstance().abrirMensajeConectando();
         try {
-            // RETRY: Intenta conectar al actual
+            //RETRY: Intenta conectar al actual
             this.conectar(servers.get(this.serverActivo));
-        } catch (IOException e1) {
+        } catch (IOException e) {
             // Cambia de serverActivo
             this.serverActivo = 1 - this.serverActivo;
             try {
@@ -86,6 +99,6 @@ public class SistemaEstadistica implements IEstadisticas {
                 this.conectar(servers.get(this.serverActivo));
             }
         }
-        ControladorEstadistica.getInstance().cerrarMensajeConectando();
+        ControladorPantalla.getInstance().cerrarMensajeConectando();
     }
 }

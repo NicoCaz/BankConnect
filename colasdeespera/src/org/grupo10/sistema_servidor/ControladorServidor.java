@@ -3,10 +3,9 @@ package org.grupo10.sistema_servidor;
 import org.grupo10.modelo.Fila;
 import org.grupo10.modelo.FilaFinalizada;
 import org.grupo10.modelo.Turno;
-import org.grupo10.modelo.dto.EstadisticaDTO;
+import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.modelo.dto.FilasDTO;
 import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
-import org.grupo10.sistema_servidor.manejoClientes.EstadisticaClientHandler;
 import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
 import org.grupo10.sistema_servidor.manejoClientes.TotemClientHandler;
 
@@ -16,6 +15,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -35,7 +35,7 @@ public class ControladorServidor extends Thread {
     public HashSet<Integer> boxesOcupados = new HashSet<>();
     private List<TotemClientHandler> Totems = new ArrayList<>();
     private List<BoxClientHandler> boxClients = new ArrayList<>();
-    private List<EstadisticaClientHandler> EstadisticaClients = new ArrayList<>();
+    private List<Socket> EstadisticaClients = new ArrayList<>();
     private List<Socket> PantallasClients = new ArrayList<>();
     private boolean cambios;
 
@@ -144,13 +144,12 @@ public class ControladorServidor extends Thread {
                         System.out.println("Totem arranco");
 
                     } else if("ESTADISTICA".equals(msg)) {
-                        EstadisticaClientHandler e = new EstadisticaClientHandler(socket);
-                        EstadisticaClients.add(e);
-                        e.start();
+
+                        EstadisticaClients.add(socket);
                         System.out.println("Estadistica arranco");
                     } else if("Pantalla".equals(msg)) {
                         PantallasClients.add(socket);
-
+                        System.out.println("Pantalla arranco");
                     } else if("SERVIDOR".equals(msg)) {
                         new RedundanciaHandler(socket).start();
 
@@ -218,9 +217,22 @@ public class ControladorServidor extends Thread {
     }
 
 
-    public synchronized void enviarEstadisticas(EstadisticaDTO es) throws IOException {
-        for (EstadisticaClientHandler socket : this.EstadisticaClients) {
-            socket.getOut().println(es);
+    public synchronized void enviarEstadisticas() throws IOException {
+        int cantEspera=turnosEnEspera.cantidadEspera();
+        int cantAtendidos=turnosFinalizados.cantidadFinalizada();
+        double  tiempoPromedio = 0;
+
+        Iterator<TurnoFinalizado> iterator= turnosFinalizados.getTurnos().iterator();
+        while(iterator.hasNext()) {
+            TurnoFinalizado turno= iterator.next();
+            tiempoPromedio+=Math.abs(turno.getHorarioSalida().getTime()-turno.getT().getHorarioEntrada().getTime());
+        }
+        tiempoPromedio=(tiempoPromedio/cantAtendidos);
+        String aux= String.valueOf(cantEspera +","+ cantAtendidos+","+tiempoPromedio);
+
+        for (Socket socket : this.EstadisticaClients) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            out.println(aux);
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {

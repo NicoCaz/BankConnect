@@ -70,7 +70,7 @@ public class VistaEstadisticas extends JFrame implements IVista {
             this.dialogoConectando.setVisible(true);
             while (!this.optionPaneConectando.getValue().toString().equals("Cancelar") && this.dialogoConectando.isVisible()) {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -154,6 +154,9 @@ public class VistaEstadisticas extends JFrame implements IVista {
 
     @Override
     public void setActionListener(ActionListener actionListener) {
+
+    }
+    public void agregaDatos(){
 
     }
 
