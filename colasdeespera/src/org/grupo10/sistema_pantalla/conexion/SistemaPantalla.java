@@ -1,5 +1,6 @@
 package org.grupo10.sistema_pantalla.conexion;
 
+import org.grupo10.modelo.Turno;
 import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 import org.grupo10.sistema_pantalla.controlador.IPantalla;
 
@@ -13,8 +14,8 @@ public class SistemaPantalla {
     private IPantalla pantalla;
 
     private Socket socket;
-    private PrintWriter out;
-    private BufferedReader in;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
     private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
     private int serverActivo;
 
@@ -63,12 +64,12 @@ public class SistemaPantalla {
     // Espera novedades del servidor
     public void esperarActualizaciones() throws IOException {
         while (true) {
-            String dni;
+            Turno turno;
             try {
-                dni = in.readLine(); // Recibe DNI del servidor
-                int nroBox = Integer.parseInt(in.readLine()); // Recibe nroBox del servidor
-                this.pantalla.agregarLlamado(nroBox, dni);
-            } catch (IOException e) { // Hubo una falla. Reintenta / cambia de servidor.
+                turno = (Turno) in.readObject(); // Recibe DNI del servidor
+                int nroBox = turno.getBox();
+                this.pantalla.agregarLlamado(nroBox, turno.getDni());
+            } catch (IOException | ClassNotFoundException e) { // Hubo una falla. Reintenta / cambia de servidor.
                 this.reconectar();
             }
         }
@@ -76,9 +77,9 @@ public class SistemaPantalla {
 
     private void conectar(Map.Entry<String, Integer> entry) throws IOException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
-        this.out = new PrintWriter(socket.getOutputStream(), true);
-        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.out.println("Pantalla");
+        this.out = new ObjectOutputStream(socket.getOutputStream());
+        this.in = new ObjectInputStream(socket.getInputStream());
+        this.out.writeObject("Pantalla");
     }
 
     // Maneja el reintento y el pantalla de servidor

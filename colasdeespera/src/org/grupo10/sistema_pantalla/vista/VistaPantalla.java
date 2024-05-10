@@ -89,9 +89,6 @@ public class VistaPantalla extends JFrame implements IVista {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        //SwingUtilities.invokeLater(() -> new VistaPantalla(this).setVisible(true));
-    }
 
     public void abrirMensajeConectando() {
         this.setEnabled(false);
@@ -100,7 +97,7 @@ public class VistaPantalla extends JFrame implements IVista {
             this.dialogoConectando.setVisible(true);
             while (!this.optionPaneConectando.getValue().toString().equals("Cancelar") && this.dialogoConectando.isVisible()) {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

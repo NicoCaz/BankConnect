@@ -6,24 +6,21 @@ import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.modelo.dto.EstadisticaDTO;
 import org.grupo10.sistema_servidor.ControladorServidor;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.Iterator;
 
 public class EstadisticaClientHandler extends Thread {
     private boolean running;
-    private PrintWriter out;
-    private BufferedReader in;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
     private String ip;
 
     public EstadisticaClientHandler(Socket socket) {
         try {
             this.ip = socket.getInetAddress().getHostAddress();
-            this.out = new PrintWriter(socket.getOutputStream(), true);
-            this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            this.out = new ObjectOutputStream(socket.getOutputStream());
+            this.in = new ObjectInputStream(socket.getInputStream());
 
             this.running = true;
         } catch (IOException e) {
@@ -31,7 +28,7 @@ public class EstadisticaClientHandler extends Thread {
         }
     }
 
-    public PrintWriter getOut(){
+    public ObjectOutputStream getOut(){
       return this.out;
     }
     public void run() {
@@ -64,7 +61,7 @@ public class EstadisticaClientHandler extends Thread {
                     ControladorServidor.getInstance().setCambios(true);
                     ControladorServidor.getInstance().enviarEstadisticas((EstadisticaDTO)res);
 
-                out.println(res);
+                this.out.writeObject(res);
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el panel de estadistica con IP " + this.ip);

@@ -199,7 +199,7 @@ public class ControladorServidor extends Thread {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 out.println(t);
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -212,9 +212,9 @@ public class ControladorServidor extends Thread {
     }
 
 
-    public synchronized void enviarEstadisticas(EstadisticaDTO es) {
+    public synchronized void enviarEstadisticas(EstadisticaDTO es) throws IOException {
         for (EstadisticaClientHandler socket : this.EstadisticaClients) {
-            socket.getOut().println(es);
+            socket.getOut().writeObject(es);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -260,7 +260,10 @@ public class ControladorServidor extends Thread {
     }
 
 
-
+    public void quitarBox(Integer box){
+        boxesOcupados.remove(box);
+        System.out.println("El elimino el box: " +box);
+    }
 
 
 }

@@ -39,24 +39,28 @@ public class VistaTotem extends JFrame implements IVista {
         displayPanel.add(displayLabel, BorderLayout.CENTER);
 
         JButton acceptButton = new JButton("Aceptar");
-        acceptButton.setBackground(Color.GREEN);
+        acceptButton.setBackground(new Color(0, 128, 0));
         acceptButton.setForeground(Color.WHITE);
         acceptButton.addActionListener(this.controlador);
 
         JButton[] numButtons = new JButton[10];
         for (int i = 0; i < 9; i++) {
             numButtons[i] = new JButton(String.valueOf(i + 1));
+            numButtons[i].setBackground(new Color(70, 130, 180)); // Azul acero
+            numButtons[i].setForeground(Color.WHITE);
             numButtons[i].addActionListener(new NumericButtonListener());
             keypadPanel.add(numButtons[i]);
         }
         numButtons[9] = new JButton("0");
+        numButtons[9].setBackground(new Color(70, 130, 180)); // Azul acero
+        numButtons[9].setForeground(Color.WHITE);
         numButtons[9].addActionListener(new NumericButtonListener());
         keypadPanel.add(numButtons[9]);
 
         inputBuffer = new StringBuilder();
 
         JButton cancelButton = new JButton("Cancelar");
-        cancelButton.setBackground(Color.RED);
+        cancelButton.setBackground(new Color(139, 0, 0)); // Rojo oscuro
         cancelButton.setForeground(Color.WHITE);
         cancelButton.addActionListener(new CancelButtonListener());
 
@@ -65,7 +69,7 @@ public class VistaTotem extends JFrame implements IVista {
         sideButtonPanel.add(cancelButton);
 
         JButton backButton = new JButton("<--");
-        backButton.setBackground(Color.RED);
+        backButton.setBackground(new Color(139, 0, 0)); // Rojo oscuro
         backButton.setForeground(Color.WHITE);
         backButton.addActionListener(new BackButtonListener());
 
@@ -79,7 +83,7 @@ public class VistaTotem extends JFrame implements IVista {
         setContentPane(mainPanel);
 
         // Ajustar el tamaño de la fuente de los botones después de agregar todos los componentes
-        adjustButtonFontSizes(numButtons, cancelButton, backButton);
+      //  adjustButtonFontSizes(numButtons, cancelButton, backButton);
 
         // Inicializa el mensaje "Conectando..."
         this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
@@ -257,3 +261,4 @@ public class VistaTotem extends JFrame implements IVista {
 
     }
 }
+

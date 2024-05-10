@@ -1,11 +1,12 @@
 package org.grupo10.sistema_box.vista;
 
 import org.grupo10.sistema_box.controlador.ControladorBox;
+import org.grupo10.vista.EventosPantalla;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VistaBox extends JFrame {
+public class VistaBox extends JFrame{
 
     private final JOptionPane optionPaneConectando;
     private final JDialog dialogoConectando;
@@ -21,7 +22,7 @@ public class VistaBox extends JFrame {
         setSize(600, 300);
         setLocationRelativeTo(null);
 
-
+        addWindowListener(new EventosPantalla(numBox));
         // Crear los componentes de la interfaz
         numeroAtendidoLabel = new JLabel("Numero atendido: " + numeroAtendido);
         llamarSiguienteButton = new JButton("Llamar siguiente");
@@ -116,13 +117,13 @@ public class VistaBox extends JFrame {
     public void apagarLlamar() {
 
         llamarSiguienteButton.setEnabled(false);
-        finalizarTurnoButton.setEnabled(true);
+        //finalizarTurnoButton.setEnabled(true);
     }
 
 
     public void prenderLlamar() {
         llamarSiguienteButton.setEnabled(true);
-        finalizarTurnoButton.setEnabled(false);
+        //finalizarTurnoButton.setEnabled(false);
     }
 
 

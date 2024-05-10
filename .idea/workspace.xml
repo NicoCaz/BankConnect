@@ -14,11 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Separa en MVC los distintos componenetes de la app a demas de modificar la pantalla (ya no es un hilo)">
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/EventosPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_13_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_13_20__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_14_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_14_23__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/EstadisticaClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/EstadisticaClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,9 +104,11 @@
     "Application.SocketClient.executor": "Run",
     "Application.SocketServer.executor": "Run",
     "Application.TurnosLlamados.executor": "Run",
+    "Application.VistaPantalla.executor": "Coverage",
     "Application.VistaServidor.executor": "Run",
     "Application.VistaTotem.executor": "Run",
     "Application.org.grupo10.sistema_servidor.MainServidor.executor": "Run",
+    "Application.org.grupo10.sistema_totem.vista.MainTotem.executor": "Run",
     "JAR Application.colasdeespera.jar (1).executor": "Run",
     "JAR Application.colasdeespera.jar (2).executor": "Run",
     "JAR Application.colasdeespera.jar.executor": "Run",
@@ -149,7 +158,7 @@
       <recent name="org.grupo10.negocio.manejoClientes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorEstadistica">
+  <component name="RunManager" selected="Application.ControladorPantalla">
     <configuration name="ControladorBox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
       <module name="colasdeespera" />
@@ -163,7 +172,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControladorEstadistica" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="ControladorEstadistica" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_estadistica.controlador.ControladorEstadistica" />
       <module name="colasdeespera" />
       <extension name="coverage">
@@ -189,7 +198,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControladorServidor" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="ControladorServidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_servidor.ControladorServidor" />
       <module name="colasdeespera" />
       <extension name="coverage">
@@ -254,11 +263,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControladorEstadistica" />
-        <item itemvalue="Application.ControladorServidor" />
-        <item itemvalue="Application.ControladorBox" />
         <item itemvalue="Application.ControladorPantalla" />
+        <item itemvalue="Application.ControladorBox" />
+        <item itemvalue="Application.ControladorEstadistica" />
         <item itemvalue="Application.ControladorTotem" />
+        <item itemvalue="Application.ControladorServidor" />
       </list>
     </recent_temporary>
   </component>
@@ -436,11 +445,20 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Main_class$VistaPantalla.ic" NAME="VistaPantalla Coverage Results" MODIFIED="1715358452318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.grupo10.sistema_pantalla.vista.*</FILTER>
+    </SUITE>
   </component>
 </project>
