@@ -1,14 +1,15 @@
 package org.grupo10.sistema_box.controlador;
 
 
-
 import org.grupo10.exception.BoxException;
 import org.grupo10.sistema_box.conexion.SistemaBox;
 import org.grupo10.sistema_box.vista.VistaBox;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class ControladorBox implements ActionListener {

@@ -13,14 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Corrigo ventana de estadista, la ventana de box, la ventana de pantalla y la fuente del totem">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/IFilas.java" afterDir="false" />
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego interfaces para las Filas">
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/IControladorServidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Fila.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Fila.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/FilaFinalizada.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/FilaFinalizada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/Turno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/TurnoFinalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/TurnoFinalizado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/controlador/ControladorEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -431,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715456870354</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Agrego interfaces para las Filas">
+      <option name="closed" value="true" />
+      <created>1715460090918</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715460090918</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +480,8 @@
     <MESSAGE value="arreglo vista estadisticas" />
     <MESSAGE value="vista pantalla ahora muestra numeros" />
     <MESSAGE value="Corrigo ventana de estadista, la ventana de box, la ventana de pantalla y la fuente del totem" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrigo ventana de estadista, la ventana de box, la ventana de pantalla y la fuente del totem" />
+    <MESSAGE value="Agrego interfaces para las Filas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agrego interfaces para las Filas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

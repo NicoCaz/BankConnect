@@ -5,7 +5,8 @@ import org.grupo10.sistema_pantalla.vista.VistaPantalla;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorPantalla implements IPantalla {
     private static ControladorPantalla instance;

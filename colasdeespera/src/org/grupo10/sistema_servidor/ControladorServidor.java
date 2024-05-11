@@ -1,9 +1,6 @@
 package org.grupo10.sistema_servidor;
 
-import org.grupo10.modelo.Fila;
-import org.grupo10.modelo.FilaFinalizada;
-import org.grupo10.modelo.Turno;
-import org.grupo10.modelo.TurnoFinalizado;
+import org.grupo10.modelo.*;
 import org.grupo10.modelo.dto.FilasDTO;
 import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
 import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
@@ -19,9 +16,9 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class ControladorServidor extends Thread {
-    private Fila turnosEnEspera ;
-    private FilaFinalizada turnosFinalizados ;
+public class ControladorServidor extends Thread implements IControladorServidor {
+    private IFilas<Turno> turnosEnEspera ;
+    private IFilas<TurnoFinalizado> turnosFinalizados ;
 
     private static ControladorServidor instance = null;
 
@@ -123,7 +120,7 @@ public class ControladorServidor extends Thread {
         }
     }
 
-    private void esperarConexiones() {
+    public void esperarConexiones() {
         try {
             Socket socket = this.serverSocket.accept();
             new Thread(() -> { // En otro thread para no interferir con la conexión de nuevas terminales
@@ -249,32 +246,13 @@ public class ControladorServidor extends Thread {
 
 
     public FilaFinalizada getTurnosFinalizados() {
-        return turnosFinalizados;
-    }
-
-    public void setTurnosFinalizados(FilaFinalizada turnosFinalizados) {
-        this.turnosFinalizados = turnosFinalizados;
+        return (FilaFinalizada) turnosFinalizados;
     }
 
     public Fila getTurnosEnEspera() {
-        return turnosEnEspera;
+        return (Fila) turnosEnEspera;
     }
 
-    public void setTurnosEnEspera(Fila turnosEnEspera) {
-        this.turnosEnEspera = turnosEnEspera;
-    }
-
-    public int getPort() {
-        return this.port;
-    }
-
-    public String getIpOtro() {
-        return this.ipOtro;
-    }
-
-    public int getPortOtro() {
-        return this.portOtro;
-    }
     public boolean hayCambios() {
         return this.cambios;
     }
@@ -288,6 +266,5 @@ public class ControladorServidor extends Thread {
         boxesOcupados.remove(box);
         System.out.println("El elimino el box: " +box);
     }
-
 
 }
