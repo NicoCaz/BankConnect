@@ -25,7 +25,7 @@ public class ControladorEstadistica implements IEstadisticas{
 
     private ControladorEstadistica() {
     }
-    private void comenzar() {
+    public void comenzar() {
         this.ventana = new VistaEstadisticas();
 
         new Thread(() -> {

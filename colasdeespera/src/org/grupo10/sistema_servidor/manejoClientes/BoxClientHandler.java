@@ -1,14 +1,19 @@
 package org.grupo10.sistema_servidor.manejoClientes;
 
 import org.grupo10.modelo.Turno;
+import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.sistema_servidor.ControladorServidor;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class BoxClientHandler extends Thread  {
     private int nroBox;
     private boolean running;
+    private Turno turnoAnterior = null;
     private PrintWriter out;
     private BufferedReader in;
     private String ip;
@@ -43,11 +48,21 @@ public class BoxClientHandler extends Thread  {
                 in.readLine();
                 synchronized (ControladorServidor.getInstance().getTurnosEnEspera().getTurnos()) {
                     msg = ControladorServidor.getInstance().getTurnosEnEspera().sacarTurno();
+
                 }
                 if (msg instanceof Turno) {
                     ControladorServidor.getInstance().setCambios(true);
                     ((Turno) msg).setBox(this.nroBox);
+                    if(msg != null){
+                        if(turnoAnterior != null){
+                            finalizarTurno(this.turnoAnterior);
+                        }
+                        this.turnoAnterior = (Turno) msg;
+
+                    }
+
                     ControladorServidor.getInstance().enviarActualizacion((Turno)msg);
+                    ControladorServidor.getInstance().enviarEstadisticas();
                     this.out.println(((Turno) msg).getDni());
                 }
             } catch (IOException e1) {
@@ -55,5 +70,9 @@ public class BoxClientHandler extends Thread  {
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);
             }
         }
+    }
+
+    void finalizarTurno(Turno t){
+        ControladorServidor.getInstance().getTurnosFinalizados().agregarTurno(new TurnoFinalizado(t));
     }
 }

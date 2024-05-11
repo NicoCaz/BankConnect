@@ -79,7 +79,7 @@ public class SistemaEstadistica {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.out.println("Pantalla");
+        this.out.println("ESTADISTICA");
     }
 
     // Maneja el reintento y el pantalla de servidor

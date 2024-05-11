@@ -30,7 +30,7 @@ public class ControladorBox implements ActionListener {
     private ControladorBox() {
     }
 
-    private void comenzar() {
+    public void comenzar() {
         try {
 
             //Lectura de archivo de configuracion de box

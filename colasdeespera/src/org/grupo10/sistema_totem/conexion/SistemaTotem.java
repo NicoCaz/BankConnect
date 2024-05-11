@@ -49,7 +49,7 @@ public class SistemaTotem implements I_DNI {
         try {
             ControladorTotem.getInstance().abrirMensajeConectando();
             this.conectar(servers.get(this.serverActivo));
-            System.out.println("CERRAR MENSAJE CONECTADO");
+
             ControladorTotem.getInstance().cerrarMensajeConectando();
         } catch (IOException e) {
             this.reconectar();
@@ -74,7 +74,6 @@ public class SistemaTotem implements I_DNI {
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         System.out.println("CONECTADO");
         this.out.println("Totem");
-        System.out.println("VOLVIO DE LA CONEXION");
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {

@@ -220,15 +220,21 @@ public class ControladorServidor extends Thread {
     public synchronized void enviarEstadisticas() throws IOException {
         int cantEspera=turnosEnEspera.cantidadEspera();
         int cantAtendidos=turnosFinalizados.cantidadFinalizada();
-        double  tiempoPromedio = 0;
+        long  tiempoPromedio = 0;
 
-        Iterator<TurnoFinalizado> iterator= turnosFinalizados.getTurnos().iterator();
-        while(iterator.hasNext()) {
-            TurnoFinalizado turno= iterator.next();
-            tiempoPromedio+=Math.abs(turno.getHorarioSalida().getTime()-turno.getT().getHorarioEntrada().getTime());
+        if(!turnosFinalizados.estaVacia()) {
+            Iterator<TurnoFinalizado> iterator = turnosFinalizados.getTurnos().iterator();
+            TurnoFinalizado turno = iterator.next();
+            while (iterator.hasNext()) {
+                tiempoPromedio += Math.abs(turno.getHorarioSalida().getTime() - turno.getT().getHorarioEntrada().getTime());
+                turno = iterator.next();
+            }
+
+            tiempoPromedio = (tiempoPromedio / cantAtendidos);
         }
-        tiempoPromedio=(tiempoPromedio/cantAtendidos);
-        String aux= String.valueOf(cantEspera +","+ cantAtendidos+","+tiempoPromedio);
+
+
+        String aux= cantEspera + "," + cantAtendidos + "," + tiempoPromedio;
 
         for (Socket socket : this.EstadisticaClients) {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

@@ -30,7 +30,7 @@ public class ControladorTotem implements ActionListener {
 
     }
 
-    private void comenzar() {
+    public void comenzar() {
 
         new Thread(() -> { // En otro thread para no interferir con GUIRegistros
             this.ventana = new VistaTotem();

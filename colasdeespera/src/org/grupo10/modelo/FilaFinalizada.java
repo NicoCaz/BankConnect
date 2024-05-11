@@ -6,6 +6,10 @@ import java.util.ArrayList;
 public class FilaFinalizada implements Serializable, Cloneable {
     private ArrayList<TurnoFinalizado> fila = new ArrayList();
 
+    public boolean estaVacia(){
+        return this.fila.isEmpty();
+    }
+
     public int cantidadFinalizada(){
         return this.fila.size();
     }

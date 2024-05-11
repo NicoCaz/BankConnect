@@ -6,6 +6,9 @@ import org.grupo10.vista.IVista;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class VistaEstadisticas extends JFrame implements IVista {
     private final JOptionPane optionPaneConectando;
@@ -157,7 +160,12 @@ public class VistaEstadisticas extends JFrame implements IVista {
 
     }
     public void agregaDatos(String[] datos){
-        this.personasAtendidaLabel.setText("PERSONAS ATENDIDAS : "+datos[0]);
+        DateFormat dateFormat = new SimpleDateFormat("mm:ss");
+        Date tiempo = new Date( Long.parseLong(datos[2]) );
+        this.tiempoPromedioLabel.setText("Tiempo promedio: "+ dateFormat.format(tiempo));
+        this.personasEnEsperaLabel.setText("Personas en espera: "+datos[0]);
+        this.personasAtendidaLabel.setText("Personas atendidas: "+datos[1]);
+
     }
 
     @Override

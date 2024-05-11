@@ -44,6 +44,7 @@ public class TotemClientHandler extends Thread{
                         ControladorServidor.getInstance().getTurnosEnEspera().agregarTurno(t);
                         ControladorServidor.getInstance().setCambios(true);
                         msg = "ACEPTADO";
+                        ControladorServidor.getInstance().enviarEstadisticas();
                     } catch (ClienteRepetidoException e) {
                         msg = "REPETIDO";
                     }
