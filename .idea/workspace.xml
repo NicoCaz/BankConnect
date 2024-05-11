@@ -15,14 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/vista/VistaEstadisticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/vista/VistaPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/VistaServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/VistaServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/vista/VistaTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/EventosPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/EventosPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/vista/IVista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/EstadisticaDTO.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,11 +144,11 @@
       <recent name="C:\Users\Nico\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_totem\conexion" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.grupo10.sistema_box.vista" />
       <recent name="org.grupo10.exception" />
       <recent name="org.grupo10.sistema_servidor" />
       <recent name="org.grupo10.controlador" />
       <recent name="org.grupo10.modelo.dto" />
-      <recent name="org.grupo10.negocio.manejoClientes" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ControladorTotem">
