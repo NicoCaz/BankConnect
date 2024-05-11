@@ -2,13 +2,14 @@ package org.grupo10.sistema_estadistica.controlador;
 
 
 import org.grupo10.exception.EstadisticaException;
+import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_estadistica.conexion.SistemaEstadistica;
 import org.grupo10.sistema_estadistica.vista.VistaEstadisticas;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ControladorEstadistica implements IEstadisticas{
+public class ControladorEstadistica implements IEstadisticas , IControlador {
     private VistaEstadisticas ventana;
     private static ControladorEstadistica instance = null;
     private IEstadisticas estadistica_llamado;

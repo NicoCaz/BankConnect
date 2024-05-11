@@ -2,6 +2,7 @@ package org.grupo10.sistema_box.controlador;
 
 
 import org.grupo10.exception.BoxException;
+import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_box.conexion.SistemaBox;
 import org.grupo10.sistema_box.vista.VistaBox;
 
@@ -12,7 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class ControladorBox implements ActionListener {
+public class ControladorBox implements ActionListener, IControlador {
     private VistaBox ventana;
     private static ControladorBox instance = null;
     private SistemaBox dni_llamado;

@@ -1,6 +1,7 @@
 package org.grupo10.sistema_totem.controlador;
 
 
+import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_totem.I_DNI;
 import org.grupo10.sistema_totem.conexion.SistemaTotem;
 import org.grupo10.sistema_totem.vista.VistaTotem;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ControladorTotem implements ActionListener {
+public class ControladorTotem implements ActionListener , IControlador {
 
     private static ControladorTotem instance = null;
     private VistaTotem ventana;
@@ -26,9 +27,6 @@ public class ControladorTotem implements ActionListener {
         return ControladorTotem.instance;
     }
 
-    private ControladorTotem() {
-
-    }
 
     public void comenzar() {
 

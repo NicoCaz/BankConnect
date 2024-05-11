@@ -13,12 +13,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego interfaces para las Filas">
-      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/IControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/controlador/ControladorPantalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces">
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -436,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715460090918</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Agrego mas interfaces">
+      <option name="closed" value="true" />
+      <created>1715461225597</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715461225597</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +485,8 @@
     <MESSAGE value="vista pantalla ahora muestra numeros" />
     <MESSAGE value="Corrigo ventana de estadista, la ventana de box, la ventana de pantalla y la fuente del totem" />
     <MESSAGE value="Agrego interfaces para las Filas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agrego interfaces para las Filas" />
+    <MESSAGE value="Agrego mas interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agrego mas interfaces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

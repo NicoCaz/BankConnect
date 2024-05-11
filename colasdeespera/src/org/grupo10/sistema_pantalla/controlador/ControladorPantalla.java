@@ -1,5 +1,6 @@
 package org.grupo10.sistema_pantalla.controlador;
 
+import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_pantalla.conexion.SistemaPantalla;
 import org.grupo10.sistema_pantalla.vista.VistaPantalla;
 
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControladorPantalla implements IPantalla {
+public class ControladorPantalla implements IPantalla , IControlador {
     private static ControladorPantalla instance;
     private VistaPantalla ventana;
     private VistaPantalla pantalla;
@@ -31,7 +32,7 @@ public class ControladorPantalla implements IPantalla {
     private ControladorPantalla() {
     }
 
-    private void comenzar() {
+    public void comenzar() {
         this.ventana = new VistaPantalla();
         this.pantalla = this.ventana;
         new Thread(() -> {
