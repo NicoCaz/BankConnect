@@ -48,9 +48,7 @@ public class VistaEstadisticas extends JFrame implements IVista {
         panel.add(personasEnEsperaLabel);
         panel.add(personasAtendidaLabel);
         panel.add(tiempoPromedioLabel);
-        panel.add(refreshButton);
         add(panel, BorderLayout.CENTER);
-
         this.optionPaneConectando = new JOptionPane("Conectando...\nPresione Cancelar para cerrar el programa.",
                 JOptionPane.INFORMATION_MESSAGE, JOptionPane.CANCEL_OPTION);
         this.dialogoConectando = new JDialog(this, "Mensaje", true);

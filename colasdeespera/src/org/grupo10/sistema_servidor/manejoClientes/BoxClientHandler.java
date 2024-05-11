@@ -58,13 +58,17 @@ public class BoxClientHandler extends Thread  {
                             finalizarTurno(this.turnoAnterior);
                         }
                         this.turnoAnterior = (Turno) msg;
-
                     }
-
                     ControladorServidor.getInstance().enviarActualizacion((Turno)msg);
-                    ControladorServidor.getInstance().enviarEstadisticas();
                     this.out.println(((Turno) msg).getDni());
+                }else {
+                    this.out.println("Fila Vacia");
+                    if(turnoAnterior != null){
+                        finalizarTurno(this.turnoAnterior);
+                        turnoAnterior=null;
+                    }
                 }
+                ControladorServidor.getInstance().enviarEstadisticas();
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);

@@ -5,9 +5,7 @@ import org.grupo10.sistema_pantalla.vista.VistaPantalla;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ControladorPantalla implements IPantalla {
     private static ControladorPantalla instance;
@@ -15,7 +13,9 @@ public class ControladorPantalla implements IPantalla {
     private VistaPantalla pantalla;
     private final int maxLlamados = 10;
 
-    private LinkedHashMap<Integer, String> ultimosLlamados = new LinkedHashMap<Integer, String>();
+
+    private List<String> boxUltimosLlamados = new ArrayList<String>();
+    private List<String> dniUltimosLlamados = new ArrayList<String>();
 
     public static void main(String[] args) {
         ControladorPantalla.getInstance().comenzar();
@@ -45,27 +45,23 @@ public class ControladorPantalla implements IPantalla {
     }
 
     @Override
-    public void agregarLlamado( String turno) {
+    public void agregarLlamado(String turno) {
         String[] datos = turno.split(",");
-        // Actualiza el listado de últimos llamados, evitando que haya más de 3
-        //Integer primeraClaveDelMapa = ultimosLlamados.keySet().iterator().next();
+        this.boxUltimosLlamados.add(datos[0]);
+        this.dniUltimosLlamados.add(datos[1]);
 
-        this.ultimosLlamados.put(Integer.valueOf(datos[0]), datos[1]);
-        if (this.ultimosLlamados.size() > this.maxLlamados)
-            this.ultimosLlamados.remove(this.ultimosLlamados.entrySet().iterator().next());
+        if (this.boxUltimosLlamados.size() > this.maxLlamados){
+            this.dniUltimosLlamados.remove(0);
+            this.boxUltimosLlamados.remove(0);
+        }
         this.actualizar();
     }
 
     @Override
     public void actualizar() {
-        int i = 0;
-        Map.Entry<Integer, String> entrada;
-        Iterator<Map.Entry<Integer, String>> it = this.ultimosLlamados.entrySet().iterator();
-        while (it.hasNext()) {
-            entrada = it.next();
-            this.pantalla.agregarDatos(entrada.getKey().toString(), entrada.getValue());
-            i++;
-        }
+
+            this.pantalla.agregarDatos(this.boxUltimosLlamados,this.dniUltimosLlamados);
+
     }
 
     public void abrirMensajeConectando() {

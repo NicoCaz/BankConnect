@@ -37,31 +37,37 @@ public class VistaTotem extends JFrame implements IVista {
         displayLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         displayLabel.setForeground(Color.GRAY);
         displayPanel.add(displayLabel, BorderLayout.CENTER);
+        Font fuente = new Font("Arial", Font.PLAIN, 20);
 
         JButton acceptButton = new JButton("Aceptar");
         acceptButton.setBackground(new Color(0, 128, 0));
         acceptButton.setForeground(Color.WHITE);
+        acceptButton.setFont(fuente);
         acceptButton.addActionListener(this.controlador);
 
         JButton[] numButtons = new JButton[10];
+
         for (int i = 0; i < 9; i++) {
             numButtons[i] = new JButton(String.valueOf(i + 1));
+            numButtons[i].setFont(fuente); // Establecer la fuente para el botón
             numButtons[i].setBackground(new Color(70, 130, 180)); // Azul acero
             numButtons[i].setForeground(Color.WHITE);
             numButtons[i].addActionListener(new NumericButtonListener());
             keypadPanel.add(numButtons[i]);
         }
+
         numButtons[9] = new JButton("0");
+        numButtons[9].setFont(fuente); // Establecer la fuente para el botón
         numButtons[9].setBackground(new Color(70, 130, 180)); // Azul acero
         numButtons[9].setForeground(Color.WHITE);
         numButtons[9].addActionListener(new NumericButtonListener());
         keypadPanel.add(numButtons[9]);
-
         inputBuffer = new StringBuilder();
 
         JButton cancelButton = new JButton("Cancelar");
         cancelButton.setBackground(new Color(139, 0, 0)); // Rojo oscuro
         cancelButton.setForeground(Color.WHITE);
+        cancelButton.setFont(fuente);
         cancelButton.addActionListener(new CancelButtonListener());
 
         JPanel sideButtonPanel = new JPanel(new GridLayout(1, 2, 5, 5));
@@ -71,6 +77,7 @@ public class VistaTotem extends JFrame implements IVista {
         JButton backButton = new JButton("<--");
         backButton.setBackground(new Color(139, 0, 0)); // Rojo oscuro
         backButton.setForeground(Color.WHITE);
+        backButton.setFont(fuente);
         backButton.addActionListener(new BackButtonListener());
 
         bottomPanel.add(keypadPanel, BorderLayout.CENTER);
@@ -167,7 +174,7 @@ public class VistaTotem extends JFrame implements IVista {
         JDialog ticketDialog = new JDialog(VistaTotem.this, "Numero de DNI:" + msg, true);
         JPanel ticketPanel = new JPanel(new BorderLayout());
         JLabel ticketLabel = new JLabel(msg, SwingConstants.CENTER);
-        ticketLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        ticketLabel.setFont(new Font("Arial", Font.BOLD, 50));
         ticketPanel.add(ticketLabel, BorderLayout.CENTER);
         ticketDialog.setContentPane(ticketPanel);
         ticketDialog.pack();

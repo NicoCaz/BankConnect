@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class VistaPantalla extends JFrame implements IVista {
 
@@ -37,7 +38,7 @@ public class VistaPantalla extends JFrame implements IVista {
         };
         modeloTabla.addColumn("DNI");
         modeloTabla.addColumn("Box");
-        modeloTabla.setRowCount(5); // Establecer el número máximo de filas a 5
+        modeloTabla.setRowCount(10); // Establecer el número máximo de filas a 5
 
         // Crear la JTable y establecer el modelo
         tabla = new JTable(modeloTabla);
@@ -119,10 +120,45 @@ public class VistaPantalla extends JFrame implements IVista {
         this.setEnabled(true);
     }
 
-    public void agregarDatos(String valor1, String valor2) {
-        Object[] nuevaFila = {valor1, valor2};
-        modeloTabla.insertRow(0,nuevaFila);
+    public void agregarDatos(List<String>  valores1, List<String> valores2) {
+        // Limpiar el modelo de la tabla antes de agregar nuevos datos
+        limpiarTabla();
+        int size = Math.min(valores1.size(), valores2.size());
+        // Agregar filas con los valores proporcionados
+        for (int i = size - 1; i >= 0; i--) {
+            Object[] nuevaFila = {valores1.get(i), valores2.get(i)};
+            modeloTabla.addRow(nuevaFila);
+        }
+
         actualizar();
+    }
+
+    @Override
+    public void actualizar() {
+        // Obtener la cantidad de filas en la tabla
+        int filas = modeloTabla.getRowCount();
+
+        // Si hay al menos una fila
+        if (filas > 0) {
+            // Obtener los valores de la primera fila
+            String turno = (String) modeloTabla.getValueAt(0, 0);
+            String box = (String) modeloTabla.getValueAt(0, 1);
+
+            // Actualizar los labels del panel inferior con los valores de la primera fila
+            labelTurno.setText("Turno: " + turno);
+            labelBox.setText("Box: " + box);
+        } else {
+            // Si no hay filas, establecer los labels del panel inferior en vacío
+            labelTurno.setText("Turno: ");
+            labelBox.setText("Box: ");
+        }
+    }
+
+    // Método para limpiar la tabla
+    private void limpiarTabla() {
+        while (modeloTabla.getRowCount() > 0) {
+            modeloTabla.removeRow(0);
+        }
     }
 
     private class CeldaResaltadaRenderer extends DefaultTableCellRenderer {
@@ -152,16 +188,7 @@ public class VistaPantalla extends JFrame implements IVista {
         setVisible(true);
     }
 
-    @Override
-    public void actualizar() {
-        // Obtener los valores de la primera fila
-        String turno = (String) modeloTabla.getValueAt(0, 0);
-        String box = (String) modeloTabla.getValueAt(0, 1);
 
-        // Actualizar los labels del panel inferior
-        labelTurno.setText("Turno: " + turno);
-        labelBox.setText("Box: " + box);
-    }
 
 
     @Override
