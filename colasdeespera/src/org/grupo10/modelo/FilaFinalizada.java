@@ -3,14 +3,14 @@ package org.grupo10.modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FilaFinalizada implements Serializable, Cloneable {
+public class FilaFinalizada implements IFilas<TurnoFinalizado> ,Serializable, Cloneable {
     private ArrayList<TurnoFinalizado> fila = new ArrayList();
 
     public boolean estaVacia(){
         return this.fila.isEmpty();
     }
 
-    public int cantidadFinalizada(){
+    public int cantidad(){
         return this.fila.size();
     }
     public void agregarTurno(TurnoFinalizado turno) {

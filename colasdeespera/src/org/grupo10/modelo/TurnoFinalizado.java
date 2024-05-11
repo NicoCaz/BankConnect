@@ -26,15 +26,8 @@ public class TurnoFinalizado implements Serializable, Cloneable {
         return t;
     }
 
-    public void setT(Turno t) {
-        this.t = t;
-    }
-
     public Date getHorarioSalida() {
         return horarioSalida;
     }
 
-    public void setHorarioSalida(Date horarioSalida) {
-        this.horarioSalida = horarioSalida;
-    }
 }

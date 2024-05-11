@@ -218,8 +218,8 @@ public class ControladorServidor extends Thread {
 
 
     public synchronized void enviarEstadisticas() throws IOException {
-        int cantEspera=turnosEnEspera.cantidadEspera();
-        int cantAtendidos=turnosFinalizados.cantidadFinalizada();
+        int cantEspera=turnosEnEspera.cantidad();
+        int cantAtendidos=turnosFinalizados.cantidad();
         long  tiempoPromedio = 0;
 
         if(!turnosFinalizados.estaVacia()) {

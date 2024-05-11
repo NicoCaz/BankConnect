@@ -52,11 +52,7 @@ public class ControladorEstadistica implements IEstadisticas{
     }
 
     public void actualizar(String[] datos) {
-
-
       this.ventana.agregaDatos(datos);
-
-
     }
     public void abrirMensajeConectando() {
         this.ventana.abrirMensajeConectando();
