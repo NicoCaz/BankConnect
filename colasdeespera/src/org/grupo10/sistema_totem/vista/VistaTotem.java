@@ -1,14 +1,13 @@
 package org.grupo10.sistema_totem.vista;
 
 import org.grupo10.sistema_totem.controlador.ControladorTotem;
-import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VistaTotem extends JFrame implements IVista {
+public class VistaTotem extends JFrame {
     private final JOptionPane optionPaneConectando;
     private final JDialog dialogoConectando;
     private JLabel displayLabel;
@@ -104,7 +103,7 @@ public class VistaTotem extends JFrame implements IVista {
         this.dialogoConectando.pack();
         this.dialogoConectando.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        this.mostrar();
+        setVisible(true);
     }
 
     private void adjustButtonFontSizes(JButton[] numButtons, JButton cancelButton, JButton backButton) {
@@ -120,18 +119,9 @@ public class VistaTotem extends JFrame implements IVista {
         button.setFont(font);
     }
 
-    @Override
-    public void mostrar() {
-        setVisible(true);
-    }
-
-
-    @Override
     public void setActionListener(ActionListener actionListener) {
         this.controlador = (ControladorTotem) actionListener;
     }
-
-
 
     private class NumericButtonListener implements ActionListener {
         @Override
@@ -189,7 +179,6 @@ public class VistaTotem extends JFrame implements IVista {
         ticketDialog.setVisible(true);
     }
 
-    @Override
     public void ventanaError(String msg) {
 
         JDialog errorDialog = new JDialog(VistaTotem.this, msg, true);
@@ -248,24 +237,5 @@ public class VistaTotem extends JFrame implements IVista {
         return inputBuffer;
     }
 
-
-
-    @Override
-    public void apagarLlamar() {
-
-    }
-
-    @Override
-    public void prenderLlamar() {
-
-    }
-    @Override
-    public void actualizar() {
-
-    }
-    @Override
-    public void cerrar() {
-
-    }
 }
 

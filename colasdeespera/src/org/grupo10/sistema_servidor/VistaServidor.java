@@ -1,13 +1,11 @@
 package org.grupo10.sistema_servidor;
 
 
-import org.grupo10.vista.IVista;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class VistaServidor extends JFrame implements IVista {
+public class VistaServidor extends JFrame {
     private JButton botonServidor;
     private boolean servidorEncendido;
     private ActionListener controlador;
@@ -32,6 +30,8 @@ public class VistaServidor extends JFrame implements IVista {
 
         // Agregar el botón al contenido de la ventana
         getContentPane().add(botonServidor, BorderLayout.CENTER);
+
+        setVisible(true);
     }
 
     private void toggleServidor() {
@@ -56,53 +56,4 @@ public class VistaServidor extends JFrame implements IVista {
         }
     }
 
-    @Override
-    public void cerrar() {
-
-    }
-
-    @Override
-    public void mostrar() {
-        setVisible(true);
-    }
-
-    @Override
-    public void actualizar() {
-        this.toggleServidor();
-    }
-
-    @Override
-    public void ventanaConfirmacion(String msg) {
-
-    }
-
-    @Override
-    public void ventanaError(String msg) {
-
-    }
-
-    @Override
-    public void setActionListener(ActionListener actionListener) {
-        this.controlador = actionListener;
-    }
-
-    @Override
-    public JLabel getDisplayLabel() {
-        return null;
-    }
-
-    @Override
-    public StringBuilder getInputBuffer() {
-        return null;
-    }
-
-    @Override
-    public void apagarLlamar() {
-
-    }
-
-    @Override
-    public void prenderLlamar() {
-
-    }
 }

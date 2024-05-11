@@ -1,20 +1,17 @@
 package org.grupo10.sistema_estadistica.vista;
 
 import org.grupo10.sistema_estadistica.controlador.ControladorEstadistica;
-import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class VistaEstadisticas extends JFrame implements IVista {
+public class VistaEstadisticas extends JFrame {
     private final JOptionPane optionPaneConectando;
     private final JDialog dialogoConectando;
     private JLabel personasEnEsperaLabel, personasAtendidaLabel, tiempoPromedioLabel;
-    private JButton refreshButton;
     private ControladorEstadistica controlador;
     private int personasEnEspera = 0;
     private int personasAtendidas = 0;
@@ -32,8 +29,6 @@ public class VistaEstadisticas extends JFrame implements IVista {
         personasEnEsperaLabel = new JLabel("Personas en espera: " + personasEnEspera);
         personasAtendidaLabel = new JLabel("Personas atendidas: " + personasAtendidas);
         tiempoPromedioLabel = new JLabel("Tiempo promedio: " + formatTime(tiempoPromedio));
-        refreshButton = new JButton("Refrescar");
-       // refreshButton.addActionListener(controlador);
 
         // Establecer el tamaño de fuente responsivo
         int fontSize = (int) (getHeight() * 0.08);
@@ -41,7 +36,6 @@ public class VistaEstadisticas extends JFrame implements IVista {
         personasEnEsperaLabel.setFont(font);
         personasAtendidaLabel.setFont(font);
         tiempoPromedioLabel.setFont(font);
-        refreshButton.setFont(font);
 
         // Agregar los componentes al panel principal
         JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
@@ -102,39 +96,6 @@ public class VistaEstadisticas extends JFrame implements IVista {
         //return String.valueOf(segundos);
     }
 
-    public JLabel getPersonasEnEsperaLabel() {
-        return personasEnEsperaLabel;
-    }
-
-    public JLabel getPersonasAtendidaLabel() {
-        return personasAtendidaLabel;
-    }
-
-    public JLabel getTiempoPromedioLabel() {
-        return tiempoPromedioLabel;
-    }
-
-    @Override
-    public void cerrar() {
-
-    }
-
-    @Override
-    public void mostrar() {
-        setVisible(true);
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
-
-    @Override
-    public void ventanaConfirmacion(String msg) {
-
-    }
-
-    @Override
     public void ventanaError(String msg) {
 
         JDialog errorDialog = new JDialog(VistaEstadisticas.this, msg, true);
@@ -153,36 +114,12 @@ public class VistaEstadisticas extends JFrame implements IVista {
         errorDialog.setVisible(true);
     }
 
-    @Override
-    public void setActionListener(ActionListener actionListener) {
-
-    }
     public void agregaDatos(String[] datos){
         DateFormat dateFormat = new SimpleDateFormat("mm:ss");
         Date tiempo = new Date( Long.parseLong(datos[2]) );
         this.tiempoPromedioLabel.setText("Tiempo promedio: "+ dateFormat.format(tiempo));
         this.personasEnEsperaLabel.setText("Personas en espera: "+datos[0]);
         this.personasAtendidaLabel.setText("Personas atendidas: "+datos[1]);
-
-    }
-
-    @Override
-    public JLabel getDisplayLabel() {
-        return null;
-    }
-
-    @Override
-    public StringBuilder getInputBuffer() {
-        return null;
-    }
-
-    @Override
-    public void apagarLlamar() {
-
-    }
-
-    @Override
-    public void prenderLlamar() {
 
     }
 }

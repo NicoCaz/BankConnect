@@ -1,16 +1,14 @@
 package org.grupo10.sistema_pantalla.vista;
 
 import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
-import org.grupo10.vista.IVista;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.List;
 
-public class VistaPantalla extends JFrame implements IVista {
+public class VistaPantalla extends JFrame {
 
     private final JOptionPane optionPaneConectando;
     private final JDialog dialogoConectando;
@@ -132,8 +130,6 @@ public class VistaPantalla extends JFrame implements IVista {
 
         actualizar();
     }
-
-    @Override
     public void actualizar() {
         // Obtener la cantidad de filas en la tabla
         int filas = modeloTabla.getRowCount();
@@ -177,53 +173,8 @@ public class VistaPantalla extends JFrame implements IVista {
         }
     }
 
-
-    @Override
-    public void cerrar() {
-
-    }
-
-    @Override
-    public void mostrar() {
-        setVisible(true);
-    }
-
-
-
-
-    @Override
-    public void ventanaConfirmacion(String msg) {
-
-    }
-
-    @Override
     public void ventanaError(String msg) {
 
     }
 
-
-    @Override
-    public void setActionListener(ActionListener actionListener) {
-
-    }
-
-    @Override
-    public JLabel getDisplayLabel() {
-        return null;
-    }
-
-    @Override
-    public StringBuilder getInputBuffer() {
-        return null;
-    }
-
-    @Override
-    public void apagarLlamar() {
-
-    }
-
-    @Override
-    public void prenderLlamar() {
-
-    }
 }
