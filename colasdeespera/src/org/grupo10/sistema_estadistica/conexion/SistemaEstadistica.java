@@ -10,7 +10,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaEstadistica {
+public class SistemaEstadistica implements I_EsperarActualizaciones{
     private IEstadisticas pantalla;
     private Socket socket;
     private PrintWriter out;
@@ -75,7 +75,7 @@ public class SistemaEstadistica {
         }
     }
 
-    private void conectar(Map.Entry<String, Integer> entry) throws IOException {
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

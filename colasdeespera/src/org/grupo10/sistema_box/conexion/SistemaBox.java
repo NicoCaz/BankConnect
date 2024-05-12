@@ -12,7 +12,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaBox {
+public class SistemaBox implements I_Box{
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
@@ -48,7 +48,7 @@ public class SistemaBox {
         }
     }
 
-    private void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException {
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
