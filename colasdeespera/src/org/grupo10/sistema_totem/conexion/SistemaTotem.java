@@ -1,5 +1,6 @@
 package org.grupo10.sistema_totem.conexion;
 
+import org.grupo10.sistema_servidor.ControladorServidor;
 import org.grupo10.sistema_totem.controlador.ControladorTotem;
 
 import java.io.*;
@@ -19,9 +20,10 @@ public class SistemaTotem implements I_DNI {
         String ip;
         int port;
 
-        String currentDir = System.getProperty("user.dir");
-
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_totem/totemconfig.txt";
+//        String currentDir = System.getProperty("user.dir");
+//        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_totem/totemconfig.txt";
+        String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
+        String archivoTxt = jarPath + "/totemconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;

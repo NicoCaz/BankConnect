@@ -3,6 +3,7 @@ package org.grupo10.sistema_pantalla.conexion;
 import org.grupo10.sistema_estadistica.conexion.I_EsperarActualizaciones;
 import org.grupo10.sistema_pantalla.controlador.ControladorPantalla;
 import org.grupo10.sistema_pantalla.controlador.IPantalla;
+import org.grupo10.sistema_servidor.ControladorServidor;
 
 import java.io.*;
 import java.net.Socket;
@@ -24,9 +25,12 @@ public class SistemaPantalla implements I_EsperarActualizaciones {
         int port;
         this.pantalla = pantalla;
 
-        String currentDir = System.getProperty("user.dir");
+//        String currentDir = System.getProperty("user.dir");
+//
+//        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_pantalla/pantallaconfig.txt";
 
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_pantalla/pantallaconfig.txt";
+        String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
+        String archivoTxt = jarPath + "/pantallaconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;

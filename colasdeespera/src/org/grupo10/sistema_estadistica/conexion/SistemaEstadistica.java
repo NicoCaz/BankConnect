@@ -3,6 +3,7 @@ package org.grupo10.sistema_estadistica.conexion;
 import org.grupo10.exception.EstadisticaException;
 import org.grupo10.sistema_estadistica.controlador.ControladorEstadistica;
 import org.grupo10.sistema_estadistica.controlador.IEstadisticas;
+import org.grupo10.sistema_servidor.ControladorServidor;
 
 import java.io.*;
 import java.net.Socket;
@@ -25,9 +26,12 @@ public class SistemaEstadistica implements I_EsperarActualizaciones{
         int port;
         this.pantalla = estadistica;
 
-        String currentDir = System.getProperty("user.dir");
+//        String currentDir = System.getProperty("user.dir");
+//
+//        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_estadistica/estadisticasconfig.txt";
 
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_estadistica/estadisticasconfig.txt";
+        String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
+        String archivoTxt = jarPath + "/estadisticasconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;

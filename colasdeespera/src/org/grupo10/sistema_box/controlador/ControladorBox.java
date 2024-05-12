@@ -5,10 +5,12 @@ import org.grupo10.exception.BoxException;
 import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_box.conexion.SistemaBox;
 import org.grupo10.sistema_box.vista.VistaBox;
+import org.grupo10.sistema_servidor.ControladorServidor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -36,8 +38,11 @@ public class ControladorBox implements ActionListener, IControlador {
         try {
 
             //Lectura de archivo de configuracion de box
-            String currentDir = System.getProperty("user.dir");
-            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt";
+//            String currentDir = System.getProperty("user.dir");
+//            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt";
+
+            String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
+            String archivoTxt = jarPath + "/boxconfig.txt";
 
             BufferedReader br = new BufferedReader(new FileReader(archivoTxt));
             String linea;

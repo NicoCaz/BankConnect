@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="estadisticas:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/estadisticas_jar</output-path>
-    <root id="archive" name="colasdeespera.jar">
+  <artifact type="jar" name="servidor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/servidor_jar</output-path>
+    <root id="archive" name="servidor.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>

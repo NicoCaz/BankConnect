@@ -3,9 +3,9 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="box:jar" />
-      <artifact name="estadisticas:jar" />
+      <artifact name="estadistica:jar" />
       <artifact name="pantalla:jar" />
-      <artifact name="server.jar" />
+      <artifact name="servidor:jar" />
       <artifact name="totem:jar" />
     </artifacts-to-build>
   </component>
@@ -13,7 +13,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces" />
+    <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/estadistica_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/servidor_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/box_jar/box.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/estadistica_jar/estadistica.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/pantalla_jar/pantalla.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/servidor_jar/serverconfig.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/servidor_jar/servidor.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/totem_jar/totem.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/box_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/box_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/estadisticas_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/pantalla_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/pantalla_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/totem_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/totem_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/box_jar/colasdeespera.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/estadisticas_jar/colasdeespera.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/pantalla_jar/colasdeespera.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_jar/colasdeespera.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/totem_jar/colasdeespera.jar" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,13 +136,13 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Facundo/Desktop/proyectoAyD2/colasdeespera/src/org/grupo10/sistema_pantalla",
+    "last_opened_file_path": "C:/Users/Facundo/Desktop/proyectoAyD2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -150,7 +177,7 @@
       <recent name="org.grupo10.sistema_servidor" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorBox">
+  <component name="RunManager" selected="Application.ControladorServidor">
     <configuration name="ControladorBox" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
       <module name="colasdeespera" />
@@ -241,8 +268,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControladorBox" />
         <item itemvalue="Application.ControladorServidor" />
+        <item itemvalue="Application.ControladorBox" />
         <item itemvalue="Application.ControladorPantalla" />
         <item itemvalue="Application.ControladorTotem" />
       </list>
@@ -291,6 +318,8 @@
       <workItem from="1715376964371" duration="912000" />
       <workItem from="1715470604555" duration="439000" />
       <workItem from="1715471106259" duration="905000" />
+      <workItem from="1715539115519" duration="2240000" />
+      <workItem from="1715546317571" duration="2257000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

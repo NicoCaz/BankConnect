@@ -50,9 +50,13 @@ public class ControladorServidor extends Thread implements IControladorServidor 
         this.turnosEnEspera = new Fila();
         this.turnosFinalizados =  new FilaFinalizada();
         // Lectura de archivo de configuración
-        String currentDir = System.getProperty("user.dir");
 
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt";
+
+        String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
+        String archivoTxt = jarPath + "/serverconfig.txt";
+
+        //String currentDir = System.getProperty("user.dir");
+        //String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_servidor/serverconfig.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
