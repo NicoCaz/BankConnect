@@ -2,7 +2,7 @@ package org.grupo10.sistema_totem.controlador;
 
 
 import org.grupo10.interfaces.IControlador;
-import org.grupo10.sistema_totem.I_DNI;
+import org.grupo10.sistema_totem.conexion.I_DNI;
 import org.grupo10.sistema_totem.conexion.SistemaTotem;
 import org.grupo10.sistema_totem.vista.VistaTotem;
 

@@ -1,6 +1,5 @@
 package org.grupo10.sistema_totem.conexion;
 
-import org.grupo10.sistema_totem.I_DNI;
 import org.grupo10.sistema_totem.controlador.ControladorTotem;
 
 import java.io.*;
@@ -68,7 +67,7 @@ public class SistemaTotem implements I_DNI {
         }
     }
 
-    private void conectar(Map.Entry<String, Integer> entry) throws IOException {
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException {
         Socket socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

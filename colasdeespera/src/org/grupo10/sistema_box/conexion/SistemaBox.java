@@ -12,7 +12,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaBox {
+public class SistemaBox implements I_LlamarDNI{
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
@@ -36,8 +36,8 @@ public class SistemaBox {
             this.reconectar();
         }
     }
-
-    public String recibirDNILlamado() throws IOException, BoxException  {
+    @Override
+    public String llamarSiguiente() throws IOException, BoxException  {
         this.out.println("SIGUIENTE");
         try {
             return this.in.readLine(); // Recibe DNI del servidor
@@ -48,7 +48,8 @@ public class SistemaBox {
         }
     }
 
-    private void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException {
+    @Override
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -68,6 +69,7 @@ public class SistemaBox {
     }
 
     // Maneja el reintento y el cambio de servidor
+    @Override
     public void reconectar() throws IOException , BoxException {
         ControladorBox.getInstance().abrirMensajeConectando();
         try {

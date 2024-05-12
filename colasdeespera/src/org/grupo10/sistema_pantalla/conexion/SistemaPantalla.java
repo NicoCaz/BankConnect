@@ -9,7 +9,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaPantalla {
+public class SistemaPantalla implements I_EsperarActualizaciones{
     private IPantalla pantalla;
 
     private Socket socket;
@@ -74,7 +74,7 @@ public class SistemaPantalla {
         }
     }
 
-    private void conectar(Map.Entry<String, Integer> entry) throws IOException {
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

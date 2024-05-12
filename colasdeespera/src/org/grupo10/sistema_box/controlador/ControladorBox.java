@@ -81,7 +81,7 @@ public class ControladorBox implements ActionListener, IControlador {
         new Thread(() -> { // En otro thread para no interferir con GUILlamados
             String msg;
             try {
-                msg = this.dni_llamado.recibirDNILlamado();
+                msg = this.dni_llamado.llamarSiguiente();
                 if (msg.equals("NULL"))
                     this.ventana.ventanaError("Fila Vacia");
                 else

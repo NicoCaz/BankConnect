@@ -14,10 +14,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces">
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/conexion/I_LlamarDNI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/I_EsperarActualizaciones.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/I_EsperarActualizaciones.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/conexion/SistemaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/conexion/SistemaBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/SistemaEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/SistemaPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/I_DNI.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/I_DNI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Interface" />
         <option value="module-info" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -74,60 +81,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.ControladorBox (1).executor": "Run",
-    "Application.ControladorBox.executor": "Run",
-    "Application.ControladorEstadistica.executor": "Run",
-    "Application.ControladorPantalla.executor": "Run",
-    "Application.ControladorServidor.executor": "Run",
-    "Application.ControladorTotem.executor": "Run",
-    "Application.LevantarSistema.executor": "Run",
-    "Application.MainBox.executor": "Run",
-    "Application.MainEstadisticas.executor": "Run",
-    "Application.MainPantalla.executor": "Run",
-    "Application.MainServidor.executor": "Run",
-    "Application.MainServidor1.executor": "Run",
-    "Application.MainServidor2.executor": "Run",
-    "Application.MainTotem.executor": "Run",
-    "Application.PruebaServer.executor": "Run",
-    "Application.QueueManager.executor": "Run",
-    "Application.Servidor.executor": "Run",
-    "Application.SistemaBox.executor": "Run",
-    "Application.SistemaEstadistica.executor": "Run",
-    "Application.SistemaTotem.executor": "Run",
-    "Application.SocketClient.executor": "Run",
-    "Application.SocketServer.executor": "Run",
-    "Application.TurnosLlamados.executor": "Run",
-    "Application.VistaPantalla.executor": "Coverage",
-    "Application.VistaServidor.executor": "Run",
-    "Application.VistaTotem.executor": "Run",
-    "Application.org.grupo10.sistema_servidor.MainServidor.executor": "Run",
-    "Application.org.grupo10.sistema_totem.vista.MainTotem.executor": "Run",
-    "JAR Application.colasdeespera.jar (1).executor": "Run",
-    "JAR Application.colasdeespera.jar (2).executor": "Run",
-    "JAR Application.colasdeespera.jar.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "experimentoNico",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Facundo/Desktop/proyectoAyD2/colasdeespera/src/org/grupo10/sistema_pantalla",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.ControladorBox (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.ControladorBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ControladorEstadistica.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ControladorPantalla.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ControladorServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ControladorTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LevantarSistema.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainEstadisticas.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainPantalla.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainServidor1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainServidor2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PruebaServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QueueManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaBox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaEstadistica.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SistemaTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SocketClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SocketServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TurnosLlamados.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaPantalla.executor&quot;: &quot;Coverage&quot;,
+    &quot;Application.VistaServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VistaTotem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.org.grupo10.sistema_servidor.MainServidor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.org.grupo10.sistema_totem.vista.MainTotem.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.colasdeespera.jar (1).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.colasdeespera.jar (2).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.colasdeespera.jar.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;experimentoNico&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Facundo/Desktop/proyectoAyD2/colasdeespera/src/org/grupo10/sistema_pantalla&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.grupo10.negocio" />
@@ -294,7 +301,8 @@
       <workItem from="1715282003569" duration="17678000" />
       <workItem from="1715376964371" duration="912000" />
       <workItem from="1715470604555" duration="439000" />
-      <workItem from="1715471106259" duration="905000" />
+      <workItem from="1715471106259" duration="1035000" />
+      <workItem from="1715525578649" duration="1331000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
