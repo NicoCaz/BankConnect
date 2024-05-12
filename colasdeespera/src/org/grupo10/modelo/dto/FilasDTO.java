@@ -3,7 +3,9 @@ package org.grupo10.modelo.dto;
 import org.grupo10.modelo.Fila;
 import org.grupo10.modelo.FilaFinalizada;
 
-public class FilasDTO {
+import java.io.Serializable;
+
+public class FilasDTO implements Serializable {
     private Fila espera;
     private FilaFinalizada finalizada;
 

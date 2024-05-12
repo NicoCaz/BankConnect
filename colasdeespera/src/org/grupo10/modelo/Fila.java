@@ -5,9 +5,11 @@ import org.grupo10.exception.ClienteRepetidoException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Fila implements  Serializable, Cloneable {
+public class Fila implements IFilas<Turno> ,Serializable, Cloneable {
     private ArrayList<Turno> fila = new ArrayList();
-
+    public boolean estaVacia(){
+        return this.fila.isEmpty();
+    }
 
     public void agregarTurno(Turno turno) throws ClienteRepetidoException {
         if (!this.fila.contains(turno)) {
@@ -24,9 +26,11 @@ public class Fila implements  Serializable, Cloneable {
         }
         return retorno;
     }
+    public ArrayList<Turno> getTurnos(){
+        return this.fila;
+    }
 
-
-    public int cantidadEspera(){
+    public int cantidad(){
         return this.fila.size();
     }
     // ARREGLAR
