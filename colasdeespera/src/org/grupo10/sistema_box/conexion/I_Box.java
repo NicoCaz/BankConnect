@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public interface I_Box {
-    String recibirDNILlamado() throws IOException, BoxException;
+    String llamarSiguente() throws IOException, BoxException;
     void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException;
     void reconectar() throws IOException , BoxException;
 

@@ -37,7 +37,7 @@ public class SistemaBox implements I_Box{
         }
     }
 
-    public String recibirDNILlamado() throws IOException, BoxException  {
+    public String llamarSiguente() throws IOException, BoxException  {
         this.out.println("SIGUIENTE");
         try {
             return this.in.readLine(); // Recibe DNI del servidor
