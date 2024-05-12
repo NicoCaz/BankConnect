@@ -59,7 +59,7 @@ public class BoxClientHandler extends Thread  {
                         }
                         this.turnoAnterior = (Turno) msg;
                     }
-                    ControladorServidor.getInstance().enviarActualizacion((Turno)msg);
+                    ControladorServidor.getInstance().enviarTurnoLlamado((Turno)msg);
                     this.out.println(((Turno) msg).getDni());
                 }else {
                     this.out.println("Fila Vacia");

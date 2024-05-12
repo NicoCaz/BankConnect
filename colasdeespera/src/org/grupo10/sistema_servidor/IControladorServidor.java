@@ -10,7 +10,7 @@ public interface IControladorServidor {
 
     void esperarConexiones();
 
-    void enviarActualizacion(Turno t);
+    void enviarTurnoLlamado(Turno t);
 
     void enviarEstadisticas()throws IOException;
     FilaFinalizada getTurnosFinalizados();

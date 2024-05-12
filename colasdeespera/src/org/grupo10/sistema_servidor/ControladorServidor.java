@@ -194,7 +194,7 @@ public class ControladorServidor extends Thread implements IControladorServidor 
 
 
 
-    public synchronized void enviarActualizacion(Turno t) {
+    public synchronized void enviarTurnoLlamado(Turno t) {
         for (Socket socket : this.PantallasClients) {
             try {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
