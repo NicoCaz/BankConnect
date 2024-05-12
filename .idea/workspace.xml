@@ -15,7 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/modelo/dto/EstadisticaDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/controlador/ControladorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/vista/VistaBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_servidor/manejoClientes/BoxClientHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +77,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.ControladorBox (1).executor": "Run",
     "Application.ControladorBox.executor": "Run",
     "Application.ControladorEstadistica.executor": "Run",
     "Application.ControladorPantalla.executor": "Run",
@@ -117,7 +120,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -151,26 +154,13 @@
       <recent name="org.grupo10.modelo.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ControladorTotem">
+  <component name="RunManager" selected="Application.ControladorBox">
     <configuration name="ControladorBox" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_box.controlador.ControladorBox" />
       <module name="colasdeespera" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.grupo10.sistema_box.controlador.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ControladorEstadistica" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.grupo10.sistema_estadistica.controlador.ControladorEstadistica" />
-      <module name="colasdeespera" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.grupo10.sistema_estadistica.controlador.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -250,27 +240,17 @@
       <item itemvalue="Application.MainBox" />
       <item itemvalue="Application.ControladorPantalla" />
       <item itemvalue="Application.ControladorBox" />
-      <item itemvalue="Application.ControladorEstadistica" />
       <item itemvalue="Application.ControladorServidor" />
       <item itemvalue="Application.ControladorTotem" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ControladorTotem" />
-        <item itemvalue="Application.ControladorServidor" />
         <item itemvalue="Application.ControladorBox" />
-        <item itemvalue="Application.ControladorEstadistica" />
+        <item itemvalue="Application.ControladorServidor" />
         <item itemvalue="Application.ControladorPantalla" />
+        <item itemvalue="Application.ControladorTotem" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -313,6 +293,8 @@
       <workItem from="1715000736838" duration="12255000" />
       <workItem from="1715282003569" duration="17678000" />
       <workItem from="1715376964371" duration="912000" />
+      <workItem from="1715470604555" duration="439000" />
+      <workItem from="1715471106259" duration="905000" />
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />
@@ -515,6 +497,9 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Main_class$VistaPantalla.ic" NAME="VistaPantalla Coverage Results" MODIFIED="1715358452318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>org.grupo10.sistema_pantalla.vista.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Main_class$ControladorServidor.ic" NAME="ControladorServidor Coverage Results" MODIFIED="1715471362984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.grupo10.sistema_servidor.*</FILTER>
     </SUITE>
   </component>
 </project>

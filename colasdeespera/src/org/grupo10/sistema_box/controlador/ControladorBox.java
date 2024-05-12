@@ -67,7 +67,8 @@ public class ControladorBox implements ActionListener, IControlador {
                     this.ventana.ventanaError("Hubo un error");
 
                 } catch (BoxException e) {
-                    throw new RuntimeException(e);
+                    this.ventana.ventanaError("El box esta ocupado");
+                    System.exit(1);
                 }
             }).start();
         } catch (IOException e) {

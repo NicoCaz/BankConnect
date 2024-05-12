@@ -72,6 +72,7 @@ public class BoxClientHandler extends Thread  {
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);
+                ControladorServidor.getInstance().boxesOcupados.remove(this.nroBox);
             }
         }
     }

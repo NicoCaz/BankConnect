@@ -1,7 +1,7 @@
 package org.grupo10.sistema_box.vista;
 
+
 import org.grupo10.sistema_box.controlador.ControladorBox;
-import org.grupo10.vista.EventosPantalla;
 
 import javax.swing.*;
 import java.awt.*;
