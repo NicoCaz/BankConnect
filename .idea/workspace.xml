@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+<<<<<<< Updated upstream
       <artifact name="box:jar" />
       <artifact name="estadisticas:jar" />
       <artifact name="pantalla:jar" />
       <artifact name="server.jar" />
+=======
+>>>>>>> Stashed changes
       <artifact name="totem:jar" />
     </artifacts-to-build>
   </component>
@@ -14,6 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b635c0f-80ec-470e-8d57-becee785b5a9" name="Changes" comment="Agrego mas interfaces">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_box/conexion/I_LlamarDNI.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_estadistica/conexion/I_EsperarActualizaciones.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_pantalla/conexion/I_EsperarActualizaciones.java" afterDir="false" />
@@ -25,6 +29,24 @@
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/I_DNI.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/I_DNI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/conexion/SistemaTotem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/colasdeespera/src/org/grupo10/sistema_totem/controlador/ControladorTotem.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/box_jar/box.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/box_jar/boxconfig.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/estadistica_jar/estadistica.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/estadistica_jar/estadisticasconfig.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/pantalla_jar/pantalla.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/pantalla_jar/pantallaconfig.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/servidor_jar/serverconfig.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/servidor_jar/servidor.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/totem_jar/totem.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/totem_jar/totemconfig.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/box_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/estadistica_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/pantalla_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/servidor_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +103,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -133,6 +156,60 @@
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.ControladorBox (1).executor": "Run",
+    "Application.ControladorBox.executor": "Run",
+    "Application.ControladorEstadistica.executor": "Run",
+    "Application.ControladorPantalla.executor": "Run",
+    "Application.ControladorServidor.executor": "Run",
+    "Application.ControladorTotem.executor": "Run",
+    "Application.LevantarSistema.executor": "Run",
+    "Application.MainBox.executor": "Run",
+    "Application.MainEstadisticas.executor": "Run",
+    "Application.MainPantalla.executor": "Run",
+    "Application.MainServidor.executor": "Run",
+    "Application.MainServidor1.executor": "Run",
+    "Application.MainServidor2.executor": "Run",
+    "Application.MainTotem.executor": "Run",
+    "Application.PruebaServer.executor": "Run",
+    "Application.QueueManager.executor": "Run",
+    "Application.Servidor.executor": "Run",
+    "Application.SistemaBox.executor": "Run",
+    "Application.SistemaEstadistica.executor": "Run",
+    "Application.SistemaTotem.executor": "Run",
+    "Application.SocketClient.executor": "Run",
+    "Application.SocketServer.executor": "Run",
+    "Application.TurnosLlamados.executor": "Run",
+    "Application.VistaPantalla.executor": "Coverage",
+    "Application.VistaServidor.executor": "Run",
+    "Application.VistaTotem.executor": "Run",
+    "Application.org.grupo10.sistema_servidor.MainServidor.executor": "Run",
+    "Application.org.grupo10.sistema_totem.vista.MainTotem.executor": "Run",
+    "JAR Application.colasdeespera.jar (1).executor": "Run",
+    "JAR Application.colasdeespera.jar (2).executor": "Run",
+    "JAR Application.colasdeespera.jar.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Facundo/Desktop/proyectoAyD2/out/artifacts/totem_jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> Stashed changes
   }
 }</component>
   <component name="RecentsManager">
@@ -143,8 +220,11 @@
       <recent name="org.grupo10.modelo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_pantalla" />
-      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_estadistica" />
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\out\artifacts\totem_jar" />
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\out\artifacts\servidor_jar" />
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\out\artifacts\pantalla_jar" />
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\out\artifacts\estadistica_jar" />
+      <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\out\artifacts\box_jar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Facundo\Desktop\proyectoAyD2\colasdeespera\src\org\grupo10\sistema_totem" />
@@ -301,8 +381,15 @@
       <workItem from="1715282003569" duration="17678000" />
       <workItem from="1715376964371" duration="912000" />
       <workItem from="1715470604555" duration="439000" />
+<<<<<<< Updated upstream
       <workItem from="1715471106259" duration="1035000" />
       <workItem from="1715525578649" duration="1331000" />
+=======
+      <workItem from="1715471106259" duration="905000" />
+      <workItem from="1715539115519" duration="2240000" />
+      <workItem from="1715546317571" duration="2257000" />
+      <workItem from="1715548597157" duration="639000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Arrancamo de 0">
       <option name="closed" value="true" />

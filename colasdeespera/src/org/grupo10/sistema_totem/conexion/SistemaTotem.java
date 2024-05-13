@@ -1,21 +1,22 @@
 package org.grupo10.sistema_totem.conexion;
 
+<<<<<<< Updated upstream
+=======
+import org.grupo10.interfaces.Conexion;
+>>>>>>> Stashed changes
 import org.grupo10.sistema_totem.controlador.ControladorTotem;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaTotem implements I_DNI {
-    private PrintWriter out;
-    private BufferedReader in;
-    private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
-    private int serverActivo;
-
+public class SistemaTotem extends Conexion implements I_DNI {
 
     public SistemaTotem() throws IOException, FileNotFoundException {
+<<<<<<< Updated upstream
         String ip;
         int port;
 
@@ -53,26 +54,36 @@ public class SistemaTotem implements I_DNI {
         } catch (IOException e) {
             this.reconectar();
         }
+=======
+        super("/totemconfig.txt");
+>>>>>>> Stashed changes
     }
 
     @Override
     public String enviarDNIRegistro(String dni) throws IOException {
         this.out.println(dni); // Envía DNI al servidor
         try {
-            return this.in.readLine(); // Recibe confirmación del servidor
+            return (String) this.in.readObject(); // Recibe confirmación del servidor
         } catch (IOException e) { // Hubo una falla. Reintenta / cambia de servidor.
             this.reconectar();
             this.out.println(dni);
-            return this.in.readLine();
+            try {
+                return (String) this.in.readObject(); // Recibe confirmación del servidor
+            } catch (ClassNotFoundException e2){
+                return null;
+            }
+        } catch (ClassNotFoundException e) {
+            return null;
         }
     }
 
     public void conectar(Map.Entry<String, Integer> entry) throws IOException {
-        Socket socket = new Socket(entry.getKey(), entry.getValue());
+        this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
-        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        System.out.println("CONECTADO");
+        this.in = new ObjectInputStream(socket.getInputStream());
+
         this.out.println("Totem");
+
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
@@ -80,23 +91,14 @@ public class SistemaTotem implements I_DNI {
         }
     }
 
-    // Maneja el reintento y el cambio de servidor
-    public void reconectar() throws IOException {
+    @Override
+    protected void abrirMensajeConectando() {
         ControladorTotem.getInstance().abrirMensajeConectando();
-        try {
-            // RETRY: Intenta conectar al actual
-            this.conectar(servers.get(this.serverActivo));
-        } catch (IOException e1) {
-            // Cambia de serverActivo
-            this.serverActivo = 1 - this.serverActivo;
-            try {
-                // Intenta conectar al otro server
-                this.conectar(servers.get(this.serverActivo));
-            } catch (IOException e2) {
-                // RETRY: Intenta conectar al otro server
-                this.conectar(servers.get(this.serverActivo));
-            }
-        }
+    }
+
+    @Override
+    protected void cerrarMensajeConectando() {
         ControladorTotem.getInstance().cerrarMensajeConectando();
     }
+
 }
