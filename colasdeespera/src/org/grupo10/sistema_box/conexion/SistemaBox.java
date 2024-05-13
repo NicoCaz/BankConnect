@@ -1,40 +1,26 @@
 package org.grupo10.sistema_box.conexion;
 
 import org.grupo10.exception.BoxException;
+import org.grupo10.interfaces.Conexion;
 import org.grupo10.sistema_box.controlador.ControladorBox;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SistemaBox implements I_LlamarDNI{
+public class SistemaBox extends Conexion implements I_LlamarDNI{
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
     private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
     private int serverActivo, nroBox;
 
-    public SistemaBox(int nroBox, String ip1, int port1, String ip2, int port2) throws IOException , BoxException {
+    public SistemaBox() throws IOException , BoxException {
+        super("/boxconfig.txt");
         this.nroBox = nroBox;
-        servers.add(new AbstractMap.SimpleEntry<>(ip1, port1));
-        servers.add(new AbstractMap.SimpleEntry<>(ip2, port2));
 
-        // Conexión a servidor
-        this.serverActivo = 0;
-        try {
-            ControladorBox.getInstance().abrirMensajeConectando();
-            this.conectar(servers.get(this.serverActivo));
-            System.out.println("CERRAR MENSAJE CONECTADO");
-            ControladorBox.getInstance().cerrarMensajeConectando();
-
-        } catch (IOException e) {
-            this.reconectar();
-        }
     }
     @Override
     public String llamarSiguiente() throws IOException, BoxException  {
@@ -68,24 +54,21 @@ public class SistemaBox implements I_LlamarDNI{
             throw new BoxException();
     }
 
-    // Maneja el reintento y el cambio de servidor
     @Override
-    public void reconectar() throws IOException , BoxException {
+    protected void hookPrimerasLineas(BufferedReader br) throws IOException {
+        String linea;
+        linea = br.readLine();
+        this.nroBox = Integer.parseInt(linea);
+    }
+
+    @Override
+    protected void abrirMensajeConectando() {
         ControladorBox.getInstance().abrirMensajeConectando();
-        try {
-            // RETRY: Intenta conectar al actual
-            this.conectar(servers.get(this.serverActivo));
-        } catch (IOException e1) {
-            // Cambia de serverActivo
-            this.serverActivo = 1 - this.serverActivo;
-            try {
-                // Intenta conectar al otro server
-                this.conectar(servers.get(this.serverActivo));
-            } catch (IOException e2) {
-                // RETRY: Intenta conectar al otro server
-                this.conectar(servers.get(this.serverActivo));
-            }
-        }
+    }
+
+    @Override
+    protected void cerrarMensajeConectando() {
         ControladorBox.getInstance().cerrarMensajeConectando();
     }
+
 }

@@ -7,7 +7,5 @@ import java.util.Map;
 
 public interface I_LlamarDNI {
     String llamarSiguiente() throws IOException, BoxException;
-    void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException;
-    void reconectar() throws IOException , BoxException ;
 
 }

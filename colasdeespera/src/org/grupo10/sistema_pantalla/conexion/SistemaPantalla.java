@@ -13,12 +13,6 @@ import java.util.Map;
 public class SistemaPantalla extends Conexion implements I_EsperarActualizaciones{
     private IPantalla pantalla;
 
-    private Socket socket;
-    private PrintWriter out;
-    private BufferedReader in;
-    private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
-    private int serverActivo;
-
     public SistemaPantalla(IPantalla pantalla) throws IOException, FileNotFoundException {
         super("/pantallaconfig.txt");
         this.pantalla = pantalla;

@@ -5,7 +5,5 @@ import java.util.Map;
 
 public interface I_EsperarActualizaciones {
     void esperarActualizaciones() throws IOException;
-    void conectar(Map.Entry<String, Integer> entry) throws IOException;
-    void reconectar() throws IOException;
 
 }

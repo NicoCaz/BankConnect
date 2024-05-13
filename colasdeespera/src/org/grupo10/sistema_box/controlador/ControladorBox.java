@@ -60,7 +60,7 @@ public class ControladorBox implements ActionListener, IControlador {
 
             new Thread(() -> { // En otro thread para no interferir con GUILlamados
                 try {
-                    this.dni_llamado = new SistemaBox(nroBox, ip, port, ipOtro, portOtro);
+                    this.dni_llamado = new SistemaBox();
                     // Activa el botón Siguiente (si no hubo IOException)
                     this.ventana.prenderLlamar();
                 } catch (IOException e) {
