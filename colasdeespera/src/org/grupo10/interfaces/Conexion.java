@@ -9,7 +9,7 @@ import java.util.Map;
 public abstract class Conexion {
     protected Socket socket;
     protected PrintWriter out;
-    protected ObjectInputStream in;
+    protected BufferedReader in;
     protected ArrayList<Map.Entry<String, Integer>> servers;
     protected String ip, ipOtro,filename;
     protected int port, portOtro,serverActivo;
