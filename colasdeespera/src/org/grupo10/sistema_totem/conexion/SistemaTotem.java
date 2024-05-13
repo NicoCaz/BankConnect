@@ -23,13 +23,7 @@ public class SistemaTotem extends Conexion implements I_DNI {
         } catch (IOException e) { // Hubo una falla. Reintenta / cambia de servidor.
             this.reconectar();
             this.out.println(dni);
-            try {
-                return (String) this.in.readLine() // Recibe confirmación del servidor
-            } catch (ClassNotFoundException e2){
-                return null;
-            }
-        } catch (ClassNotFoundException e) {
-            return null;
+            return (String) this.in.readLine(); // Recibe confirmación del servidor
         }
     }
 
