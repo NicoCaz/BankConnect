@@ -11,15 +11,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class SistemaBox extends Conexion implements I_LlamarDNI{
-    private Socket socket;
-    private PrintWriter out;
-    private BufferedReader in;
-    private ArrayList<Map.Entry<String, Integer>> servers = new ArrayList<>();
-    private int serverActivo, nroBox;
+    private int nroBox;
 
     public SistemaBox() throws IOException , BoxException {
         super("/boxconfig.txt");
-        this.nroBox = nroBox;
 
     }
     @Override
