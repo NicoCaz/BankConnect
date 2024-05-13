@@ -31,7 +31,7 @@ public abstract class Conexion {
             this.abrirMensajeConectando();
             this.conectar(this.servers.get(this.serverActivo));
             this.cerrarMensajeConectando();
-        } catch (IOException e) {
+        } catch (IOException  e) {
             this.reconectar();
         }
 
@@ -39,7 +39,7 @@ public abstract class Conexion {
         this.hookEsperar();
     }
 
-    protected abstract void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException;
+    protected abstract void conectar(Map.Entry<String, Integer> entry) throws IOException;
 
     protected void leerArchivoCFG() throws FileNotFoundException {
         //esto sirve para cuando hacemos el codigo
@@ -93,20 +93,27 @@ public abstract class Conexion {
     // Maneja el reintento y el cambio de servidor
     protected void reconectar() throws IOException {
         this.abrirMensajeConectando();
-        try {
-            // RETRY: Intenta conectar al actual
-            this.conectar(servers.get(this.serverActivo));
-        } catch (IOException e1) {
-            // Cambia de serverActivo
-            this.serverActivo = 1 - this.serverActivo;
-            try {
-                // Intenta conectar al otro server
+        int intentos=0;
+        boolean conectado= false;
+        while(!conectado && intentos<3){
+            try{
                 this.conectar(servers.get(this.serverActivo));
-            } catch (IOException e2) {
-                // RETRY: Intenta conectar al otro server
-                this.conectar(servers.get(this.serverActivo));
+                conectado=true;
+                intentos=0;
+            }catch (IOException e) {
+                if(serverActivo==1){
+                    this.serverActivo=0;
+                }else {
+                    this.serverActivo=1;
+                }
+                intentos++;
             }
+            this.cerrarMensajeConectando();
+
         }
-        this.cerrarMensajeConectando();
+
+        if (!conectado) {
+            throw new IOException("No se pudo conectar a ninguno de los servidores disponibles.");
+        }
     }
 }
