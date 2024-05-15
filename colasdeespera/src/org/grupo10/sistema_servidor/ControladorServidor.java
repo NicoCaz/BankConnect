@@ -26,13 +26,13 @@ public class ControladorServidor extends Thread implements IControladorServidor 
     //
 
     public static void main(String[] args) {
-        ControladorServidor.getInstance();
+        new ControladorServidor();
     }
-    public static ControladorServidor getInstance() {
-        if (ControladorServidor.instance == null)
-            ControladorServidor.instance = new ControladorServidor();
-        return ControladorServidor.instance;
-    }
+//    public static ControladorServidor getInstance() {
+//        if (ControladorServidor.instance == null)
+//            ControladorServidor.instance = new ControladorServidor();
+//        return ControladorServidor.instance;
+//    }
 
     private ControladorServidor(){
 

@@ -19,7 +19,7 @@ public class EventosPantalla implements WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
         ControladorServidor servidor= ControladorServidor.getInstance();
-        servidor.quitarBox(this.box);
+        //servidor.quitarBox(this.box);
         System.out.println("La ventana se está cerrando...");
     }
 
