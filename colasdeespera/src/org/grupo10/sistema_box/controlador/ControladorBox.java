@@ -64,10 +64,7 @@ public class ControladorBox implements ActionListener, IControlador {
                     // Activa el botón Siguiente (si no hubo IOException)
                     this.ventana.prenderLlamar();
                 } catch (IOException e) {
-                    this.ventana.ventanaError("Hubo un error");
-
-                } catch (BoxException e) {
-                    this.ventana.ventanaError("El box esta ocupado");
+                    this.ventana.ventanaError(e.getMessage());
                     System.exit(1);
                 }
             }).start();
@@ -87,9 +84,7 @@ public class ControladorBox implements ActionListener, IControlador {
                 else
                     this.ventana.dniLLamado(msg);
             } catch (IOException e1) {
-                this.ventana.ventanaError("Error en la conexion");
-            } catch (BoxException e2) {
-                this.ventana.ventanaError("El box esta ocupado");
+                this.ventana.ventanaError(e1.getMessage());
             }
         }).start();
     }

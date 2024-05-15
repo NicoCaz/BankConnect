@@ -36,16 +36,21 @@ public class ServidorPrincipalState implements ServidorState{
         this.servidor = controladorServidor;
         int port = this.servidor.getPort();
         this.serverSocket = new ServerSocket(port);
+        this.turnosEnEspera = new Fila();
+        this.turnosFinalizados = new FilaFinalizada();
+
 //        this.leerRepo();
 //        this.abrirLogs();
         this.cambios = true;
 //        this.turnos = new Fila(this.servidor.getCriterio());
-        System.out.println("Se inició el servidor primario en el puerto " + port + ".");
+        System.out.println("Se inició el servidor principal en el puerto " + port + ".");
     }
 
-    public ServidorPrincipalState(ControladorServidor servidor, IFilas<Turno> turnos) throws IOException{
+    public ServidorPrincipalState(ControladorServidor servidor, IFilas<Turno> turnos, IFilas<TurnoFinalizado> finalizados) throws IOException{
         this(servidor);
         this.turnosEnEspera = turnos;
+        this.turnosFinalizados = finalizados;
+
     }
 
     @Override

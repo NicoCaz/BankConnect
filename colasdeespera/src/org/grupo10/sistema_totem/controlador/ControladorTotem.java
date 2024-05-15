@@ -59,6 +59,8 @@ public class ControladorTotem implements ActionListener , IControlador {
                             this.ventana.ventanaError("El DNI ingresado ya existe");
                     } catch (IOException e1) {
                         this.ventana.ventanaError("Error de conexion");
+                    } catch (ClassNotFoundException ex) {
+                        throw new RuntimeException(ex);
                     }
                 } else
 

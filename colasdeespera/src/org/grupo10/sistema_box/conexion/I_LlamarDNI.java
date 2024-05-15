@@ -6,6 +6,6 @@ import java.io.IOException;
 import java.util.Map;
 
 public interface I_LlamarDNI {
-    String llamarSiguiente() throws IOException, BoxException;
+    String llamarSiguiente() throws IOException;
 
 }

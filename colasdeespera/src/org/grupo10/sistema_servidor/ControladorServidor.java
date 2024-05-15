@@ -1,19 +1,7 @@
 package org.grupo10.sistema_servidor;
 
-import org.grupo10.modelo.*;
-import org.grupo10.modelo.dto.FilasDTO;
-import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
-import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
-import org.grupo10.sistema_servidor.manejoClientes.TotemClientHandler;
-
 import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+
 
 
 public class ControladorServidor extends Thread implements IControladorServidor {

@@ -45,7 +45,7 @@ public class ServidorSecundarioState implements ServidorState{
     public void cambiarEstado() {
         System.out.println("Cambiando a modo primario...");  // CAMBIO DE SV SECUNDARIO A PRIMARIO
         try {
-            this.servidor.setEstado(new ServidorPrincipalState(this.servidor,this.turnosEnEspera));
+            this.servidor.setEstado(new ServidorPrincipalState(this.servidor,this.turnosEnEspera,this.turnosFinalizados));
         } catch (IOException e) {
             System.out.println("No se pudo adoptar el modo primario. Cerrando...");
             System.exit(0);

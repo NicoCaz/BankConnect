@@ -13,12 +13,12 @@ import java.util.Map;
 public class SistemaBox extends Conexion implements I_LlamarDNI{
     private int nroBox;
 
-    public SistemaBox() throws IOException , BoxException {
+    public SistemaBox() throws IOException {
         super("/boxconfig.txt");
 
     }
     @Override
-    public String llamarSiguiente() throws IOException, BoxException  {
+    public String llamarSiguiente() throws IOException  {
         this.out.println("SIGUIENTE");
         try {
             return this.in.readLine(); // Recibe DNI del servidor
@@ -30,7 +30,7 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
     }
 
     @Override
-    public void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException {
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -46,7 +46,7 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
         String msg = this.in.readLine();
 
         if (msg.equals("OCUPADO"))
-            throw new BoxException();
+            throw new IOException("El box " + nroBox + " esta ocupado");
     }
 
     @Override
