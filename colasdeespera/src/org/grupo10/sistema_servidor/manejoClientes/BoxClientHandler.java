@@ -3,6 +3,7 @@ package org.grupo10.sistema_servidor.manejoClientes;
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.sistema_servidor.ControladorServidor;
+import org.grupo10.sistema_servidor.ServidorPrincipalState;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +12,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class BoxClientHandler extends Thread  {
+    
+    private ServidorPrincipalState servidor;
+    
     private int nroBox;
     private boolean running;
     private Turno turnoAnterior = null;
@@ -18,8 +22,9 @@ public class BoxClientHandler extends Thread  {
     private BufferedReader in;
     private String ip;
 
-    public BoxClientHandler(Socket socket) {
+    public BoxClientHandler(Socket socket, ServidorPrincipalState servidor) {
         try {
+            this.servidor = servidor;
             System.out.println("Conectando a " + socket.getInetAddress().getHostAddress());
             this.ip = socket.getInetAddress().getHostAddress();
             this.out = new PrintWriter(socket.getOutputStream(), true);
@@ -27,7 +32,7 @@ public class BoxClientHandler extends Thread  {
 
             this.nroBox = Integer.parseInt(this.in.readLine());
             System.out.println("Conectado a box " + nroBox);
-            if (ControladorServidor.getInstance().boxesOcupados.add(this.nroBox)) {
+            if (this.servidor.boxesOcupados.add(this.nroBox)) {
                 System.out.println("BOX ACEPTADO");
                 this.out.println("ACEPTADO");
                 System.out.println("Se conectó el box " + this.nroBox + " con IP " + this.ip);
@@ -46,12 +51,12 @@ public class BoxClientHandler extends Thread  {
         while (running) {
             try {
                 in.readLine();
-                synchronized (ControladorServidor.getInstance().getTurnosEnEspera().getTurnos()) {
-                    msg = ControladorServidor.getInstance().getTurnosEnEspera().sacarTurno();
+                synchronized (this.servidor.getTurnosEnEspera().getTurnos()) {
+                    msg = this.servidor.getTurnosEnEspera().sacarTurno();
 
                 }
                 if (msg instanceof Turno) {
-                    ControladorServidor.getInstance().setCambios(true);
+                    this.servidor.setCambios(true);
                     ((Turno) msg).setBox(this.nroBox);
                     if(msg != null){
                         if(turnoAnterior != null){
@@ -59,7 +64,7 @@ public class BoxClientHandler extends Thread  {
                         }
                         this.turnoAnterior = (Turno) msg;
                     }
-                    ControladorServidor.getInstance().enviarActualizacion((Turno)msg);
+                    this.servidor.enviarActualizacion((Turno)msg);
                     this.out.println(((Turno) msg).getDni());
                 }else {
                     this.out.println("Fila Vacia");
@@ -68,16 +73,16 @@ public class BoxClientHandler extends Thread  {
                         turnoAnterior=null;
                     }
                 }
-                ControladorServidor.getInstance().enviarEstadisticas();
+                this.servidor.enviarEstadisticas();
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);
-                ControladorServidor.getInstance().boxesOcupados.remove(this.nroBox);
+                this.servidor.boxesOcupados.remove(this.nroBox);
             }
         }
     }
 
     void finalizarTurno(Turno t){
-        ControladorServidor.getInstance().getTurnosFinalizados().agregarTurno(new TurnoFinalizado(t));
+        this.servidor.getTurnosFinalizados().agregarTurno(new TurnoFinalizado(t));
     }
 }

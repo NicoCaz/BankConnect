@@ -3,6 +3,7 @@ package org.grupo10.sistema_servidor.manejoClientes;
 import org.grupo10.exception.ClienteRepetidoException;
 import org.grupo10.modelo.Turno;
 import org.grupo10.sistema_servidor.ControladorServidor;
+import org.grupo10.sistema_servidor.ServidorPrincipalState;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,14 +12,17 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class TotemClientHandler extends Thread{
+
+    private ServidorPrincipalState servidor;
+
     private boolean running;
     private PrintWriter out;
     private BufferedReader in;
     private String ip;
 
 
-
-    public TotemClientHandler(Socket socket) {
+    public TotemClientHandler(Socket socket, ServidorPrincipalState servidor) {
+        this.servidor = servidor;
         try {
             System.out.println("Conectando a " + socket.getInetAddress().getHostAddress());
             this.ip = socket.getInetAddress().getHostAddress();
@@ -38,13 +42,13 @@ public class TotemClientHandler extends Thread{
             try {
                 dni = in.readLine();
                 System.out.println("DNI recibido: "+dni);
-                synchronized (ControladorServidor.getInstance().getTurnosEnEspera()) {
+                synchronized (this.servidor.getTurnosEnEspera()) {
                     try {
                         Turno t= new Turno(dni);
-                        ControladorServidor.getInstance().getTurnosEnEspera().agregarTurno(t);
-                        ControladorServidor.getInstance().setCambios(true);
+                        this.servidor.getTurnosEnEspera().agregarTurno(t);
+                        this.servidor.setCambios(true);
                         msg = "ACEPTADO";
-                        ControladorServidor.getInstance().enviarEstadisticas();
+                        this.servidor.enviarEstadisticas();
                     } catch (ClienteRepetidoException e) {
                         msg = "REPETIDO";
                     }

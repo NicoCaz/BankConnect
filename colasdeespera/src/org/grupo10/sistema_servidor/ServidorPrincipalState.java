@@ -1,0 +1,170 @@
+package org.grupo10.sistema_servidor;
+
+import org.grupo10.modelo.*;
+import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
+import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
+import org.grupo10.sistema_servidor.manejoClientes.TotemClientHandler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
+public class ServidorPrincipalState implements ServidorState{
+    private ControladorServidor servidor;
+    private ServerSocket serverSocket;
+
+    //Declaracion de filas y boxes ocupados
+    private IFilas<Turno> turnosEnEspera ;
+    private IFilas<TurnoFinalizado> turnosFinalizados ;
+    public HashSet<Integer> boxesOcupados = new HashSet<>();
+
+    //Instanciacion de las listas que guardan las referencias a los threads
+    private List<TotemClientHandler> Totems = new ArrayList<>();
+    private List<BoxClientHandler> boxClients = new ArrayList<>();
+    private List<Socket> EstadisticaClients = new ArrayList<>();
+    private List<Socket> PantallasClients = new ArrayList<>();
+    private boolean cambios;
+
+    public ServidorPrincipalState(ControladorServidor controladorServidor) throws IOException {
+        this.servidor = controladorServidor;
+        int port = this.servidor.getPort();
+        this.serverSocket = new ServerSocket(port);
+//        this.leerRepo();
+//        this.abrirLogs();
+        this.cambios = true;
+//        this.turnos = new Fila(this.servidor.getCriterio());
+        System.out.println("Se inició el servidor primario en el puerto " + port + ".");
+    }
+
+    public ServidorPrincipalState(ControladorServidor servidor, IFilas<Turno> turnos) throws IOException{
+        this(servidor);
+        this.turnosEnEspera = turnos;
+    }
+
+    @Override
+    public void esperarConexiones() {
+        try {
+            Socket socket = this.serverSocket.accept();
+            new Thread(() -> { // En otro thread para no interferir con la conexión de nuevas terminales
+                try {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    String msg = in.readLine(); // Recibe identificación
+                    System.out.println("INTENTO DE CONEXION DE: " + msg);
+                    if ("Box".equals(msg)) {
+                        System.out.println("BOX ENCONTRADO");
+                        BoxClientHandler b=new BoxClientHandler(socket,this);
+                        boxClients.add(b);
+                        b.start();
+                        System.out.println("Box arranco");
+                    } else if("Totem".equals(msg)) {
+                        TotemClientHandler t = new TotemClientHandler(socket,this);
+                        Totems.add(t);
+                        t.start();
+                        System.out.println("Totem arranco");
+
+                    } else if("ESTADISTICA".equals(msg)) {
+
+                        EstadisticaClients.add(socket);
+                        System.out.println("Estadistica arranco");
+                    } else if("Pantalla".equals(msg)) {
+                        PantallasClients.add(socket);
+                        System.out.println("Pantalla arranco");
+                    } else if("SERVIDOR".equals(msg)) {
+                        new RedundanciaHandler(socket,this).start();
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void cambiarEstado() {
+
+    }
+
+    public synchronized void enviarActualizacion(Turno t) {
+        for (Socket socket : this.PantallasClients) {
+            try {
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+                out.println(t.getDni()+","+t.getBox());
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                this.PantallasClients.remove(socket);
+                System.out.println(
+                        "Se desconectó la pantalla de espera con IP " + socket.getInetAddress().getHostAddress());
+            }
+        }
+    }
+
+
+    public synchronized void enviarEstadisticas() throws IOException {
+        int cantEspera=turnosEnEspera.cantidad();
+        int cantAtendidos=turnosFinalizados.cantidad();
+        long  tiempoPromedio = 0;
+
+        if(!turnosFinalizados.estaVacia()) {
+            Iterator<TurnoFinalizado> iterator = turnosFinalizados.getTurnos().iterator();
+            TurnoFinalizado turno = iterator.next();
+            while (iterator.hasNext()) {
+                tiempoPromedio += Math.abs(turno.getHorarioSalida().getTime() - turno.getT().getHorarioEntrada().getTime());
+                turno = iterator.next();
+            }
+
+            tiempoPromedio = (tiempoPromedio / cantAtendidos);
+        }
+
+
+        String aux= cantEspera + "," + cantAtendidos + "," + tiempoPromedio;
+
+        for (Socket socket : this.EstadisticaClients) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            out.println(aux);
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public FilaFinalizada getTurnosFinalizados() {
+        return (FilaFinalizada) turnosFinalizados;
+    }
+
+    public Fila getTurnosEnEspera() {
+        return (Fila) turnosEnEspera;
+    }
+
+    public boolean hayCambios() {
+        return this.cambios;
+    }
+
+    public void setCambios(boolean b) {
+        this.cambios = b;
+    }
+
+    public void quitarBox(Integer box){
+        boxesOcupados.remove(box);
+        System.out.println("El elimino el box: " +box);
+    }
+
+
+}

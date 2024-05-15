@@ -8,15 +8,8 @@ import java.io.IOException;
 
 public interface IControladorServidor {
 
-    void esperarConexiones();
+    void setEstado(ServidorState estadoNuevo);
 
-    void enviarActualizacion(Turno t);
 
-    void enviarEstadisticas()throws IOException;
-    FilaFinalizada getTurnosFinalizados();
-    Fila getTurnosEnEspera();
-    boolean hayCambios();
-    void setCambios(boolean b);
-    void quitarBox(Integer box);
 }
 
