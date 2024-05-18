@@ -1,12 +1,15 @@
-package org.grupo10.modelo;
+package org.grupo10.sistema_servidor.filas;
 
 import org.grupo10.exception.ClienteRepetidoException;
+import org.grupo10.modelo.Turno;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Fila implements IFilas<Turno> ,Serializable, Cloneable {
     private ArrayList<Turno> fila = new ArrayList();
+    private IEstrategia estrategia;
+
     public boolean estaVacia(){
         return this.fila.isEmpty();
     }

@@ -12,7 +12,7 @@ public class TurnoFinalizado implements Serializable, Cloneable {
         this.horarioSalida = new Date();
     }
     @Override
-    protected Object clone()  {
+    public Object clone()  {
         Object clone = null;
         try{
             clone = super.clone();

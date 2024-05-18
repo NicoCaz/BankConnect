@@ -15,7 +15,7 @@ public class Turno implements Serializable, Cloneable{
     }
 
     @Override
-    protected Object clone()  {
+    public Object clone()  {
         Object clone = null;
         try{
             clone = super.clone();

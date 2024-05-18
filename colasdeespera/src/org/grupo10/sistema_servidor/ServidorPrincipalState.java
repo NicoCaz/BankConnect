@@ -1,6 +1,9 @@
 package org.grupo10.sistema_servidor;
 
 import org.grupo10.modelo.*;
+import org.grupo10.sistema_servidor.filas.Fila;
+import org.grupo10.sistema_servidor.filas.FilaFinalizada;
+import org.grupo10.sistema_servidor.filas.IFilas;
 import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
 import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
 import org.grupo10.sistema_servidor.manejoClientes.TotemClientHandler;

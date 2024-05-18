@@ -1,9 +1,8 @@
 package org.grupo10.sistema_servidor.manejoClientes;
 
-import org.grupo10.modelo.Fila;
-import org.grupo10.modelo.FilaFinalizada;
-import org.grupo10.modelo.dto.FilasDTO;
-import org.grupo10.sistema_servidor.ControladorServidor;
+import org.grupo10.sistema_servidor.filas.Fila;
+import org.grupo10.sistema_servidor.filas.FilaFinalizada;
+import org.grupo10.modelo.FilasDTO;
 import org.grupo10.sistema_servidor.IRedundancia;
 import org.grupo10.sistema_servidor.ServidorPrincipalState;
 
