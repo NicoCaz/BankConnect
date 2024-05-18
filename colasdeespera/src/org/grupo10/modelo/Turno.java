@@ -39,12 +39,12 @@ public class Turno implements Serializable, Cloneable{
         return clone;
     }
 
-    public String getNacimiento() {
-        return nacimiento;
-    }
-
     public int getPrioridad() {
         return prioridad;
+    }
+
+    public String getGrupoEtario() {
+        return gEtario;
     }
 
     public String getDni() {
@@ -65,7 +65,4 @@ public class Turno implements Serializable, Cloneable{
         this.box = box;
     }
 
-    public int getNumeroTurno() {
-        return numeroTurno;
-    }
 }

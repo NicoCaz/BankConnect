@@ -4,8 +4,7 @@ import org.grupo10.modelo.Turno;
 
 import java.util.ArrayList;
 
-public class OrdenarPorETario implements IEstrategia{
-
+public class OrdenarPorDefault implements IEstrategia{
     @Override
     public void ordenar(ArrayList<Turno> fila) {
 

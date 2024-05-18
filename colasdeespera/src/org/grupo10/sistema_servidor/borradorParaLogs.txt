@@ -1,0 +1,160 @@
+import java.util.ArrayList;
+import java.util.List;
+
+// Interfaces para el almacenamiento del perfil y el historial
+interface AlmacenamientoPerfil {
+    void guardarPerfil(String nombre, String dni, String categoria);
+}
+
+interface AlmacenamientoHistorial {
+    void agregarRegistro(String registro);
+    List<String> obtenerRegistros();
+}
+
+// Implementaciones concretas para cada formato
+class AlmacenamientoPerfilTXT implements AlmacenamientoPerfil {
+    @Override
+    public void guardarPerfil(String nombre, String dni, String categoria) {
+        // Lógica para guardar el perfil en un archivo TXT
+        System.out.println("Perfil guardado en formato TXT: " + nombre + ", " + dni + ", " + categoria);
+    }
+}
+
+class AlmacenamientoHistorialTXT implements AlmacenamientoHistorial {
+    private List<String> registros = new ArrayList<>();
+
+    @Override
+    public void agregarRegistro(String registro) {
+        registros.add(registro);
+    }
+
+    @Override
+    public List<String> obtenerRegistros() {
+        return registros;
+    }
+}
+
+class AlmacenamientoPerfilJSON implements AlmacenamientoPerfil {
+    @Override
+    public void guardarPerfil(String nombre, String dni, String categoria) {
+        // Lógica para guardar el perfil en un archivo JSON
+        System.out.println("Perfil guardado en formato JSON: " + nombre + ", " + dni + ", " + categoria);
+    }
+}
+
+class AlmacenamientoHistorialJSON implements AlmacenamientoHistorial {
+    private List<String> registros = new ArrayList<>();
+
+    @Override
+    public void agregarRegistro(String registro) {
+        registros.add(registro);
+    }
+
+    @Override
+    public List<String> obtenerRegistros() {
+        return registros;
+    }
+}
+
+class AlmacenamientoPerfilXML implements AlmacenamientoPerfil {
+    @Override
+    public void guardarPerfil(String nombre, String dni, String categoria) {
+        // Lógica para guardar el perfil en un archivo XML
+        System.out.println("Perfil guardado en formato XML: " + nombre + ", " + dni + ", " + categoria);
+    }
+}
+
+class AlmacenamientoHistorialXML implements AlmacenamientoHistorial {
+    private List<String> registros = new ArrayList<>();
+
+    @Override
+    public void agregarRegistro(String registro) {
+        registros.add(registro);
+    }
+
+    @Override
+    public List<String> obtenerRegistros() {
+        return registros;
+    }
+}
+
+// Fábricas concretas
+interface FabricaAlmacenamiento {
+    AlmacenamientoPerfil crearAlmacenamientoPerfil();
+    AlmacenamientoHistorial crearAlmacenamientoHistorial();
+}
+
+class FabricaAlmacenamientoTXT implements FabricaAlmacenamiento {
+    @Override
+    public AlmacenamientoPerfil crearAlmacenamientoPerfil() {
+        return new AlmacenamientoPerfilTXT();
+    }
+
+    @Override
+    public AlmacenamientoHistorial crearAlmacenamientoHistorial() {
+        return new AlmacenamientoHistorialTXT();
+    }
+}
+
+class FabricaAlmacenamientoJSON implements FabricaAlmacenamiento {
+    @Override
+    public AlmacenamientoPerfil crearAlmacenamientoPerfil() {
+        return new AlmacenamientoPerfilJSON();
+    }
+
+    @Override
+    public AlmacenamientoHistorial crearAlmacenamientoHistorial() {
+        return new AlmacenamientoHistorialJSON();
+    }
+}
+
+class FabricaAlmacenamientoXML implements FabricaAlmacenamiento {
+    @Override
+    public AlmacenamientoPerfil crearAlmacenamientoPerfil() {
+        return new AlmacenamientoPerfilXML();
+    }
+
+    @Override
+    public AlmacenamientoHistorial crearAlmacenamientoHistorial() {
+        return new AlmacenamientoHistorialXML();
+    }
+}
+
+// Cliente
+public class Cliente {
+    private AlmacenamientoPerfil almacenamientoPerfil;
+    private AlmacenamientoHistorial almacenamientoHistorial;
+
+    public Cliente(FabricaAlmacenamiento fabricaAlmacenamiento) {
+        this.almacenamientoPerfil = fabricaAlmacenamiento.crearAlmacenamientoPerfil();
+        this.almacenamientoHistorial = fabricaAlmacenamiento.crearAlmacenamientoHistorial();
+    }
+
+    public void guardarPerfil(String nombre, String dni, String categoria) {
+        almacenamientoPerfil.guardarPerfil(nombre, dni, categoria);
+    }
+
+    public void agregarRegistroHistorial(String registro) {
+        almacenamientoHistorial.agregarRegistro(registro);
+    }
+
+    public List<String> obtenerHistorial() {
+        return almacenamientoHistorial.obtenerRegistros();
+    }
+
+    public static void main(String[] args) {
+        // Configurar el formato de almacenamiento (TXT, JSON o XML)
+        FabricaAlmacenamiento fabricaAlmacenamiento = new FabricaAlmacenamientoTXT();
+
+        Cliente cliente = new Cliente(fabricaAlmacenamiento);
+        cliente.guardarPerfil("Juan Pérez", "12345678A", "Oro");
+        cliente.agregarRegistroHistorial("Registro 1");
+        cliente.agregarRegistroHistorial("Registro 2");
+
+        List<String> historial = cliente.obtenerHistorial();
+        System.out.println("Historial:");
+        for (String registro : historial) {
+            System.out.println(registro);
+        }
+    }
+}
