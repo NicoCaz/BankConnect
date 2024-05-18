@@ -4,9 +4,9 @@ import org.grupo10.modelo.*;
 import org.grupo10.sistema_servidor.filas.Fila;
 import org.grupo10.sistema_servidor.filas.FilaFinalizada;
 import org.grupo10.sistema_servidor.filas.IFilas;
-import org.grupo10.sistema_servidor.manejoClientes.BoxClientHandler;
-import org.grupo10.sistema_servidor.manejoClientes.RedundanciaHandler;
-import org.grupo10.sistema_servidor.manejoClientes.TotemClientHandler;
+import org.grupo10.sistema_servidor.manejoThreads.BoxClientHandler;
+import org.grupo10.sistema_servidor.manejoThreads.RedundanciaHandler;
+import org.grupo10.sistema_servidor.manejoThreads.TotemClientHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +26,8 @@ public class ServidorPrincipalState implements ServidorState{
     //Declaracion de filas y boxes ocupados
     private IFilas<Turno> turnosEnEspera ;
     private IFilas<TurnoFinalizado> turnosFinalizados ;
-    public HashSet<Integer> boxesOcupados = new HashSet<>();
+    private HashSet<Integer> boxesOcupados = new HashSet<>();
+
 
     //Instanciacion de las listas que guardan las referencias a los threads
     private List<TotemClientHandler> Totems = new ArrayList<>();
@@ -173,6 +174,11 @@ public class ServidorPrincipalState implements ServidorState{
         boxesOcupados.remove(box);
         System.out.println("El elimino el box: " +box);
     }
+
+    public boolean agregarBox(Integer box){
+        return this.boxesOcupados.add(box);
+    }
+
 
 
 }

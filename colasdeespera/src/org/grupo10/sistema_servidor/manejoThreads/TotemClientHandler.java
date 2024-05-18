@@ -1,8 +1,7 @@
-package org.grupo10.sistema_servidor.manejoClientes;
+package org.grupo10.sistema_servidor.manejoThreads;
 
 import org.grupo10.exception.ClienteRepetidoException;
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.ControladorServidor;
 import org.grupo10.sistema_servidor.ServidorPrincipalState;
 
 import java.io.BufferedReader;

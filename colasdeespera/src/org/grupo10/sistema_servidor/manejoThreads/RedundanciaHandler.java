@@ -1,4 +1,4 @@
-package org.grupo10.sistema_servidor.manejoClientes;
+package org.grupo10.sistema_servidor.manejoThreads;
 
 import org.grupo10.sistema_servidor.filas.Fila;
 import org.grupo10.sistema_servidor.filas.FilaFinalizada;

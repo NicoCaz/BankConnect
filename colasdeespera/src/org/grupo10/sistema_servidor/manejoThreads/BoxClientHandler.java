@@ -1,8 +1,7 @@
-package org.grupo10.sistema_servidor.manejoClientes;
+package org.grupo10.sistema_servidor.manejoThreads;
 
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
-import org.grupo10.sistema_servidor.ControladorServidor;
 import org.grupo10.sistema_servidor.ServidorPrincipalState;
 
 import java.io.BufferedReader;
@@ -32,7 +31,7 @@ public class BoxClientHandler extends Thread  {
 
             this.nroBox = Integer.parseInt(this.in.readLine());
             System.out.println("Conectado a box " + nroBox);
-            if (this.servidor.boxesOcupados.add(this.nroBox)) {
+            if (this.servidor.agregarBox(this.nroBox)) {
                 System.out.println("BOX ACEPTADO");
                 this.out.println("ACEPTADO");
                 System.out.println("Se conectó el box " + this.nroBox + " con IP " + this.ip);
@@ -43,6 +42,7 @@ public class BoxClientHandler extends Thread  {
                 this.running = false;
             }
         } catch (IOException e) {
+
             System.out.println("ERROR HILO BOX: " + e.getMessage());
         }
     }
@@ -77,7 +77,7 @@ public class BoxClientHandler extends Thread  {
             } catch (IOException e1) {
                 running = false;
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);
-                this.servidor.boxesOcupados.remove(this.nroBox);
+                this.servidor.quitarBox(this.nroBox);
             }
         }
     }
