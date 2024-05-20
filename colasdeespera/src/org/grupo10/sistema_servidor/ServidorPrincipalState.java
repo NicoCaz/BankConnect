@@ -1,6 +1,7 @@
 package org.grupo10.sistema_servidor;
 
-import org.grupo10.modelo.*;
+import org.grupo10.modelo.Turno;
+import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.sistema_servidor.filas.Fila;
 import org.grupo10.sistema_servidor.filas.FilaFinalizada;
 import org.grupo10.sistema_servidor.filas.IFilas;

@@ -1,13 +1,13 @@
 package org.grupo10.sistema_box.conexion;
 
-import org.grupo10.exception.BoxException;
 import org.grupo10.interfaces.Conexion;
 import org.grupo10.sistema_box.controlador.ControladorBox;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class SistemaBox extends Conexion implements I_LlamarDNI{

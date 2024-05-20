@@ -1,9 +1,9 @@
 package org.grupo10.sistema_servidor;
 
-import org.grupo10.sistema_servidor.filas.IFilas;
+import org.grupo10.modelo.FilasDTO;
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
-import org.grupo10.modelo.FilasDTO;
+import org.grupo10.sistema_servidor.filas.IFilas;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

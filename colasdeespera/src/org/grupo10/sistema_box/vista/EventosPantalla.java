@@ -1,7 +1,5 @@
 package org.grupo10.sistema_box.vista;
 
-import org.grupo10.sistema_servidor.ControladorServidor;
-
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 

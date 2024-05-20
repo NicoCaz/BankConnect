@@ -1,7 +1,5 @@
 package org.grupo10.interfaces;
 
-import org.grupo10.exception.BoxException;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.AbstractMap;

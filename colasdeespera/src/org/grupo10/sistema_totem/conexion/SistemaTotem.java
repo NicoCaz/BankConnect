@@ -1,7 +1,6 @@
 package org.grupo10.sistema_totem.conexion;
 
 import org.grupo10.interfaces.Conexion;
-
 import org.grupo10.sistema_totem.controlador.ControladorTotem;
 
 import java.io.*;

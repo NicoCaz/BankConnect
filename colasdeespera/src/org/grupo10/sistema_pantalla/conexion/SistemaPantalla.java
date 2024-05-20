@@ -6,8 +6,6 @@ import org.grupo10.sistema_pantalla.controlador.IPantalla;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class SistemaPantalla extends Conexion implements I_EsperarActualizaciones{
