@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ControladorServidor extends Thread implements IControladorServidor {
     private static ControladorServidor instance = null;
     private ServidorState estado;
-
+    private String tipoLog;
     // Parámetros del archivo de configuración
     private String ip,ipOtro;
     private int port, portOtro;
@@ -33,7 +33,9 @@ public class ControladorServidor extends Thread implements IControladorServidor 
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoTxt))) {
             String linea;
-
+            //leo el tipo de logs
+            linea = br.readLine();
+            this.tipoLog = linea;
             //Leo el Servidor Principal
             linea = br.readLine();
             String[] partes = linea.split(":");
@@ -111,5 +113,8 @@ public class ControladorServidor extends Thread implements IControladorServidor 
 
     public void setPortOtro(int portOtro) {
         this.portOtro = portOtro;
+    }
+    public String getTipoLog(){
+        return tipoLog;
     }
 }

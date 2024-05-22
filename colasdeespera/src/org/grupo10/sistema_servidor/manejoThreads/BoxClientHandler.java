@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Date;
 
 public class BoxClientHandler extends Thread  {
     
@@ -53,8 +54,11 @@ public class BoxClientHandler extends Thread  {
                 in.readLine();
                 synchronized (this.servidor.getTurnosEnEspera().getTurnos()) {
                     msg = this.servidor.getTurnosEnEspera().sacarTurno();
-
                 }
+                synchronized (this.servidor.getLogCreator()) {
+                    this.servidor.getLogCreator().logClientLlamado((Turno) msg, this.nroBox,new Date());
+                }
+
                 if (msg instanceof Turno) {
                     this.servidor.setCambios(true);
                     ((Turno) msg).setBox(this.nroBox);

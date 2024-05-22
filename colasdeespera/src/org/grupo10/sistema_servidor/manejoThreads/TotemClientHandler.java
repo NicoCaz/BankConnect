@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Date;
 
 public class TotemClientHandler extends Thread{
 
@@ -45,6 +46,9 @@ public class TotemClientHandler extends Thread{
                     try {
                         Turno t= new Turno(dni);
                         this.servidor.getTurnosEnEspera().agregarTurno(t);
+                        synchronized(this.servidor.getLogCreator()){
+                            this.servidor.getLogCreator().logClientRegistro(t, new Date());
+                        }
                         this.servidor.setCambios(true);
                         msg = "ACEPTADO";
                         this.servidor.enviarEstadisticas();
