@@ -2,6 +2,8 @@ package org.grupo10.sistema_servidor.almacenamiento;
 
 import org.grupo10.modelo.Turno;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 public class TxtLogDecorator extends LogDecorator {
@@ -9,23 +11,21 @@ public class TxtLogDecorator extends LogDecorator {
         super(decoratedLog);
     }
 
-    @Override
-    public void log(Turno turno, Date date) {
-        super.log(turno, date);
-        saveAsTxt(turno, date);
+    protected void logToFile(Turno turno, Date date) {
+        try (FileWriter writer = new FileWriter("logRegistro.txt", true)) {
+            writer.write("Entrada al sistema - Cliente: " + turno.getDni() + ", Date: " + date.toString() + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void log(Turno turno, int boxNumber, Date date) {
-        super.log(turno, boxNumber, date);
-        saveAsTxt(turno, boxNumber, date);
+    protected void logToFile(Turno turno, int boxNumber, Date date) {
+        try (FileWriter writer = new FileWriter("logLlamado.txt", true)) {
+            writer.write("Llamada - Cliente: " + turno.getDni() +  ", Box: " + boxNumber + ", Date: " + date.toString() + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void saveAsTxt(Turno turno, Date date) {
-        // Implementación para guardar el log de entrada en un archivo txt
-    }
-
-    private void saveAsTxt(Turno turno, int boxNumber, Date date) {
-        // Implementación para guardar el log de llamado en un archivo txt
-    }
 }

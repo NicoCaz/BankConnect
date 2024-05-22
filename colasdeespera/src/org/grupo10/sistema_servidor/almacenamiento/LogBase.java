@@ -4,14 +4,16 @@ import org.grupo10.modelo.Turno;
 
 import java.util.Date;
 
-public class LogRegistro implements Log {
+public class LogBase implements Log {
+
+
     @Override
-    public void log(Turno t, int nBox, Date d) {
+    public void logLlamado(Turno t, int nBox, Date d) {
 
     }
 
     @Override
-    public void log(Turno t, Date d) {
+    public void logRegistro(Turno t, Date d) {
 
     }
 }

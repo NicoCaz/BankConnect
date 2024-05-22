@@ -12,12 +12,19 @@ public abstract class LogDecorator implements Log {
     }
 
     @Override
-    public void log(Turno turno, Date date) {
-        decoratedLog.log(turno, date);
+    public void logLlamado(Turno t, int nBox, Date d) {
+        decoratedLog.logLlamado(t, nBox, d);
+        logToFile(t, nBox, d);
+
     }
 
     @Override
-    public void log(Turno turno, int boxNumber, Date date) {
-        decoratedLog.log(turno, boxNumber, date);
+    public void logRegistro(Turno t, Date d) {
+        decoratedLog.logRegistro(t, d);
+        logToFile(t, d);
     }
+
+    protected abstract void logToFile(Turno turno, Date date);
+
+    protected abstract void logToFile(Turno turno, int boxNumber, Date date);
 }
