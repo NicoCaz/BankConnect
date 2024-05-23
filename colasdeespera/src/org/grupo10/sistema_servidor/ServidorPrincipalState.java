@@ -46,8 +46,7 @@ public class ServidorPrincipalState implements ServidorState{
         this.turnosEnEspera = new Fila();
         this.turnosFinalizados = new FilaFinalizada();
         this.logCreator= new LogCreator(this.servidor.getTipoLog());
-
-//        this.leerRepo();
+        //       this.leerRepo();
 //        this.abrirLogs();
         this.cambios = true;
 //        this.turnos = new Fila(this.servidor.getCriterio());
