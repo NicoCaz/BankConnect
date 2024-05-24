@@ -16,7 +16,6 @@ public class ControladorBox implements ActionListener, IControlador {
     private VistaBox ventana;
     private static ControladorBox instance = null;
     private SistemaBox dni_llamado;
-    private int nroBox=0;
 
     public static void main(String[] args) {
         ControladorBox.getInstance().comenzar();
@@ -39,6 +38,7 @@ public class ControladorBox implements ActionListener, IControlador {
         new Thread(() -> { // En otro thread para no interferir con GUILlamados
             try {
                 this.dni_llamado = new SistemaBox();
+
                 
                 // Activa el botón Siguiente (si no hubo IOException)
                 this.ventana.prenderLlamar();
@@ -71,5 +71,9 @@ public class ControladorBox implements ActionListener, IControlador {
 
     public void cerrarMensajeConectando() {
         this.ventana.cerrarMensajeConectando();
+    }
+
+    public void setNumBox(int num){
+        this.ventana.setNumBox(num);
     }
 }

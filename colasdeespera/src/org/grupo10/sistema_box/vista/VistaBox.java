@@ -14,6 +14,7 @@ public class VistaBox extends JFrame{
     private JButton llamarSiguienteButton, finalizarTurnoButton;
     private int numeroAtendido = 0;
     private ControladorBox controlador=null;
+    public int numBox;
 
     public VistaBox(int numBox) {
         this.controlador = ControladorBox.getInstance();
@@ -108,6 +109,10 @@ public class VistaBox extends JFrame{
         errorDialog.setLocationRelativeTo(VistaBox.this);
         errorDialog.setVisible(true);
 
+    }
+
+    public void setNumBox(int numBox) {
+        setTitle("Box: " + numBox);
     }
 
     public void dniLLamado(String dni){
