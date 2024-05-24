@@ -1,7 +1,7 @@
-package org.grupo10.sistema_servidor.almacenamiento.factory;
+package org.grupo10.sistema_servidor.logs.factory;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.almacenamiento.Log;
+import org.grupo10.sistema_servidor.logs.Log;
 
 import java.util.Date;
 

@@ -2,18 +2,17 @@ package org.grupo10.sistema_servidor;
 
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
-import org.grupo10.sistema_servidor.almacenamiento.factory.LogCreator;
+import org.grupo10.sistema_servidor.logs.factory.LogCreator;
 import org.grupo10.sistema_servidor.filas.Fila;
 import org.grupo10.sistema_servidor.filas.FilaFinalizada;
 import org.grupo10.sistema_servidor.filas.IFilas;
 import org.grupo10.sistema_servidor.manejoThreads.BoxClientHandler;
 import org.grupo10.sistema_servidor.manejoThreads.RedundanciaHandler;
 import org.grupo10.sistema_servidor.manejoThreads.TotemClientHandler;
+import org.grupo10.sistema_servidor.repositorio.ClientRepositoryTXT;
+import org.grupo10.sistema_servidor.repositorio.IClientRepository;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -29,6 +28,8 @@ public class ServidorPrincipalState implements ServidorState{
     private IFilas<Turno> turnosEnEspera ;
     private IFilas<TurnoFinalizado> turnosFinalizados ;
     private HashSet<Integer> boxesOcupados = new HashSet<>();
+
+    private IClientRepository repoClientes;
     //Manejo de logs
     private LogCreator logCreator;
 
@@ -46,10 +47,9 @@ public class ServidorPrincipalState implements ServidorState{
         this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         this.turnosFinalizados = new FilaFinalizada();
         this.logCreator= new LogCreator(this.servidor.getTipoLog());
-        //       this.leerRepo();
-//        this.abrirLogs();
+        this.leerRepo();
         this.cambios = true;
-//        this.turnos = new Fila(this.servidor.getCriterio());
+        this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         System.out.println("Se inició el servidor principal en el puerto " + port + ".");
     }
 
@@ -101,6 +101,19 @@ public class ServidorPrincipalState implements ServidorState{
             e.printStackTrace();
         }
     }
+
+    public void leerRepo() {
+        String currentDir = System.getProperty("user.dir");
+        try {
+            this.repoClientes = new ClientRepositoryTXT(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Hubo un error al leer el repositorio de clientes. Verificar que el archivo no esté dañado.");
+            // No tiene sentido utilizar el servidor sin clientes.
+            System.exit(0);
+        }
+    }
+
+
 
     @Override
     public void cambiarEstado() {

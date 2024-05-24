@@ -1,4 +1,4 @@
-package org.grupo10.sistema_servidor.almacenamiento;
+package org.grupo10.sistema_servidor.logs;
 
 import org.grupo10.modelo.Turno;
 import org.json.simple.JSONArray;

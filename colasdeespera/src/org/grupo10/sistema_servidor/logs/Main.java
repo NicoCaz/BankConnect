@@ -1,8 +1,8 @@
-package org.grupo10.sistema_servidor.almacenamiento;
+package org.grupo10.sistema_servidor.logs;
 
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.almacenamiento.factory.LogCreator;
+import org.grupo10.sistema_servidor.logs.factory.LogCreator;
 
 import java.util.Date;
 
