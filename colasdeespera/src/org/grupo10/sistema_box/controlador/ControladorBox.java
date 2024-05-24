@@ -29,47 +29,24 @@ public class ControladorBox implements ActionListener, IControlador {
     }
 
     private ControladorBox() {
+
     }
 
     public void comenzar() {
-        try {
-
-            //Lectura de archivo de configuracion de box
-            String currentDir = System.getProperty("user.dir");
-            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt";
-
-            BufferedReader br = new BufferedReader(new FileReader(archivoTxt));
-            String linea;
-            linea = br.readLine();
-            this.nroBox = Integer.parseInt(linea);
-            //Leo el Servidor Principal
-            linea = br.readLine();
-            String[] partes = linea.split(":");
-            String ip = partes[0];
-            int port = Integer.parseInt(partes[1]);
-
-            //Leo el Servidor de Respaldo
-            linea = br.readLine();
-            partes = linea.split(":");
-            String ipOtro = partes[0];
-            int portOtro = Integer.parseInt(partes[1]);
 
 
-            this.ventana = new VistaBox(this.nroBox);
-
-            new Thread(() -> { // En otro thread para no interferir con GUILlamados
-                try {
-                    this.dni_llamado = new SistemaBox();
-                    // Activa el botón Siguiente (si no hubo IOException)
-                    this.ventana.prenderLlamar();
-                } catch (IOException e) {
-                    this.ventana.ventanaError(e.getMessage());
-                    System.exit(1);
-                }
-            }).start();
-        } catch (IOException e) {
-            this.ventana.ventanaError("Hubo un error en la lectura del archivo");
-        }
+        this.ventana = new VistaBox(0);
+        new Thread(() -> { // En otro thread para no interferir con GUILlamados
+            try {
+                this.dni_llamado = new SistemaBox();
+                
+                // Activa el botón Siguiente (si no hubo IOException)
+                this.ventana.prenderLlamar();
+            } catch (IOException e) {
+                this.ventana.ventanaError(e.getMessage());
+                System.exit(1);
+            }
+        }).start();
     }
 
 
