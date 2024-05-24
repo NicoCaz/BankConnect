@@ -1,12 +1,30 @@
-package org.grupo10.modelo;
+package org.grupo10.sistema_servidor.filas;
 
 import org.grupo10.exception.ClienteRepetidoException;
+import org.grupo10.modelo.Turno;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Fila implements IFilas<Turno> ,Serializable, Cloneable {
-    private ArrayList<Turno> fila = new ArrayList();
+    private ArrayList<Turno> fila;
+    private IEstrategia estrategia;
+
+    public Fila(){
+        this.fila = new ArrayList<>();
+    }
+
+    public Fila (String estrategia){
+        this.fila = new ArrayList<>();
+        if(estrategia.equalsIgnoreCase("GRUPOETARIO")){
+            this.estrategia = new OrdenarPorEtario();
+        } else if (estrategia.equalsIgnoreCase("PRIORIDAD")) {
+            this.estrategia = new OrdenarPorPrioridad();
+        }else if (estrategia.equalsIgnoreCase("DEFAULT")){
+            this.estrategia = new OrdenarPorDefault();
+        }
+    }
+
     public boolean estaVacia(){
         return this.fila.isEmpty();
     }
@@ -14,6 +32,7 @@ public class Fila implements IFilas<Turno> ,Serializable, Cloneable {
     public void agregarTurno(Turno turno) throws ClienteRepetidoException {
         if (!this.fila.contains(turno)) {
             this.fila.add(turno);
+            this.ordenarFila();
         } else
             throw new ClienteRepetidoException();
     }
@@ -47,5 +66,9 @@ public class Fila implements IFilas<Turno> ,Serializable, Cloneable {
             e.printStackTrace();
         }
         return f;
+    }
+
+    public void ordenarFila(){
+        this.estrategia.ordenar(this.fila);
     }
 }

@@ -1,4 +1,4 @@
-package org.grupo10.modelo;
+package org.grupo10.sistema_servidor.filas;
 
 import org.grupo10.exception.ClienteRepetidoException;
 

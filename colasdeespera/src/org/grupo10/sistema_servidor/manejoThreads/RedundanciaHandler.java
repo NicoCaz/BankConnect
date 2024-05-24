@@ -1,26 +1,28 @@
-package org.grupo10.sistema_servidor.manejoClientes;
+package org.grupo10.sistema_servidor.manejoThreads;
 
-import org.grupo10.modelo.Fila;
-import org.grupo10.modelo.FilaFinalizada;
-import org.grupo10.modelo.dto.FilasDTO;
-import org.grupo10.sistema_servidor.ControladorServidor;
+import org.grupo10.modelo.FilasDTO;
 import org.grupo10.sistema_servidor.IRedundancia;
+import org.grupo10.sistema_servidor.ServidorPrincipalState;
+import org.grupo10.sistema_servidor.filas.Fila;
+import org.grupo10.sistema_servidor.filas.FilaFinalizada;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class RedundanciaHandler extends Thread implements IRedundancia {
+    private ServidorPrincipalState servidor;
     private boolean running;
     private ObjectOutputStream out;
     private String ipOtro;
 
-    public RedundanciaHandler(Socket socket) {
+    public RedundanciaHandler(Socket socket, ServidorPrincipalState servidor) {
+        this.servidor = servidor;
         try {
             this.ipOtro = socket.getInetAddress().getHostAddress();
             this.out = new ObjectOutputStream(socket.getOutputStream());
             System.out.println("Se conectó un servidor con IP " + this.ipOtro + " como backup.");
-            ControladorServidor.getInstance().setCambios(true); // Asegura resincronización de estado
+            this.servidor.setCambios(true); // Asegura resincronización de estado
             this.running = true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,7 +35,7 @@ public class RedundanciaHandler extends Thread implements IRedundancia {
         long before = System.currentTimeMillis();
         while (running) {
             try {
-                if (ControladorServidor.getInstance().hayCambios()) {
+                if (this.servidor.hayCambios()) {
                     // Envía la fila actualizada
                     this.enviarEstado();
                     before = System.currentTimeMillis();
@@ -56,10 +58,10 @@ public class RedundanciaHandler extends Thread implements IRedundancia {
 
     @Override
     public void enviarEstado() throws IOException{
-        Fila clonFila = (Fila) ControladorServidor.getInstance().getTurnosEnEspera().clone();
-        FilaFinalizada clonFilaFinalizada =(FilaFinalizada) ControladorServidor.getInstance().getTurnosFinalizados().clone();
+        Fila clonFila = (Fila) this.servidor.getTurnosEnEspera().clone();
+        FilaFinalizada clonFilaFinalizada =(FilaFinalizada) this.servidor.getTurnosFinalizados().clone();
         FilasDTO filasDTO= new FilasDTO(clonFila,clonFilaFinalizada);
         this.out.writeObject((FilasDTO) filasDTO);
-        ControladorServidor.getInstance().setCambios(false);
+        this.servidor.setCambios(false);
     }
 }

@@ -1,16 +1,13 @@
 package org.grupo10.sistema_box.controlador;
 
 
-import org.grupo10.exception.BoxException;
 import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_box.conexion.SistemaBox;
 import org.grupo10.sistema_box.vista.VistaBox;
-import org.grupo10.sistema_servidor.ControladorServidor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -38,11 +35,8 @@ public class ControladorBox implements ActionListener, IControlador {
         try {
 
             //Lectura de archivo de configuracion de box
-//            String currentDir = System.getProperty("user.dir");
-//            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt";
-
-            String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
-            String archivoTxt = jarPath + "/boxconfig.txt";
+            String currentDir = System.getProperty("user.dir");
+            String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_box/boxconfig.txt";
 
             BufferedReader br = new BufferedReader(new FileReader(archivoTxt));
             String linea;
@@ -65,14 +59,11 @@ public class ControladorBox implements ActionListener, IControlador {
 
             new Thread(() -> { // En otro thread para no interferir con GUILlamados
                 try {
-                    this.dni_llamado = new SistemaBox(nroBox, ip, port, ipOtro, portOtro);
+                    this.dni_llamado = new SistemaBox();
                     // Activa el botón Siguiente (si no hubo IOException)
                     this.ventana.prenderLlamar();
                 } catch (IOException e) {
-                    this.ventana.ventanaError("Hubo un error");
-
-                } catch (BoxException e) {
-                    this.ventana.ventanaError("El box esta ocupado");
+                    this.ventana.ventanaError(e.getMessage());
                     System.exit(1);
                 }
             }).start();
@@ -86,15 +77,13 @@ public class ControladorBox implements ActionListener, IControlador {
         new Thread(() -> { // En otro thread para no interferir con GUILlamados
             String msg;
             try {
-                msg = this.dni_llamado.llamarSiguente();
+                msg = this.dni_llamado.llamarSiguiente();
                 if (msg.equals("NULL"))
                     this.ventana.ventanaError("Fila Vacia");
                 else
                     this.ventana.dniLLamado(msg);
             } catch (IOException e1) {
-                this.ventana.ventanaError("Error en la conexion");
-            } catch (BoxException e2) {
-                this.ventana.ventanaError("El box esta ocupado");
+                this.ventana.ventanaError(e1.getMessage());
             }
         }).start();
     }

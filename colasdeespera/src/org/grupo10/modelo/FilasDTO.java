@@ -1,7 +1,7 @@
-package org.grupo10.modelo.dto;
+package org.grupo10.modelo;
 
-import org.grupo10.modelo.Fila;
-import org.grupo10.modelo.FilaFinalizada;
+import org.grupo10.sistema_servidor.filas.Fila;
+import org.grupo10.sistema_servidor.filas.FilaFinalizada;
 
 import java.io.Serializable;
 

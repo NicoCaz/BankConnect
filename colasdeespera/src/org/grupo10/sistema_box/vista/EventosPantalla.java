@@ -1,7 +1,5 @@
 package org.grupo10.sistema_box.vista;
 
-import org.grupo10.sistema_servidor.ControladorServidor;
-
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -18,8 +16,8 @@ public class EventosPantalla implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        ControladorServidor servidor= ControladorServidor.getInstance();
-        servidor.quitarBox(this.box);
+        //ControladorServidor servidor= ControladorServidor.getInstance();
+        //servidor.quitarBox(this.box);
         System.out.println("La ventana se está cerrando...");
     }
 
