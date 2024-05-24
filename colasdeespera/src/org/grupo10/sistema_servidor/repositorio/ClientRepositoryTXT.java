@@ -51,7 +51,6 @@ public class ClientRepositoryTXT implements IClientRepository{
                         System.out.println();
                         encontro = true;
                         retorno = new Cliente(dni, nombre, prioridad, fechaNacimiento);
-                        System.out.println(retorno);
                          // Salir del bucle si el cliente se encuentra
                     }
                 }
