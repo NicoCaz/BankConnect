@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ControladorServidor extends Thread implements IControladorServidor {
     private static ControladorServidor instance = null;
     private ServidorState estado;
-    private String tipoLog;
+    private String tipoLog,estrategiaFila;
     // Parámetros del archivo de configuración
     private String ip,ipOtro;
     private int port, portOtro;
@@ -36,6 +36,9 @@ public class ControladorServidor extends Thread implements IControladorServidor 
             //leo el tipo de logs
             linea = br.readLine();
             this.tipoLog = linea;
+            //leo la estrategia de filas
+            linea = br.readLine();
+            this.estrategiaFila = linea;
             //Leo el Servidor Principal
             linea = br.readLine();
             String[] partes = linea.split(":");
@@ -116,5 +119,9 @@ public class ControladorServidor extends Thread implements IControladorServidor 
     }
     public String getTipoLog(){
         return tipoLog;
+    }
+
+    public String getEstrategiaFila() {
+        return estrategiaFila;
     }
 }

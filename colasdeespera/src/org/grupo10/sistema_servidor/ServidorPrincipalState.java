@@ -43,7 +43,7 @@ public class ServidorPrincipalState implements ServidorState{
         this.servidor = controladorServidor;
         int port = this.servidor.getPort();
         this.serverSocket = new ServerSocket(port);
-        this.turnosEnEspera = new Fila();
+        this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         this.turnosFinalizados = new FilaFinalizada();
         this.logCreator= new LogCreator(this.servidor.getTipoLog());
         //       this.leerRepo();
