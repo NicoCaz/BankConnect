@@ -46,7 +46,7 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
         String msg = this.in.readLine();
 
         ControladorBox.getInstance().setNumBox(this.nroBox);
-        
+
         if (msg.equals("OCUPADO"))
             throw new IOException("El box " + nroBox + " esta ocupado");
     }

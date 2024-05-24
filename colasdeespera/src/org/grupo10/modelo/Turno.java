@@ -21,6 +21,13 @@ public class Turno implements Serializable, Cloneable{
         this.horarioEntrada = new Date();
     }
 
+    public Turno (String dni){
+        this.dni = dni;
+        this.gEtario = "JOVEN";
+        this.prioridad = 3;
+        this.horarioEntrada = new Date();
+    }
+
     public Turno(String dni, LocalDate nacimiento, int prioridad) {
 
         this.dni = dni;
