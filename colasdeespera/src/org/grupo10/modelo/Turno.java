@@ -27,7 +27,7 @@ public class Turno implements Serializable, Cloneable{
             }
         }
 
-        this.prioridad = 3;
+        this.prioridad = c.getPrioridad();
         this.dni= cliente.getDni();
         this.horarioEntrada = new Date();
     }

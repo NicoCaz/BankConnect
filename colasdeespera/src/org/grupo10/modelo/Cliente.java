@@ -64,6 +64,15 @@ public class Cliente implements Serializable, Cloneable {
         return prioridad;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dni='" + dni + '\'' +
+                ", fechaCumple=" + fechaCumple +
+                ", prioridad=" + prioridad +
+                '}';
+    }
+
     public int calcularEdad() {
 
         // Calcular la diferencia entre fechas

@@ -51,7 +51,7 @@ public class TotemClientHandler extends Thread{
                             cliente=this.servidor.getRepoClientes().getCliente(dni);
                         }
 
-                        Turno t= new Turno(cliente);
+                        Turno t = new Turno(cliente);
                         msg = enviarTurno(t);
 
                     } catch (ClienteNoExistenteException e) {

@@ -48,8 +48,10 @@ public class ClientRepositoryTXT implements IClientRepository{
                     LocalDate fechaNacimiento = LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
                     if (dni.equals(dniTotem)) {
+                        System.out.println();
                         encontro = true;
                         retorno = new Cliente(dni, nombre, prioridad, fechaNacimiento);
+                        System.out.println(retorno);
                          // Salir del bucle si el cliente se encuentra
                     }
                 }
