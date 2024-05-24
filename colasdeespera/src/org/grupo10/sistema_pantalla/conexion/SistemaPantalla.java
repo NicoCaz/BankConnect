@@ -12,7 +12,7 @@ public class SistemaPantalla extends Conexion implements I_EsperarActualizacione
     private IPantalla pantalla;
 
     public SistemaPantalla(IPantalla pantalla) throws IOException, FileNotFoundException {
-        super("/pantallaconfig.txt");
+        super("sistema_pantalla/pantallaconfig.txt");
         this.pantalla = pantalla;
         this.esperarActualizaciones();
     }

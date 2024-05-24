@@ -11,7 +11,7 @@ public class SistemaTotem extends Conexion implements I_DNI {
 
     public SistemaTotem() throws IOException, FileNotFoundException {
 
-        super("/totemconfig.txt");
+        super("sistema_totem/totemconfig.txt");
     }
 
     @Override

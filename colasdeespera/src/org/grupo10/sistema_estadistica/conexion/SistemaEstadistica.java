@@ -16,7 +16,7 @@ public class SistemaEstadistica extends Conexion implements I_EsperarActualizaci
     private IEstadisticas pantalla;
 
     public SistemaEstadistica(IEstadisticas estadistica) throws IOException, EstadisticaException {
-        super("/estadisticasconfig.txt");
+        super("sistema_estadistica/estadisticasconfig.txt");
 
         this.pantalla = estadistica;
 

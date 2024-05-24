@@ -2,6 +2,7 @@ package org.grupo10.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Cliente implements Serializable, Cloneable {
     private String dni, nombre;
@@ -51,4 +52,31 @@ public class Cliente implements Serializable, Cloneable {
         return clon;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public LocalDate getFechaCumple() {
+        return fechaCumple;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public int calcularEdad() {
+
+        // Calcular la diferencia entre fechas
+        Period periodo = Period.between(this.fechaCumple,LocalDate.now());
+
+        // Obtener la cantidad de años transcurridos
+        int edad = periodo.getYears();
+
+        // Ajustar la edad si el cumpleaños aún no ha ocurrido en el año actual
+        if (periodo.getMonths() < 0 || (periodo.getMonths() == 0 && periodo.getDays() < 0)) {
+            edad--;
+        }
+
+        return edad;
+    }
 }

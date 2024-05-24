@@ -16,6 +16,17 @@ public class Turno implements Serializable, Cloneable{
 
     public Turno(Cliente c){
         this.cliente = c;
+
+        if(c.calcularEdad() < 30){ //ASIGNO GRUPO ETARIO
+            this.gEtario = "JOVEN";
+        }else{
+            if(c.calcularEdad() < 50){
+                this.gEtario = "ADULTO";
+            }else{
+                this.gEtario = "ADULTO MAYOR";
+            }
+        }
+
         this.prioridad = 3;
         this.dni= cliente.getDni();
         this.horarioEntrada = new Date();

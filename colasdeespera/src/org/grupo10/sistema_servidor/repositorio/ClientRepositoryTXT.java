@@ -50,7 +50,7 @@ public class ClientRepositoryTXT implements IClientRepository{
                     if (dni.equals(dniTotem)) {
                         encontro = true;
                         retorno = new Cliente(dni, nombre, prioridad, fechaNacimiento);
-                        break; // Salir del bucle si el cliente se encuentra
+                         // Salir del bucle si el cliente se encuentra
                     }
                 }
             }

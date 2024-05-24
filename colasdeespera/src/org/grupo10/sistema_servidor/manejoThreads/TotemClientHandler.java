@@ -39,7 +39,7 @@ public class TotemClientHandler extends Thread{
 
     @Override
     public void run() {
-        String msg, dni;
+        String msg = null, dni;
         Cliente cliente;
         while (running) {
             try {
@@ -47,23 +47,18 @@ public class TotemClientHandler extends Thread{
                 System.out.println("DNI recibido: "+dni);
                 synchronized (this.servidor.getTurnosEnEspera()) {
                     try {
-                        synchronized(this.servidor.getRepoClientes()){
+                        synchronized(this.servidor.getRepoClientes()){}{
                             cliente=this.servidor.getRepoClientes().getCliente(dni);
                         }
+
                         Turno t= new Turno(cliente);
-                        this.servidor.getTurnosEnEspera().agregarTurno(t);
-                        new Thread(()->{
-                            synchronized(this.servidor.getLogCreator()){
-                                this.servidor.getLogCreator().logClientRegistro(t, new Date());
-                            }
-                        }).start();
-                        this.servidor.setCambios(true);
-                        msg = "ACEPTADO";
-                        this.servidor.enviarEstadisticas();
-                    } catch (ClienteRepetidoException e) {
-                        msg = "REPETIDO";
+                        msg = enviarTurno(t);
+
                     } catch (ClienteNoExistenteException e) {
-                        throw new RuntimeException(e);
+                        System.out.println("QUE HAGO ACAAAAAA");
+                        Turno t = new Turno(dni);
+                        msg = enviarTurno(t);
+
                     }
                 }
                 out.println(msg);
@@ -72,5 +67,29 @@ public class TotemClientHandler extends Thread{
                 System.out.println("Se desconectó la terminal de registro con IP " + this.ip);
             }
         }
+    }
+
+    public void mandarLog(Turno t){
+        new Thread(()->{
+            synchronized(this.servidor.getLogCreator()){
+                this.servidor.getLogCreator().logClientRegistro(t, new Date());
+            }
+        }).start();
+    }
+
+    public String enviarTurno(Turno t){
+        String msg = "NULL";
+        try {
+            this.servidor.getTurnosEnEspera().agregarTurno(t);
+            mandarLog(t);
+            this.servidor.setCambios(true);
+            msg="ACEPTADO";
+            this.servidor.enviarEstadisticas();
+        }catch (ClienteRepetidoException e2) {
+            msg = "REPETIDO";
+        }catch (IOException e1){
+            e1.printStackTrace();
+        }
+        return msg;
     }
 }
