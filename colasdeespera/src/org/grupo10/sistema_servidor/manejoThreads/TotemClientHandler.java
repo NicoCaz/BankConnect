@@ -1,6 +1,8 @@
 package org.grupo10.sistema_servidor.manejoThreads;
 
+import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.exception.ClienteRepetidoException;
+import org.grupo10.modelo.Cliente;
 import org.grupo10.modelo.Turno;
 import org.grupo10.sistema_servidor.ServidorPrincipalState;
 
@@ -38,22 +40,30 @@ public class TotemClientHandler extends Thread{
     @Override
     public void run() {
         String msg, dni;
+        Cliente cliente;
         while (running) {
             try {
                 dni = in.readLine();
                 System.out.println("DNI recibido: "+dni);
                 synchronized (this.servidor.getTurnosEnEspera()) {
                     try {
-                        Turno t= new Turno(dni);
-                        this.servidor.getTurnosEnEspera().agregarTurno(t);
-                        synchronized(this.servidor.getLogCreator()){
-                            this.servidor.getLogCreator().logClientRegistro(t, new Date());
+                        synchronized(this.servidor.getRepoClientes()){
+                            cliente=this.servidor.getRepoClientes().getCliente(dni);
                         }
+                        Turno t= new Turno(cliente);
+                        this.servidor.getTurnosEnEspera().agregarTurno(t);
+                        new Thread(()->{
+                            synchronized(this.servidor.getLogCreator()){
+                                this.servidor.getLogCreator().logClientRegistro(t, new Date());
+                            }
+                        }).start();
                         this.servidor.setCambios(true);
                         msg = "ACEPTADO";
                         this.servidor.enviarEstadisticas();
                     } catch (ClienteRepetidoException e) {
                         msg = "REPETIDO";
+                    } catch (ClienteNoExistenteException e) {
+                        throw new RuntimeException(e);
                     }
                 }
                 out.println(msg);

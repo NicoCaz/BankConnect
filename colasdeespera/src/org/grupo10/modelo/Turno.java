@@ -7,12 +7,13 @@ import java.util.Date;
 public class Turno implements Serializable, Cloneable{
     private String dni;
     private String gEtario;
+    private Cliente cliente;
     private int prioridad;
     private Date horarioEntrada;
     private int box;
 
-    public Turno(String dni){
-
+    public Turno(Cliente c){
+        this.cliente = c;
         this.prioridad = 3;
         this.dni=dni;
         this.horarioEntrada = new Date();

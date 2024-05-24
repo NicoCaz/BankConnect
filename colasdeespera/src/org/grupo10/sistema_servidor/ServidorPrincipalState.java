@@ -170,6 +170,10 @@ public class ServidorPrincipalState implements ServidorState{
         }
     }
 
+    public IClientRepository getRepoClientes() {
+        return repoClientes;
+    }
+
     public FilaFinalizada getTurnosFinalizados() {
         return (FilaFinalizada) turnosFinalizados;
     }

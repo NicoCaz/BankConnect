@@ -55,11 +55,13 @@ public class BoxClientHandler extends Thread  {
                 synchronized (this.servidor.getTurnosEnEspera().getTurnos()) {
                     msg = this.servidor.getTurnosEnEspera().sacarTurno();
                 }
-                synchronized (this.servidor.getLogCreator()) {
-                    this.servidor.getLogCreator().logClientLlamado((Turno) msg, this.nroBox,new Date());
-                }
-
                 if (msg instanceof Turno) {
+                    Object finalMsg = msg;//sino tira error
+                    new Thread(()->{//si no lo ponemos a correr en un hilo secundario este frena la velocidad de ejecucion del programa
+                        synchronized (this.servidor.getLogCreator()) {
+                            this.servidor.getLogCreator().logClientLlamado((Turno) finalMsg, this.nroBox,new Date());
+                        }
+                    }).start();
                     this.servidor.setCambios(true);
                     ((Turno) msg).setBox(this.nroBox);
                     if(msg != null){
