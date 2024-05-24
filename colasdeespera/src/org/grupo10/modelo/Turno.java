@@ -2,11 +2,13 @@ package org.grupo10.modelo;
 
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Turno implements Serializable, Cloneable{
     private String dni;
     private String gEtario;
+    private LocalDate fecha;
     private Cliente cliente;
     private int prioridad;
     private Date horarioEntrada;
@@ -15,14 +17,15 @@ public class Turno implements Serializable, Cloneable{
     public Turno(Cliente c){
         this.cliente = c;
         this.prioridad = 3;
-        this.dni=dni;
+        this.dni= cliente.getDni();
         this.horarioEntrada = new Date();
     }
 
-    public Turno(String dni, String nacimiento, int prioridad) {
+    public Turno(String dni, LocalDate nacimiento, int prioridad) {
 
         this.dni = dni;
         this.prioridad = prioridad;
+        this.fecha = nacimiento;
         this.horarioEntrada = new Date();
     }
 
