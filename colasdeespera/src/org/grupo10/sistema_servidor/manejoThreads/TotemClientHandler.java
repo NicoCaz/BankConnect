@@ -55,7 +55,6 @@ public class TotemClientHandler extends Thread{
                         msg = enviarTurno(t);
 
                     } catch (ClienteNoExistenteException e) {
-                        System.out.println("QUE HAGO ACAAAAAA");
                         Turno t = new Turno(dni);
                         msg = enviarTurno(t);
 
