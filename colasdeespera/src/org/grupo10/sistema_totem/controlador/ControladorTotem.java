@@ -39,6 +39,7 @@ public class ControladorTotem implements ActionListener , IControlador {
                 this.ventana.ventanaError("No se ha encontrado el archivo de configuracion");
             } catch (IOException e) {
                 this.ventana.ventanaError("Error de conexion");
+                System.exit(404);
             }
         }).start();
     }

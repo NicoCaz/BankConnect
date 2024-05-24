@@ -14,7 +14,7 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
     private int nroBox;
 
     public SistemaBox() throws IOException {
-        super("/boxconfig.txt");
+        super("sistema_box/boxconfig.txt");
 
     }
     @Override
@@ -54,6 +54,7 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
         String linea;
         linea = br.readLine();
         this.nroBox = Integer.parseInt(linea);
+
     }
 
     @Override

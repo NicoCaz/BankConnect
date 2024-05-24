@@ -42,7 +42,7 @@ public abstract class Conexion {
     protected void leerArchivoCFG() throws FileNotFoundException {
         //esto sirve para cuando hacemos el codigo
         String currentDir = System.getProperty("user.dir");
-        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/sistema_totem" + this.filename;
+        String archivoTxt = currentDir + "/colasdeespera/src/org/grupo10/" + this.filename;
 
         //esto sirve cuando hacemos los ejecutables
         //String jarPath = new File(ControladorServidor.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getPath();
