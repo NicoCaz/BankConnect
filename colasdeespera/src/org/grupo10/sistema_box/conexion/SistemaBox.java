@@ -1,5 +1,6 @@
 package org.grupo10.sistema_box.conexion;
 
+import org.grupo10.exception.BoxException;
 import org.grupo10.interfaces.Conexion;
 import org.grupo10.sistema_box.controlador.ControladorBox;
 
@@ -30,7 +31,7 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
     }
 
     @Override
-    public void conectar(Map.Entry<String, Integer> entry) throws IOException {
+    public void conectar(Map.Entry<String, Integer> entry) throws IOException, BoxException {
         this.socket = new Socket(entry.getKey(), entry.getValue());
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -46,10 +47,11 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
         String msg = this.in.readLine();
 
         ControladorBox.getInstance().setNumBox(this.nroBox);
-
+        System.out.println(msg);
         if (msg.equals("OCUPADO"))
-            throw new IOException("El box " + nroBox + " esta ocupado");
+            throw new BoxException("El box " + nroBox + " esta ocupado");
     }
+
 
     @Override
     protected void hookPrimerasLineas(BufferedReader br) throws IOException {

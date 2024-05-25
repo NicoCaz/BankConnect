@@ -120,7 +120,9 @@ public class ServidorPrincipalState implements ServidorState{
     }
 
     public synchronized void enviarActualizacion(Turno t) {
+
         for (Socket socket : this.PantallasClients) {
+
             try {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 

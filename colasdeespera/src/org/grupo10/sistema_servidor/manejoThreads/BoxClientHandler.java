@@ -70,6 +70,7 @@ public class BoxClientHandler extends Thread  {
                         }
                         this.turnoAnterior = (Turno) msg;
                     }
+                    Thread.sleep(3000);
                     this.servidor.enviarActualizacion((Turno)msg);
                     this.out.println(((Turno) msg).getDni());
                 }else {
@@ -84,6 +85,8 @@ public class BoxClientHandler extends Thread  {
                 running = false;
                 System.out.println("Se desconectó el box " + this.nroBox + " con IP " + this.ip);
                 this.servidor.quitarBox(this.nroBox);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

@@ -5,6 +5,8 @@ import java.net.Socket;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class Conexion {
     protected Socket socket;
@@ -30,7 +32,18 @@ public abstract class Conexion {
             this.conectar(this.servers.get(this.serverActivo));
             this.cerrarMensajeConectando();
         } catch (IOException  e) {
-            this.reconectar();
+            String input = e.getMessage();
+            String regex = "El box (\\d+) esta ocupado";
+
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(input);
+
+            if (matcher.find()) {
+                throw new IOException(e.getMessage());
+            }else{
+                this.reconectar();
+            }
+
         }
 
         // Hook

@@ -24,7 +24,7 @@ public class VistaPantalla extends JFrame {
         this.controladorPantalla = ControladorPantalla.getInstance();
         setTitle("Monitor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
+        setSize(600, 600); // Increased window size
         setLocationRelativeTo(null);
 
         // Crear el modelo de tabla
@@ -36,11 +36,13 @@ public class VistaPantalla extends JFrame {
         };
         modeloTabla.addColumn("DNI");
         modeloTabla.addColumn("Box");
-        modeloTabla.setRowCount(10); // Establecer el número máximo de filas a 5
+        modeloTabla.setRowCount(5); // Establecer el número máximo de filas a 5
 
         // Crear la JTable y establecer el modelo
         tabla = new JTable(modeloTabla);
         tabla.setDefaultRenderer(Object.class, new CeldaResaltadaRenderer());
+        tabla.setRowHeight(30); // Increase row height
+        tabla.setFont(tabla.getFont().deriveFont(Font.PLAIN, 18f)); // Increase font size
         JScrollPane scrollPane = new JScrollPane(tabla);
 
         // Crear el panel inferior
@@ -49,11 +51,11 @@ public class VistaPantalla extends JFrame {
 
         labelTurno = new JLabel();
         labelTurno.setHorizontalAlignment(JLabel.CENTER);
-        labelTurno.setFont(labelTurno.getFont().deriveFont(Font.BOLD, 18f)); // Usar fuente escalable
+        labelTurno.setFont(labelTurno.getFont().deriveFont(Font.BOLD, 24f)); // Usar fuente escalable más grande
 
         labelBox = new JLabel();
         labelBox.setHorizontalAlignment(JLabel.CENTER);
-        labelBox.setFont(labelBox.getFont().deriveFont(Font.BOLD, 18f)); // Usar fuente escalable
+        labelBox.setFont(labelBox.getFont().deriveFont(Font.BOLD, 24f)); // Usar fuente escalable más grande
 
         panelInferior.add(labelTurno);
         panelInferior.add(labelBox);
@@ -88,7 +90,6 @@ public class VistaPantalla extends JFrame {
         setVisible(true);
     }
 
-
     public void abrirMensajeConectando() {
         this.setEnabled(false);
         new Thread(() -> { // En otro thread para no bloquear la ejecución
@@ -118,18 +119,24 @@ public class VistaPantalla extends JFrame {
         this.setEnabled(true);
     }
 
-    public void agregarDatos(List<String>  valores1, List<String> valores2) {
+    public void agregarDatos(List<String> valores1, List<String> valores2) {
         // Limpiar el modelo de la tabla antes de agregar nuevos datos
         limpiarTabla();
-        int size = Math.min(valores1.size(), valores2.size());
-        // Agregar filas con los valores proporcionados
-        for (int i = size - 1; i >= 0; i--) {
-            Object[] nuevaFila = {valores1.get(i), valores2.get(i)};
+
+        // Obtener los últimos 5 elementos de las listas
+        int startIndex = Math.max(0, valores1.size() - 5);
+        List<String> ultimosValores1 = valores1.subList(startIndex, valores1.size());
+        List<String> ultimosValores2 = valores2.subList(startIndex, valores2.size());
+
+        // Agregar filas con los últimos 5 valores proporcionados
+        for (int i = ultimosValores1.size() - 1; i >= 0; i--) {
+            Object[] nuevaFila = {ultimosValores1.get(i), ultimosValores2.get(i)};
             modeloTabla.addRow(nuevaFila);
         }
 
         actualizar();
     }
+
     public void actualizar() {
         // Obtener la cantidad de filas en la tabla
         int filas = modeloTabla.getRowCount();
@@ -177,4 +184,7 @@ public class VistaPantalla extends JFrame {
 
     }
 
+    public static void main(String[] args) {
+        new VistaPantalla();
+    }
 }

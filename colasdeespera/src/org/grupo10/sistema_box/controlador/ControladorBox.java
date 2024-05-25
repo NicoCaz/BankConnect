@@ -1,6 +1,7 @@
 package org.grupo10.sistema_box.controlador;
 
 
+import org.grupo10.exception.BoxException;
 import org.grupo10.interfaces.IControlador;
 import org.grupo10.sistema_box.conexion.SistemaBox;
 import org.grupo10.sistema_box.vista.VistaBox;
@@ -33,16 +34,15 @@ public class ControladorBox implements ActionListener, IControlador {
 
     public void comenzar() {
 
-
         this.ventana = new VistaBox(0);
         new Thread(() -> { // En otro thread para no interferir con GUILlamados
             try {
                 this.dni_llamado = new SistemaBox();
 
-                
                 // Activa el botón Siguiente (si no hubo IOException)
                 this.ventana.prenderLlamar();
             } catch (IOException e) {
+
                 this.ventana.ventanaError(e.getMessage());
                 System.exit(1);
             }
