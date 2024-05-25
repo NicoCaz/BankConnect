@@ -1,0 +1,22 @@
+{
+  "clientes": [
+    {
+      "nombre": "John Doe",
+      "dni": "12345",
+      "prioridad": 1,
+      "fechaNacimiento": "1990-01-01"
+    },
+    {
+      "nombre": "Jane Smith",
+      "dni": "67890",
+      "prioridad": 2,
+      "fechaNacimiento": "1985-05-15"
+    },
+    {
+      "nombre": "Alice Johnson",
+      "dni": "11223",
+      "prioridad": 3,
+      "fechaNacimiento": "2000-12-25"
+    }
+  ]
+}

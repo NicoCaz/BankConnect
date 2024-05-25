@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.StringTokenizer;
 
 public class ClientRepositoryTXT implements IClientRepository{
 

@@ -1,0 +1,20 @@
+<clientes>
+    <cliente>
+        <nombre>John Doe</nombre>
+        <dni>12345</dni>
+        <prioridad>1</prioridad>
+        <fechaNacimiento>1990-01-01</fechaNacimiento>
+    </cliente>
+    <cliente>
+        <nombre>Jane Smith</nombre>
+        <dni>67890</dni>
+        <prioridad>2</prioridad>
+        <fechaNacimiento>1985-05-15</fechaNacimiento>
+    </cliente>
+    <cliente>
+        <nombre>Alice Johnson</nombre>
+        <dni>11223</dni>
+        <prioridad>3</prioridad>
+        <fechaNacimiento>2000-12-25</fechaNacimiento>
+    </cliente>
+</clientes>
