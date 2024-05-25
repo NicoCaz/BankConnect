@@ -1,7 +1,7 @@
-package org.grupo10.sistema_servidor.logs.factory.json;
+package org.grupo10.factory.json;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.logs.factory.IRegistro;
+import org.grupo10.factory.IRegistro;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

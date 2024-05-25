@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class BoxClientHandler extends Thread  {
@@ -57,11 +58,11 @@ public class BoxClientHandler extends Thread  {
                 }
                 if (msg instanceof Turno) {
                     Object finalMsg = msg;//sino tira error
-                   // new Thread(()->{//si no lo ponemos a correr en un hilo secundario este frena la velocidad de ejecucion del programa
-                      //  synchronized (this.servidor.getLogCreator()) {
-                      //      this.servidor.getLogCreator().logClientLlamado((Turno) finalMsg, this.nroBox,new Date());
-                       // }
-                 //   }).start();
+                    new Thread(()->{//si no lo ponemos a correr en un hilo secundario este frena la velocidad de ejecucion del programa
+                        synchronized (this.servidor.getLogLlamados()) {
+                          this.servidor.getLogLlamados().logToFile((Turno) finalMsg, this.nroBox, LocalDate.now());
+                        }
+                   }).start();
                     this.servidor.setCambios(true);
                     ((Turno) msg).setBox(this.nroBox);
                     if(msg != null){

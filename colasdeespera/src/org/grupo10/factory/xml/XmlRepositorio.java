@@ -1,8 +1,8 @@
-package org.grupo10.sistema_servidor.logs.factory.xml;
+package org.grupo10.factory.xml;
 
 import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
-import org.grupo10.sistema_servidor.logs.factory.IRepositorio;
+import org.grupo10.factory.IRepositorio;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -12,16 +12,19 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class XmlRepositorio implements IRepositorio {
     private  String filename;
+
     @Override
-    public void readRepo(String filename) throws FileNotFoundException {
+    public void readRepo( ) throws FileNotFoundException {
+            String currentDir = System.getProperty("user.dir");
         try {
-            File file = new File(filename);
+            File file = new File(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.xml");
             if (!file.exists()) {
                 throw new FileNotFoundException();
             }

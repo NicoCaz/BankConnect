@@ -1,8 +1,8 @@
-package org.grupo10.sistema_servidor.logs.factory.txt;
+package org.grupo10.factory.txt;
 
 import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
-import org.grupo10.sistema_servidor.logs.factory.IRepositorio;
+import org.grupo10.factory.IRepositorio;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,9 +15,10 @@ public class TxtRepositorio implements IRepositorio {
     private String filename;
 
     @Override
-    public void readRepo(String filename) throws FileNotFoundException {
+    public void readRepo() throws FileNotFoundException {
+        String currentDir = System.getProperty("user.dir");
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.txt");
             fr.close();
             this.filename = filename;
         } catch (FileNotFoundException e) {

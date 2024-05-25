@@ -1,8 +1,8 @@
-package org.grupo10.sistema_servidor.logs.factory;
+package org.grupo10.factory;
 
-import org.grupo10.sistema_servidor.logs.factory.json.JsonFactory;
-import org.grupo10.sistema_servidor.logs.factory.txt.TxtFactory;
-import org.grupo10.sistema_servidor.logs.factory.xml.XmlFactory;
+import org.grupo10.factory.json.JsonFactory;
+import org.grupo10.factory.txt.TxtFactory;
+import org.grupo10.factory.xml.XmlFactory;
 
 public class FactorySelector {
     private AbstractFactory logFactory;

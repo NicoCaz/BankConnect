@@ -1,7 +1,7 @@
-package org.grupo10.sistema_servidor.logs.factory.xml;
+package org.grupo10.factory.xml;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.logs.factory.IRegistro;
+import org.grupo10.factory.IRegistro;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

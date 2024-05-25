@@ -1,8 +1,8 @@
-package org.grupo10.sistema_servidor.logs.factory.json;
+package org.grupo10.factory.json;
 
 import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
-import org.grupo10.sistema_servidor.logs.factory.IRepositorio;
+import org.grupo10.factory.IRepositorio;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,9 +18,10 @@ public class JsonRepositorio implements IRepositorio {
     private String filename;
 
     @Override
-    public void readRepo(String filename) throws FileNotFoundException {
+    public void readRepo( ) throws FileNotFoundException {
+        String currentDir = System.getProperty("user.dir");
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.json");
             fr.close();
             this.filename = filename;
         } catch (FileNotFoundException e) {

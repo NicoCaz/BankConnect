@@ -1,9 +1,9 @@
-package org.grupo10.sistema_servidor.logs.factory.txt;
+package org.grupo10.factory.txt;
 
-import org.grupo10.sistema_servidor.logs.factory.AbstractFactory;
-import org.grupo10.sistema_servidor.logs.factory.ILlamados;
-import org.grupo10.sistema_servidor.logs.factory.IRegistro;
-import org.grupo10.sistema_servidor.logs.factory.IRepositorio;
+import org.grupo10.factory.AbstractFactory;
+import org.grupo10.factory.ILlamados;
+import org.grupo10.factory.IRegistro;
+import org.grupo10.factory.IRepositorio;
 
 public class TxtFactory implements AbstractFactory {
 

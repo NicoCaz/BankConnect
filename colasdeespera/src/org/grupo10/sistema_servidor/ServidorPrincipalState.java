@@ -1,5 +1,9 @@
 package org.grupo10.sistema_servidor;
 
+import org.grupo10.factory.FactorySelector;
+import org.grupo10.factory.ILlamados;
+import org.grupo10.factory.IRegistro;
+import org.grupo10.factory.IRepositorio;
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.sistema_servidor.filas.Fila;
@@ -28,9 +32,11 @@ public class ServidorPrincipalState implements ServidorState{
     private IFilas<TurnoFinalizado> turnosFinalizados ;
     private HashSet<Integer> boxesOcupados = new HashSet<>();
 
-    private IClientRepository repoClientes;
-    //Manejo de logs
-    //private LogCreator logCreator;
+    private IRepositorio repoClientes;
+    private ILlamados logLlamados;
+    private IRegistro logRegistros;
+    private FactorySelector persistencia;
+
 
     //Instanciacion de las listas que guardan las referencias a los threads
     private List<TotemClientHandler> Totems = new ArrayList<>();
@@ -45,8 +51,9 @@ public class ServidorPrincipalState implements ServidorState{
         this.serverSocket = new ServerSocket(port);
         this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         this.turnosFinalizados = new FilaFinalizada();
-        //this.logCreator= new LogCreator(this.servidor.getTipoLog());
-        this.leerRepo();
+        this.persistencia=new FactorySelector(this.servidor.getTipoLog());
+        this.repoClientes = this.persistencia.clientRepository();
+        this.repoClientes.readRepo();
         this.cambios = true;
         this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         System.out.println("Se inició el servidor principal en el puerto " + port + ".");
@@ -98,17 +105,6 @@ public class ServidorPrincipalState implements ServidorState{
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void leerRepo() {
-        String currentDir = System.getProperty("user.dir");
-        try {
-            this.repoClientes = new ClientRepositoryTXT(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("Hubo un error al leer el repositorio de clientes. Verificar que el archivo no esté dañado.");
-            // No tiene sentido utilizar el servidor sin clientes.
-            System.exit(0);
         }
     }
 
@@ -171,9 +167,7 @@ public class ServidorPrincipalState implements ServidorState{
         }
     }
 
-    public IClientRepository getRepoClientes() {
-        return repoClientes;
-    }
+
 
     public FilaFinalizada getTurnosFinalizados() {
         return (FilaFinalizada) turnosFinalizados;
@@ -200,7 +194,16 @@ public class ServidorPrincipalState implements ServidorState{
         return this.boxesOcupados.add(box);
     }
 
-  //  public LogCreator getLogCreator() {
-    //    return logCreator;
-    //}
+
+    public IRepositorio getRepoClientes() {
+        return repoClientes;
+    }
+
+    public ILlamados getLogLlamados() {
+        return logLlamados;
+    }
+
+    public IRegistro getLogRegistros() {
+        return logRegistros;
+    }
 }

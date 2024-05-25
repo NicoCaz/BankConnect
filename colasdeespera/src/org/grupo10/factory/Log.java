@@ -1,4 +1,4 @@
-package org.grupo10.sistema_servidor.logs.factory;
+package org.grupo10.factory;
 
 import org.grupo10.modelo.Turno;
 

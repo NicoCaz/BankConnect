@@ -1,14 +1,10 @@
-package org.grupo10.sistema_servidor.logs;
+package org.grupo10.factory;
 
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.logs.factory.FactorySelector;
-import org.grupo10.sistema_servidor.logs.factory.ILlamados;
-import org.grupo10.sistema_servidor.logs.factory.IRegistro;
 
 
 import java.time.LocalDate;
-import java.util.Date;
 
 
 public class Main {

@@ -1,7 +1,7 @@
-package org.grupo10.sistema_servidor.logs.factory.txt;
+package org.grupo10.factory.txt;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.sistema_servidor.logs.factory.ILlamados;
+import org.grupo10.factory.ILlamados;
 
 import java.io.FileWriter;
 import java.io.IOException;

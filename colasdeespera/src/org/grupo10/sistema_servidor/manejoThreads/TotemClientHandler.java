@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class TotemClientHandler extends Thread{
@@ -69,11 +70,11 @@ public class TotemClientHandler extends Thread{
     }
 
     public void mandarLog(Turno t){
-      /*  new Thread(()->{
-            synchronized(this.servidor.getLogCreator()){
-                this.servidor.getLogCreator().logClientRegistro(t, new Date());
+      new Thread(()->{
+            synchronized(this.servidor.getLogRegistros()){
+                this.servidor.getLogRegistros().logToFile(t, LocalDate.now());
             }
-        }).start(); */
+        }).start();
     }
 
     public String enviarTurno(Turno t){
