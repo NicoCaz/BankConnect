@@ -71,7 +71,7 @@ public class BoxClientHandler extends Thread  {
                         }
                         this.turnoAnterior = (Turno) msg;
                     }
-                    Thread.sleep(3000);
+                    Thread.sleep(50);
                     this.servidor.enviarActualizacion((Turno)msg);
                     this.out.println(((Turno) msg).getDni());
                 }else {
