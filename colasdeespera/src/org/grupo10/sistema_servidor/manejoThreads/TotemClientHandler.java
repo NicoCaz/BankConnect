@@ -69,11 +69,11 @@ public class TotemClientHandler extends Thread{
     }
 
     public void mandarLog(Turno t){
-        new Thread(()->{
+      /*  new Thread(()->{
             synchronized(this.servidor.getLogCreator()){
                 this.servidor.getLogCreator().logClientRegistro(t, new Date());
             }
-        }).start();
+        }).start(); */
     }
 
     public String enviarTurno(Turno t){

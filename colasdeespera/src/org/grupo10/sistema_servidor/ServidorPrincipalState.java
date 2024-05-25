@@ -2,7 +2,6 @@ package org.grupo10.sistema_servidor;
 
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
-import org.grupo10.sistema_servidor.logs.factory.LogCreator;
 import org.grupo10.sistema_servidor.filas.Fila;
 import org.grupo10.sistema_servidor.filas.FilaFinalizada;
 import org.grupo10.sistema_servidor.filas.IFilas;
@@ -31,7 +30,7 @@ public class ServidorPrincipalState implements ServidorState{
 
     private IClientRepository repoClientes;
     //Manejo de logs
-    private LogCreator logCreator;
+    //private LogCreator logCreator;
 
     //Instanciacion de las listas que guardan las referencias a los threads
     private List<TotemClientHandler> Totems = new ArrayList<>();
@@ -46,7 +45,7 @@ public class ServidorPrincipalState implements ServidorState{
         this.serverSocket = new ServerSocket(port);
         this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         this.turnosFinalizados = new FilaFinalizada();
-        this.logCreator= new LogCreator(this.servidor.getTipoLog());
+        //this.logCreator= new LogCreator(this.servidor.getTipoLog());
         this.leerRepo();
         this.cambios = true;
         this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
@@ -199,7 +198,7 @@ public class ServidorPrincipalState implements ServidorState{
         return this.boxesOcupados.add(box);
     }
 
-    public LogCreator getLogCreator() {
-        return logCreator;
-    }
+  //  public LogCreator getLogCreator() {
+    //    return logCreator;
+    //}
 }
