@@ -52,6 +52,8 @@ public class ServidorPrincipalState implements ServidorState{
         this.turnosEnEspera = new Fila(this.servidor.getEstrategiaFila());
         this.turnosFinalizados = new FilaFinalizada();
         this.persistencia=new FactorySelector(this.servidor.getTipoLog());
+        this.logLlamados= this.persistencia.logClientLlamado();
+        this.logRegistros= this.persistencia.logClientRegistro();
         this.repoClientes = this.persistencia.clientRepository();
         this.repoClientes.readRepo();
         this.cambios = true;

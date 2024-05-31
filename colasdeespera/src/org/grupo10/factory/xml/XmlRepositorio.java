@@ -19,12 +19,12 @@ import java.time.format.DateTimeFormatter;
 
 public class XmlRepositorio implements IRepositorio {
     private  String filename;
-
+    File file;
     @Override
     public void readRepo( ) throws FileNotFoundException {
             String currentDir = System.getProperty("user.dir");
         try {
-            File file = new File(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.xml");
+            file = new File(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.xml");
             if (!file.exists()) {
                 throw new FileNotFoundException();
             }
@@ -42,7 +42,7 @@ public class XmlRepositorio implements IRepositorio {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(new File(this.filename));
+            Document doc = dBuilder.parse(file);
             doc.getDocumentElement().normalize();
 
             NodeList nodeList = doc.getElementsByTagName("cliente");
