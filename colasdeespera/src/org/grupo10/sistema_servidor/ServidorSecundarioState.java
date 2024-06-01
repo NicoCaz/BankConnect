@@ -19,7 +19,6 @@ public class ServidorSecundarioState implements ServidorState{
     private ObjectInputStream inOtro;
     private IFilas<Turno> turnosEnEspera ;
     private IFilas<TurnoFinalizado> turnosFinalizados ;
-    public HashSet<Integer> boxesOcupados = new HashSet<>();
 
 
 
