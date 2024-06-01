@@ -15,7 +15,6 @@ public class ControladorPantalla implements IPantalla , IControlador {
     private VistaPantalla pantalla;
     private final int maxLlamados = 10;
 
-
     private List<String> boxUltimosLlamados = new ArrayList<String>();
     private List<String> dniUltimosLlamados = new ArrayList<String>();
 
