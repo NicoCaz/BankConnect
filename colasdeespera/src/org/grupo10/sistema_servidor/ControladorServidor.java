@@ -12,8 +12,6 @@ public class ControladorServidor extends Thread {
     // Parámetros del archivo de configuración
     private String ip,ipOtro;
     private int port, portOtro;
-    //
-
     public static void main(String[] args) {
         new ControladorServidor();
     }
