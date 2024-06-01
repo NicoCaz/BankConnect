@@ -2,7 +2,7 @@ package org.grupo10.factory.json;
 
 import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
-import org.grupo10.factory.IRepositorio;
+import org.grupo10.factory.ILogRepositorio;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class JsonRepositorio implements IRepositorio {
+public class JsonRepositorio implements ILogRepositorio {
     private String filename;
 
     @Override

@@ -2,7 +2,7 @@ package org.grupo10.factory.txt;
 
 import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
-import org.grupo10.factory.IRepositorio;
+import org.grupo10.factory.ILogRepositorio;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class TxtRepositorio implements IRepositorio {
+public class TxtRepositorio implements ILogRepositorio {
     private String filename;
 
     @Override

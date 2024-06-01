@@ -2,7 +2,7 @@ package org.grupo10.factory.xml;
 
 import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
-import org.grupo10.factory.IRepositorio;
+import org.grupo10.factory.ILogRepositorio;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -12,12 +12,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class XmlRepositorio implements IRepositorio {
+public class XmlRepositorio implements ILogRepositorio {
     private  String filename;
     File file;
     @Override

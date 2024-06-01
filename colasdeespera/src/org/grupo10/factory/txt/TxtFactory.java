@@ -1,24 +1,24 @@
 package org.grupo10.factory.txt;
 
 import org.grupo10.factory.AbstractFactory;
-import org.grupo10.factory.ILlamados;
-import org.grupo10.factory.IRegistro;
-import org.grupo10.factory.IRepositorio;
+import org.grupo10.factory.ILogLlamados;
+import org.grupo10.factory.ILogRegistro;
+import org.grupo10.factory.ILogRepositorio;
 
 public class TxtFactory implements AbstractFactory {
 
     @Override
-    public ILlamados createLlamados() {
+    public ILogLlamados createLlamados() {
         return new TxtLlamados();
     }
 
     @Override
-    public IRegistro createRegistro() {
+    public ILogRegistro createRegistro() {
         return new TxtRegistro();
     }
 
     @Override
-    public IRepositorio createRepositorio() {
+    public ILogRepositorio createRepositorio() {
         return new TxtRepositorio();
     }
 }

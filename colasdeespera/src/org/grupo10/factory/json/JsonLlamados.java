@@ -1,7 +1,7 @@
 package org.grupo10.factory.json;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.factory.ILlamados;
+import org.grupo10.factory.ILogLlamados;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 
-public class JsonLlamados implements ILlamados {
+public class JsonLlamados implements ILogLlamados {
     @Override
     public void logToFile(Turno turno, int boxNumber, LocalDate date) {
         JSONParser parser = new JSONParser();

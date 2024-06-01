@@ -1,7 +1,7 @@
 package org.grupo10.factory.xml;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.factory.IRegistro;
+import org.grupo10.factory.ILogRegistro;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class XmlRegistro implements IRegistro {
+public class XmlRegistro implements ILogRegistro {
     @Override
     public void logToFile(Turno turno, LocalDate date) {
         try {

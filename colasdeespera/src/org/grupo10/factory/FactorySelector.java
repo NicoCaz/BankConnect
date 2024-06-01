@@ -26,14 +26,14 @@ public class FactorySelector {
 
 
 
-    public IRegistro logClientRegistro() {
+    public ILogRegistro logClientRegistro() {
          return logFactory.createRegistro();
     }
 
-    public ILlamados logClientLlamado() {
+    public ILogLlamados logClientLlamado() {
          return logFactory.createLlamados();
     }
-    public IRepositorio clientRepository(){
+    public ILogRepositorio clientRepository(){
         return logFactory.createRepositorio();
     }
 }

@@ -1,9 +1,9 @@
 package org.grupo10.sistema_servidor;
 
 import org.grupo10.factory.FactorySelector;
-import org.grupo10.factory.ILlamados;
-import org.grupo10.factory.IRegistro;
-import org.grupo10.factory.IRepositorio;
+import org.grupo10.factory.ILogLlamados;
+import org.grupo10.factory.ILogRegistro;
+import org.grupo10.factory.ILogRepositorio;
 import org.grupo10.modelo.Turno;
 import org.grupo10.modelo.TurnoFinalizado;
 import org.grupo10.sistema_servidor.filas.Fila;
@@ -29,9 +29,9 @@ public class ServidorPrincipalState implements ServidorState{
     private IFilas<TurnoFinalizado> turnosFinalizados ;
     private HashSet<Integer> boxesOcupados = new HashSet<>();
 
-    private IRepositorio repoClientes;
-    private ILlamados logLlamados;
-    private IRegistro logRegistros;
+    private ILogRepositorio repoClientes;
+    private ILogLlamados logLlamados;
+    private ILogRegistro logRegistros;
     private FactorySelector persistencia;
 
 
@@ -194,15 +194,15 @@ public class ServidorPrincipalState implements ServidorState{
     }
 
 
-    public IRepositorio getRepoClientes() {
+    public ILogRepositorio getRepoClientes() {
         return repoClientes;
     }
 
-    public ILlamados getLogLlamados() {
+    public ILogLlamados getLogLlamados() {
         return logLlamados;
     }
 
-    public IRegistro getLogRegistros() {
+    public ILogRegistro getLogRegistros() {
         return logRegistros;
     }
 }

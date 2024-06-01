@@ -1,7 +1,7 @@
 package org.grupo10.factory.xml;
 
 import org.grupo10.modelo.Turno;
-import org.grupo10.factory.ILlamados;
+import org.grupo10.factory.ILogLlamados;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class XmlLlamados implements ILlamados {
+public class XmlLlamados implements ILogLlamados {
     @Override
     public void logToFile(Turno turno, int boxNumber, LocalDate date) {
         try {

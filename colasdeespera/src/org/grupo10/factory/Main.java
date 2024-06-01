@@ -14,10 +14,10 @@ public class Main {
         Turno turno=new Turno("1180160688");
         LocalDate now = LocalDate.now();
 
-        IRegistro registrio=logCreator.logClientRegistro();
+        ILogRegistro registrio=logCreator.logClientRegistro();
         registrio.logToFile(turno, now);
 
-        ILlamados llamados= logCreator.logClientLlamado();
+        ILogLlamados llamados= logCreator.logClientLlamado();
         llamados.logToFile(turno, 1, now);
 
         turno=new Turno("345232534");
