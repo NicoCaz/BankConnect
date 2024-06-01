@@ -12,9 +12,6 @@ import org.grupo10.sistema_servidor.filas.IFilas;
 import org.grupo10.sistema_servidor.manejoThreads.BoxClientHandler;
 import org.grupo10.sistema_servidor.manejoThreads.RedundanciaHandler;
 import org.grupo10.sistema_servidor.manejoThreads.TotemClientHandler;
-import org.grupo10.sistema_servidor.repositorio.ClientRepositoryTXT;
-import org.grupo10.sistema_servidor.repositorio.IClientRepository;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;

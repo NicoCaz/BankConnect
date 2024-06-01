@@ -6,7 +6,7 @@ import java.io.IOException;
 
 
 
-public class ControladorServidor extends Thread implements IControladorServidor {
+public class ControladorServidor extends Thread {
     private static ControladorServidor instance = null;
     private ServidorState estado;
     private String tipoLog,estrategiaFila;
@@ -81,7 +81,7 @@ public class ControladorServidor extends Thread implements IControladorServidor 
         }
     }
 
-    @Override
+
     public void setEstado(ServidorState estadoNuevo) {
         this.estado = estadoNuevo;
     }
