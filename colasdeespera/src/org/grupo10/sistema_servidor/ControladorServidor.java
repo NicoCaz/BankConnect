@@ -7,7 +7,6 @@ import java.io.IOException;
 
 
 public class ControladorServidor extends Thread {
-    private static ControladorServidor instance = null;
     private ServidorState estado;
     private String tipoLog,estrategiaFila;
     // Parámetros del archivo de configuración
@@ -18,11 +17,6 @@ public class ControladorServidor extends Thread {
     public static void main(String[] args) {
         new ControladorServidor();
     }
-//    public static ControladorServidor getInstance() {
-//        if (ControladorServidor.instance == null)
-//            ControladorServidor.instance = new ControladorServidor();
-//        return ControladorServidor.instance;
-//    }
 
     private ControladorServidor(){
 
@@ -81,46 +75,21 @@ public class ControladorServidor extends Thread {
         }
     }
 
-
     public void setEstado(ServidorState estadoNuevo) {
         this.estado = estadoNuevo;
     }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
     public String getIpOtro() {
         return ipOtro;
     }
-
-    public void setIpOtro(String ipOtro) {
-        this.ipOtro = ipOtro;
-    }
-
     public int getPort() {
         return port;
     }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
     public int getPortOtro() {
         return portOtro;
-    }
-
-    public void setPortOtro(int portOtro) {
-        this.portOtro = portOtro;
     }
     public String getTipoLog(){
         return tipoLog;
     }
-
     public String getEstrategiaFila() {
         return estrategiaFila;
     }
