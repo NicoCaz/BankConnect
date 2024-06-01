@@ -2,7 +2,7 @@ package org.grupo10.sistema_totem.controlador;
 
 
 import org.grupo10.interfaces.IControlador;
-import org.grupo10.sistema_totem.conexion.I_DNI;
+import org.grupo10.sistema_totem.conexion.I_RegistroDNI;
 import org.grupo10.sistema_totem.conexion.SistemaTotem;
 import org.grupo10.sistema_totem.vista.VistaTotem;
 
@@ -15,7 +15,7 @@ public class ControladorTotem implements ActionListener , IControlador {
 
     private static ControladorTotem instance = null;
     private VistaTotem ventana;
-    private I_DNI dni_registro;
+    private I_RegistroDNI dni_registro;
 
     public static void main(String[] args) {
         ControladorTotem.getInstance().comenzar();

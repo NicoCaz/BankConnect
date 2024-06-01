@@ -7,7 +7,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Map;
 
-public class SistemaTotem extends Conexion implements I_DNI {
+public class SistemaTotem extends Conexion implements I_RegistroDNI {
 
     public SistemaTotem() throws IOException, FileNotFoundException {
 

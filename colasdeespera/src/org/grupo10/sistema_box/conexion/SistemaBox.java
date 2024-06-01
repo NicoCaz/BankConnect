@@ -71,7 +71,4 @@ public class SistemaBox extends Conexion implements I_LlamarDNI{
         ControladorBox.getInstance().cerrarMensajeConectando();
     }
 
-    public int getNroBox() {
-        return nroBox;
-    }
 }
