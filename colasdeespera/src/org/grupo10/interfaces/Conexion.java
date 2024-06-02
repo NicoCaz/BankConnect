@@ -104,27 +104,27 @@ public abstract class Conexion {
     // Maneja el reintento y el cambio de servidor
     protected void reconectar() throws IOException {
         this.abrirMensajeConectando();
-        int intentos=0;
+
         boolean conectado= false;
-        while(!conectado && intentos<3){
+        while(!conectado){
             try{
                 this.conectar(servers.get(this.serverActivo));
                 conectado=true;
-                intentos=0;
+
             }catch (IOException e) {
                 if(serverActivo==1){
                     this.serverActivo=0;
                 }else {
                     this.serverActivo=1;
                 }
-                intentos++;
             }
-            this.cerrarMensajeConectando();
 
         }
 
         if (!conectado) {
             throw new IOException("No se pudo conectar a ninguno de los servidores disponibles.");
         }
+            this.cerrarMensajeConectando();
+
     }
 }

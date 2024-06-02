@@ -11,3 +11,18 @@ Entrada al sistema - Cliente: 88888888, Date: Fri May 24 20:47:41 ART 2024
 Entrada al sistema - Cliente: 33333333, Date: Fri May 24 20:49:22 ART 2024
 Entrada al sistema - Cliente: 44444444, Date: Fri May 24 20:49:41 ART 2024
 Entrada al sistema - Cliente: 22222222, Date: Fri May 24 20:50:19 ART 2024
+Entrada al sistema - Cliente: 77777777, Date: 2024-06-02
+Entrada al sistema - Cliente: 99999999, Date: 2024-06-02
+Entrada al sistema - Cliente: 55555555, Date: 2024-06-02
+Entrada al sistema - Cliente: 222222222, Date: 2024-06-02
+Entrada al sistema - Cliente: 22222222, Date: 2024-06-02
+Entrada al sistema - Cliente: 66666666, Date: 2024-06-02
+Entrada al sistema - Cliente: 77777777, Date: 2024-06-02
+Entrada al sistema - Cliente: 12145214, Date: 2024-06-02
+Entrada al sistema - Cliente: 33333333, Date: 2024-06-02
+Entrada al sistema - Cliente: 405152858, Date: 2024-06-02
+Entrada al sistema - Cliente: 222221477, Date: 2024-06-02
+Entrada al sistema - Cliente: 6547700, Date: 2024-06-02
+Entrada al sistema - Cliente: 555555555, Date: 2024-06-02
+Entrada al sistema - Cliente: 14756574, Date: 2024-06-02
+Entrada al sistema - Cliente: 411747055, Date: 2024-06-02
