@@ -4,23 +4,20 @@ import org.grupo10.exception.ClienteNoExistenteException;
 import org.grupo10.modelo.Cliente;
 import org.grupo10.factory.ILogRepositorio;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class TxtRepositorio implements ILogRepositorio {
     private String filename;
-
+    FileReader file;
     @Override
     public void readRepo() throws FileNotFoundException {
         String currentDir = System.getProperty("user.dir");
         try {
-            FileReader fr = new FileReader(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.txt");
-            fr.close();
-            this.filename = filename;
+            file = new FileReader(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.txt");
+            file.close();
+            this.filename = currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.txt";
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException();
         } catch (IOException e) {

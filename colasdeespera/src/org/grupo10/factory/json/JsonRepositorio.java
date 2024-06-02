@@ -23,7 +23,7 @@ public class JsonRepositorio implements ILogRepositorio {
         try {
             FileReader fr = new FileReader(currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.json");
             fr.close();
-            this.filename = filename;
+            this.filename = currentDir+"/colasdeespera/src/org/grupo10/sistema_servidor/repo.json";
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException();
         } catch (IOException e) {

@@ -2,19 +2,19 @@
   "clientes": [
     {
       "nombre": "John Doe",
-      "dni": "12345",
+      "dni": "11111111",
       "prioridad": 1,
-      "fechaNacimiento": "1990-01-01"
+      "fechaNacimiento": "1980-01-01"
     },
     {
       "nombre": "Jane Smith",
-      "dni": "67890",
+      "dni": "22222222",
       "prioridad": 2,
-      "fechaNacimiento": "1985-05-15"
+      "fechaNacimiento": "1955-05-15"
     },
     {
       "nombre": "Alice Johnson",
-      "dni": "11223",
+      "dni": "33333333",
       "prioridad": 3,
       "fechaNacimiento": "2000-12-25"
     }

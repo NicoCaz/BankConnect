@@ -3,13 +3,13 @@
         <nombre>John Doe</nombre>
         <dni>11111111</dni>
         <prioridad>1</prioridad>
-        <fechaNacimiento>1990-01-01</fechaNacimiento>
+        <fechaNacimiento>1970-01-01</fechaNacimiento>
     </cliente>
     <cliente>
         <nombre>Jane Smith</nombre>
         <dni>22222222</dni>
         <prioridad>2</prioridad>
-        <fechaNacimiento>1985-05-15</fechaNacimiento>
+        <fechaNacimiento>1950-05-15</fechaNacimiento>
     </cliente>
     <cliente>
         <nombre>Alice Johnson</nombre>
